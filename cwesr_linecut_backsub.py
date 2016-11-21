@@ -10,9 +10,10 @@ import numpy as np
 import cwesr_fit_single as cwesr
 #import matplotlib.gridspec as gridspec
 
-basepath = '/Users/alec/UCSB/scan_data/1637-esrdata/esr'
-savepath = '/Users/alec/UCSB/scan_data/1637-esrdata/fitdata.txt'
-fitlogpath = '/Users/alec/UCSB/scan_data/1637-esrdata/fitlog.txt'
+base_directory = '/Users/alec/UCSB/scan_data/1637-esrdata/'
+basepath = base_directory + 'esr'
+savepath = base_directory + 'fitdata.txt'
+fitlogpath = base_directory + 'fitlog.txt'
 filestart = 4025
 fileend = 4774
 num_avg = 10
@@ -21,7 +22,7 @@ num_avg = 10
 fitdata = []
 fitlog = [filestart, fileend]
 #splittings_edge = []
-
+back = np.loadtxt('/Users/alec/UCSB/python_analysis/copt/fullfield_images/back.txt')
         
 for j in range (filestart,fileend+1):
     if (j%100==0):
@@ -33,11 +34,8 @@ for j in range (filestart,fileend+1):
     edata = np.transpose(data)
     #print(edata)
     x, y = edata
+    y = y - back
     
-#    bpopt = [6619.24955982, 2771.38983444, 6717.65417238, 276.51001779, 3079.50430922, 5146.73378303, 352.99559504]
-#    backfit = func(x, *bpopt)
-#    y = y-backfit
-    #print(edata[1,2])
     cwresult = cwesr.cwesr_fit(x,y)
     popt = cwresult[0]
     pcov = cwresult[1]
