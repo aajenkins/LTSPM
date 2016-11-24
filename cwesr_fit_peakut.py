@@ -10,17 +10,42 @@ import numpy as np
 import cwesr_fit_single as cwesr
 #import matplotlib.gridspec as gridspec
 
-basepath = '/Users/alec/UCSB/scan_data/1637-esrdata/esr'
-savepath = '/Users/alec/UCSB/scan_data/1637-esrdata/fitdata.txt'
-fitlogpath = '/Users/alec/UCSB/scan_data/1637-esrdata/fitlog.txt'
-filestart = 4025
-fileend = 4774
-num_avg = 10
-
+basepath = '/Users/alec/UCSB/scan_data/1567-esrdata/fittrack2'
+savepath = '/Users/alec/UCSB/scan_data/1567-esrdata/fitdata.txt'
+fitlogpath = '/Users/alec/UCSB/scan_data/1567-esrdata/fitlog.txt'
+filestart = 5025
+fileend = 7024
+num_avg = 4
+dwelltime = 4e-2
+gamp = 7e3
+gwidth = 10
+lbounds1 = [0,2600,1e3,4]
+ubounds1 = [1e5,3100,2e5,40]
+lbounds2 = [0,2600,1e3,4,2600,1e3,4]
+ubounds2 = [1e5,3100,2e5,40,3100,2e5,40]
+lbounds3 = [0,2600,1e3,4,2600,1e3,4,2600,1e3,4]
+ubounds3 = [1e5,3100,2e5,40,2950,2e5,40,3100,2e5,40]
+lbounds4 = [0,2600,1e3,4,2600,1e3,4,2600,1e3,4,2600,1e3,4]
+ubounds4 = [1e5,3100,2e5,40,3100,2e5,40,3100,2e5,40,3100,2e5,40]
+maxcenshift = 10
+defaultf1 = 2772
+defaultf2 = 2961
 
 fitdata = []
 fitlog = [filestart, fileend]
 #splittings_edge = []
+
+def func(x, *params):
+        y = np.zeros_like(x)
+        c = params[0]
+        for i in range(1, len(params), 3):
+            ctr = params[i]
+            amp = params[i+1]
+            wid = params[i+2]
+            #y = y + amp * (np.exp( -((x - ctr-2.3)/wid)**2)+np.exp( -((x - ctr)/wid)**2)+np.exp( -((x - ctr+2.3)/wid)**2)) + c
+            y = y - abs((amp * (wid/2)**2)/((x-ctr)**2+(wid/2)**2))
+        y=y+c
+        return y
 
         
 for j in range (filestart,fileend+1):
@@ -40,9 +65,7 @@ for j in range (filestart,fileend+1):
     #print(edata[1,2])
     cwresult = cwesr.cwesr_fit(x,y)
     popt = cwresult[0]
-    pcov = cwresult[1]
-    perr = np.sqrt(np.diag(pcov))
-    fitdata.append([popt, perr])
+    fitdata.append(popt)
 
 len_data = len(fitdata)
 print(len_data)
@@ -50,9 +73,8 @@ f = open(savepath, 'w')
 for i in range (0,len_data):
 #    len_params = len(fitdata[i])
     for k in range (0,6):
-        f.write(str(fitdata[i][0][k])+',')
-        f.write(str(fitdata[i][1][k])+',')
-    f.write(str(fitdata[i][0][6])+','+str(fitdata[i][1][6])+'\n')  
+        f.write(str(fitdata[i][k])+',')
+    f.write(str(fitdata[i][6])+'\n')  
 f.close()
 
 
