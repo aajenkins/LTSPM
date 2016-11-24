@@ -19,14 +19,8 @@ num_avg = 4
 dwelltime = 4e-2
 gamp = 7e3
 gwidth = 10
-lbounds1 = [0,2600,1e3,4]
-ubounds1 = [1e5,3100,2e5,40]
 lbounds2 = [0,2600,1e3,4,2600,1e3,4]
 ubounds2 = [1e5,3100,2e5,40,3100,2e5,40]
-lbounds3 = [0,2600,1e3,4,2600,1e3,4,2600,1e3,4]
-ubounds3 = [1e5,3100,2e5,40,2950,2e5,40,3100,2e5,40]
-lbounds4 = [0,2600,1e3,4,2600,1e3,4,2600,1e3,4,2600,1e3,4]
-ubounds4 = [1e5,3100,2e5,40,3100,2e5,40,3100,2e5,40,3100,2e5,40]
 maxcenshift = 10
 defaultf1 = 2772
 defaultf2 = 2961
@@ -58,11 +52,7 @@ for j in range (filestart,fileend+1):
     edata = np.transpose(data)
     #print(edata)
     x, y = edata
-    
-#    bpopt = [6619.24955982, 2771.38983444, 6717.65417238, 276.51001779, 3079.50430922, 5146.73378303, 352.99559504]
-#    backfit = func(x, *bpopt)
-#    y = y-backfit
-    #print(edata[1,2])
+
     cwresult = cwesr.cwesr_fit(x,y)
     popt = cwresult[0]
     fitdata.append(popt)
