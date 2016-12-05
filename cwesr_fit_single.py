@@ -10,14 +10,14 @@ import numpy as np
 import peakutils
 import peakdet
 
-gamp = 1.2e4
+gamp = 1.5e4
 gwidth = 7
 lbounds2 = [0,2500,1e3,4,2500,1e3,4]
 ubounds2 = [3e5,3200,2e5,50,3200,2e5,50]
 pdheight = 1500
 maxcenshift = 20
-defaultf1 = 2964
-defaultf2 = 2780
+defaultf1 = 2855
+defaultf2 = 2886
 
 def func(x, *params):
         y = np.zeros_like(x)
@@ -31,15 +31,15 @@ def func(x, *params):
         y=y+c
         return y
 
-def cwesr_fit(x,y):
-    [maxtab, mintab]=peakdet.peakdet(y, 5000, x)
+def cwesr_fit(x,y,filenum=0):
+    [maxtab, mintab]=peakdet.peakdet(y, 7000, x)
 #    indexes = peakutils.indexes(-y, thres=0.4, min_dist=4)
     sm1=[]
     sm2=[]
 #    if len(indexes) > 0:
 #        mintab = np.transpose([x[indexes], y[indexes]])
     for i in range(0,len(mintab)):
-        if mintab[i][0] < 2878:
+        if mintab[i][0] < 2872:
             sm1.append(mintab[i])
         else:
             sm2.append(mintab[i])
@@ -98,7 +98,7 @@ def cwesr_fit(x,y):
     except:
         popt = [0, 0, 0, 10, 1e3, 0, 10]
         pcov = np.zeros((7,7))
-        print('fit fail')
+        print('fit fail on file '+str(filenum))
         
     fit = func(x, *popt)
     fitg = func(x, *guess)
