@@ -36,7 +36,7 @@ dsize = 0.5*5
 
 basepath = '/Users/alec/UCSB/mathematica/CoFeB-MgO/linecut_simulations/linecut_30_h/'
 
-height = 80
+height = 66
 blochfms = glob.glob(basepath+'bloch*_'+str(height)+'_30._*.dat')
 nleftfms = glob.glob(basepath+'neelleft*_'+str(height)+'_30.*.dat')
 nrightfms = glob.glob(basepath+'neelright*_'+str(height)+'_30.*.dat')
@@ -83,23 +83,23 @@ for i in range(0,hnum):
         (nrightcuts[fi+rnum*hnum]*np.sin(theta)*np.sin(phi))+
         (np.add(nrightcuts[fi+2*rnum*hnum],zfields)*np.cos(theta))))   
       
-ffdata = ls.load_ff_linecut('/Users/alec/UCSB/scan_data/717-esrdata/fitdata.txt',dres,5,5)
+ffdata = ls.load_ff('/Users/alec/UCSB/scan_data/760-esrdata/fitdata.txt',dres,5,5)
 line = 2  
 ffycut = [np.add(np.arange(0,dsize,dsize/dres),0.65),ffdata[0][line,0:dres],ffdata[1][line,0:dres]]
 #ffycut = [np.arange(0,100),ffdata[0][:,3],ffdata[1][:,3]]           
 
 plt.close('all')
 
-#plt.figure(1,[5,4])
-#
-#imgplot = plt.imshow(ffdata[0], cmap='gray', interpolation='nearest')
-#plt.colorbar(fraction=0.027, pad=0.04)
-#plt.show()
-#plt.tight_layout()
-#pylab.savefig('ff_1592x.pdf',bbox_inches='tight')
+plt.figure(1,[5,4])
 
-#fig = plt.gcf()
-#fig.canvas.manager.window.raise_()
+imgplot = plt.imshow(ffdata[0], cmap='gray', interpolation='nearest')
+plt.colorbar(fraction=0.027, pad=0.04)
+plt.show()
+plt.tight_layout()
+pylab.savefig('ff_1592x.pdf',bbox_inches='tight')
+
+fig = plt.gcf()
+fig.canvas.manager.window.raise_()
 
 
 ploth = 0

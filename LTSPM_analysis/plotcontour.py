@@ -18,12 +18,12 @@ matplotlib.rc('font', **font)
 
 scanfolder = '/Users/alec/UCSB/scan_data/'
 
-def plotcontour(scan_num,size,save=False,savefolder='/Users/alec/UCSB/scan_data/images/',crop=[0,1,0,1],cb=True):
+def plotcontour(scan_num,size,save=False,savefolder='/Users/alec/UCSB/scan_images/contours/',crop=[0,1,0,1],cb=True,filetype='png'):
     
     scan_num = str(scan_num)
     datapath = scanfolder+scan_num+'/'+scan_num.zfill(6)+'.scan'
     infopath = scanfolder+scan_num+'/'+scan_num.zfill(6)+'.info'
-    savepath = savefolder+scan_num+'.pdf'
+    savepath = savefolder+scan_num+'.'+filetype
     scandata = ls.load_contour(datapath)
     scan_size = ls.get_scan_size(infopath)
     lsd = len(scandata[0])

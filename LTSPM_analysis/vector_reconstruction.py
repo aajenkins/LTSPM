@@ -19,7 +19,7 @@ scannum = 1739
 xres = 50
 yres = 50
 
-data = ls.load_ff('/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/fitdata.txt',xres,yres,7)
+data = ls.load_ff('/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/fitdata.txt',xres,yres,10)
 ffmask = ndimage.imread('/Users/alec/UCSB/scan_data/images/1739ffmaskaa.png',flatten=True)
 ffmask = np.multiply(np.add(np.multiply(ffmask,1/255),-0.5),-2)
 
@@ -30,6 +30,7 @@ phi = 0
 theta = -54.7*np.pi/180
 
 datas = np.multiply(ffmask,data[0])
+#datas = np.multiply(1,data[0])
 fdata = fi.fourier_image(datas)
 wimdata = fi.window_image(datas)
 
@@ -48,7 +49,7 @@ for j in range(0,dlen):
         if np.isnan(hzf[j,i]):
             print(j,i)
 
-rdata = np.add(np.add(np.real(fi.ifourier_image(hzf)),1),-1)
+rdata = np.real(fi.ifourier_image(hzf))
 
 
 #---------------- PLOTS ------------------------------------------
@@ -56,20 +57,27 @@ rdata = np.add(np.add(np.real(fi.ifourier_image(hzf)),1),-1)
 
 plt.close('all')
 
-plt.figure(1,[4,4])
-plt.imshow(np.log(np.abs(fdata)+1), cmap='gray', interpolation='nearest')
-fig = plt.gcf()
-fig.canvas.manager.window.raise_()
-plt.figure(2,[4,4])
-plt.imshow(wimdata, cmap='gray', interpolation='nearest')
-fig = plt.gcf()
-fig.canvas.manager.window.raise_()
-plt.figure(3,[4,4])
-plt.imshow(datas, cmap='gray', interpolation='nearest')
-fig = plt.gcf()
-fig.canvas.manager.window.raise_()
-plt.figure(4,[4,4])
-plt.imshow(rdata, cmap='bone', interpolation='nearest')
-plt.colorbar()
-fig = plt.gcf()
-fig.canvas.manager.window.raise_()
+#plt.figure(1,[4,4])
+#plt.imshow(np.log(np.abs(fdata)+1), cmap='gray', interpolation='nearest')
+#fig = plt.gcf()
+#fig.canvas.manager.window.raise_()
+#plt.figure(2,[4,4])
+#plt.imshow(wimdata, cmap='gray', interpolation='nearest')
+#fig = plt.gcf()
+#fig.canvas.manager.window.raise_()
+plt.figure(3,[5,5])
+plt.imshow(data[0], cmap='gray', interpolation='nearest')
+plt.colorbar(fraction=0.046, pad=0.04)
+fig = plt.gcf().canvas.manager.window
+geom = fig.geometry()
+x,y,dx,dy = geom.getRect()
+fig.setGeometry(50,100,dx, dy)
+fig.raise_()
+plt.figure(4,[5,5])
+plt.imshow(rdata, cmap='gray', interpolation='nearest')
+plt.colorbar(fraction=0.046, pad=0.04)
+fig = plt.gcf().canvas.manager.window
+geom = fig.geometry()
+x,y,dx,dy = geom.getRect()
+fig.setGeometry(500,100,dx, dy)
+fig.raise_()

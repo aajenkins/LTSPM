@@ -7,7 +7,8 @@ Created on Fri Nov 18 11:57:37 2016
 import numpy as np
 import re
 
-def load_ff (path, xres, yres, maxfgrad=10, maxfield=150):
+
+def load_ff (path, xres, yres, maxfgrad=15, maxfield=150, neighbors=4):
     
     scanlist = np.loadtxt(path, delimiter=',')[:,[2,8]]
     scanlisterr = np.loadtxt(path, delimiter=',')[:,[3,9]]
@@ -24,28 +25,46 @@ def load_ff (path, xres, yres, maxfgrad=10, maxfield=150):
             rscan2d[j,i] = abs(scanlist[i+((2*j+1)*xres),1]-scanlist[i+((2*j+1)*xres),0])/(2*2.8)
             rscan2derr[j,i] = np.sqrt((scanlisterr[i+((2*j+1)*xres),1]**2)+(scanlisterr[i+((2*j+1)*xres),0]**2))
             if scan2d[j,i] > maxfield:
-                scan2d[j,i] = scan2d[j-1,i]
-                scan2derr[j,i] = scan2derr[j-1,i]
+                scan2d[j,i] = scan2d[j,i-1]
+                scan2derr[j,i] = scan2derr[j,i-1]
             if scan2derr[j,i] > maxfield:
                 scan2d[j,i] = scan2d[j-1,i]
-                scan2derr[j,i] = scan2derr[j-1,i] 
+                scan2derr[j,i] = scan2derr[j,i-1] 
             if rscan2d[j,i] > maxfield:
-                rscan2d[j,i] = rscan2d[j-1,i]
-                rscan2derr[j,i] = rscan2derr[j-1,i]
+                rscan2d[j,i] = rscan2d[j,i-1]
+                rscan2derr[j,i] = rscan2derr[j,i-1]
             if rscan2derr[j,i] > maxfield:
-                rscan2d[j,i] = rscan2d[j-1,i]
-                rscan2derr[j,i] = rscan2derr[j-1,i]
+                rscan2d[j,i] = rscan2d[j,i-1]
+                rscan2derr[j,i] = rscan2derr[j,i-1]
     
-    for j in range(1,yres-1):
-        for i in range(1,xres-1):     
-            mean = (scan2d[j-1,i-1]+scan2d[j-1,i]+scan2d[j-1,i+1]+scan2d[j,i-1]+scan2d[j,i+1]
-            +scan2d[j+1,i-1]+scan2d[j+1,i]+scan2d[j+1,i+1])/8
-            meanerr = (scan2derr[j-1,i-1]+scan2derr[j-1,i]+scan2d[j-1,i+1]+scan2derr[j,i-1]+scan2derr[j,i+1]
-            +scan2derr[j+1,i-1]+scan2derr[j+1,i]+scan2derr[j+1,i+1])/8
-            rmean = (rscan2d[j-1,i-1]+rscan2d[j-1,i]+rscan2d[j-1,i+1]+rscan2d[j,i-1]+rscan2d[j,i+1]
-            +rscan2d[j+1,i-1]+rscan2d[j+1,i]+rscan2d[j+1,i+1])/8
-            rmeanerr = (rscan2derr[j-1,i-1]+rscan2derr[j-1,i]+rscan2d[j-1,i+1]+rscan2derr[j,i-1]+rscan2derr[j,i+1]
-            +rscan2derr[j+1,i-1]+rscan2derr[j+1,i]+rscan2derr[j+1,i+1])/8
+    for j in range(0,yres):
+        for i in range(0,xres):
+            ni = np.array([-1,1])
+            nj = np.array([-1,1])
+            if (i==0):
+                ni = ni[[1]]
+            if (i==xres-1):
+                ni = ni[[0]]
+            if (j==0):
+                nj=nj[[1]]
+            if (j==yres-1):
+                nj=nj[[0]]
+            
+            nilen = len(ni)
+            njlen = len(nj)
+            nlen = njlen+nilen
+            
+            mean = 0
+            meanerr = 0
+            rmean = 0
+            rmeanerr = 0
+            for k in range(njlen):
+                for l in range(nilen):
+                    mean = mean+(scan2d[j+nj[k],i+ni[l]]/nlen)
+                    meanerr = mean+(scan2derr[j+nj[k],i+ni[l]]/nlen)
+                    rmean = mean+(rscan2d[j+nj[k],i+ni[l]]/nlen)
+                    rmeanerr = mean+(rscan2derr[j+nj[k],i+ni[l]]/nlen)        
+                
             if abs(scan2d[j,i]-mean) > maxfgrad:
                 scan2d[j,i]=mean
                 scan2derr[j,i]=meanerr

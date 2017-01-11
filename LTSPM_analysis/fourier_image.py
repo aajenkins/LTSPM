@@ -9,7 +9,8 @@ import numpy as np
 from scipy.fftpack import fft2, ifft2
 
 def fourier_image (imdata):
-    fdata = fft2(window_image(imdata))
+    wdata = window_image(imdata)
+    fdata = fft2(imdata)
     cenfdata = move_quad(fdata)
     return cenfdata
     

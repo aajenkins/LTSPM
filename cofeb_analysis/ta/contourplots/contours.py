@@ -12,4 +12,4 @@ import plotcontour as pltcon
 #pltcon.plotcontour(823,3.6,True)
 #pltcon.plotcontour(814,3.6,True,crop=[0,0.5,0.25,0.75])
 #pltcon.plotcontour(809,3.6,True,crop=[0.25,0.75,0.25,0.75])
-pltcon.plotcontour(809,3.8,True)
+pltcon.plotcontour(1771,5,True)
