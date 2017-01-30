@@ -12,15 +12,15 @@ import matplotlib.gridspec as gridspec
 import cwesr_fit_single as cwesr
 #import matplotlib.gridspec as gridspec
 
-filename = 'ff1'
-scannum = 1781
+filename = 'ff4'
+scannum = 1903
 path = '/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/'+filename
 #savepath = '/Users/alec/UCSB/scan_data/830-esrdata/fitdata.txt'
 fitdata = []
 #back = np.loadtxt('/Users/alec/UCSB/python_analysis/copt/fullfield_images/back.txt')
 
-num_avg = 3
-filestart = 120
+num_avg = 2
+filestart = 2800
 xaxis_scale = 1e-3
 yaxis_scale = 1e-3
 

@@ -9,75 +9,45 @@ Created on Wed Nov 23 21:56:50 2016
 #-----------------------------------------------------------------
 
 import numpy as np
-import matplotlib.pyplot as plt
-from scipy import ndimage
-from scipy.fftpack import fft2, ifft2
-import load_scan as ls
-import fourier_image as fi
-
-scannum = 1739
-xres = 50
-yres = 50
-
-data = ls.load_ff('/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/fitdata.txt',xres,yres,10)
-ffmask = ndimage.imread('/Users/alec/UCSB/scan_data/images/1739ffmaskaa.png',flatten=True)
-ffmask = np.multiply(np.add(np.multiply(ffmask,1/255),-0.5),-2)
+import scipy.fftpack as fft
 
 #---------------- RECONSTRUCTION ---------------------------------
 #-----------------------------------------------------------------
 
-phi = 0
-theta = -54.7*np.pi/180
+def vector_reconstruction(data, theta, phi, height, scansize, kcutoff=1):
+	pi = np.pi
+	fdata = fft.fft2(data)
+	fdata = fft.fftshift(fdata)
 
-datas = np.multiply(ffmask,data[0])
-#datas = np.multiply(1,data[0])
-fdata = fi.fourier_image(datas)
-wimdata = fi.window_image(datas)
+	dlen = len(fdata)
+	hlen = int(np.floor(dlen/2))
 
-dlen = len(fdata)
-hlen = int(np.floor(dlen/2))
+	hxf = np.zeros_like(fdata)
+	hyf = np.zeros_like(fdata)
+	hzf = np.zeros_like(fdata)
+	meffk = np.zeros_like(fdata)
+	k = 0
+	kmax = 2*pi*dlen/scansize
 
-hzf = np.zeros_like(fdata)
+	for j in range(0,dlen):
+	    ky = 2*pi*(j-hlen)/scansize
+	    for i in range(0,dlen):
+	        kx = 2*pi*(i-hlen)/scansize
+	        k = np.sqrt(kx**2 + ky**2)
+	        if (i==hlen and j==hlen):
+	            hzf[j,i] = fdata[j,i]/np.sin(theta)
+	            meffk[j,i] = 0
+	        else:
+	            hzf[j,i] = fdata[j,i]/(np.cos(theta)*(1-
+	            (1j/k)*np.tan(theta)*(kx*np.cos(phi) + ky*np.sin(phi))))
+	            hxf[j, i] = -1j*(kx/k)*hzf[j,i]
+	            hyf[j, i] = -1j*(ky/k)*hzf[j,i]
+	            if (k<kmax*kcutoff):
+	                meffk[j,i] = (1/(k))*np.exp(height*k)*hzf[j,i]
 
-for j in range(0,dlen):
-    for i in range(0,dlen):
-        if (i==hlen and j==hlen):
-            hzf[j,i] = fdata[j,i]/np.sin(theta)
-        else:
-            hzf[j,i] = fdata[j,i]/(np.cos(theta)*(1+
-            1j*((i-hlen)/np.sqrt((i-hlen)**2+(j-hlen)**2))*np.tan(theta)))
-        if np.isnan(hzf[j,i]):
-            print(j,i)
+	bzdata = np.real(fft.ifft2(fft.ifftshift(hzf)))
+	bxdata = np.real(fft.ifft2(fft.ifftshift(hxf)))
+	bydata = np.real(fft.ifft2(fft.ifftshift(hyf)))
+	meffdata = np.real(fft.ifft2(fft.ifftshift(meffk)))
 
-rdata = np.real(fi.ifourier_image(hzf))
-
-
-#---------------- PLOTS ------------------------------------------
-#-----------------------------------------------------------------
-
-plt.close('all')
-
-#plt.figure(1,[4,4])
-#plt.imshow(np.log(np.abs(fdata)+1), cmap='gray', interpolation='nearest')
-#fig = plt.gcf()
-#fig.canvas.manager.window.raise_()
-#plt.figure(2,[4,4])
-#plt.imshow(wimdata, cmap='gray', interpolation='nearest')
-#fig = plt.gcf()
-#fig.canvas.manager.window.raise_()
-plt.figure(3,[5,5])
-plt.imshow(data[0], cmap='gray', interpolation='nearest')
-plt.colorbar(fraction=0.046, pad=0.04)
-fig = plt.gcf().canvas.manager.window
-geom = fig.geometry()
-x,y,dx,dy = geom.getRect()
-fig.setGeometry(50,100,dx, dy)
-fig.raise_()
-plt.figure(4,[5,5])
-plt.imshow(rdata, cmap='gray', interpolation='nearest')
-plt.colorbar(fraction=0.046, pad=0.04)
-fig = plt.gcf().canvas.manager.window
-geom = fig.geometry()
-x,y,dx,dy = geom.getRect()
-fig.setGeometry(500,100,dx, dy)
-fig.raise_()
+	return bxdata, bydata, bzdata, meffdata

@@ -40,7 +40,7 @@ rad = 400
 
 basepath = '/Users/alec/UCSB/mathematica/CoFeB-MgO/linecut_simulations/linecut_30_h/'
 
-heights = [70,80,90]
+heights = [110,120,130]
 blochfms = np.array([])
 nleftfms = np.array([])
 nrightfms = np.array([])
