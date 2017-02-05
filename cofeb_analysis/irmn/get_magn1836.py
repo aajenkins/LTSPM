@@ -2,9 +2,7 @@
 # @Date:   2017-02-03T18:34:58-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-02-04T20:54:57-08:00
-
-
+# @Last modified time: 2017-02-04T21:38:30-08:00
 
 import matplotlib.pyplot as plt
 import numpy as np
