@@ -38,7 +38,7 @@ vsize = 0.5
 dsize = vsize*5
 filenum = 1903
 
-datapath = '/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn/'
+datapath = '/Users/alec/UCSB/cofeb_analysis_data/irmn/'
 simpath = datapath+'stray_field_sim/'
 errnames = ["lower", "mean", "upper"]
 filespec = "Msnotfixed"

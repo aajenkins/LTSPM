@@ -29,13 +29,13 @@ yres = 50
 zfield = 0
 scanL = 0.5*5000
 
-savepath = '/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn/'
+savepath = '/Users/alec/UCSB/cofeb_analysis_data/irmn/'
 data = lscan.load_ff('/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/fitdata.txt', xres, yres, 15)
 #misc.imsave('/Users/alec/UCSB/scan_images/full-field/ff1760.png', data[0])
 ffmask = ndimage.imread('/Users/alec/UCSB/scan_images/full-field/ff1903mask.png', flatten=True)
 ffmask = np.multiply(np.add(np.multiply(ffmask,1/255),-0.5),-2)
 
-path = '/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn/'
+path = '/Users/alec/UCSB/cofeb_analysis_data/irmn/'
 filespec = 'Msnotfixed'
 cal_params = np.loadtxt(path+'cal_parameters_'+filespec+'.txt', delimiter=',')
 
@@ -120,7 +120,7 @@ for i in range (0,phinum):
 	widths[i] = np.abs(popt[3])
 	r0s[i] = popt[2]*scanL/xres
 
-np.savetxt('/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn/stray_field_sim/radiusphi_'+filespec+'.txt',(angles,r0s), delimiter=',')
+np.savetxt('/Users/alec/UCSB/cofeb_analysis_data/irmn/stray_field_sim/radiusphi_'+filespec+'.txt',(angles,r0s), delimiter=',')
 
 bguesses = np.zeros((phinum, 4))
 bfits = np.zeros((phinum,bzlcnum))

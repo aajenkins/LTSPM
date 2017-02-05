@@ -2,7 +2,7 @@
 # @Date:   2017-01-19T12:39:38-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-01-29T16:31:12-08:00
+# @Last modified time: 2017-02-04T20:34:59-08:00
 
 
 
@@ -15,7 +15,7 @@ import stray_field_calc as sfc
 
 scannum = 1903
 
-path = '/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn/'
+path = '/Users/alec/UCSB/cofeb_analysis_data/irmn/'
 filespec = 'Msnotfixed'
 cal_params = np.loadtxt(path+'cal_parameters_'+filespec+'.txt', delimiter=',')
 
@@ -29,8 +29,8 @@ heighterr = cal_params[5]
 Mst = Ms*t
 heights = [height - heighterr, height, height + heighterr]
 
-basepath = "/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn/stray_field_sim/"
-savepath = "/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn/stray_field_sim/"
+basepath = "/Users/alec/UCSB/cofeb_analysis_data/irmn/stray_field_sim/"
+savepath = "/Users/alec/UCSB/cofeb_analysis_data/irmn/stray_field_sim/"
 
 dwtypes = ["nr", "nl", "b"]
 # dwtypes = ["nr"]
