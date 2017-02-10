@@ -29,7 +29,7 @@ zfield = 9.5
 scanL = 0.6*5000
 
 
-path = '/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/'+str(scannum)+'/'
+path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
 filespec = 'Msnotfixed'
 cal_params = np.loadtxt(path+'cal_parameters_'+filespec+'.txt', delimiter=',')
 

@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 from scipy.optimize import curve_fit
 import numpy as np
-import load_scan as ls
+import load_scan as lscan
 
 font = {'family' : 'Arial',
         'weight' : 'normal',
@@ -138,4 +138,3 @@ print('Ms*t mean = '+str(np.mean(mstlist))+' +/- '+str(np.std(mstlist)))
 print('h mean = '+str(np.mean(hlist))+' +/- '+str(np.std(hlist)))
 print('theta mean = '+str(np.mean(thetalist))+' +/- '+str(np.std(thetalist)))
 #print('bz0 mean = '+str(np.mean(bz0list))+' +/- '+str(np.std(bz0list)))
-

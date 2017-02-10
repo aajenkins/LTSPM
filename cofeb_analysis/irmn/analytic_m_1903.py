@@ -2,7 +2,7 @@
 # @Date:   2017-01-19T12:39:38-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-02-04T20:34:59-08:00
+# @Last modified time: 2017-02-08T15:58:49-08:00
 
 
 
@@ -16,7 +16,7 @@ import stray_field_calc as sfc
 scannum = 1903
 
 path = '/Users/alec/UCSB/cofeb_analysis_data/irmn/'
-filespec = 'Msnotfixed'
+filespec = 'Msfixed'
 cal_params = np.loadtxt(path+'cal_parameters_'+filespec+'.txt', delimiter=',')
 
 Ms = cal_params[0]
@@ -26,7 +26,10 @@ phi = cal_params[3]
 height = cal_params[4]
 heighterr = cal_params[5]
 
-Mst = Ms*t
+MsSI = Ms*(1.0e3)
+thicknessSI = t*(1.0e-2)
+
+Mst = MsSI*thicknessSI/(1e-9)
 heights = [height - heighterr, height, height + heighterr]
 
 basepath = "/Users/alec/UCSB/cofeb_analysis_data/irmn/stray_field_sim/"

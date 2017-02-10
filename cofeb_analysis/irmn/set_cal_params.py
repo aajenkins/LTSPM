@@ -1,29 +1,24 @@
+# @Author: Jenkins Alec <alec>
+# @Date:   2017-01-24T17:52:32-08:00
+# @Project: LTSPM analysis
+# @Last modified by:   alec
+# @Last modified time: 2017-02-08T16:55:48-08:00
+
+
 import numpy as np
 
 filespec = 'Msfixed'
-savepath = '/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn/cal_parameters_'+filespec+'.txt'
+savepath = '/Users/alec/UCSB/cofeb_analysis_data/irmn/cal_parameters_'+filespec+'.txt'
 
-Ms = 1.486e6
-t = 0.911
-theta = 54.30*np.pi/180
+Mst = (1.074e-4)
+t = 0.911e-7
+Ms = Mst/t
+theta = 54.99*np.pi/180
 phi = 180*np.pi/180
-h = 141.06
-herr = 6.25
+h = 111.6
+herr = 4.5
+Keff = 5.999e5
 
-calparams = [Ms, t, theta, phi, h, herr]
-
-np.savetxt(savepath, calparams, delimiter=',')
-
-filespec = 'Msnotfixed'
-savepath = '/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn/cal_parameters_'+filespec+'.txt'
-
-Ms = 1.068e6
-t = 1
-theta = 55.01*np.pi/180
-phi = 180*np.pi/180
-h = 110.97
-herr = 4.15
-
-calparams = [Ms, t, theta, phi, h, herr]
+calparams = [Ms, t, theta, phi, h, herr, Keff]
 
 np.savetxt(savepath, calparams, delimiter=',')

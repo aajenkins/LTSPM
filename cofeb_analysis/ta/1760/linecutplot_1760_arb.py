@@ -25,7 +25,7 @@ pi = np.pi
 sfieldpre = 1
 scannum = 1760
 
-path = '/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/'+str(scannum)+'/'
+path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
 filespec = 'Msnotfixed'
 cal_params = np.loadtxt(path+'cal_parameters_'+filespec+'.txt', delimiter=',')
 
@@ -43,7 +43,7 @@ dsize = 0.6*5
 filenum = 1760
 rad = 400
 
-datapath = '/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/'+str(scannum)+'/'
+datapath = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
 simpath = datapath+'stray_field_sim/'
 errnames = ["lower", "mean", "upper"]
 

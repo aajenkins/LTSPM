@@ -21,14 +21,25 @@ font = {'family' : 'Arial',
 
 matplotlib.rc('font', **font)
 
-#material parameters
 pi = np.pi
+
+#material parameters
+
+path = '/Users/alec/UCSB/cofeb_analysis_data/irmn/'
+filespec = 'Msfixed'
+cal_params = np.loadtxt(path+'cal_parameters_'+filespec+'.txt', delimiter=',')
+
+Ms = cal_params[0]
+t = cal_params[1]
+theta = cal_params[2]
+phi = cal_params[3]
+height = cal_params[4]
+heighterr = cal_params[5]
+
 # surfmag = 1.068e6
 sfieldpre = 1
 zfield = 0
 zfields = zfield/sfieldpre
-theta = 55.0*pi/180
-phi = 180*(pi/180)
 
 #file constants
 hnum = 1
@@ -41,7 +52,7 @@ filenum = 1903
 datapath = '/Users/alec/UCSB/cofeb_analysis_data/irmn/'
 simpath = datapath+'stray_field_sim/'
 errnames = ["lower", "mean", "upper"]
-filespec = "Msnotfixed"
+filespec = "Msfixed"
 
 blochfms = [[],[],[]]
 nleftfms = [[],[],[]]
@@ -111,7 +122,7 @@ x0, x1, y0, y1 = cutcrop[0], cutcrop[1], ycenter, ycenter
 # ffcut = ffycut
 # x0, x1, y0, y1 = xcenter, xcenter, 1, dres-1
 
-sycenter = int(slen/2)
+sycenter = int(-1+slen/2)
 sxcenter = int(slen/2)
 
 scutcrop = [sxcenter-int(np.ceil(scutnum/2)),sxcenter+int(np.floor(scutnum/2))]
@@ -162,7 +173,7 @@ for i in range(0,phinum):
 plt.close('all')
 
 fig1, ax1 = plt.subplots()
-im1 = plt.imshow(blochnv[1], cmap='bone')
+im1 = plt.imshow(nrightnv[1], cmap='bone')
 fig1.colorbar(im1, ax=ax1, fraction=0.046, pad=0.04)
 plt.plot([sx0, sx1], [sy0, sy1], 'r-')
 plt.axis('image')
@@ -210,11 +221,11 @@ pylab.savefig('/Users/alec/UCSB/scan_images/bzcuts_'+str(filenum)+filespec+'.png
 
 fig1, ax1 = plt.subplots()
 plt.fill_between(bcut[0][0], bcut[0][1], bcut[2][1],color='#2D7DD2',alpha=0.5,linewidth=1.0)
-plt.fill_between(nrcut[0][0], nrcut[0][1], nrcut[2][1],color='#F97304',alpha=0.5,linewidth=1.0)
-plt.fill_between(nlcut[0][0], nlcut[0][1], nlcut[2][1],color='#97CC04',alpha=0.5,linewidth=1.0)
+plt.fill_between(nrcut[0][0], nrcut[0][1], nrcut[2][1],color='#97CC04',alpha=0.5,linewidth=1.0)
+plt.fill_between(nlcut[0][0], nlcut[0][1], nlcut[2][1],color='#F97304',alpha=0.5,linewidth=1.0)
 plt.plot(bcut[1][0],bcut[1][1],color='#2D7DD2',linewidth=2.0,label="Bloch")
-plt.plot(nrcut[1][0],nrcut[1][1],color='#F97304',linewidth=2.0, label=u'left-handed Néel')
-plt.plot(nlcut[1][0],nlcut[1][1],color='#97CC04',linewidth=2.0, label=u'right-handed Néel')
+plt.plot(nrcut[1][0],nrcut[1][1],color='#97CC04',linewidth=2.0, label=u'right-handed Néel')
+plt.plot(nlcut[1][0],nlcut[1][1],color='#F97304',linewidth=2.0, label=u'left-handed Néel')
 plt.errorbar(ffcut[0],ffcut[1],yerr=ffcut[2],color='#ED1035',fmt='.',label="data")
 plt.legend(loc=1,borderaxespad=1,prop={'size':10})
 pylab.ylim([0,50])

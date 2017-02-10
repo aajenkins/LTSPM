@@ -1,3 +1,11 @@
+# @Author: Jenkins Alec <alec>
+# @Date:   2017-01-18T11:41:16-08:00
+# @Project: LTSPM analysis
+# @Last modified by:   alec
+# @Last modified time: 2017-02-08T18:14:30-08:00
+
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 import format_plot as fp
@@ -7,7 +15,7 @@ import stray_field_calc as sfc
 
 scannum = 1760
 
-path = '/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/'+str(scannum)+'/'
+path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
 filespec = 'Msnotfixed'
 cal_params = np.loadtxt(path+'cal_parameters_'+filespec+'.txt', delimiter=',')
 
@@ -21,7 +29,7 @@ heighterr = cal_params[5]
 Mst = Ms*t
 heights = [height - heighterr, height, height + heighterr]
 
-savepath = '/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/'+str(scannum)+'/stray_field_sim/'
+savepath = '/Users/alec/UCSB/cofeb_analysis_data/ta/stray_field_sim/'
 
 dwtypes = ["nr", "nl", "b"]
 # dwtypes = ["nr"]
@@ -34,7 +42,7 @@ for j in range(0,len(dwtypes)):
     m = []
     for i in range(0,numfiles):
         m.append(np.loadtxt(savepath+filenames[i]+"_"+filespec+".dat"))
-    
+
     for i in range(0,len(errnames)):
         print('calculating '+dwtypes[j]+' at '+errnames[i]+' height')
 

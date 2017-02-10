@@ -36,7 +36,7 @@ ffmask = ndimage.imread('/Users/alec/UCSB/scan_images/full-field/ff1903mask.png'
 ffmask = np.multiply(np.add(np.multiply(ffmask,1/255),-0.5),-2)
 
 path = '/Users/alec/UCSB/cofeb_analysis_data/irmn/'
-filespec = 'Msnotfixed'
+filespec = 'Msfixed'
 cal_params = np.loadtxt(path+'cal_parameters_'+filespec+'.txt', delimiter=',')
 
 Ms = cal_params[0]
@@ -134,8 +134,6 @@ for i in range (0,phinum):
     bfits[i] = fit_arctan(xf, *bpopt)
     bwidths[i] = np.abs(bpopt[3])
 
-print(np.mean(widths))
-print(np.std(widths))
 
 #---------------- PLOTS ------------------------------------------
 #-----------------------------------------------------------------
