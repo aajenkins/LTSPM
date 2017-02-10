@@ -9,12 +9,9 @@ Created on Wed Nov 23 21:56:50 2016
 #-----------------------------------------------------------------
 
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy import ndimage
 from scipy import misc
 from scipy import signal
-from scipy.optimize import curve_fit
-import matplotlib.pylab as pylab
 import load_scan as lscan
 import vector_reconstruction as vr
 import fourier_image as fi
@@ -59,37 +56,15 @@ bydata = recon_data[1]
 bzdata = recon_data[2]
 meffdata = recon_data[3]
 
-mzdataint = ndimage.interpolation.zoom(meffdata, 2, order=1)
+mzdatafilt= signal.medfilt(meffdata, 7)
+mzdataint = ndimage.interpolation.zoom(mzdatafilt, 2, order=1)
+
 minmz = np.min(mzdataint)
 maxmz = np.max(mzdataint)
-
 mzdataintnorm = np.multiply(np.add(mzdataint,-(maxmz+minmz)/2),1.999999/(maxmz-minmz))
-mzdataintnorm = signal.wiener(mzdataintnorm)
 
-phi = mr.m_reconstruction_Dovzhenko(mzdataintnorm, 400, 2*pi/180)
+np.savetxt(path+'mzdata_norm.txt',mzdataintnorm,delimiter=',')
 
-for i in range(0,len(phi)):
-    for j in range(0,len(phi)):
-        phi[j][i] = (np.add(np.multiply(phi[j][i],180/pi),180))%360
+phi = mr.m_reconstruction_Dovzhenko(mzdataintnorm, 50, 0.005, 3*pi/180)
 
-#---------------- PLOTS ------------------------------------------
-#-----------------------------------------------------------------
-
-plt.close('all')
-
-fig1, ax1 = plt.subplots()
-im1 = plt.imshow(datas, cmap='gray', interpolation='nearest')
-fig1.colorbar(im1, ax=ax1, fraction=0.046, pad=0.04)
-fp.format_plot(plt, 400, 400, 50, 50)
-
-fig2, ax2 = plt.subplots()
-im2 = plt.imshow(mzdataintnorm, cmap='jet', interpolation='nearest')
-plt.colorbar(im2, fraction=0.046, pad=0.04)
-fp.format_plot(plt, 400, 400, 450, 50)
-
-fig3, ax3 = plt.subplots()
-im3 = plt.imshow(phi, cmap='jet', interpolation='nearest')
-plt.colorbar(im3, fraction=0.046, pad=0.04)
-fp.format_plot(plt, 400, 400, 50, 450)
-
-plt.show()
+np.savetxt(path+'phi.txt',phi,delimiter=',')
