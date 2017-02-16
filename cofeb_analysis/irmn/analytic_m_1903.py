@@ -2,7 +2,7 @@
 # @Date:   2017-01-19T12:39:38-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-02-08T15:58:49-08:00
+# @Last modified time: 2017-02-15T16:31:51-08:00
 
 
 
@@ -49,7 +49,7 @@ for j in range(0,len(dwtypes)):
     for i in range(0,len(errnames)):
         print('calculating '+dwtypes[j]+' '+filespec+' at '+errnames[i]+' height')
 
-        scd, vcd, meff, hk, h = sfc.stray_field_calc(m[0], m[1], m[2], Mst, 2500, heights[i])
+        scd, vcd, meff, hk, h = sfc.stray_field_calc(m[0], m[1], m[2], Mst, 2000, heights[i])
 
         np.savetxt(savepath+dwtypes[j]+'_x_'+errnames[i]+'_'+str(scannum)+filespec+'.txt', h[0], delimiter=',')
         np.savetxt(savepath+dwtypes[j]+'_y_'+errnames[i]+'_'+str(scannum)+filespec+'.txt', h[1], delimiter=',')

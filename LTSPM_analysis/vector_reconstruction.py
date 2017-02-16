@@ -26,28 +26,32 @@ def vector_reconstruction(data, theta, phi, height, scansize, kcutoff=1):
 	hyf = np.zeros_like(fdata)
 	hzf = np.zeros_like(fdata)
 	meffk = np.zeros_like(fdata)
+	Vk = np.zeros_like(fdata)
 	k = 0
 	kmax = 2*pi*dlen/scansize
 
 	for j in range(0,dlen):
-	    ky = 2*pi*(j-hlen)/scansize
-	    for i in range(0,dlen):
-	        kx = 2*pi*(i-hlen)/scansize
-	        k = np.sqrt(kx**2 + ky**2)
-	        if (i==hlen and j==hlen):
-	            hzf[j,i] = fdata[j,i]/np.sin(theta)
-	            meffk[j,i] = 0
-	        else:
-	            hzf[j,i] = fdata[j,i]/(np.cos(theta)*(1-
-	            (1j/k)*np.tan(theta)*(kx*np.cos(phi) + ky*np.sin(phi))))
-	            hxf[j, i] = -1j*(kx/k)*hzf[j,i]
-	            hyf[j, i] = -1j*(ky/k)*hzf[j,i]
-	            if (k<kmax*kcutoff):
-	                meffk[j,i] = (1/(k))*np.exp(height*k)*hzf[j,i]
+		ky = 2*pi*(j-hlen)/scansize
+		for i in range(0,dlen):
+			kx = 2*pi*(i-hlen)/scansize
+			k = np.sqrt(kx**2 + ky**2)
+			if (i==hlen and j==hlen):
+				hzf[j,i] = fdata[j,i]/np.sin(theta)
+				meffk[j,i] = 0
+				Vk[j,i] = 0
+			else:
+				hzf[j,i] = fdata[j,i]/(np.cos(theta)*(1-
+				(1j/k)*np.tan(theta)*(kx*np.cos(phi) + ky*np.sin(phi))))
+				hxf[j, i] = -1j*(kx/k)*hzf[j,i]
+				hyf[j, i] = -1j*(ky/k)*hzf[j,i]
+				Vk[j, i] = -hzf[j,i]/(k**2)
+				if (k<kmax*kcutoff):
+					meffk[j,i] = (1/(k))*np.exp(height*k)*hzf[j,i]
 
 	bzdata = np.real(fft.ifft2(fft.ifftshift(hzf)))
 	bxdata = np.real(fft.ifft2(fft.ifftshift(hxf)))
 	bydata = np.real(fft.ifft2(fft.ifftshift(hyf)))
 	meffdata = np.real(fft.ifft2(fft.ifftshift(meffk)))
+	Vdata = np.real(fft.ifft2(fft.ifftshift(Vk)))
 
-	return bxdata, bydata, bzdata, meffdata
+	return bxdata, bydata, bzdata, meffdata, Vdata

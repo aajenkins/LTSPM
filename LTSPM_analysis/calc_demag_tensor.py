@@ -2,7 +2,7 @@
 # @Date:   2017-02-03T18:47:38-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-02-04T15:45:43-08:00
+# @Last modified time: 2017-02-14T22:06:10-08:00
 
 
 
@@ -35,11 +35,11 @@ def d_interaction(m,n,a,t):
     if (m == 0 and n == 0):
         dmn = 0
     else:
-        dmn = (1/(4*pi*a*a*t))*( frrp(m+1,n,t,a) + frrp(m-1,n,t,a)
+        dmn = (1/(4*pi))*( frrp(m+1,n,t,a) + frrp(m-1,n,t,a)
                        - 2*frrp(m,n,t,a) )
     return dmn
 
-def calc_demag_tensor(slen, a, t, path='demag_tensor.txt'):
+def calc_demag_tensor(slen, a, t):
     d11 = np.zeros((slen,slen))
     for j in range(0, slen):
         for i in range(0, slen):
@@ -52,4 +52,4 @@ def calc_demag_tensor(slen, a, t, path='demag_tensor.txt'):
     d = np.concatenate((np.concatenate((d00,d10), axis=1),
                        np.concatenate((d01,d11), axis=1)), axis=0)
 
-    np.savetxt(path, d, delimiter=',')
+    return d

@@ -1,3 +1,11 @@
+# @Author: Jenkins Alec <alec>
+# @Date:   2017-01-18T09:54:01-08:00
+# @Project: LTSPM analysis
+# @Last modified by:   alec
+# @Last modified time: 2017-02-15T16:51:59-08:00
+
+
+
 import numpy as np
 import fourier_image as fi
 # from scipy import fftpack
@@ -44,7 +52,7 @@ def stray_field_calc(mx,my,mz,Mst,sim_size,z):
                 Hxk[j][i] = 0
                 Hyk[j][i] = 0
             else:
-                Hzk[j][i] = 2*pi*np.exp(-k*z)*k*(surface_cdk[j,i]+(volume_cdk[j][i])/k)
+                Hzk[j][i] = (1/(4*pi))*np.exp(-k*z)*k*(surface_cdk[j,i]+(volume_cdk[j][i])/k)
                 Hxk[j][i] = -1j * (kx / k) * Hzk[j, i]
                 Hyk[j][i] = -1j * (ky / k) * Hzk[j, i]
                 meffk[j][i] = surface_cdk[j,i]+(volume_cdk[j][i])/k

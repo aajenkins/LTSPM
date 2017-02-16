@@ -22,30 +22,21 @@ pi = np.pi
 #    theta = 60.4*np.pi/180
 bz0 = 12
 phi = 0*np.pi/180
+mst = 6.22e-4
+mstnm = mst/(1.0e-9)
 
 matplotlib.rc('font', **font)
 
 def cal_func(x, *args):
     bnv = np.zeros_like(x)
 
-    mst = 6.496e5
-    h = args[1]
-    x0 = args[2]
-    theta = args[3] * pi / 180
-#    theta = 61.507*pi/180
-#    bz0 = params[4]
-#        phi = params[4]*pi/180
-
-    bx = (2e-3)*mst*(h/(h**2+(x-x0)**2))
-    bz = -(2e-3)*mst*((x-x0)/(h**2+(x-x0)**2))
-    #y = y + (amp * (np.exp( -((x - ctr-2.3)/wid)**2)+np.exp( -((x - ctr)/wid)**2)+np.exp( -((x - ctr+2.3)/wid)**2)) + c
+    h = args[0]
+    x0 = args[1]
+    theta = args[2] * pi / 180
+    bx = (2e-3)*mstnm*(h/(h**2+(x-x0)**2))
+    bz = -(2e-3)*mstnm*((x-x0)/(h**2+(x-x0)**2))
     bnv = np.abs(bx*np.sin(theta)*np.cos(phi)+(bz+bz0)*np.cos(theta))
     return bnv
-
-
-#pi = np.pi
-#bz0 = 11.0
-#phi = 0*pi/180
 
 #file constants
 xres = 100
@@ -55,8 +46,6 @@ dres = scan_size/xres
 
 hlist = np.zeros(2*yres)
 thetalist = np.zeros(2*yres)
-mstlist = np.zeros(2*yres)
-#bz0list = np.zeros(2*yres)
 
 ffdata = lscan.load_ff('/Users/alec/UCSB/scan_data/1773-esrdata/fitdata.txt',xres,yres,15)
 x = np.arange(0,dres*xres,dres)
@@ -67,10 +56,6 @@ ploth = 1
 plt.figure(1,[17,10])
 gs = gridspec.GridSpec(5, 4)
 gs.update(left=0.05, right=0.97, top=0.97, bottom=0.05, wspace=0.25, hspace=0.25)
-
-
-
-
 
 for j in range(0,10):
     y = ffdata[0][j,:]
@@ -88,8 +73,8 @@ for j in range(0,10):
     ryms.fill(5)
     ryms[ryargmax:ryargmax+10] = 1
 
-    guess = [6.5e5, 60, 2200, 55]
-    rguess = [6.5e5, 60, 2000, 55]
+    guess = [70, 2200, 55]
+    rguess = [70, 2000, 55]
     try:
         popt, pcov = curve_fit(cal_func, x, y, sigma=ye, p0=guess)
 #        popt, pcov = curve_fit(cal_func, x, y, p0=guess, sigma=yms)
@@ -104,12 +89,10 @@ for j in range(0,10):
         rpopt = np.zeros(4)
         rpcov = np.zeros((4,4))
         print('fit fail')
-    mstlist[2*j] = popt[0]
-    mstlist[2*j+1] = rpopt[0]
-    hlist[2*j] = popt[1]
-    hlist[2*j+1] = rpopt[1]
-    thetalist[2*j] = popt[3]
-    thetalist[2*j+1] = rpopt[3]
+    hlist[2*j] = popt[0]
+    hlist[2*j+1] = rpopt[0]
+    thetalist[2*j] = popt[2]
+    thetalist[2*j+1] = rpopt[2]
 #    bz0list[2*j] = popt[4]
 #    bz0list[2*j+1] = rpopt[4]
 #
@@ -171,10 +154,6 @@ plt.tight_layout()
 fig = plt.gcf()
 fig.canvas.manager.window.raise_()
 
-
-
-print('Ms*t mean = '+str(np.mean(mstlist))+' +/- '+str(np.std(mstlist)))
 print('h mean = '+str(np.mean(hlist))+' +/- '+str(np.std(hlist)))
 print('theta mean = '+str(np.mean(thetalist))+' +/- '+str(np.std(thetalist)))
 #print('bz0 mean = '+str(np.mean(bz0list))+' +/- '+str(np.std(bz0list)))
-

@@ -2,7 +2,7 @@
 # @Date:   2017-02-03T18:47:38-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-02-04T19:38:58-08:00
+# @Last modified time: 2017-02-15T10:43:15-08:00
 
 
 
@@ -15,9 +15,9 @@ def f(x,y,z):
     r = np.sqrt(x**2 + y**2 + z**2)
     fp1, fp2, fp3, fp4 = 0., 0., 0., 0.
     fp1 = (r/6.)*(3.*(z**2) - r**2)
-    if (y != 0 and z != 0):
+    if (y != 0 or z != 0):
         fp2 = 0.5 * ( x * (y**2 - z**2)*np.arcsinh(x/np.sqrt(y**2 + z**2)) )
-    if (x != 0 and z != 0):
+    if (x != 0 or z != 0):
         fp3 = 0.5 * ( y * (x**2 - z**2)*np.arcsinh(y/np.sqrt(x**2 + z**2)) )
     if (z>0):
         fp4 = -x*y*z*np.arctan(x*y/(z*r))
@@ -43,7 +43,7 @@ def Nzz(m,n,t,a):
                                     - F(m*a,n*a,t,a) - F(m*a,n*a,-t,a) )
     return Nzzmn
 
-def calc_demag_tensor_newell(slen, a, t, path='demag_tensor.txt'):
+def calc_demag_tensor_newell(slen, a, t):
     d11 = np.zeros((slen,slen))
     for j in range(0, slen):
         for i in range(0, slen):
@@ -55,5 +55,6 @@ def calc_demag_tensor_newell(slen, a, t, path='demag_tensor.txt'):
 
     d = np.concatenate((np.concatenate((d00,d10), axis=1),
                        np.concatenate((d01,d11), axis=1)), axis=0)
+    print('demag tensor calculated with res = '+str(a))
 
-    np.savetxt(path, d, delimiter=',')
+    return d

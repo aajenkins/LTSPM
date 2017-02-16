@@ -16,7 +16,7 @@ import load_scan as lscan
 import vector_reconstruction as vr
 import fourier_image as fi
 import format_plot as fp
-import m_reconstruction_Dovzhenko as mr
+import m_reconstruction_Dovzhenko as mrecon
 
 pi = np.pi
 
@@ -34,6 +34,8 @@ ffmask = np.multiply(np.add(np.multiply(ffmask,1/255),-0.5),-2)
 path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
 filespec = 'Msnotfixed'
 cal_params = np.loadtxt(path+'cal_parameters_'+filespec+'.txt', delimiter=',')
+
+mzpath = '/Users/alec/UCSB/cofeb_analysis_data/m_reconstruction/'
 
 theta = cal_params[2]
 phi = cal_params[3]
@@ -55,6 +57,7 @@ bxdata = recon_data[0]
 bydata = recon_data[1]
 bzdata = recon_data[2]
 meffdata = recon_data[3]
+Vdata = recon_data[4]
 
 mzdatafilt= signal.medfilt(meffdata, 7)
 mzdataint = ndimage.interpolation.zoom(mzdatafilt, 2, order=1)
@@ -63,8 +66,10 @@ minmz = np.min(mzdataint)
 maxmz = np.max(mzdataint)
 mzdataintnorm = np.multiply(np.add(mzdataint,-(maxmz+minmz)/2),1.999999/(maxmz-minmz))
 
-np.savetxt(path+'mzdata_norm.txt',mzdataintnorm,delimiter=',')
+np.savetxt(mzpath+'mzdata_norm.txt',mzdataintnorm)
 
-phi = mr.m_reconstruction_Dovzhenko(mzdataintnorm, 50, 0.005, 3*pi/180)
+np.savetxt(mzpath+'Vdata.txt',Vdata)
 
-np.savetxt(path+'phi.txt',phi,delimiter=',')
+# phi = mrecon.m_reconstruction_Dovzhenko(mzdataintnorm, 50, 0.005, 3*pi/180)
+#
+# np.savetxt(path+'phi.txt',phi,delimiter=',')

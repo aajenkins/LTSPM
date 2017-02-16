@@ -2,7 +2,7 @@
 # @Date:   2017-01-28T18:37:33-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-02-15T14:44:30-08:00
+# @Last modified time: 2017-02-15T15:37:31-08:00
 
 import matplotlib.pyplot as plt
 import matplotlib.pylab as pylab
@@ -11,11 +11,8 @@ from scipy.ndimage import imread
 from scipy import interpolate
 from skimage import measure
 from skimage import morphology
+import calc_demag_energy_fourier as cdef
 
-# import calc_demag_tensor_newell as cdtn
-# import demag_energy_calc_newell as decn
-import calc_demag_tensor as cdt
-import demag_energy_calc as dec
 import format_plot as fp
 
 def get_interpolated_contour(contour):
@@ -48,10 +45,11 @@ KeffSI = Keff*(1.0e-1)
 scanvsize = 2
 scansize = (5.0e-6)*scanvsize
 slen = len(domains)
+hlen = slen/2
 res = scansize/slen
 res_difference = 1.0e-9
 
-contours = measure.find_contours(domains[1:slen-1,1:slen-1], 0.0)
+contours = measure.find_contours(domains, 0.0)
 num_contours = len(contours)
 
 total_wall_length = 0
@@ -65,14 +63,12 @@ for i in range(0, len(contours)):
 
 print('total_wall_length = ' + str(total_wall_length))
 
-total_wall_length_norm = total_wall_length/( (res*(slen-2))**2 )
+total_wall_length_norm = total_wall_length/( (res*slen)**2 )
 
-demag_tensor0 = cdt.calc_demag_tensor(slen, res, thicknessSI)
-demag_energy0, h0 = dec.demag_energy_calc(domains, demag_tensor0, MsSI, res, thicknessSI)
-demag_energy0_norm = demag_energy0 / ( (res*(slen-2))**2 )
-demag_tensor1 = cdt.calc_demag_tensor(slen, res+res_difference, thicknessSI)
-demag_energy1, h1 = dec.demag_energy_calc(domains, demag_tensor1, MsSI, res+res_difference, thicknessSI)
-demag_energy1_norm = demag_energy1 / ( ((res+res_difference)*(slen-2))**2 )
+demag_energy0, H0 = cdef.calc_demag_energy_fourier(domains, res, thicknessSI, MsSI)
+demag_energy0_norm = demag_energy0/( (res*slen)**2 )
+demag_energy1, H1 = cdef.calc_demag_energy_fourier(domains, res+res_difference, thicknessSI, MsSI)
+demag_energy1_norm = demag_energy0/( ((res+res_difference)*slen)**2 )
 
 delta_demag_energy_norm = (demag_energy1_norm - demag_energy0_norm)/res_difference
 delta_total_wall_length_norm = -total_wall_length_norm/res
@@ -91,7 +87,7 @@ print('As = ' + str(As))
 plt.close('all')
 
 fig1, ax1 = plt.subplots()
-im1 = plt.imshow(domains[1:slen-1,1:slen-1], cmap='Greys', interpolation='nearest',alpha=0.5)
+im1 = plt.imshow(domains, cmap='Greys', interpolation='nearest',alpha=0.5)
 
 for n, contour in enumerate(smoothed_contours):
     ax1.plot(contour[:, 1], contour[:, 0], linewidth=1)

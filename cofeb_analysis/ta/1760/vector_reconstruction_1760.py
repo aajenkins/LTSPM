@@ -30,12 +30,16 @@ scanL = 0.6*5000
 
 
 path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
-filespec = 'Msnotfixed'
+filespec = 'Msfixed'
 cal_params = np.loadtxt(path+'cal_parameters_'+filespec+'.txt', delimiter=',')
 
 theta = cal_params[2]
+Ms = cal_params[0]
+t = cal_params[1]
+theta = cal_params[2]
 phi = cal_params[3]
 height = cal_params[4]
+heighterr = cal_params[5]
 
 
 
