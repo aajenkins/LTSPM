@@ -2,9 +2,8 @@
 # @Date:   2017-02-15T15:15:01-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-02-15T15:37:20-08:00
+# @Last modified time: 2017-02-17T13:38:05-08:00
 
-import scipy.fftpack as fft
 import numpy as np
 
 
@@ -12,9 +11,10 @@ def calc_demag_energy_fourier(magn, res, thickness, Ms):
 
     slen = len(magn)
     hlen = slen/2
+    Mst = Ms*thickness
+    sprefactor = (1e-3)*Mst
 
-    surface_density_k = fft.fft2(magn)
-    surface_density_k = fft.fftshift(surface_density_k)
+    surface_density_k = np.fft.fftshift(np.fft.fft2(magn, norm="ortho"))
 
     Hz_k = np.zeros_like(surface_density_k)
     Hz = np.zeros_like(surface_density_k)
@@ -24,15 +24,16 @@ def calc_demag_energy_fourier(magn, res, thickness, Ms):
         for i in range(0,slen):
             kx = 2*np.pi*(i-hlen)/(res*slen)
             k = np.sqrt(kx**2 + ky**2)
-            Hz_k[j][i] = k * surface_density_k[j][i]
+            Hz_k[j][i] = 2*np.pi * k * surface_density_k[j][i]
 
-    Hz_k = Ms * thickness * Hz_k
-    Hz = np.real(fft.ifft2(fft.ifftshift(Hz_k)))
+    Hz = sprefactor * np.real(np.fft.ifft2(np.fft.ifftshift(Hz_k)))
+    # Hzb = Hz - (np.max(Hz)-np.min(Hz))/2
 
     energy = 0
     volume = res*res*thickness
     for j in range(0, slen):
         for i in range(0, slen):
-            energy += Ms * volume * Hz[j][i] * magn[j][i]
+            energy += Hz[j][i] * magn[j][i]
 
-    return energy, Hz
+    energy = Ms * volume * energy
+    return energy, Hz, Hz_k
