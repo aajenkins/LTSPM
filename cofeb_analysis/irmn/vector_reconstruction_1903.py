@@ -27,7 +27,7 @@ scannum = 1903
 xres = 50
 yres = 50
 zfield = 0
-scanL = 0.5*5000
+scanL = 0.5*5e-4
 
 savepath = '/Users/alec/UCSB/cofeb_analysis_data/irmn/'
 data = lscan.load_ff('/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/fitdata.txt', xres, yres, 15)
@@ -49,14 +49,14 @@ heighterr = cal_params[5]
 #---------------- FIT FUNCTIONS ----------------------------------
 #-----------------------------------------------------------------
 
-def fit_arctan(x, *params):
+def fit_tanh(x, *params):
     y = np.zeros_like(x)
     c = params[0]
     a = params[1]
     x0 = params[2]
     wid = params[3]
 
-    y = c+(a/pi)*np.arctan((x-x0)/wid)
+    y = c+(a/2)*np.tanh((x-x0)/wid)
     return y
 
 #---------------- RECONSTRUCTION ---------------------------------
@@ -64,7 +64,8 @@ def fit_arctan(x, *params):
 
 datas = np.multiply(ffmask,data[0])
 datas0 = np.add(datas,-np.cos(theta)*zfield)
-datas0filter = signal.wiener(datas0, 5)
+datas0filter = signal.wiener(datas0, 3)
+datas0filter = signal.medfilt(datas0, 3)
 
 recon_data = vr.vector_reconstruction(datas0filter, theta, phi, height, scanL, kcutoff=0.3)
 
@@ -115,8 +116,8 @@ angles = np.linspace(0,2*pi,phinum)
 for i in range (0,phinum):
 	y = mphi[i]
 	guesses[i] = [(y[-1]+y[0])/2,y[-1]-y[0],6,1]
-	popt, pcov = curve_fit(fit_arctan, xf, mphi[i], p0=guesses[i])
-	fits[i] = fit_arctan(xf, *popt)
+	popt, pcov = curve_fit(fit_tanh, xf, mphi[i], p0=guesses[i])
+	fits[i] = fit_tanh(xf, *popt)
 	widths[i] = np.abs(popt[3])
 	r0s[i] = popt[2]*scanL/xres
 
@@ -130,8 +131,8 @@ bxf = np.arange(0,bzlclen)
 for i in range (0,phinum):
     y = bzphi[i]
     bguesses[i] = [(y[-1]+y[0])/2,y[-1]-y[0],6,1]
-    bpopt, bpcov = curve_fit(fit_arctan, bxf, bzphi[i], p0=bguesses[i])
-    bfits[i] = fit_arctan(xf, *bpopt)
+    bpopt, bpcov = curve_fit(fit_tanh, bxf, bzphi[i], p0=bguesses[i])
+    bfits[i] = fit_tanh(xf, *bpopt)
     bwidths[i] = np.abs(bpopt[3])
 
 
@@ -165,7 +166,7 @@ fp.format_plot(plt, 400, 400, 450, 50)
 fig, axes = plt.subplots(nrows=phinum, sharex=True, sharey=True)
 for i in range(0,phinum):
 	axes[i].plot(mphi[i],'b.')
-	axes[i].plot(xf, fit_arctan(xf, *guesses[i]), 'g')
+	axes[i].plot(xf, fit_tanh(xf, *guesses[i]), 'g')
 	axes[i].plot(xf, fits[i], 'r')
 	axes[i].get_yaxis().set_visible(False)
 
@@ -185,31 +186,7 @@ fig1, ax1 = plt.subplots()
 plt.imshow(bzdata, cmap='gray', interpolation='nearest')
 plt.colorbar(im1, ax=ax1, fraction=0.046, pad=0.04)
 fp.format_plot(plt, 400, 400, 450, 450)
-#for i in range(0,phinum):
-#    phi = i*2*pi/phinum
-#    x1, y1 = x0-lclen*np.cos(phi), y0-lclen*np.sin(phi)
-#    plt.plot([x0, x1], [y0, y1], 'b-')
-#plt.axis('image')
 
-# fp.format_plot(plt, 50, 450)
-#pylab.savefig('/Users/alec/UCSB/scan_images/tacofeb_reconstruction/recon_bz_'+str(scannum)+'.pdf')
-
-#fig, axes = plt.subplots(nrows=4, sharex=True, sharey=True, figsize=(5,9))
-#for i in range(0,4):
-#    axes[i].plot(bzphi[i],'b.')
-##    axes[i].plot(xf,fits[i], 'r')
-#    axes[i].get_yaxis().set_visible(False)
-#
-#fig.subplots_adjust(hspace=0)
-#plt.setp([a.get_xticklabels() for a in fig.axes[:-1]], visible=False)
-##fig.tight_layout()
-#
-#fig = plt.gcf().canvas.manager.window
-#geom = fig.geometry()
-#x,y,dx,dy = geom.getRect()
-#fig.setGeometry(900,50,dx, dy)
-#fig.raise_()
-#
 fig1, ax1 = plt.subplots()
 x = np.linspace(0,2*pi,phinum)
 plt.plot(x, r0s)

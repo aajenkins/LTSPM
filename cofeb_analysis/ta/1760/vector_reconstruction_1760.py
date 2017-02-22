@@ -26,7 +26,7 @@ scannum = 1760
 xres = 50
 yres = 50
 zfield = 9.5
-scanL = 0.6*5000
+scanL = 0.6*(5e-4)
 
 
 path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
@@ -43,22 +43,13 @@ heighterr = cal_params[5]
 
 
 
-data = lscan.load_ff('/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/fitdata.txt',xres,yres,15)
-#misc.imsave('/Users/alec/UCSB/scan_images/full-field/ff1760.png', data[0])
-ffmask = ndimage.imread('/Users/alec/UCSB/scan_images/full-field/ff_1760mask.png',flatten = True)
+data = lscan.load_ff('/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/fitdata.txt',xres,yres,20)
+misc.imsave('/Users/alec/UCSB/scan_images/full-field/ff1760.png', data[0])
+ffmask = ndimage.imread('/Users/alec/UCSB/scan_images/full-field/ff1760mask.png',flatten = True)
 ffmask = np.multiply(np.add(np.multiply(ffmask,1/255),-0.5),-2)
 
 #---------------- FIT FUNCTIONS ----------------------------------
 #-----------------------------------------------------------------
-
-def fit_arctan(x, *params):
-    y = np.zeros_like(x)
-    c = params[0]
-    a = params[1]
-    x0 = params[2]
-    wid = params[3]
-    y = c+(a/pi)*np.arctan((x-x0)/wid)
-    return y
 
 def fit_tanh(x, *params):
     y = np.zeros_like(x)
@@ -76,15 +67,16 @@ def fit_tanh(x, *params):
 datas = np.multiply(ffmask,data[0])
 datas0 = np.add(datas,-np.cos(theta)*zfield)
 datas0filter = signal.wiener(datas0, 3)
+datas0filter = signal.medfilt(datas0, 3)
 
 wimdata = fi.window_image(datas0)
 wimdatafilter = fi.window_image(datas0filter)
 
-recon_data = vr.vector_reconstruction(wimdatafilter, theta, phi, height, scanL, kcutoff=0.3)
+recon_data = vr.vector_reconstruction(wimdatafilter, theta, phi, height, scanL, kcutoff=1)
 
 bxdata = recon_data[0]
 bydata = recon_data[1]
-bzdata = recon_data[2]
+bzdata = recon_data[2]+zfield
 mdata = recon_data[3]
 
 mdataint = ndimage.interpolation.zoom(mdata, 2, order=1)
@@ -107,17 +99,6 @@ for i in range(0,phinum):
     x, y = np.linspace(x0, x1, lcnum), np.linspace(y0, y1, lcnum)
     mphi[i] = ndimage.map_coordinates(np.transpose(mdata), np.vstack((x,y)), order=1)
 
-#x0, y0 = 23.5, 29
-#phinum = 16
-#bzlcnum = 20
-#bzlclen = 20
-#bzphi = np.zeros((phinum,bzlcnum))
-#for i in range(0,phinum):
-#    phi = i*2*pi/phinum
-#    x1, y1 = x0-lclen*np.cos(phi), y0-lclen*np.sin(phi)
-#    x, y = np.linspace(x0, x1, bzlcnum), np.linspace(y0, y1, bzlcnum)
-#    bzphi[i] = ndimage.map_coordinates(np.transpose(bzdata), np.vstack((x,y)), order=1)
-
 #---------------- LINE FITS --------------------------------------
 #-----------------------------------------------------------------
 
@@ -139,11 +120,6 @@ for i in range (0,phinum):
 r0s = np.append(r0s,r0s[0])
 
 np.savetxt(path+'stray_field_sim/'+'radiusphi_'+filespec+'.txt', (angles, r0s), delimiter = ',')
-
-#print(popt)
-#print(widths)
-#print(np.mean(widths))
-#print(np.std(widths))
 
 #---------------- PLOTS ------------------------------------------
 #-----------------------------------------------------------------
@@ -170,7 +146,7 @@ fp.format_plot(plt, 400, 400, 450, 50)
 fig3, ax3 = plt.subplots(nrows=phinum, sharex=True, sharey=True)
 for i in range(0,phinum):
     ax3[i].plot(mphi[i],'b.')
-    ax3[i].plot(xf, fit_arctan(xf, *guesses[i]), 'g')
+    ax3[i].plot(xf, fit_tanh(xf, *guesses[i]), 'g')
     ax3[i].plot(xf, fits[i], 'r')
     ax3[i].get_yaxis().set_visible(False)
 

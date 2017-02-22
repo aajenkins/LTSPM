@@ -12,6 +12,7 @@ import matplotlib.gridspec as gridspec
 from scipy.optimize import curve_fit
 import numpy as np
 import load_scan as lscan
+import format_plot as fp
 
 font = {'family' : 'Arial',
         'weight' : 'normal',
@@ -21,9 +22,16 @@ pi = np.pi
 #cal parameters
 #    theta = 60.4*np.pi/180
 bz0 = 12
-phi = 0*np.pi/180
-mst = 6.22e-4
-mstnm = mst/(1.0e-9)
+
+path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
+filespec = 'Msfixed'
+cal_params = np.loadtxt(path+'cal_parameters_'+filespec+'.txt', delimiter=',')
+
+Ms = cal_params[0]
+t = cal_params[1]
+phi = cal_params[3]
+
+mstnm = Ms*t*(1e10)
 
 matplotlib.rc('font', **font)
 
@@ -66,24 +74,22 @@ for j in range(0,10):
     ymax = np.max(y)
     yargmax = np.argmax(y)
     ryargmax = np.argmax(ry)
-    yms = np.zeros(xres)
-    yms.fill(5)
-    yms[yargmax:yargmax+10] = 1
-    ryms = np.zeros(xres)
-    ryms.fill(5)
-    ryms[ryargmax:ryargmax+10] = 1
+    yepeak = ye.copy()
+    ryepeak = rye.copy()
+    yepeak[yargmax-1:yargmax+1] = 0.1
+    ryepeak[ryargmax-1:ryargmax+1] = 0.1
 
     guess = [70, 2200, 55]
     rguess = [70, 2000, 55]
     try:
-        popt, pcov = curve_fit(cal_func, x, y, sigma=ye, p0=guess)
+        popt, pcov = curve_fit(cal_func, x, y, sigma=yepeak, p0=guess)
 #        popt, pcov = curve_fit(cal_func, x, y, p0=guess, sigma=yms)
     except:
         popt = np.zeros(4)
         pcov = np.zeros((4,4))
         print('fit fail')
     try:
-        rpopt, rpcov = curve_fit(cal_func, x, ry, sigma=rye, p0=rguess)
+        rpopt, rpcov = curve_fit(cal_func, x, ry, sigma=ryepeak, p0=rguess)
 #        rpopt, rpcov = curve_fit(cal_func, x, ry, p0=rguess, sigma=ryms)
     except:
         rpopt = np.zeros(4)
@@ -106,53 +112,9 @@ for j in range(0,10):
     plt.plot(x,cal_func(x,*rguess),'g-')
     plt.errorbar(x,ry,yerr=rye,color='#000000',fmt='.')
     plt.plot(x,cal_func(x,*rpopt),'r-')
+
+fp.format_plot(plt, 1200, 900, 0, 50, tight=False)
 plt.show()
-#
-
-
-fig = plt.gcf()
-fig.canvas.manager.window.raise_()
-
-spnum = 0
-dstart = 10
-dend = 90
-y = ffdata[0][spnum,dstart:dend]
-ye = ffdata[1][spnum,dstart:dend]
-ry = np.flipud(ffdata[2][spnum,:])[dstart:dend]
-rye = np.flipud(ffdata[3][spnum,:])[dstart:dend]
-xc = x[dstart:dend]
-lc = len(xc)
-
-ymax = np.max(y)
-yargmax = np.argmax(y)
-ryargmax = np.argmax(ry)
-yms = np.zeros(lc)
-yms.fill(5)
-yms[yargmax:yargmax+1] = 1
-ryms = np.zeros(lc)
-ryms.fill(5)
-ryms[ryargmax:ryargmax+10] = 1
-
-try:
-#     popt, pcov = curve_fit(cal_func, x, y, p0=guess)
-     popt, pcov = curve_fit(cal_func, xc, y, p0=guess, sigma=yms)
-#    rpopt, rpcov = curve_fit(cal_func, xc, ry, p0=rguess)
-#    rpopt, rpcov = curve_fit(cal_func, xc, ry, p0=rguess, sigma=ryms)
-except:
-    popt = np.zeros(4)
-    pcov = np.zeros((4,4))
-    print('fit fail')
-
-plt.figure(2,[8,6])
-plt.errorbar(xc,y,yerr=ye,color='#ED1035', fmt='.')
-plt.plot(xc,cal_func(xc,*popt),color='#2D7DD2',linewidth=2.0)
-plt.xlabel(r'$x \quad (nm)$')
-plt.ylabel(r'$B_{NV} \quad (G)$')
-plt.tight_layout()
-#pylab.savefig('/Users/alec/UCSB/scan_data/images/calibration_ex_'+str(filenum)+'.png')
-
-fig = plt.gcf()
-fig.canvas.manager.window.raise_()
 
 print('h mean = '+str(np.mean(hlist))+' +/- '+str(np.std(hlist)))
 print('theta mean = '+str(np.mean(thetalist))+' +/- '+str(np.std(thetalist)))

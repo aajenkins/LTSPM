@@ -22,7 +22,7 @@ pi = np.pi
 #    theta = 60.4*np.pi/180
 bz0 = 40
 phi = 180*np.pi/180
-mst = 1.074e-3
+mst = 1.07365e-3
 mstnm = mst/(1e-9)
 
 matplotlib.rc('font', **font)
@@ -55,7 +55,7 @@ thetalist = np.zeros(2*yres)
 # mstlist = np.zeros(2*yres)
 #bz0list = np.zeros(2*yres)
 
-ffdata = ls.load_ff('/Users/alec/UCSB/scan_data/'+str(filenum)+'-esrdata/fitdata.txt',xres,yres,maxfgrad=25)
+ffdata = lscan.load_ff('/Users/alec/UCSB/scan_data/'+str(filenum)+'-esrdata/fitdata.txt',xres,yres,maxfgrad=25)
 x = np.arange(0,dres*xres,dres)
 
 ploth = 1

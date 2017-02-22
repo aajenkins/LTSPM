@@ -13,24 +13,24 @@ def fourier_image (imdata):
     fdata = fft2(imdata)
     cenfdata = move_quad(fdata)
     return cenfdata
-    
+
 def ifourier_image (fdata):
     decenfdata = move_quad(fdata)
     rdata = ifft2(decenfdata)
     return rdata
-    
-def window_image (imdata):
+
+def window_image (imdata, power=(1/2)):
     wimdata = np.zeros_like(imdata)
     dlen = len(imdata)
     for j in range(0,dlen):
         for i in range(0,dlen):
-            wimdata[i][j] = imdata[i][j]*((1/4)*((1-np.cos(2*np.pi*(i/dlen))))*((1-np.cos(2*np.pi*(j/dlen)))))**(1/2)
+            wimdata[i][j] = imdata[i][j]*((1/4)*((1-np.cos(2*np.pi*(i/dlen))))*((1-np.cos(2*np.pi*(j/dlen)))))**power
     return wimdata
-    
+
 def move_quad(data):
     dlen = len(data)
     hlen = int(np.floor(dlen/2))
-    
+
     quad1 = data[0:hlen,0:hlen]
     quad2 = data[hlen:dlen,0:hlen]
     quad3 = data[0:hlen,hlen:dlen]

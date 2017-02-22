@@ -99,7 +99,7 @@ for k in range(0,3):
                                                           (np.add(nright[k][2][j,i],zfields)*np.cos(theta))))
 
 
-ffdata = lscan.load_ff('/Users/alec/UCSB/scan_data/'+str(filenum)+'-esrdata/fitdata.txt',dres,dres,maxfgrad=20)
+ffdata = lscan.load_ff('/Users/alec/UCSB/scan_data/'+str(filenum)+'-esrdata/fitdata.txt',dres,dres,maxfgrad=30)
 # misc.imsave('/Users/alec/UCSB/scan_images/full-field/ff'+str(filenum)+'.png', ffdata[0])
 bzdata = np.loadtxt(datapath+'bz_'+str(filenum)+filespec+'.txt', delimiter=',')
 
@@ -173,12 +173,12 @@ for i in range(0,phinum):
 plt.close('all')
 
 fig1, ax1 = plt.subplots()
-im1 = plt.imshow(nrightnv[1], cmap='bone')
+im1 = plt.imshow(blochnv[1], cmap='bone')
 fig1.colorbar(im1, ax=ax1, fraction=0.046, pad=0.04)
 plt.plot([sx0, sx1], [sy0, sy1], 'r-')
 plt.axis('image')
 fp.format_plot(plt, 450, 450, 0, 50)
-pylab.savefig('/Users/alec/UCSB/scan_images/ff_sim_'+str(filenum)+filespec+'_bloch.png')
+pylab.savefig('/Users/alec/UCSB/scan_images/ff_sim_'+str(filenum)+filespec+'_nright.png')
 
 fig1, ax1 = plt.subplots()
 im1 = plt.imshow(ffdata[0], cmap='bone', interpolation='nearest')

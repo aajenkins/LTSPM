@@ -1,3 +1,11 @@
+# @Author: Jenkins Alec <alec>
+# @Date:   2017-01-22T11:59:52-08:00
+# @Project: LTSPM analysis
+# @Last modified by:   alec
+# @Last modified time: 2017-02-16T13:14:41-08:00
+
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 import stray_field_calc as sfc
@@ -5,7 +13,7 @@ import format_plot as fp
 
 scannum = 1760
 path = '/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/'+str(scannum)+'/'
-filespec = 'Msnotfixed'
+filespec = 'Msfixed'
 cal_params = np.loadtxt(path+'cal_parameters_'+filespec+'.txt', delimiter=',')
 
 Ms = cal_params[0]

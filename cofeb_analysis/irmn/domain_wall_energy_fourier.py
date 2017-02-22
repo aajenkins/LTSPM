@@ -2,7 +2,7 @@
 # @Date:   2017-01-28T18:37:33-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-02-15T15:37:31-08:00
+# @Last modified time: 2017-02-17T13:13:38-08:00
 
 import matplotlib.pyplot as plt
 import matplotlib.pylab as pylab
@@ -26,9 +26,9 @@ def get_interpolated_contour(contour):
     return contour_length, [yint, xint]
 
 scannum = 1836
-impath = '/Users/alec/UCSB/scan_images/irmn/domains'+str(scannum)+'contour.png'
+impath = '/Users/alec/UCSB/scan_images/irmn/domains'+str(scannum)+'.png'
 domains = imread(impath, flatten=True)
-domains = np.add(np.multiply(2/255,domains),-1)
+domains = np.multiply(1/255,domains)
 
 dataPath = '/Users/alec/UCSB/cofeb_analysis_data/irmn/'
 filespec = 'Msfixed'
@@ -49,7 +49,7 @@ hlen = slen/2
 res = scansize/slen
 res_difference = 1.0e-9
 
-contours = measure.find_contours(domains, 0.0)
+contours = measure.find_contours(domains, 0.5)
 num_contours = len(contours)
 
 total_wall_length = 0
@@ -65,10 +65,11 @@ print('total_wall_length = ' + str(total_wall_length))
 
 total_wall_length_norm = total_wall_length/( (res*slen)**2 )
 
-demag_energy0, H0 = cdef.calc_demag_energy_fourier(domains, res, thicknessSI, MsSI)
+demag_energy0, H0, H0k = cdef.calc_demag_energy_fourier(domains, res, thicknessSI, MsSI)
 demag_energy0_norm = demag_energy0/( (res*slen)**2 )
-demag_energy1, H1 = cdef.calc_demag_energy_fourier(domains, res+res_difference, thicknessSI, MsSI)
-demag_energy1_norm = demag_energy0/( ((res+res_difference)*slen)**2 )
+
+demag_energy1, H1, H1k = cdef.calc_demag_energy_fourier(domains, res+res_difference, thicknessSI, MsSI)
+demag_energy1_norm = demag_energy1/( ((res+res_difference)*slen)**2 )
 
 delta_demag_energy_norm = (demag_energy1_norm - demag_energy0_norm)/res_difference
 delta_total_wall_length_norm = -total_wall_length_norm/res
@@ -94,11 +95,21 @@ for n, contour in enumerate(smoothed_contours):
 ax1.axis('image')
 ax1.set_xticks([])
 ax1.set_yticks([])
-fp.format_plot(plt, 800, 800, 50, 50)
+fp.format_plot(plt, 500, 500, 50, 50)
 pylab.savefig('/Users/alec/UCSB/scan_images/irmn/DW_length'+str(scannum)+'.png')
 
 fig1, ax1 = plt.subplots()
 im1 = plt.imshow(domains, cmap='Greys', interpolation='nearest')
-fp.format_plot(plt, 400, 400, 850, 50)
+fp.format_plot(plt, 400, 400, 550, 50)
+
+fig1, ax1 = plt.subplots()
+im1 = plt.imshow(H0, cmap='jet', interpolation='nearest')
+plt.colorbar(im1, fraction=0.046, pad=0.04)
+fp.format_plot(plt, 400, 400, 550, 50)
+
+fig1, ax1 = plt.subplots()
+im1 = plt.imshow(np.abs(H0k), cmap='jet', interpolation='nearest')
+plt.colorbar(im1, fraction=0.046, pad=0.04)
+fp.format_plot(plt, 400, 400, 550, 450)
 
 plt.show()

@@ -22,18 +22,16 @@ matplotlib.rc('font', **font)
 
 #material parameters
 pi = np.pi
-sfieldpre = 1
 scannum = 1760
 
 path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
-filespec = 'Msnotfixed'
+filespec = 'Msfixed'
 cal_params = np.loadtxt(path+'cal_parameters_'+filespec+'.txt', delimiter=',')
 
 theta = cal_params[2]
 phi = cal_params[3]
 
-zfield = 9.5
-zfields = zfield/sfieldpre
+zfields = 9.5
 
 #file constants
 hnum = 1
@@ -41,7 +39,6 @@ rnum = 1
 dres = 50
 dsize = 0.6*5
 filenum = 1760
-rad = 400
 
 datapath = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
 simpath = datapath+'stray_field_sim/'
@@ -64,10 +61,13 @@ for i in range(0, len(errnames)):
     nright[i] = [[],[],[]]
     for k in range(0, 3):
         bloch[i][k] = np.loadtxt(blochfms[i][k], delimiter=',')
+    bloch[i][2] = bloch[i][2]+zfields
     for k in range(0, 3):
         nleft[i][k] = np.loadtxt(nleftfms[i][k], delimiter=',')
+    nleft[i][2] = nleft[i][2]+zfields
     for k in range(0, 3):
         nright[i][k] = np.loadtxt(nrightfms[i][k], delimiter=',')
+    nright[i][2] = nright[i][2]+zfields
 
 #simulation constants
 ssize = 2.5
@@ -84,17 +84,17 @@ for k in range(0,3):
             blochnv[k][j,i] = np.abs(
               (bloch[k][0][j,i]*np.sin(theta)*np.cos(phi))+
               (bloch[k][1][j,i]*np.sin(theta)*np.sin(phi))+
-              (np.add(bloch[k][2][j,i],zfields)*np.cos(theta))
+              (bloch[k][2][j,i]*np.cos(theta))
               )
             nleftnv[k][j,i] = np.abs(
               (nleft[k][0][j,i]*np.sin(theta)*np.cos(phi))+
               (nleft[k][1][j,i]*np.sin(theta)*np.sin(phi))+
-              (np.add(nleft[k][2][j,i],zfields)*np.cos(theta))
+              (nleft[k][2][j,i]*np.cos(theta))
               )
             nrightnv[k][j,i] = np.abs(
               (nright[k][0][j,i]*np.sin(theta)*np.cos(phi))+
               (nright[k][1][j,i]*np.sin(theta)*np.sin(phi))+
-              (np.add(nright[k][2][j,i],zfields)*np.cos(theta))
+              (nright[k][2][j,i]*np.cos(theta))
               )
 
 ffdata = lscan.load_ff('/Users/alec/UCSB/scan_data/'+str(filenum)+'-esrdata/fitdata.txt',dres,dres,maxfgrad=20)
@@ -179,7 +179,7 @@ for i in range(0,phinum):
 plt.close('all')
 
 fig1, ax1 = plt.subplots()
-im1 = plt.imshow(nrightnv[1], cmap='bone')
+im1 = plt.imshow(blochnv[1], cmap='bone')
 fig1.colorbar(im1, ax=ax1, fraction=0.046, pad=0.04)
 plt.plot([sx0, sx1], [sy0, sy1], 'r-')
 plt.axis('image')
@@ -218,7 +218,7 @@ for j in range(0,2):
         axes[i,j].text(0.05,.5,u'ϕ = '+'{:2.1f}'.format((i+(phinum/2)*j)/phinum)+' π',
             horizontalalignment='left', verticalalignment='center',
             transform=axes[i,j].transAxes, fontsize=12)
-pylab.ylim([-45,10])
+pylab.ylim([-35,20])
 plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0., prop={'size':12})
 plt.setp([a.get_xticklabels() for a in fig.axes[:]], visible=False)
 fp.format_plot(plt, 900, 900, 450, 50, tight=False)
