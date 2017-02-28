@@ -1,0 +1,4332 @@
+Last login: Fri Feb 17 14:08:50 on ttys002
+ajenkins:~ alec$ l
+total 4624
+drwxr-xr-x  231 alec  staff    7854 Feb 17 22:34 .bash_sessions
+-rw-r--r--    1 alec  staff   10607 Feb 17 22:34 .bash_history
+-rw-r--r--@   1 alec  staff   43012 Feb 17 22:04 .DS_Store
+drwx------+ 232 alec  staff    7888 Feb 17 21:15 Downloads
+drwx------   34 alec  staff    1156 Feb 17 15:10 .Trash
+drwxr-xr-x+  61 alec  staff    2074 Feb 17 14:05 .
+-rw-r--r--    1 root  staff     278 Feb 17 14:05 .bash_profile
+drwxr-xr-x    5 alec  staff     170 Feb 17 11:27 .matplotlib
+drwxr-xr-x   30 alec  staff    1020 Feb 17 09:42 UCSB
+-rw-rw-rw-    1 alec  staff  624499 Feb 16 15:23 medgez_test.dat
+-rw-rw-rw-    1 alec  staff  499999 Feb 16 15:23 medgey_test.dat
+-rw-rw-rw-    1 alec  staff  499999 Feb 16 15:23 medgex_test.dat
+-rw-rw-rw-    1 alec  staff  624499 Feb 16 15:21 medge_test.dat
+drwxr-xr-x   79 alec  staff    2686 Feb 13 22:35 Screenshots
+-rw-r--r--    1 alec  staff     366 Feb 13 20:03 .gitconfig
+drwx------+  23 alec  staff     782 Feb 13 16:07 Documents
+-rw-r--r--    1 root  staff     265 Feb 13 15:54 .bash_profile~
+drwxr-xr-x   16 alec  staff     544 Feb 10 16:02 .atom
+drwxr-xr-x    6 alec  staff     204 Feb  5 14:30 .subversion
+-rw-------    1 alec  staff    1456 Feb  2 13:13 .Xauthority
+-rw-------    1 alec  staff    1024 Feb  2 13:06 .rnd
+drwx------+   5 alec  staff     170 Jan 24 19:22 Desktop
+drwxr-xr-x   17 alec  staff     578 Jan 24 13:43 .spyder2-py3
+drwx------    7 alec  staff     238 Jan 21 15:46 Applications
+-rw-r--r--    1 alec  staff     456 Jan 16 11:31 oregistry
+-rw-r--r--    1 alec  staff      17 Jan 15 16:46 .pythonstartup
+-rw-r--r--    1 alec  staff     271 Jan 15 16:46 .pythonstartup~
+-rw-------    1 alec  staff     235 Jan 15 16:40 .python_history
+drwxr-xr-x    5 alec  staff     170 Jan  9 18:30 bin
+drwxr-xr-x   11 alec  staff     374 Jan  3 14:18 Websites
+-rw-r--r--@   1 alec  staff      19 Dec  6 13:51 .gitignore_global
+-rw-r--r--@   1 alec  staff      32 Dec  6 13:51 .hgignore_global
+drwx------+  64 alec  staff    2176 Dec  3 07:54 Library
+drwxr-xr-x    3 alec  staff     102 Nov 19 12:00 .astropy
+drwxr-xr-x    4 alec  staff     136 Nov 18 10:09 python
+drwxr-xr-x    3 alec  staff     102 Nov 15 09:53 .jupyter
+-rw-rw-rw-    1 alec  staff       0 Nov 14 13:21 mlog_intdwidth.txt
+drwxr-xr-x   20 alec  staff     680 Nov  1 21:45 opencv
+drwxr-xr-x   13 alec  staff     442 Nov  1 21:44 opencv_contrib
+drwxr-xr-x   15 alec  staff     510 Nov  1 21:27 .virtualenvs
+drwxr-xr-x    4 alec  staff     136 Oct 25 12:27 Notes
+drwx------    4 alec  staff     136 Sep 29 18:46 .putty
+drwx------+   6 alec  staff     204 May 25  2016 Music
+drwx------@   3 alec  staff     102 May  8  2016 Creative Cloud Files
+drwx------    9 alec  staff     306 Apr 10  2016 .ethereum
+drwxr-xr-x    6 alec  staff     204 Apr 10  2016 .web3
+drwxr-xr-x    3 alec  staff     102 Mar 22  2016 .emacs.d
+drwxr-xr-x    5 alec  staff     170 Mar 13  2016 .ipython
+drwxr-xr-x    2 root  staff      68 Mar 13  2016 .continuum
+drwxr-xr-x    3 alec  staff     102 Mar  5  2016 .cache
+drwx------    3 alec  staff     102 Mar  5  2016 .ssh
+drwx------    5 alec  staff     170 Jan 31  2016 .vnc
+drwxr-x--x    3 alec  staff     102 Jan 29  2016 .adobe
+drwxr-xr-x    3 alec  staff     102 Jan 16  2016 .jssc
+drwxr-xr-x    3 alec  staff     102 Jan 16  2016 .oracle_jre_usage
+drwx------    3 alec  staff     102 Dec  7  2015 .config
+drwx------+   6 alec  staff     204 Nov 27  2015 Pictures
+drwxr-xr-x    6 root  admin     204 Nov 21  2015 ..
+-r--------    1 alec  staff       7 Nov 12  2015 .CFUserTextEncoding
+drwx------+   3 alec  staff     102 Nov 12  2015 Movies
+drwxr-xr-x+   5 alec  staff     170 Nov 12  2015 Public
+ajenkins:~ alec$ cd UCSB/LTSPM/cofeb_analysis/
+ajenkins:cofeb_analysis alec$ l
+total 24
+drwxr-xr-x  32 alec  staff   1088 Feb 17 18:18 irmn
+drwxr-xr-x  21 alec  staff    714 Feb 17 16:46 ta
+drwxr-xr-x   8 alec  staff    272 Feb 17 11:54 ..
+-rw-r--r--@  1 alec  staff  10244 Feb 14 18:40 .DS_Store
+drwxr-xr-x   5 alec  staff    170 Jan  9 19:21 .
+ajenkins:cofeb_analysis alec$ cd irmn/
+ajenkins:irmn alec$ l
+total 2744
+-rw-r--r--   1 alec  staff     2241 Feb 17 22:30 analytic_m_1903.py
+-rw-r--r--   1 alec  staff      612 Feb 17 22:28 set_cal_params.py
+-rw-r--r--   1 alec  staff     9342 Feb 17 21:53 linecutplot_1903_arb.py
+-rw-r--r--   1 alec  staff     4104 Feb 17 18:59 calc_demag_energy_oommf_test.py
+-rw-r--r--   1 alec  staff     3698 Feb 17 18:26 domain_wall_energy.py
+drwxr-xr-x  32 alec  staff     1088 Feb 17 18:18 .
+-rw-r--r--   1 alec  staff     1606 Feb 17 18:17 get_ovf_test_stripes.py
+-rw-r--r--   1 alec  staff     3804 Feb 17 16:26 calc_demag_energy_oommf.py
+-rw-r--r--   1 alec  staff     1598 Feb 17 15:58 get_ovf_magn1836.py
+-rw-r--r--   1 alec  staff     1040 Feb 17 15:26 get_magn1836.py
+-rw-r--r--   1 alec  staff     3706 Feb 17 13:13 domain_wall_energy_fourier.py
+-rw-r--r--   1 alec  staff     6641 Feb 17 11:47 vector_reconstruction_1903.py
+-rw-r--r--@  1 alec  staff     6148 Feb 17 10:27 .DS_Store
+-rw-r--r--   1 alec  staff     2305 Feb 15 14:42 image_erosion_dilation_stripe_width.py
+-rw-r--r--   1 alec  staff      859 Feb 15 12:01 image_erosion_stripe_width.py
+-rw-r--r--   1 alec  staff  1029625 Feb 14 18:51 demag_tensor.txt
+drwxr-xr-x   6 alec  staff      204 Feb  8 15:29 squid
+-rw-r--r--   1 alec  staff      548 Feb  4 20:50 get_magn1835.py
+drwxr-xr-x   4 alec  staff      136 Feb  4 20:42 contour_plots
+-rw-r--r--   1 alec  staff     1405 Feb  3 15:11 symmplot1835.py
+-rw-r--r--   1 alec  staff     1045 Jan 31 21:14 fourier1835.py
+-rw-r--r--   1 alec  staff    62682 Jan 25 10:49 bz_1903Msnotfixed.txt
+-rw-r--r--   1 alec  staff    62681 Jan 24 18:08 bz_1903Msfixed.txt
+-rw-r--r--   1 alec  staff     1470 Jan 22 11:59 stray_calc_compare.py
+-rw-r--r--   1 alec  staff    62681 Jan 22 10:51 bz_1903.txt
+-rw-r--r--   1 alec  staff        0 Jan 21 17:44 recon_series_1903.py
+-rw-r--r--   1 alec  staff        0 Jan 21 17:44 recon_series_1903
+-rw-r--r--   1 alec  staff    63172 Jan 20 16:29 bz_1760.txt
+-rw-r--r--   1 alec  staff     4652 Jan 17 18:24 linecutplot_1903.py
+drwxr-xr-x   4 alec  staff      136 Jan 16 19:45 calibration
+-rw-r--r--   1 alec  staff     4887 Jan 13 13:33 linecutplot_1847.py
+drwxr-xr-x   5 alec  staff      170 Jan  9 19:21 ..
+ajenkins:irmn alec$ ipython --pylab qt
+Python 3.5.2 |Anaconda 2.5.0 (x86_64)| (default, Jul  2 2016, 17:52:12) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 4.0.3 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+In [1]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+calculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [2]: %run linecutplot_1903_arb.py
+
+In [3]: importlib.reload(decn)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-3-e566827cd72d> in <module>()
+----> 1 importlib.reload(decn)
+
+NameError: name 'decn' is not defined
+
+In [4]: importlib.reload(sfc)
+Out[4]: <module 'stray_field_calc' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/stray_field_calc.py'>
+
+In [5]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+calculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [6]: %run linecutplot_1903_arb.py
+
+In [7]: %run vector_reconstruction_1903.py
+
+In [8]: %run vector_reconstruction_1903.py
+
+In [9]: %run vector_reconstruction_1903.py
+
+In [10]: %run vector_reconstruction_1903.py
+
+In [11]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+calculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [12]: Feb 17 22:59:48  python[83207] <Warning>: void CGSUpdateManager::log() const: conn 0x39bb7: spurious update.
+
+KeyboardInterrupt
+
+In [12]: 
+
+In [12]: %run linecutplot_1903_arb.py
+
+In [13]: ls
+analytic_m_1903.py                      get_ovf_magn1836.py
+bz_1760.txt                             get_ovf_test_stripes.py
+bz_1903.txt                             image_erosion_dilation_stripe_width.py
+bz_1903Msfixed.txt                      image_erosion_stripe_width.py
+bz_1903Msnotfixed.txt                   linecutplot_1847.py
+calc_demag_energy_oommf.py              linecutplot_1903.py
+calc_demag_energy_oommf_test.py         linecutplot_1903_arb.py
+calibration/                            recon_series_1903
+contour_plots/                          recon_series_1903.py
+demag_tensor.txt                        set_cal_params.py
+domain_wall_energy.py                   squid/
+domain_wall_energy_fourier.py           stray_calc_compare.py
+fourier1835.py                          symmplot1835.py
+get_magn1835.py                         vector_reconstruction_1903.py
+get_magn1836.py
+
+In [14]: cd ../ta/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta
+
+In [15]: %run st
+stray_calc_compare.py         stray_calc_compare_edge.py
+stray_calc_compare_dipole.py  
+
+In [15]: ls
+1760/                          get_ovf_magn809.py
+calc_demag_energy_oommf.py     reconstruction/
+calibration/                   squid/
+contour_selection/             stray_calc_compare
+contourplots/                  stray_calc_compare.py
+esrsweep.py                    stray_calc_compare_dipole.py
+esrsweepex.py                  stray_calc_compare_edge.py
+fullfield_plots/               vector_reconstruction_1739.py
+get_ovf_magn1836.py            vector_reconstruction_1781.py
+
+In [16]: cd 1760/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760
+
+In [17]: ls
+analytic_m_1760.py             set_cal_params.py
+domain_wall_energy.py          stest.py
+get_magn809.py                 stray_calc_compare.py
+linecutplot_1760.py            stray_field_test.py
+linecutplot_1760_arb.py        vector_reconstruction_1760.py
+
+In [18]: %run st
+stest.py               stray_calc_compare.py  stray_field_test.py
+
+In [18]: %run stest.py
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760/stest.py in <module>()
+     16 sz = np.loadtxt(path)
+     17 sx = np.zeros_like(sz)
+---> 18 sy = np.zeros_like(sy)
+     19 
+     20 height = 1.0
+
+NameError: name 'sy' is not defined
+
+In [19]: %run stest.py
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760/stest.py in <module>()
+     20 height = 1.0
+     21 
+---> 22 scd, vcd, meff, hk, h = sfc.stray_field_calc(sy, sx, sz, Ms*t, 2.0e-3, 5.0e-5)
+     23 
+     24 hlen = len(h[2])
+
+NameError: name 'Ms' is not defined
+
+In [20]: %run stest.py
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760/stest.py in <module>()
+     30 
+     31 fig1, ax1 = plt.subplots()
+---> 32 plt.plot(h[2][int(hlen/2),:], cmap='gray', interpolation='nearest')
+     33 fp.format_plot(plt, 500, 500, 0, 50)
+     34 
+
+//anaconda/lib/python3.5/site-packages/matplotlib/pyplot.py in plot(*args, **kwargs)
+   3152         ax.hold(hold)
+   3153     try:
+-> 3154         ret = ax.plot(*args, **kwargs)
+   3155     finally:
+   3156         ax.hold(washold)
+
+//anaconda/lib/python3.5/site-packages/matplotlib/__init__.py in inner(ax, *args, **kwargs)
+   1810                     warnings.warn(msg % (label_namer, func.__name__),
+   1811                                   RuntimeWarning, stacklevel=2)
+-> 1812             return func(ax, *args, **kwargs)
+   1813         pre_doc = inner.__doc__
+   1814         if pre_doc is None:
+
+//anaconda/lib/python3.5/site-packages/matplotlib/axes/_axes.py in plot(self, *args, **kwargs)
+   1422             kwargs['color'] = c
+   1423 
+-> 1424         for line in self._get_lines(*args, **kwargs):
+   1425             self.add_line(line)
+   1426             lines.append(line)
+
+//anaconda/lib/python3.5/site-packages/matplotlib/axes/_base.py in _grab_next_args(self, *args, **kwargs)
+    384                 return
+    385             if len(remaining) <= 3:
+--> 386                 for seg in self._plot_args(remaining, kwargs):
+    387                     yield seg
+    388                 return
+
+//anaconda/lib/python3.5/site-packages/matplotlib/axes/_base.py in _plot_args(self, tup, kwargs)
+    372         ncx, ncy = x.shape[1], y.shape[1]
+    373         for j in xrange(max(ncx, ncy)):
+--> 374             seg = func(x[:, j % ncx], y[:, j % ncy], kw, kwargs)
+    375             ret.append(seg)
+    376         return ret
+
+//anaconda/lib/python3.5/site-packages/matplotlib/axes/_base.py in _makeline(self, x, y, kw, kwargs)
+    279         self._setdefaults(default_dict, kw, kwargs)
+    280         seg = mlines.Line2D(x, y, **kw)
+--> 281         self.set_lineprops(seg, **kwargs)
+    282         return seg
+    283 
+
+//anaconda/lib/python3.5/site-packages/matplotlib/axes/_base.py in set_lineprops(self, line, **kwargs)
+    187     def set_lineprops(self, line, **kwargs):
+    188         assert self.command == 'plot', 'set_lineprops only works with "plot"'
+--> 189         line.set(**kwargs)
+    190 
+    191     def set_patchprops(self, fill_poly, **kwargs):
+
+//anaconda/lib/python3.5/site-packages/matplotlib/artist.py in set(self, **kwargs)
+    934             if func is None:
+    935                raise TypeError('There is no %s property "%s"' %
+--> 936                                (self.__class__.__name__, k))
+    937             ret.extend([func(v)])
+    938         return ret
+
+TypeError: There is no Line2D property "interpolation"
+
+In [21]: %run stest.py
+
+In [22]: %run stest.py
+
+In [23]: %run stest.py
+
+In [24]: %run stest.py
+
+In [25]: importlib.reload(sfc)
+Out[25]: <module 'stray_field_calc' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/stray_field_calc.py'>
+
+In [26]: %run stest.py
+
+In [27]: fig1, ax1 = plt.subplots()
+
+In [28]: im = imshow(scd)
+
+In [29]: plt.colorbar(im, fraction=0.046, pad=0.04)
+Out[29]: <matplotlib.colorbar.Colorbar at 0x11886f828>
+
+In [30]: im = imshow(vcd)
+
+In [31]: plt.colorbar(im, fraction=0.046, pad=0.04)
+Out[31]: <matplotlib.colorbar.Colorbar at 0x119d25588>
+
+In [32]: plt.close('all')
+
+In [33]: im = imshow(np.abs(hk))
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-33-d041912eeb28> in <module>()
+----> 1 im = imshow(np.abs(hk))
+
+//anaconda/lib/python3.5/site-packages/matplotlib/pyplot.py in imshow(X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, shape, filternorm, filterrad, imlim, resample, url, hold, data, **kwargs)
+   3020                         filternorm=filternorm, filterrad=filterrad,
+   3021                         imlim=imlim, resample=resample, url=url, data=data,
+-> 3022                         **kwargs)
+   3023     finally:
+   3024         ax.hold(washold)
+
+//anaconda/lib/python3.5/site-packages/matplotlib/__init__.py in inner(ax, *args, **kwargs)
+   1810                     warnings.warn(msg % (label_namer, func.__name__),
+   1811                                   RuntimeWarning, stacklevel=2)
+-> 1812             return func(ax, *args, **kwargs)
+   1813         pre_doc = inner.__doc__
+   1814         if pre_doc is None:
+
+//anaconda/lib/python3.5/site-packages/matplotlib/axes/_axes.py in imshow(self, X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, shape, filternorm, filterrad, imlim, resample, url, **kwargs)
+   4945                               resample=resample, **kwargs)
+   4946 
+-> 4947         im.set_data(X)
+   4948         im.set_alpha(alpha)
+   4949         if im.get_clip_path() is None:
+
+//anaconda/lib/python3.5/site-packages/matplotlib/image.py in set_data(self, A)
+    451         if (self._A.ndim not in (2, 3) or
+    452                 (self._A.ndim == 3 and self._A.shape[-1] not in (3, 4))):
+--> 453             raise TypeError("Invalid dimensions for image data")
+    454 
+    455         self._imcache = None
+
+TypeError: Invalid dimensions for image data
+
+In [34]: im = imshow(np.abs(hk[0]))
+
+In [35]: im = imshow(np.abs(hk[0][hlen,:]))
+---------------------------------------------------------------------------
+IndexError                                Traceback (most recent call last)
+<ipython-input-35-def837262120> in <module>()
+----> 1 im = imshow(np.abs(hk[0][hlen,:]))
+
+IndexError: index 201 is out of bounds for axis 0 with size 201
+
+In [36]: plt.plot(np.abs(hk[0][int(hlen/2),:]))
+Out[36]: [<matplotlib.lines.Line2D at 0x11ae69e80>]
+
+In [37]: plt.plot(np.abs(hk[0][:,int(hlen/2)]))
+Out[37]: [<matplotlib.lines.Line2D at 0x11858cc88>]
+
+In [38]: fig1, ax1 = plt.subplots()
+
+In [39]: fig1, ax1 = plt.subplots()
+
+In [40]: plt.plot(np.abs(hk[0][:,int(hlen/2)]))
+Out[40]: [<matplotlib.lines.Line2D at 0x119485b70>]
+
+In [41]: plt.plot(np.abs(hk[0][int(hlen/2),:]))
+Out[41]: [<matplotlib.lines.Line2D at 0x11949a9e8>]
+
+In [42]: %run stest.py
+
+In [43]: ls
+analytic_m_1760.py             set_cal_params.py
+domain_wall_energy.py          stest.py
+get_magn809.py                 stray_calc_compare.py
+linecutplot_1760.py            stray_field_test.py
+linecutplot_1760_arb.py        vector_reconstruction_1760.py
+
+In [44]: cd ../../irmn/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn
+
+In [45]: ls
+analytic_m_1903.py
+bz_1760.txt
+bz_1903.txt
+bz_1903Msfixed.txt
+bz_1903Msnotfixed.txt
+calc_demag_energy_oommf.py
+calc_demag_energy_oommf_test.py
+calibration/
+contour_plots/
+demag_tensor.txt
+domain_wall_energy.py
+domain_wall_energy_fourier.py
+fourier1835.py
+get_magn1835.py
+get_magn1836.py
+get_ovf_magn1836.py
+get_ovf_test_stripes.py
+image_erosion_dilation_stripe_width.py
+image_erosion_stripe_width.py
+linecutplot_1847.py
+linecutplot_1903.py
+linecutplot_1903_arb.py
+recon_series_1903
+recon_series_1903.py
+set_cal_params.py
+squid/
+stray_calc_compare.py
+symmplot1835.py
+vector_reconstruction_1903.py
+
+In [46]: %run set_cal_params.py
+
+In [47]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+calculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [48]: ls
+analytic_m_1903.py
+bz_1760.txt
+bz_1903.txt
+bz_1903Msfixed.txt
+bz_1903Msnotfixed.txt
+calc_demag_energy_oommf.py
+calc_demag_energy_oommf_test.py
+calibration/
+contour_plots/
+demag_tensor.txt
+domain_wall_energy.py
+domain_wall_energy_fourier.py
+fourier1835.py
+get_magn1835.py
+get_magn1836.py
+get_ovf_magn1836.py
+get_ovf_test_stripes.py
+image_erosion_dilation_stripe_width.py
+image_erosion_stripe_width.py
+linecutplot_1847.py
+linecutplot_1903.py
+linecutplot_1903_arb.py
+recon_series_1903
+recon_series_1903.py
+set_cal_params.py
+squid/
+stray_calc_compare.py
+symmplot1835.py
+vector_reconstruction_1903.py
+
+In [49]: cd ../
+/Users/alec/UCSB/LTSPM/cofeb_analysis
+
+In [50]: ls
+irmn/ ta/
+
+In [51]: cd ta/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta
+
+In [52]: ls
+1760/                          get_ovf_magn809.py
+calc_demag_energy_oommf.py     reconstruction/
+calibration/                   squid/
+contour_selection/             stray_calc_compare
+contourplots/                  stray_calc_compare.py
+esrsweep.py                    stray_calc_compare_dipole.py
+esrsweepex.py                  stray_calc_compare_edge.py
+fullfield_plots/               vector_reconstruction_1739.py
+get_ovf_magn1836.py            vector_reconstruction_1781.py
+
+In [53]: %run st
+stray_calc_compare.py         stray_calc_compare_edge.py
+stray_calc_compare_dipole.py  
+
+In [53]: %run stray_calc_compare_edge.py
+
+In [54]: %run stray_calc_compare_edge.py
+
+In [55]: %run stray_calc_compare_edge.py
+
+In [56]: fig1, ax1 = plt.subplots()
+
+In [57]: im = imshow(np.abs(hk[0][hlen,:]))
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-57-def837262120> in <module>()
+----> 1 im = imshow(np.abs(hk[0][hlen,:]))
+
+//anaconda/lib/python3.5/site-packages/matplotlib/pyplot.py in imshow(X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, shape, filternorm, filterrad, imlim, resample, url, hold, data, **kwargs)
+   3020                         filternorm=filternorm, filterrad=filterrad,
+   3021                         imlim=imlim, resample=resample, url=url, data=data,
+-> 3022                         **kwargs)
+   3023     finally:
+   3024         ax.hold(washold)
+
+//anaconda/lib/python3.5/site-packages/matplotlib/__init__.py in inner(ax, *args, **kwargs)
+   1810                     warnings.warn(msg % (label_namer, func.__name__),
+   1811                                   RuntimeWarning, stacklevel=2)
+-> 1812             return func(ax, *args, **kwargs)
+   1813         pre_doc = inner.__doc__
+   1814         if pre_doc is None:
+
+//anaconda/lib/python3.5/site-packages/matplotlib/axes/_axes.py in imshow(self, X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, shape, filternorm, filterrad, imlim, resample, url, **kwargs)
+   4945                               resample=resample, **kwargs)
+   4946 
+-> 4947         im.set_data(X)
+   4948         im.set_alpha(alpha)
+   4949         if im.get_clip_path() is None:
+
+//anaconda/lib/python3.5/site-packages/matplotlib/image.py in set_data(self, A)
+    451         if (self._A.ndim not in (2, 3) or
+    452                 (self._A.ndim == 3 and self._A.shape[-1] not in (3, 4))):
+--> 453             raise TypeError("Invalid dimensions for image data")
+    454 
+    455         self._imcache = None
+
+TypeError: Invalid dimensions for image data
+
+In [58]: im = imshow(np.abs(hk[0]))
+
+In [59]: im = imshow(np.abs(hk[2]))
+
+In [60]: im = imshow(np.abs(hk[1]))
+
+In [61]: im = imshow(np.log(np.abs(hk[1])+1))
+
+In [62]: im = imshow(np.log(np.abs(hk[0])+1))
+
+In [63]: im = imshow(np.log(np.abs(hk[2])+1))
+
+In [64]: fig1, ax1 = plt.subplots()
+
+In [65]: im = imshow(m[2])
+
+In [66]: plt.colorbar(im, fraction=0.046, pad=0.04)
+Out[66]: <matplotlib.colorbar.Colorbar at 0x11fab57b8>
+
+In [67]: im = imshow(scd)
+
+In [68]: im = imshow(scr)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-68-c3a3ed203e82> in <module>()
+----> 1 im = imshow(scr)
+
+NameError: name 'scr' is not defined
+
+In [69]: im = imshow(sdr)
+
+In [70]: %run stray_calc_compare_edge.py
+
+In [71]: %run stray_calc_compare_edge.py
+
+In [72]: %run stray_calc_compare_edge.py
+
+In [73]: importlib.reload(sfc)
+Out[73]: <module 'stray_field_calc' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/stray_field_calc.py'>
+
+In [74]: ls
+1760/                          get_ovf_magn809.py
+calc_demag_energy_oommf.py     reconstruction/
+calibration/                   squid/
+contour_selection/             stray_calc_compare
+contourplots/                  stray_calc_compare.py
+esrsweep.py                    stray_calc_compare_dipole.py
+esrsweepex.py                  stray_calc_compare_edge.py
+fullfield_plots/               vector_reconstruction_1739.py
+get_ovf_magn1836.py            vector_reconstruction_1781.py
+
+In [75]: cd 1760/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760
+
+In [76]: ls
+analytic_m_1760.py             set_cal_params.py
+domain_wall_energy.py          stest.py
+get_magn809.py                 stray_calc_compare.py
+linecutplot_1760.py            stray_field_test.py
+linecutplot_1760_arb.py        vector_reconstruction_1760.py
+
+In [77]: cd ..
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta
+
+In [78]: ls
+1760/                          get_ovf_magn809.py
+calc_demag_energy_oommf.py     reconstruction/
+calibration/                   squid/
+contour_selection/             stray_calc_compare
+contourplots/                  stray_calc_compare.py
+esrsweep.py                    stray_calc_compare_dipole.py
+esrsweepex.py                  stray_calc_compare_edge.py
+fullfield_plots/               vector_reconstruction_1739.py
+get_ovf_magn1836.py            vector_reconstruction_1781.py
+
+In [79]: cd 1760/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760
+
+In [80]: ls
+analytic_m_1760.py             set_cal_params.py
+domain_wall_energy.py          stest.py
+get_magn809.py                 stray_calc_compare.py
+linecutplot_1760.py            stray_field_test.py
+linecutplot_1760_arb.py        vector_reconstruction_1760.py
+
+In [81]: %run stest.py
+
+In [82]: fig1, ax1 = plt.subplots()
+
+In [83]: im = imshow(scd)
+
+In [84]: %run stest.py
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760/stest.py in <module>()
+     28 height = 5.0e-5
+     29 
+---> 30 scd, vcd, meff, hk, h = sfct.stray_field_calc_thick(sy, sx, sz, 1.0, scansize, height, windowData=True)
+     31 
+     32 hlen = len(h[2])
+
+TypeError: stray_field_calc_thick() got an unexpected keyword argument 'windowData'
+
+In [85]: importlib.reload(sfct)
+Out[85]: <module 'stray_field_calc_thick' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/stray_field_calc_thick.py'>
+
+In [86]: %run stest.py
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760/stest.py in <module>()
+     28 height = 5.0e-5
+     29 
+---> 30 scd, vcd, meff, hk, h = sfct.stray_field_calc_thick(sy, sx, sz, 1.0, scansize, height, windowData=True)
+     31 
+     32 hlen = len(h[2])
+
+/Users/alec/UCSB/LTSPM/LTSPM_analysis/stray_field_calc_thick.py in stray_field_calc_thick(mx, my, mz, Mst, sim_size, z, windowData)
+     19 
+     20     # Mx = np.multiply(mx, 1/(res**2))
+---> 21     if widowData:
+     22         mx = fi.window_image(mx)
+     23         my = fi.window_image(my)
+
+NameError: name 'widowData' is not defined
+
+In [87]: importlib.reload(sfct)
+Out[87]: <module 'stray_field_calc_thick' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/stray_field_calc_thick.py'>
+
+In [88]: importlib.reload(sfc)
+Out[88]: <module 'stray_field_calc' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/stray_field_calc.py'>
+
+In [89]: %run stest.py
+
+In [90]: importlib.reload(fi)
+Out[90]: <module 'fourier_image' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/fourier_image.py'>
+
+In [91]: importlib.reload(sfc)
+Out[91]: <module 'stray_field_calc' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/stray_field_calc.py'>
+
+In [92]: importlib.reload(sfct)
+Out[92]: <module 'stray_field_calc_thick' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/stray_field_calc_thick.py'>
+
+In [93]: %run stest.py
+
+In [94]: %run stest.py
+
+In [95]: cd
+/Users/alec
+
+In [96]: ls
+Applications/         Notes/                medgex_test.dat
+Creative Cloud Files/ Pictures/             medgey_test.dat
+Desktop/              Public/               medgez_test.dat
+Documents/            Screenshots/          mlog_intdwidth.txt
+Downloads/            UCSB/                 opencv/
+Library/              Websites/             opencv_contrib/
+Movies/               bin/                  oregistry
+Music/                medge_test.dat        python/
+
+In [97]: cd UCSB/LTSPM/cofeb_analysis/irmn/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn
+
+In [98]: ls
+analytic_m_1903.py
+bz_1760.txt
+bz_1903.txt
+bz_1903Msfixed.txt
+bz_1903Msnotfixed.txt
+calc_demag_energy_oommf.py
+calc_demag_energy_oommf_test.py
+calibration/
+contour_plots/
+demag_tensor.txt
+domain_wall_energy.py
+domain_wall_energy_fourier.py
+fourier1835.py
+get_magn1835.py
+get_magn1836.py
+get_ovf_magn1836.py
+get_ovf_test_stripes.py
+image_erosion_dilation_stripe_width.py
+image_erosion_stripe_width.py
+linecutplot_1847.py
+linecutplot_1903.py
+linecutplot_1903_arb.py
+recon_series_1903
+recon_series_1903.py
+set_cal_params.py
+squid/
+stray_calc_compare.py
+symmplot1835.py
+vector_reconstruction_1903.py
+
+In [99]: %run lin
+linecutplot_1847.py      linecutplot_1903_arb.py
+linecutplot_1903.py      
+
+In [99]: %run linecutplot_190
+linecutplot_1903.py      linecutplot_1903_arb.py
+
+In [99]: %run linecutplot_1903_arb.py
+
+In [100]: %run linecutplot_1903_arb.py
+
+In [101]: exit
+ajenkins:irmn alec$ cd ../
+ajenkins:cofeb_analysis alec$ cd ta/squid/
+ajenkins:squid alec$ l
+total 16
+drwxr-xr-x  21 alec  staff   714 Feb 17 16:46 ..
+-rw-r--r--   1 alec  staff  3729 Feb 17 16:33 extract_Keff.py
+-rw-r--r--   1 alec  staff  2013 Feb 14 14:11 fit_Ms_norm.py
+drwxr-xr-x   4 alec  staff   136 Feb 14 14:09 .
+ajenkins:squid alec$ ipython --pylab qt
+Python 3.5.2 |Anaconda 2.5.0 (x86_64)| (default, Jul  2 2016, 17:52:12) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 4.0.3 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+In [1]: %run extract_Keff.py
+---------------------------------------------------------------------------
+OSError                                   Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/squid/extract_Keff.py in <module>()
+     22 dataPath = "/Users/alec/UCSB/SQUID_data/ta-7/thinned"
+     23 
+---> 24 sq_data_all_ll = np.genfromtxt(dataPath+'Ta_ll_Ms_thinned_3.rso.dat', delimiter=',', skip_header=31)
+     25 sq_data_all_norm = np.genfromtxt(dataPath+'Ta_normal_Ms_thinned.rso.dat', delimiter=',', skip_header=31)
+     26 sq_data_all_norm_lowH = np.genfromtxt(dataPath+'Ta_normal_Ms_thinned_lowfield.rso.dat', delimiter=',', skip_header=31)
+
+//anaconda/lib/python3.5/site-packages/numpy/lib/npyio.py in genfromtxt(fname, dtype, comments, delimiter, skip_header, skip_footer, converters, missing_values, filling_values, usecols, names, excludelist, deletechars, replace_space, autostrip, case_sensitive, defaultfmt, unpack, usemask, loose, invalid_raise, max_rows)
+   1451                 fhd = iter(np.lib._datasource.open(fname, 'rbU'))
+   1452             else:
+-> 1453                 fhd = iter(np.lib._datasource.open(fname, 'rb'))
+   1454             own_fhd = True
+   1455         else:
+
+//anaconda/lib/python3.5/site-packages/numpy/lib/_datasource.py in open(path, mode, destpath)
+    149 
+    150     ds = DataSource(destpath)
+--> 151     return ds.open(path, mode)
+    152 
+    153 
+
+//anaconda/lib/python3.5/site-packages/numpy/lib/_datasource.py in open(self, path, mode)
+    499             return _file_openers[ext](found, mode=mode)
+    500         else:
+--> 501             raise IOError("%s not found." % path)
+    502 
+    503 
+
+OSError: /Users/alec/UCSB/SQUID_data/ta-7/thinnedTa_ll_Ms_thinned_3.rso.dat not found.
+
+In [2]: %run extract_Keff.py
+avg. ms = 3.48858024632e-06
+Mst_avg = 6.34287317512e-05
+Mst_normal = 5.88427272996e-05
+area between norm and ll = -0.00497636800362
+Keff = -904794.182476
+
+In [3]: slope_norm_lowH
+Out[3]: -2.624922142369978e-09
+
+In [4]: slope_norm
+Out[4]: -2.964371079384619e-09
+
+In [5]: slope_ll
+Out[5]: 9.1273561768125674e-11
+
+In [6]: %run extract_Keff.py
+avg. ms = 3.63708665683e-06
+Mst_avg = 6.6128848306e-05
+Mst_normal = 6.36188600882e-05
+Mst_normal_lowH = 6.6038633159e-05
+area between norm and ll = -0.00457747179542
+Keff = -832267.599167
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/squid/extract_Keff.py in <module>()
+     96 fig1, ax1 = plt.subplots()
+     97 plt.plot(sq_data_base_norm[0], sq_data_base_norm[1], 'g', label="normal")
+---> 98 plt.plot(sq_data_base_ll[0], sq_data_base_ll[1,:20], 'r', label="parallel")
+     99 plt.legend(bbox_to_anchor=(0.9, 0.5), loc=1, borderaxespad=0., prop={'size':12})
+    100 ax1.set_xlabel('H (Oe)')
+
+//anaconda/lib/python3.5/site-packages/matplotlib/pyplot.py in plot(*args, **kwargs)
+   3152         ax.hold(hold)
+   3153     try:
+-> 3154         ret = ax.plot(*args, **kwargs)
+   3155     finally:
+   3156         ax.hold(washold)
+
+//anaconda/lib/python3.5/site-packages/matplotlib/__init__.py in inner(ax, *args, **kwargs)
+   1810                     warnings.warn(msg % (label_namer, func.__name__),
+   1811                                   RuntimeWarning, stacklevel=2)
+-> 1812             return func(ax, *args, **kwargs)
+   1813         pre_doc = inner.__doc__
+   1814         if pre_doc is None:
+
+//anaconda/lib/python3.5/site-packages/matplotlib/axes/_axes.py in plot(self, *args, **kwargs)
+   1422             kwargs['color'] = c
+   1423 
+-> 1424         for line in self._get_lines(*args, **kwargs):
+   1425             self.add_line(line)
+   1426             lines.append(line)
+
+//anaconda/lib/python3.5/site-packages/matplotlib/axes/_base.py in _grab_next_args(self, *args, **kwargs)
+    384                 return
+    385             if len(remaining) <= 3:
+--> 386                 for seg in self._plot_args(remaining, kwargs):
+    387                     yield seg
+    388                 return
+
+//anaconda/lib/python3.5/site-packages/matplotlib/axes/_base.py in _plot_args(self, tup, kwargs)
+    362             x, y = index_of(tup[-1])
+    363 
+--> 364         x, y = self._xy_from_xy(x, y)
+    365 
+    366         if self.command == 'plot':
+
+//anaconda/lib/python3.5/site-packages/matplotlib/axes/_base.py in _xy_from_xy(self, x, y)
+    221         y = _check_1d(y)
+    222         if x.shape[0] != y.shape[0]:
+--> 223             raise ValueError("x and y must have same first dimension")
+    224         if x.ndim > 2 or y.ndim > 2:
+    225             raise ValueError("x and y can be no greater than 2-D")
+
+ValueError: x and y must have same first dimension
+
+In [7]: %run extract_Keff.py
+avg. ms = 3.63708665683e-06
+Mst_avg = 6.6128848306e-05
+Mst_normal = 6.36188600882e-05
+Mst_normal_lowH = 6.6038633159e-05
+area between norm and ll = -0.00457747179542
+Keff = -832267.599167
+
+In [8]: %run extract_Keff.py
+avg. ms = 3.63708665683e-06
+Mst_avg = 6.6128848306e-05
+Mst_normal = 6.36188600882e-05
+Mst_normal_lowH = 6.6038633159e-05
+area between norm and ll = -0.00457747179542
+Keff = -832267.599167
+
+In [9]: %run extract_Keff.py
+avg. ms = 3.50769975034e-06
+Mst_avg = 6.3776359097e-05
+Mst_normal = 6.36188600882e-05
+Mst_normal_lowH = 6.6038633159e-05
+area between norm and ll = -0.00180698587259
+Keff = -328542.885926
+
+In [10]: %run extract_Keff.py
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/squid/extract_Keff.py in <module>()
+     73 sq_data_base_norm[1] = sq_data_base_norm[1] * asym_norm_lowH/asym_norm
+     74 sq_data_base_ll[1] = sq_data_base_ll[1] * asym_norm_lowH/asym_ll
+---> 75 sq_data_base_norm[0] = np.append(sq_data_base_norm[0], sq_data_base_ll[0,-1])
+     76 sq_data_base_norm[1] = np.append(sq_data_base_norm[1], sq_data_base_ll[1,-1])
+     77 
+
+ValueError: could not broadcast input array from shape (21) into shape (20)
+
+In [11]: %run extract_Keff.py
+avg. ms = 3.50769975034e-06
+Mst_avg = 6.3776359097e-05
+Mst_normal = 6.36188600882e-05
+Mst_normal_lowH = 6.6038633159e-05
+area between norm and ll = 0.000436348403371
+Keff = 79336.0733402
+
+In [12]: %run extract_Keff.py
+avg. ms = 3.46505452118e-06
+Mst_avg = 6.30009912943e-05
+Mst_normal = 6.20681244826e-05
+Mst_normal_lowH = 6.53195040275e-05
+area between norm and ll = 0.000459666517356
+Keff = 83575.7304284
+
+In [13]: %run extract_Keff.py
+avg. ms = 3.51185735749e-06
+Mst_avg = 6.38519519544e-05
+Mst_normal = 6.3770045803e-05
+Mst_normal_lowH = 6.53195040275e-05
+area between norm and ll = 0.000450571879129
+Keff = 81922.1598416
+
+In [14]: %run extract_Keff.py
+  File "/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/squid/extract_Keff.py", line 100
+    plt.fill_between(sq_data_base_ll[0], sq_data_base_ll[1], , color="#2D7DD2", label="parallel", alpha=0.5)
+                                                             ^
+SyntaxError: invalid syntax
+
+
+In [15]: %run extract_Keff.py
+avg. ms = 3.51185735749e-06
+Mst_avg = 6.38519519544e-05
+Mst_normal = 6.3770045803e-05
+Mst_normal_lowH = 6.53195040275e-05
+area between norm and ll = 0.000450571879129
+Keff = 81922.1598416
+
+In [16]: %run extract_Keff.py
+---------------------------------------------------------------------------
+IndexError                                Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/squid/extract_Keff.py in <module>()
+     58 sq_data_base_norm_lowH = sq_data_norm_lowH.copy()
+     59 for i in range(0, len(sq_data_norm[0])):
+---> 60         sq_data_base_norm_lowH[1, i] = sq_data_norm_lowH[1, i] - (slope_norm_lowH*sq_data_norm_lowH[0, i])
+     61 
+     62 
+
+IndexError: index 18 is out of bounds for axis 1 with size 18
+
+In [17]: %run extract_Keff.py
+  File "/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/squid/extract_Keff.py", line 49
+    for i in range(0, length_ll)):
+                                ^
+SyntaxError: invalid syntax
+
+
+In [18]: %run extract_Keff.py
+avg. ms = 3.51185735749e-06
+Mst_avg = 6.38519519544e-05
+Mst_normal = 6.3770045803e-05
+Mst_normal_lowH = 6.54577496234e-05
+area between norm and ll = 0.00045152549289
+Keff = 82095.5441619
+
+In [19]: %run extract_Keff.py
+avg. ms = 3.51185735749e-06
+Mst_avg = 6.38519519544e-05
+Mst_normal = 6.3770045803e-05
+Mst_normal_lowH = 6.54577496234e-05
+area between norm and ll = 0.00045152549289
+Keff = 82095.5441619
+
+In [20]: %run extract_Keff.py
+avg. ms = 3.51185735749e-06
+Mst_avg = 6.38519519544e-05
+Mst_normal = 6.3770045803e-05
+Mst_normal_lowH = 6.54577496234e-05
+area between norm and ll = 0.00045152549289
+Keff = 82095.5441619
+
+In [21]: %run extract_Keff.py
+avg. ms = 3.51185735749e-06
+Mst_avg = 6.38519519544e-05
+Mst_normal = 6.3770045803e-05
+Mst_normal_lowH = 6.54577496234e-05
+area between norm and ll = 0.00045152549289
+Keff = 82095.5441619
+
+In [22]: %run extract_Keff.py
+avg. ms = 3.51185735749e-06
+Mst_avg = 6.38519519544e-05
+Mst_normal = 6.3770045803e-05
+Mst_normal_lowH = 6.54577496234e-05
+area between norm and ll = 0.00045152549289
+Keff = 82095.5441619
+
+In [23]: %run extract_Keff.py
+avg. ms = 3.51185735749e-06
+Mst_avg = 6.38519519544e-05
+Mst_normal = 6.3770045803e-05
+Mst_normal_lowH = 6.54577496234e-05
+area between norm and ll = 0.00045152549289
+Keff = 82095.5441619
+
+In [24]: %run extract_Keff.py
+avg. ms = 3.51185735749e-06
+Mst_avg = 6.38519519544e-05
+Mst_normal = 6.3770045803e-05
+Mst_normal_lowH = 6.54577496234e-05
+area between norm and ll = 0.00045152549289
+Keff = 82095.5441619
+
+In [25]: %run extract_Keff.py
+avg. ms = 3.51185735749e-06
+Mst_avg = 6.38519519544e-05
+Mst_normal = 6.3770045803e-05
+Mst_normal_lowH = 6.54577496234e-05
+area between norm and ll = 0.00045152549289
+Keff = 82095.5441619
+
+In [26]: %run extract_Keff.py
+avg. ms = 3.51185735749e-06
+Mst_avg = 6.38519519544e-05
+Mst_normal = 6.3770045803e-05
+Mst_normal_lowH = 6.54577496234e-05
+area between norm and ll = 0.00045152549289
+Keff = 82095.5441619
+
+In [27]: %run extract_Keff.py
+avg. ms = 3.51185735749e-06
+Mst_avg = 6.38519519544e-05
+Mst_normal = 6.3770045803e-05
+Mst_normal_lowH = 6.54577496234e-05
+area between norm and ll = 0.00045152549289
+Keff = 82095.5441619
+
+In [28]: %run extract_Keff.py
+avg. ms = 3.51185735749e-06
+Mst_avg = 6.38519519544e-05
+Mst_normal = 6.3770045803e-05
+Mst_normal_lowH = 6.54577496234e-05
+area between norm and ll = 0.00045152549289
+Keff = 82095.5441619
+
+In [29]: %run extract_Keff.py
+avg. ms = 3.51185735749e-06
+Mst_avg = 6.38519519544e-05
+Mst_normal = 6.3770045803e-05
+Mst_normal_lowH = 6.54577496234e-05
+area between norm and ll = 0.00045152549289
+Keff = 82095.5441619
+
+In [30]: %run extract_Keff.py
+avg. ms = 3.51185735749e-06
+Mst_avg = 6.38519519544e-05
+Mst_normal = 6.3770045803e-05
+Mst_normal_lowH = 6.54577496234e-05
+area between norm and ll = 0.00045152549289
+Keff = 82095.5441619
+
+In [31]: ls
+extract_Keff.py  fit_Ms_norm.py
+
+In [32]: cd ..
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta
+
+In [33]: ls
+1760/                          get_ovf_magn809.py
+calc_demag_energy_oommf.py     reconstruction/
+calibration/                   squid/
+contour_selection/             stray_calc_compare
+contourplots/                  stray_calc_compare.py
+esrsweep.py                    stray_calc_compare_dipole.py
+esrsweepex.py                  stray_calc_compare_edge.py
+fullfield_plots/               vector_reconstruction_1739.py
+get_ovf_magn1836.py            vector_reconstruction_1781.py
+
+In [34]: %run set
+%set_env             set_state            seterr
+set                  set_string_function  seterrcall
+set_cmap             setattr              seterrobj
+set_numeric_ops      setbufsize           setp
+set_printoptions     setdiff1d            setxor1d
+
+In [34]: cd 1760/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760
+
+In [35]: %run set_cal_params.py
+
+In [36]: Heff = 2*Keff/Ms
+
+In [37]: Heff
+Out[37]: 250.83527224451822
+
+In [38]: ls
+analytic_m_1760.py             set_cal_params.py
+domain_wall_energy.py          stest.py
+get_magn809.py                 stray_calc_compare.py
+linecutplot_1760.py            stray_field_test.py
+linecutplot_1760_arb.py        vector_reconstruction_1760.py
+
+In [39]: cd ../calibration/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration
+
+In [40]: %run lin
+linalg    linspace  
+
+In [40]: %run cal
+calplot_1739.py          calplot_1773.py
+calplot_1743.py          calplot_1773_combine.py
+calplot_1747.py          calplot_1789.py
+calplot_1771.py          calplot_1794.py
+
+In [40]: %run calplot_1773
+calplot_1773.py          calplot_1773_combine.py
+
+In [40]: %run calplot_1773.py
+h mean = 63.7181569494 +/- 4.57922171409
+theta mean = 55.6127662597 +/- 0.516043483063
+
+In [41]: cd ../1760/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760
+
+In [42]: %run set_cal_params.py
+
+In [43]: cd ../../irmn/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn
+
+In [44]: %run lin
+linecutplot_1847.py      linecutplot_1903_arb.py
+linecutplot_1903.py      
+
+In [44]: %run linecutplot_190
+linecutplot_1903.py      linecutplot_1903_arb.py
+
+In [44]: %run linecutplot_1903_arb.py
+
+In [45]: cd ../ta/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta
+
+In [46]: ls
+1760/                          get_ovf_magn809.py
+calc_demag_energy_oommf.py     reconstruction/
+calibration/                   squid/
+contour_selection/             stray_calc_compare
+contourplots/                  stray_calc_compare.py
+esrsweep.py                    stray_calc_compare_dipole.py
+esrsweepex.py                  stray_calc_compare_edge.py
+fullfield_plots/               vector_reconstruction_1739.py
+get_ovf_magn1836.py            vector_reconstruction_1781.py
+
+In [47]: ls
+1760/                          get_ovf_magn809.py
+calc_demag_energy_oommf.py     reconstruction/
+calibration/                   squid/
+contour_selection/             stray_calc_compare
+contourplots/                  stray_calc_compare.py
+esrsweep.py                    stray_calc_compare_dipole.py
+esrsweepex.py                  stray_calc_compare_edge.py
+fullfield_plots/               vector_reconstruction_1739.py
+get_ovf_magn1836.py            vector_reconstruction_1781.py
+
+In [48]: cd 1760/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760
+
+In [49]: ls
+analytic_m_1760.py             set_cal_params.py
+domain_wall_energy.py          stest.py
+get_magn809.py                 stray_calc_compare.py
+linecutplot_1760.py            stray_field_test.py
+linecutplot_1760_arb.py        vector_reconstruction_1760.py
+
+In [50]: cd ..
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta
+
+In [51]: %run cal
+calc_demag_energy_oommf.py  calibration/
+
+In [51]: %run calc_demag_energy_oommf.py
+total_wall_length = 0.000626013051175
+domain_wall_energy_density = 0.00121471359015
+DW_width (no pi) = 3.69908700889e-08
+As = 1.12333281522e-11
+
+In [52]: ls
+1760/                          get_ovf_magn809.py
+calc_demag_energy_oommf.py     reconstruction/
+calibration/                   squid/
+contour_selection/             stray_calc_compare
+contourplots/                  stray_calc_compare.py
+esrsweep.py                    stray_calc_compare_dipole.py
+esrsweepex.py                  stray_calc_compare_edge.py
+fullfield_plots/               vector_reconstruction_1739.py
+get_ovf_magn1836.py            vector_reconstruction_1781.py
+
+In [53]: %run calc_demag_energy_oommf.py
+total_wall_length = 0.000626013051175
+domain_wall_energy_density = 0.000902970804496
+DW_width (no pi) = 2.74975730855e-08
+As = 6.20737642267e-12
+
+In [54]: %run calc_demag_energy_oommf.py
+total_wall_length = 0.000626013051175
+domain_wall_energy_density = 0.000902970804499
+DW_width (no pi) = 2.74975730856e-08
+As = 6.20737642271e-12
+
+In [55]: %run calc_demag_energy_oommf.py
+total_wall_length = 0.000626013051175
+domain_wall_energy_density = 0.000902970804496
+DW_width (no pi) = 2.74975730855e-08
+As = 6.20737642267e-12
+
+In [56]: ls
+1760/                          get_ovf_magn809.py
+calc_demag_energy_oommf.py     reconstruction/
+calibration/                   squid/
+contour_selection/             stray_calc_compare
+contourplots/                  stray_calc_compare.py
+esrsweep.py                    stray_calc_compare_dipole.py
+esrsweepex.py                  stray_calc_compare_edge.py
+fullfield_plots/               vector_reconstruction_1739.py
+get_ovf_magn1836.py            vector_reconstruction_1781.py
+
+In [57]: %run 1760/set_cal_params.py
+
+In [58]: %run calc_demag_energy_oommf.py
+total_wall_length = 0.000626013051175
+domain_wall_energy_density = 0.0018427975602
+DW_width (no pi) = 5.61174960928e-08
+As = 2.5853296221e-11
+
+In [59]: %run 1760/set_cal_params.py
+
+In [60]: %run calc_demag_energy_oommf.py
+total_wall_length = 0.000626013051175
+domain_wall_energy_density = 0.000816950395789
+DW_width (no pi) = 2.48780504348e-08
+As = 5.0810332873e-12
+
+In [61]: %run 1760/set_cal_params.py
+
+In [62]: cd ../irmn/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn
+
+In [63]: %run set_cal_params.py
+
+In [64]: %run calc
+calc_demag_energy_oommf.py       calc_demag_energy_oommf_test.py
+
+In [64]: %run calc_demag_energy_oommf.py
+total_wall_length = 0.000151943039795
+domain_wall_energy_density = 0.00953561775364
+DW_width (no pi) = 3.97357142116e-08
+As = 9.47261454725e-11
+
+In [65]: %run set_cal_params.py
+
+In [66]: l
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-66-12f54a96f644> in <module>()
+----> 1 l
+
+NameError: name 'l' is not defined
+
+In [67]: ls
+analytic_m_1903.py
+bz_1760.txt
+bz_1903.txt
+bz_1903Msfixed.txt
+bz_1903Msnotfixed.txt
+calc_demag_energy_oommf.py
+calc_demag_energy_oommf_test.py
+calibration/
+contour_plots/
+demag_tensor.txt
+domain_wall_energy.py
+domain_wall_energy_fourier.py
+fourier1835.py
+get_magn1835.py
+get_magn1836.py
+get_ovf_magn1836.py
+get_ovf_test_stripes.py
+image_erosion_dilation_stripe_width.py
+image_erosion_stripe_width.py
+linecutplot_1847.py
+linecutplot_1903.py
+linecutplot_1903_arb.py
+recon_series_1903
+recon_series_1903.py
+set_cal_params.py
+squid/
+stray_calc_compare.py
+symmplot1835.py
+vector_reconstruction_1903.py
+
+In [68]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn/analytic_m_1903.py in <module>()
+     48 
+     49         scd, vcd, meff, hk, h = sfc.stray_field_calc(m[0], m[1], m[2],
+---> 50                                                      Ms*t, 2.5e-4, heights[i])
+     51 
+     52         # np.savetxt(savepath+dwtypes[j]+'_x_'+errnames[i]+'_'+str(scannum)+filespec+'.txt', h[0], delimiter=',')
+
+/Users/alec/UCSB/LTSPM/LTSPM_analysis/stray_field_calc.py in stray_field_calc(mx, my, mz, Mst, sim_size, z, widowData)
+     18 
+     19     # Mx = np.multiply(mx, 1/(res**2))
+---> 20     if windowData:
+     21         mx = fi.window_image(mx,windowPower)
+     22         my = fi.window_image(my,windowPower)
+
+NameError: name 'windowData' is not defined
+
+In [69]: importlib.reload(sfc)
+Out[69]: <module 'stray_field_calc' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/stray_field_calc.py'>
+
+In [70]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+calculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [71]: %run lin
+linecutplot_1847.py      linecutplot_1903_arb.py
+linecutplot_1903.py      
+
+In [71]: %run linecutplot_1903_arb.py
+
+In [72]: ls
+analytic_m_1903.py
+bz_1760.txt
+bz_1903.txt
+bz_1903Msfixed.txt
+bz_1903Msnotfixed.txt
+calc_demag_energy_oommf.py
+calc_demag_energy_oommf_test.py
+calibration/
+contour_plots/
+demag_tensor.txt
+domain_wall_energy.py
+domain_wall_energy_fourier.py
+fourier1835.py
+get_magn1835.py
+get_magn1836.py
+get_ovf_magn1836.py
+get_ovf_test_stripes.py
+image_erosion_dilation_stripe_width.py
+image_erosion_stripe_width.py
+linecutplot_1847.py
+linecutplot_1903.py
+linecutplot_1903_arb.py
+recon_series_1903
+recon_series_1903.py
+set_cal_params.py
+squid/
+stray_calc_compare.py
+symmplot1835.py
+vector_reconstruction_1903.py
+
+In [73]: %run ir
+irfft   irfft2  irfftn  irr     
+
+In [73]: %run set_cal_params.py
+
+In [74]: ls
+analytic_m_1903.py
+bz_1760.txt
+bz_1903.txt
+bz_1903Msfixed.txt
+bz_1903Msnotfixed.txt
+calc_demag_energy_oommf.py
+calc_demag_energy_oommf_test.py
+calibration/
+contour_plots/
+demag_tensor.txt
+domain_wall_energy.py
+domain_wall_energy_fourier.py
+fourier1835.py
+get_magn1835.py
+get_magn1836.py
+get_ovf_magn1836.py
+get_ovf_test_stripes.py
+image_erosion_dilation_stripe_width.py
+image_erosion_stripe_width.py
+linecutplot_1847.py
+linecutplot_1903.py
+linecutplot_1903_arb.py
+recon_series_1903
+recon_series_1903.py
+set_cal_params.py
+squid/
+stray_calc_compare.py
+symmplot1835.py
+vector_reconstruction_1903.py
+
+In [75]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+calculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [76]: %run linecutplot_1903_arb.py
+
+In [77]: Ms
+Out[77]: 2684.125
+
+In [78]: t
+Out[78]: 4.0000000000000001e-08
+
+In [79]: Ms*t
+Out[79]: 0.000107365
+
+In [80]: cal_params
+Out[80]: 
+array([  2.68412500e+03,   4.00000000e-08,   9.59791462e-01,
+         3.14159265e+00,   1.11610000e-05,   4.50000000e-07,
+         5.99940000e+05,   9.47000000e-06,   3.97000000e-06])
+
+In [81]: ls
+analytic_m_1903.py
+bz_1760.txt
+bz_1903.txt
+bz_1903Msfixed.txt
+bz_1903Msnotfixed.txt
+calc_demag_energy_oommf.py
+calc_demag_energy_oommf_test.py
+calibration/
+contour_plots/
+demag_tensor.txt
+domain_wall_energy.py
+domain_wall_energy_fourier.py
+fourier1835.py
+get_magn1835.py
+get_magn1836.py
+get_ovf_magn1836.py
+get_ovf_test_stripes.py
+image_erosion_dilation_stripe_width.py
+image_erosion_stripe_width.py
+linecutplot_1847.py
+linecutplot_1903.py
+linecutplot_1903_arb.py
+recon_series_1903
+recon_series_1903.py
+set_cal_params.py
+squid/
+stray_calc_compare.py
+symmplot1835.py
+vector_reconstruction_1903.py
+
+In [82]: %run calc
+calc_demag_energy_oommf.py       calc_demag_energy_oommf_test.py
+
+In [82]: %run calc_demag_energy_oommf.py
+total_wall_length = 0.000151943039795
+domain_wall_energy_density = 0.0189777175373
+DW_width (no pi) = 7.90817312454e-08
+As = 3.75197689485e-10
+
+In [83]: Mst
+Out[83]: 0.000107365
+
+In [84]: Ms
+Out[84]: 2684.125
+
+In [85]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+calculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [86]: %run linecutplot_1903_arb.py
+
+In [87]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+calculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [88]: %run linecutplot_1903_arb.py
+
+In [89]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+calculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [90]: %run linecutplot_1903_arb.py
+
+In [91]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+calculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [92]: %run linecutplot_1903_arb.py
+
+In [93]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+calculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [94]: %run linecutplot_1903_arb.py
+
+In [95]: fig1, ax1 = plt.subplots()
+
+In [96]: im = plt.imshow(m[2])
+
+In [97]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+^Ccalculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [98]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+calculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [99]: %run linecutplot_1903_arb.py
+
+In [100]: fig1, ax1 = plt.subplots()
+
+In [101]: im = plt.imshow(m[2])
+
+In [102]: %run vector_reconstruction_1903.py
+
+In [103]: %run vector_reconstruction_1903.py
+
+In [104]: fig1, ax1 = plt.subplots()
+
+In [105]: im = plt.imshow(m[2])
+
+In [106]: im = plt.imshow(np.fliplr(m[2]))
+
+In [107]: im = plt.imshow(np.flipud(m[2]))
+
+In [108]: im = plt.imshow(np.transpose(m[2]))
+
+In [109]: im = plt.imshow(np.flipud(m[2]))
+
+In [110]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+calculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [111]: %run linecutplot_1903_arb.py
+
+In [112]: fig1, ax1 = plt.subplots()
+
+In [113]: im = plt.imshow(np.flipud(m[2]))
+
+In [114]: im = plt.imshow(mdata)
+
+In [115]: %run linecutplot_1903_arb.py
+
+In [116]: fig1, ax1 = plt.subplots()
+
+In [117]: im = plt.imshow(blochnv[1])
+
+In [118]: im = plt.imshow(blochnv[1], cmap='bone')
+
+In [119]: %run vector_reconstruction_1903.py
+
+In [120]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+calculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [121]: %run linecutplot_1903_arb.py
+
+In [122]: %run set_cal_params.py
+
+In [123]: %run calc_demag_energy_oommf.py
+total_wall_length = 0.000151943039795
+domain_wall_energy_density = 0.00365870342596
+DW_width (no pi) = 1.52461222204e-08
+As = 1.39452599001e-11
+
+In [124]: %run vector_reconstruction_1903.py
+
+In [125]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+calculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [126]: %run linecutplot_1903_arb.py
+
+In [127]: fig1, ax1 = plt.subplots()
+
+In [128]: im = plt.imshow(m[2])
+
+In [129]: Mst
+Out[129]: 0.000107365
+
+In [130]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+calculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [131]: %run linecutplot_1903_arb.py
+
+In [132]: cd ../ta
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta
+
+In [133]: cd squid/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/squid
+
+In [134]: %run extract_Keff.py
+avg. ms = 3.51185735749e-06
+Mst_avg = 6.38519519544e-05
+Mst_normal = 6.3770045803e-05
+Mst_normal_lowH = 6.54577496234e-05
+area between norm and ll = 0.00045152549289
+Keff = 82095.5441619
+
+In [135]: ls
+extract_Keff.py  fit_Ms_norm.py
+
+In [136]: cd ..
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta
+
+In [137]: ls
+1760/                          get_ovf_magn809.py
+calc_demag_energy_oommf.py     reconstruction/
+calibration/                   squid/
+contour_selection/             stray_calc_compare
+contourplots/                  stray_calc_compare.py
+esrsweep.py                    stray_calc_compare_dipole.py
+esrsweepex.py                  stray_calc_compare_edge.py
+fullfield_plots/               vector_reconstruction_1739.py
+get_ovf_magn1836.py            vector_reconstruction_1781.py
+
+In [138]: %run cal
+calc_demag_energy_oommf.py  calibration/
+
+In [138]: %run calc_demag_energy_oommf.py
+total_wall_length = 0.000626013051175
+domain_wall_energy_density = 0.00121471359015
+DW_width (no pi) = 3.69908700889e-08
+As = 1.12333281522e-11
+
+In [139]: ls
+1760/                          get_ovf_magn809.py
+calc_demag_energy_oommf.py     reconstruction/
+calibration/                   squid/
+contour_selection/             stray_calc_compare
+contourplots/                  stray_calc_compare.py
+esrsweep.py                    stray_calc_compare_dipole.py
+esrsweepex.py                  stray_calc_compare_edge.py
+fullfield_plots/               vector_reconstruction_1739.py
+get_ovf_magn1836.py            vector_reconstruction_1781.py
+
+In [140]: cd 1760/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760
+
+In [141]: %run set_cal_params.py
+
+In [142]: ls
+analytic_m_1760.py             set_cal_params.py
+domain_wall_energy.py          stest.py
+get_magn809.py                 stray_calc_compare.py
+linecutplot_1760.py            stray_field_test.py
+linecutplot_1760_arb.py        vector_reconstruction_1760.py
+
+In [143]: %run vector_reconstruction_1760.py
+
+In [144]: %run vector_reconstruction_1760.py
+
+In [145]: %run vector_reconstruction_1760.py
+
+In [146]: %run vector_reconstruction_1760.py
+
+In [147]: %run analytic_m_1760.py
+calculating nr at lower height
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+//anaconda/lib/python3.5/site-packages/numpy/lib/npyio.py:893: UserWarning: loadtxt: Empty input file: "/Users/alec/UCSB/cofeb_analysis_data/ta/stray_field_sim/mby_Msfixed.dat"
+  warnings.warn('loadtxt: Empty input file: "%s"' % fname)
+//anaconda/lib/python3.5/site-packages/numpy/lib/npyio.py:893: UserWarning: loadtxt: Empty input file: "/Users/alec/UCSB/cofeb_analysis_data/ta/stray_field_sim/mbz_Msfixed.dat"
+  warnings.warn('loadtxt: Empty input file: "%s"' % fname)
+calculating b at lower height
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+//anaconda/lib/python3.5/site-packages/numpy/core/fromnumeric.py in take(a, indices, axis, out, mode)
+    119     try:
+--> 120         take = a.take
+    121     except AttributeError:
+
+AttributeError: 'tuple' object has no attribute 'take'
+
+During handling of the above exception, another exception occurred:
+
+IndexError                                Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760/analytic_m_1760.py in <module>()
+     46         print('calculating '+dwtypes[j]+' at '+errnames[i]+' height')
+     47 
+---> 48         scd, vcd, meff, hk, h = sfc.stray_field_calc(m[0],m[1],m[2],Mst,2500,heights[i])
+     49 
+     50         np.savetxt(savepath+dwtypes[j]+'_x_'+errnames[i]+'_'+str(scannum)+filespec+'.txt', h[0], delimiter=',')
+
+/Users/alec/UCSB/LTSPM/LTSPM_analysis/stray_field_calc.py in stray_field_calc(mx, my, mz, Mst, sim_size, z, windowData)
+     23         mz = fi.window_image(mz,windowPower)
+     24     fmxs = np.fft.fft2(mx, norm="ortho")
+---> 25     fmys = np.fft.fft2(my, norm="ortho")
+     26     fmzs = np.fft.fft2(mz, norm="ortho")
+     27 
+
+//anaconda/lib/python3.5/site-packages/numpy/fft/fftpack.py in fft2(a, s, axes, norm)
+    903     """
+    904 
+--> 905     return _raw_fftnd(a, s, axes, fft, norm)
+    906 
+    907 
+
+//anaconda/lib/python3.5/site-packages/numpy/fft/fftpack.py in _raw_fftnd(a, s, axes, function, norm)
+    617 def _raw_fftnd(a, s=None, axes=None, function=fft, norm=None):
+    618     a = asarray(a)
+--> 619     s, axes = _cook_nd_args(a, s, axes)
+    620     itl = list(range(len(axes)))
+    621     itl.reverse()
+
+//anaconda/lib/python3.5/site-packages/numpy/fft/fftpack.py in _cook_nd_args(a, s, axes, invreal)
+    602             s = list(a.shape)
+    603         else:
+--> 604             s = take(a.shape, axes)
+    605     else:
+    606         shapeless = 0
+
+//anaconda/lib/python3.5/site-packages/numpy/core/fromnumeric.py in take(a, indices, axis, out, mode)
+    120         take = a.take
+    121     except AttributeError:
+--> 122         return _wrapit(a, 'take', indices, axis, out, mode)
+    123     return take(indices, axis, out, mode)
+    124 
+
+//anaconda/lib/python3.5/site-packages/numpy/core/fromnumeric.py in _wrapit(obj, method, *args, **kwds)
+     45     except AttributeError:
+     46         wrap = None
+---> 47     result = getattr(asarray(obj), method)(*args, **kwds)
+     48     if wrap:
+     49         if not isinstance(result, mu.ndarray):
+
+IndexError: index -2 is out of bounds for size 1
+
+In [148]: %run set_cal_params.py
+
+In [149]: 0.6*5
+Out[149]: 3.0
+
+In [150]: %run analytic_m_1760.py
+calculating nr at lower height
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+//anaconda/lib/python3.5/site-packages/numpy/lib/npyio.py:893: UserWarning: loadtxt: Empty input file: "/Users/alec/UCSB/cofeb_analysis_data/ta/stray_field_sim/mby_Msfixed.dat"
+  warnings.warn('loadtxt: Empty input file: "%s"' % fname)
+//anaconda/lib/python3.5/site-packages/numpy/lib/npyio.py:893: UserWarning: loadtxt: Empty input file: "/Users/alec/UCSB/cofeb_analysis_data/ta/stray_field_sim/mbz_Msfixed.dat"
+  warnings.warn('loadtxt: Empty input file: "%s"' % fname)
+calculating b at lower height
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+//anaconda/lib/python3.5/site-packages/numpy/core/fromnumeric.py in take(a, indices, axis, out, mode)
+    119     try:
+--> 120         take = a.take
+    121     except AttributeError:
+
+AttributeError: 'tuple' object has no attribute 'take'
+
+During handling of the above exception, another exception occurred:
+
+IndexError                                Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760/analytic_m_1760.py in <module>()
+     45         print('calculating '+dwtypes[j]+' at '+errnames[i]+' height')
+     46 
+---> 47         scd, vcd, meff, hk, h = sfc.stray_field_calc(m[0],m[1],m[2],Ms*t,2.5e-4,heights[i])
+     48 
+     49         np.savetxt(savepath+dwtypes[j]+'_x_'+errnames[i]+'_'+str(scannum)+filespec+'.txt', h[0], delimiter=',')
+
+/Users/alec/UCSB/LTSPM/LTSPM_analysis/stray_field_calc.py in stray_field_calc(mx, my, mz, Mst, sim_size, z, windowData)
+     23         mz = fi.window_image(mz,windowPower)
+     24     fmxs = np.fft.fft2(mx, norm="ortho")
+---> 25     fmys = np.fft.fft2(my, norm="ortho")
+     26     fmzs = np.fft.fft2(mz, norm="ortho")
+     27 
+
+//anaconda/lib/python3.5/site-packages/numpy/fft/fftpack.py in fft2(a, s, axes, norm)
+    903     """
+    904 
+--> 905     return _raw_fftnd(a, s, axes, fft, norm)
+    906 
+    907 
+
+//anaconda/lib/python3.5/site-packages/numpy/fft/fftpack.py in _raw_fftnd(a, s, axes, function, norm)
+    617 def _raw_fftnd(a, s=None, axes=None, function=fft, norm=None):
+    618     a = asarray(a)
+--> 619     s, axes = _cook_nd_args(a, s, axes)
+    620     itl = list(range(len(axes)))
+    621     itl.reverse()
+
+//anaconda/lib/python3.5/site-packages/numpy/fft/fftpack.py in _cook_nd_args(a, s, axes, invreal)
+    602             s = list(a.shape)
+    603         else:
+--> 604             s = take(a.shape, axes)
+    605     else:
+    606         shapeless = 0
+
+//anaconda/lib/python3.5/site-packages/numpy/core/fromnumeric.py in take(a, indices, axis, out, mode)
+    120         take = a.take
+    121     except AttributeError:
+--> 122         return _wrapit(a, 'take', indices, axis, out, mode)
+    123     return take(indices, axis, out, mode)
+    124 
+
+//anaconda/lib/python3.5/site-packages/numpy/core/fromnumeric.py in _wrapit(obj, method, *args, **kwds)
+     45     except AttributeError:
+     46         wrap = None
+---> 47     result = getattr(asarray(obj), method)(*args, **kwds)
+     48     if wrap:
+     49         if not isinstance(result, mu.ndarray):
+
+IndexError: index -2 is out of bounds for size 1
+
+In [151]: %run ../../irmn/set_cal_params.py
+
+In [152]: %run set_cal_params.py
+
+In [153]: %run analytic_m_1760.py
+  File "/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760/analytic_m_1760.py", line 48
+    scd, vcd, meff, hk, h = sfc.stray_field_calc(m[0],m[1],m[2],Ms*t,scanSize = cal_params[9],heights[i])
+                                                                                             ^
+SyntaxError: positional argument follows keyword argument
+
+
+In [154]: %run analytic_m_1760.py
+---------------------------------------------------------------------------
+IndexError                                Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760/analytic_m_1760.py in <module>()
+     26 height = cal_params[4]
+     27 heighterr = cal_params[5]
+---> 28 scanSize = cal_params[9]
+     29 
+     30 heights = [height - heighterr, height, height + heighterr]
+
+IndexError: index 9 is out of bounds for axis 0 with size 7
+
+In [155]: %run set_cal_params.py
+
+In [156]: %run ../../irmn/set_cal_params.py
+
+In [157]: %run analytic_m_1760.py
+calculating nr at lower height
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+//anaconda/lib/python3.5/site-packages/numpy/lib/npyio.py:893: UserWarning: loadtxt: Empty input file: "/Users/alec/UCSB/cofeb_analysis_data/ta/stray_field_sim/mby_Msfixed.dat"
+  warnings.warn('loadtxt: Empty input file: "%s"' % fname)
+//anaconda/lib/python3.5/site-packages/numpy/lib/npyio.py:893: UserWarning: loadtxt: Empty input file: "/Users/alec/UCSB/cofeb_analysis_data/ta/stray_field_sim/mbz_Msfixed.dat"
+  warnings.warn('loadtxt: Empty input file: "%s"' % fname)
+calculating b at lower height
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+//anaconda/lib/python3.5/site-packages/numpy/core/fromnumeric.py in take(a, indices, axis, out, mode)
+    119     try:
+--> 120         take = a.take
+    121     except AttributeError:
+
+AttributeError: 'tuple' object has no attribute 'take'
+
+During handling of the above exception, another exception occurred:
+
+IndexError                                Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760/analytic_m_1760.py in <module>()
+     46         print('calculating '+dwtypes[j]+' at '+errnames[i]+' height')
+     47 
+---> 48         scd, vcd, meff, hk, h = sfc.stray_field_calc(m[0],m[1],m[2],Ms*t,scanSize,heights[i])
+     49 
+     50         np.savetxt(savepath+dwtypes[j]+'_x_'+errnames[i]+'_'+str(scannum)+filespec+'.txt', h[0], delimiter=',')
+
+/Users/alec/UCSB/LTSPM/LTSPM_analysis/stray_field_calc.py in stray_field_calc(mx, my, mz, Mst, sim_size, z, windowData)
+     23         mz = fi.window_image(mz,windowPower)
+     24     fmxs = np.fft.fft2(mx, norm="ortho")
+---> 25     fmys = np.fft.fft2(my, norm="ortho")
+     26     fmzs = np.fft.fft2(mz, norm="ortho")
+     27 
+
+//anaconda/lib/python3.5/site-packages/numpy/fft/fftpack.py in fft2(a, s, axes, norm)
+    903     """
+    904 
+--> 905     return _raw_fftnd(a, s, axes, fft, norm)
+    906 
+    907 
+
+//anaconda/lib/python3.5/site-packages/numpy/fft/fftpack.py in _raw_fftnd(a, s, axes, function, norm)
+    617 def _raw_fftnd(a, s=None, axes=None, function=fft, norm=None):
+    618     a = asarray(a)
+--> 619     s, axes = _cook_nd_args(a, s, axes)
+    620     itl = list(range(len(axes)))
+    621     itl.reverse()
+
+//anaconda/lib/python3.5/site-packages/numpy/fft/fftpack.py in _cook_nd_args(a, s, axes, invreal)
+    602             s = list(a.shape)
+    603         else:
+--> 604             s = take(a.shape, axes)
+    605     else:
+    606         shapeless = 0
+
+//anaconda/lib/python3.5/site-packages/numpy/core/fromnumeric.py in take(a, indices, axis, out, mode)
+    120         take = a.take
+    121     except AttributeError:
+--> 122         return _wrapit(a, 'take', indices, axis, out, mode)
+    123     return take(indices, axis, out, mode)
+    124 
+
+//anaconda/lib/python3.5/site-packages/numpy/core/fromnumeric.py in _wrapit(obj, method, *args, **kwds)
+     45     except AttributeError:
+     46         wrap = None
+---> 47     result = getattr(asarray(obj), method)(*args, **kwds)
+     48     if wrap:
+     49         if not isinstance(result, mu.ndarray):
+
+IndexError: index -2 is out of bounds for size 1
+
+In [158]: %run analytic_m_1760.py
+calculating nr at lower height
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+//anaconda/lib/python3.5/site-packages/numpy/lib/npyio.py:893: UserWarning: loadtxt: Empty input file: "/Users/alec/UCSB/cofeb_analysis_data/ta/stray_field_sim/mby_Msfixed.dat"
+  warnings.warn('loadtxt: Empty input file: "%s"' % fname)
+//anaconda/lib/python3.5/site-packages/numpy/lib/npyio.py:893: UserWarning: loadtxt: Empty input file: "/Users/alec/UCSB/cofeb_analysis_data/ta/stray_field_sim/mbz_Msfixed.dat"
+  warnings.warn('loadtxt: Empty input file: "%s"' % fname)
+calculating b at lower height
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+//anaconda/lib/python3.5/site-packages/numpy/core/fromnumeric.py in take(a, indices, axis, out, mode)
+    119     try:
+--> 120         take = a.take
+    121     except AttributeError:
+
+AttributeError: 'tuple' object has no attribute 'take'
+
+During handling of the above exception, another exception occurred:
+
+IndexError                                Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760/analytic_m_1760.py in <module>()
+     46         print('calculating '+dwtypes[j]+' at '+errnames[i]+' height')
+     47 
+---> 48         scd, vcd, meff, hk, h = sfc.stray_field_calc(m[0],m[1],m[2],Ms*t,scanSize,heights[i])
+     49 
+     50         np.savetxt(savepath+dwtypes[j]+'_x_'+errnames[i]+'_'+str(scannum)+filespec+'.txt', h[0], delimiter=',')
+
+/Users/alec/UCSB/LTSPM/LTSPM_analysis/stray_field_calc.py in stray_field_calc(mx, my, mz, Mst, sim_size, z, windowData)
+     23         mz = fi.window_image(mz,windowPower)
+     24     fmxs = np.fft.fft2(mx, norm="ortho")
+---> 25     fmys = np.fft.fft2(my, norm="ortho")
+     26     fmzs = np.fft.fft2(mz, norm="ortho")
+     27 
+
+//anaconda/lib/python3.5/site-packages/numpy/fft/fftpack.py in fft2(a, s, axes, norm)
+    903     """
+    904 
+--> 905     return _raw_fftnd(a, s, axes, fft, norm)
+    906 
+    907 
+
+//anaconda/lib/python3.5/site-packages/numpy/fft/fftpack.py in _raw_fftnd(a, s, axes, function, norm)
+    617 def _raw_fftnd(a, s=None, axes=None, function=fft, norm=None):
+    618     a = asarray(a)
+--> 619     s, axes = _cook_nd_args(a, s, axes)
+    620     itl = list(range(len(axes)))
+    621     itl.reverse()
+
+//anaconda/lib/python3.5/site-packages/numpy/fft/fftpack.py in _cook_nd_args(a, s, axes, invreal)
+    602             s = list(a.shape)
+    603         else:
+--> 604             s = take(a.shape, axes)
+    605     else:
+    606         shapeless = 0
+
+//anaconda/lib/python3.5/site-packages/numpy/core/fromnumeric.py in take(a, indices, axis, out, mode)
+    120         take = a.take
+    121     except AttributeError:
+--> 122         return _wrapit(a, 'take', indices, axis, out, mode)
+    123     return take(indices, axis, out, mode)
+    124 
+
+//anaconda/lib/python3.5/site-packages/numpy/core/fromnumeric.py in _wrapit(obj, method, *args, **kwds)
+     45     except AttributeError:
+     46         wrap = None
+---> 47     result = getattr(asarray(obj), method)(*args, **kwds)
+     48     if wrap:
+     49         if not isinstance(result, mu.ndarray):
+
+IndexError: index -2 is out of bounds for size 1
+
+In [159]: len(m[0])
+Out[159]: 125
+
+In [160]: %run analytic_m_1760.py
+calculating nr at lower height
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+calculating b at lower height
+calculating b at mean height
+calculating b at upper height
+
+In [161]: %run linecutplot_1903_arb.py
+ERROR: File `'linecutplot_1903_arb.py'` not found.
+
+In [162]: %run linecutplot_1760_arb.py
+
+In [163]: %run vector_reconstruction_1760.py
+
+In [164]: %run linecutplot_1760_arb.py
+
+In [165]: %run linecutplot_1760_arb.py
+
+In [166]: %run vector_reconstruction_1760.py
+
+In [167]: fig1, ax1 = plt.subplots()
+
+In [168]: im = imshow(m[2])
+
+In [169]: %run analytic_m_1760.py
+calculating nr at lower height
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+calculating b at lower height
+calculating b at mean height
+calculating b at upper height
+
+In [170]: %run linecutplot_1760_arb.py
+
+In [171]: im = imshow(m[2])
+
+In [172]: fig1, ax1 = plt.subplots()
+
+In [173]: im = imshow(m[2])
+
+In [174]: %run analytic_m_1760.py
+calculating nr at lower height
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+calculating b at lower height
+calculating b at mean height
+calculating b at upper height
+
+In [175]: %run linecutplot_1760_arb.py
+
+In [176]: %run analytic_m_1760.py
+calculating nr at lower height
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+calculating b at lower height
+calculating b at mean height
+calculating b at upper height
+
+In [177]: %run linecutplot_1760_arb.py
+
+In [178]: %run vector_reconstruction_1760.py
+
+In [179]: fig1, ax1 = plt.subplots()
+
+In [180]: im = imshow(m[2])
+
+In [181]: fig1, ax1 = plt.subplots()
+
+In [182]: im = imshow(m[0])
+
+In [183]: fig1, ax1 = plt.subplots()
+
+In [184]: im = imshow(m[1])
+
+In [185]: %run analytic_m_1760.py
+calculating nr at lower height
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+calculating b at lower height
+calculating b at mean height
+calculating b at upper height
+
+In [186]: %run linecutplot_1760_arb.py
+
+In [187]: %run linecutplot_1760_arb.py
+
+In [188]: %run linecutplot_1760_arb.py
+
+In [189]: %run linecutplot_1760_arb.py
+
+In [190]: %run linecutplot_1760_arb.py
+
+In [191]: %run linecutplot_1760_arb.py
+
+In [192]: im = imshow(m[1])
+
+In [193]: fig1, ax1 = plt.subplots()
+
+In [194]: im = imshow(m[1])
+
+In [195]: plt.colorbar(im, fraction=0.046, pad=0.04)
+Out[195]: <matplotlib.colorbar.Colorbar at 0x124d79b70>
+
+In [196]: fig1, ax1 = plt.subplots()
+
+In [197]: im = imshow(m[0])
+
+In [198]: fig1, ax1 = plt.subplots()
+
+In [199]: im = imshow(m[2])
+
+In [200]: plt.colorbar(im, fraction=0.046, pad=0.04)
+Out[200]: <matplotlib.colorbar.Colorbar at 0x11efb1630>
+
+In [201]: dwtypes
+Out[201]: ['nr', 'nl', 'b']
+
+In [202]: mnrx=np.loadtxt(savepath+"mnrx_"+filespec+".dat"))
+  File "<ipython-input-202-09e0981036ea>", line 1
+    mnrx=np.loadtxt(savepath+"mnrx_"+filespec+".dat"))
+                                                     ^
+SyntaxError: invalid syntax
+
+
+In [203]: mnrx=np.loadtxt(savepath+"mnrx_"+filespec+".dat")
+
+In [204]: fig1, ax1 = plt.subplots()
+
+In [205]: im = imshow(mnrx)
+
+In [206]: mnrx=np.loadtxt(savepath+"mnry_"+filespec+".dat")
+
+In [207]: im = imshow(mnrx)
+
+In [208]: mnry=np.loadtxt(savepath+"mnry_"+filespec+".dat")
+
+In [209]: fig1, ax1 = plt.subplots()
+
+In [210]: im = imshow(mnry)
+
+In [211]: mnrx=np.loadtxt(savepath+"mnry_"+filespec+".dat")
+
+In [212]: mnrx=np.loadtxt(savepath+"mnrx_"+filespec+".dat")
+
+In [213]: im = imshow(mnrx)
+
+In [214]: %run linecutplot_1760_arb.py
+
+In [215]: %run analytic_m_1760.py
+calculating nr at lower height
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+calculating b at lower height
+calculating b at mean height
+calculating b at upper height
+
+In [216]: %run linecutplot_1760_arb.py
+
+In [217]: %run linecutplot_1760_arb.py
+
+In [218]: %run sq
+sq_data_all_ll            sq_data_ll
+sq_data_all_norm          sq_data_norm
+sq_data_all_norm_lowH     sq_data_norm_lowH
+sq_data_base_ll           sqrt
+sq_data_base_norm         square
+sq_data_base_norm_extend  squeeze
+sq_data_base_norm_lowH    
+
+In [218]: %run ../squid/extract_Keff.py
+avg. ms = 3.51185735749e-06
+Mst_avg = 6.38519519544e-05
+Mst_normal = 6.3770045803e-05
+Mst_normal_lowH = 6.54577496234e-05
+area between norm and ll = 0.00045152549289
+Keff = 82095.5441619
+
+In [219]: fig1, ax1 = plt.subplots()
+
+In [220]: im = imshow(nleftnv[1])
+
+In [221]: mnrx=np.loadtxt(savepath+"mnrx_"+filespec+".dat")
+
+In [222]: fig1, ax1 = plt.subplots()
+
+In [223]: im = imshow(mnrx)
+
+In [224]: im = imshow(mnlx)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-224-4a8aa0724c18> in <module>()
+----> 1 im = imshow(mnlx)
+
+NameError: name 'mnlx' is not defined
+
+In [225]: im = imshow(mnry)
+
+In [226]: %run analytic_m_1760.py
+calculating nr at lower height
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+calculating b at lower height
+calculating b at mean height
+calculating b at upper height
+
+In [227]: %run get_ovf_magn809.py
+ERROR: File `'get_ovf_magn809.py'` not found.
+
+In [228]: ls
+analytic_m_1760.py             set_cal_params.py
+domain_wall_energy.py          stest.py
+get_magn809.py                 stray_calc_compare.py
+linecutplot_1760.py            stray_field_test.py
+linecutplot_1760_arb.py        vector_reconstruction_1760.py
+
+In [229]: cd ../
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta
+
+In [230]: %run get_ovf_magn809.py
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/get_ovf_magn809.py in <module>()
+     34 ovfHeaderFileDres = open(ovfPath+'ta_magn_header_dres.ovf', 'r')
+     35 
+---> 36 ovfDomains = np.zeros((slen**2,3))
+     37 
+     38 for j in range(slen):
+
+NameError: name 'slen' is not defined
+
+In [231]: %run get_ovf_magn809.py
+
+In [232]: %run calc_demag_energy_oommf.py
+total_wall_length = 0.000626013051175
+domain_wall_energy_density = 0.00121471359015
+DW_width (no pi) = 3.69908700889e-08
+As = 1.12333281522e-11
+
+In [233]: %run 1760/analytic_m_1760.py
+calculating nr at lower height
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+calculating b at lower height
+calculating b at mean height
+calculating b at upper height
+
+In [234]: cd 1760/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760
+
+In [235]: l
+Out[235]: '# Begin: data text\n'
+
+In [236]: ls
+analytic_m_1760.py             set_cal_params.py
+domain_wall_energy.py          stest.py
+get_magn809.py                 stray_calc_compare.py
+linecutplot_1760.py            stray_field_test.py
+linecutplot_1760_arb.py        vector_reconstruction_1760.py
+
+In [237]: %run lin
+linecutplot_1760.py      linecutplot_1760_arb.py
+
+In [237]: %run linecutplot_1760_arb.py
+
+In [238]: %run analytic_m_1760.py
+calculating nr at lower height
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+calculating b at lower height
+calculating b at mean height
+calculating b at upper height
+
+In [239]: %run linecutplot_1760_arb.py
+
+In [240]: %run linecutplot_1760_arb.py
+
+In [241]: %run linecutplot_1760_arb.py
+
+In [242]: %run linecutplot_1760_arb.py
+
+In [243]: fig1, ax1 = plt.subplots()
+
+In [244]: im = imshow(m[0])
+
+In [245]: im = imshow(m[2])
+
+In [246]: %run linecutplot_1760_arb.py
+
+In [247]: %run ../../irmn/vector_reconstruction_1903.py
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn/vector_reconstruction_1903.py in <module>()
+    133     bguesses[i] = [(y[-1]+y[0])/2,y[-1]-y[0],6,1]
+    134     bpopt, bpcov = curve_fit(fit_tanh, bxf, bzphi[i], p0=bguesses[i])
+--> 135     bfits[i] = fit_arctan(xf, *bpopt)
+    136     bwidths[i] = np.abs(bpopt[3])
+    137 
+
+NameError: name 'fit_arctan' is not defined
+
+In [248]: %run ../../irmn/vector_reconstruction_1903.py
+
+In [249]: %run vector_reconstruction_1760.py
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760/vector_reconstruction_1760.py in <module>()
+    147 for i in range(0,phinum):
+    148     ax3[i].plot(mphi[i],'b.')
+--> 149     ax3[i].plot(xf, fit_arctan(xf, *guesses[i]), 'g')
+    150     ax3[i].plot(xf, fits[i], 'r')
+    151     ax3[i].get_yaxis().set_visible(False)
+
+NameError: name 'fit_arctan' is not defined
+
+In [250]: %run vector_reconstruction_1760.py
+
+In [251]: cd ../../irmn/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn
+
+In [252]: ls
+analytic_m_1903.py
+bz_1760.txt
+bz_1903.txt
+bz_1903Msfixed.txt
+bz_1903Msnotfixed.txt
+calc_demag_energy_oommf.py
+calc_demag_energy_oommf_test.py
+calibration/
+contour_plots/
+demag_tensor.txt
+domain_wall_energy.py
+domain_wall_energy_fourier.py
+fourier1835.py
+get_magn1835.py
+get_magn1836.py
+get_ovf_magn1836.py
+get_ovf_test_stripes.py
+image_erosion_dilation_stripe_width.py
+image_erosion_stripe_width.py
+linecutplot_1847.py
+linecutplot_1903.py
+linecutplot_1903_arb.py
+recon_series_1903
+recon_series_1903.py
+set_cal_params.py
+squid/
+stray_calc_compare.py
+symmplot1835.py
+vector_reconstruction_1903.py
+
+In [253]: %run analytic_m_1903.py
+calculating nr Msfixed at lower height
+calculating nr Msfixed at mean height
+calculating nr Msfixed at upper height
+calculating nl Msfixed at lower height
+calculating nl Msfixed at mean height
+calculating nl Msfixed at upper height
+calculating b Msfixed at lower height
+calculating b Msfixed at mean height
+calculating b Msfixed at upper height
+
+In [254]: %run linecutplot_1760_arb.py
+ERROR: File `'linecutplot_1760_arb.py'` not found.
+
+In [255]: %run linecutplot_1903_arb.py
+
+In [256]: cd ..
+/Users/alec/UCSB/LTSPM/cofeb_analysis
+
+In [257]: cd ta/1760/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760
+
+In [258]: %run image_erosion_dilation_stripe_width.py
+erosion x axis intercept = 3.53147679325
+dilation x axis intercept = 3.48102189781
+mean +/- pixel width = 7.01249869106
+
+In [259]: cd ../../irmn/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn
+
+In [260]: ls
+analytic_m_1903.py
+bz_1760.txt
+bz_1903.txt
+bz_1903Msfixed.txt
+bz_1903Msnotfixed.txt
+calc_demag_energy_oommf.py
+calc_demag_energy_oommf_test.py
+calibration/
+contour_plots/
+demag_tensor.txt
+domain_wall_energy.py
+domain_wall_energy_fourier.py
+fourier1835.py
+get_magn1835.py
+get_magn1836.py
+get_ovf_magn1836.py
+get_ovf_test_stripes.py
+image_erosion_dilation_stripe_width.py
+image_erosion_stripe_width.py
+linecutplot_1847.py
+linecutplot_1903.py
+linecutplot_1903_arb.py
+recon_series_1903
+recon_series_1903.py
+set_cal_params.py
+squid/
+stray_calc_compare.py
+symmplot1835.py
+vector_reconstruction_1903.py
+
+In [261]: %run im
+image_erosion_dilation_stripe_width.py
+image_erosion_stripe_width.py
+
+In [261]: %run image_erosion_dilation_stripe_width.py
+erosion x axis intercept = 4.55730533683
+dilation x axis intercept = 5.99850374065
+mean +/- pixel width = 10.5558090775
+
+In [262]: cd ../ta/1760/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760
+
+In [263]: %run image_erosion_dilation_stripe_width.py
+erosion x axis intercept = 3.53147679325
+dilation x axis intercept = 3.48102189781
+mean +/- pixel width = 7.01249869106
+
+In [264]: %run image_erosion_dilation_stripe_width.py
+erosion x axis intercept = 3.53147679325
+dilation x axis intercept = 3.48102189781
+mean +/- pixel width = 7.01249869106
+
+In [265]: %run analytic_m_1760.py
+calculating nr at lower height
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+calculating b at lower height
+calculating b at mean height
+calculating b at upper height
+
+In [266]: %run linecutplot_1760_arb.py
+
+In [267]: %run vector_reconstruction_1760.py
+
+In [268]: %run vector_reconstruction_1760.py
+
+In [269]: %run vector_reconstruction_1760.py
+
+In [270]: %run vector_reconstruction_1760.py
+
+In [271]: %run vector_reconstruction_1760.py
+
+In [272]: %run vector_reconstruction_1760.py
+
+In [273]: %run vector_reconstruction_1760.py
+
+In [274]: %run vector_reconstruction_1760.py
+
+In [275]: %run vector_reconstruction_1760.py
+
+In [276]: %run analytic_m_1760.py
+calculating nr at lower height
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+calculating b at lower height
+calculating b at mean height
+calculating b at upper height
+
+In [277]: %run lin
+linecutplot_1760.py      linecutplot_1760_arb.py
+
+In [277]: %run linecutplot_1760_arb.py
+
+In [278]: fig1, ax1 = plt.subplots()
+
+In [279]: im = imshow(m[2])
+
+In [280]: %run vector_reconstruction_1760.py
+
+In [281]: %run vector_reconstruction_1760.py
+
+In [282]: %run vector_reconstruction_1760.py
+
+In [283]: %run vector_reconstruction_1760.py
+
+In [284]: %run vector_reconstruction_1760.py
+//anaconda/lib/python3.5/site-packages/scipy/signal/signaltools.py:615: RuntimeWarning: invalid value encountered in true_divide
+  res *= (1 - noise / lVar)
+//anaconda/lib/python3.5/site-packages/scipy/misc/pilutil.py:98: RuntimeWarning: invalid value encountered in greater
+  bytedata[bytedata > high] = high
+//anaconda/lib/python3.5/site-packages/scipy/misc/pilutil.py:99: RuntimeWarning: invalid value encountered in less
+  bytedata[bytedata < 0] = 0
+^C
+In [285]: %run vector_reconstruction_1760.py
+
+In [286]: %run vector_reconstruction_1760.py
+
+In [287]: %run vector_reconstruction_1760.py
+
+In [288]: %run vector_reconstruction_1760.py
+
+In [289]: cd ../calibration/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration
+
+In [290]: %run ca
+calplot_1739.py          calplot_1773.py
+calplot_1743.py          calplot_1773_combine.py
+calplot_1747.py          calplot_1789.py
+calplot_1771.py          calplot_1794.py
+
+In [290]: %run calplot_177
+calplot_1771.py          calplot_1773_combine.py
+calplot_1773.py          
+
+In [290]: %run calplot_1773.py
+h mean = 63.7181569494 +/- 4.57922171409
+theta mean = 55.6127662597 +/- 0.516043483063
+
+In [291]: yms
+Out[291]: 
+array([ 5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,
+        5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,
+        5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,
+        5.,  5.,  5.,  5.,  5.,  5.,  1.,  5.,  5.,  5.,  5.,  5.,  5.,
+        5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,
+        5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,
+        5.,  5.])
+
+In [292]: yms
+Out[292]: 
+array([ 5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,
+        5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,
+        5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,
+        5.,  5.,  5.,  5.,  5.,  5.,  1.,  5.,  5.,  5.,  5.,  5.,  5.,
+        5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,
+        5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,  5.,
+        5.,  5.])
+
+In [293]: ye
+Out[293]: 
+array([ 0.65374259,  0.82855867,  0.78471199,  0.64967274,  0.80712843,
+        0.91177918,  0.89111452,  0.86054716,  0.75944647,  0.70893771,
+        0.66250772,  0.70604487,  0.69668298,  0.85346547,  0.81094692,
+        0.64820844,  0.70632957,  0.83373939,  0.64536799,  0.5619963 ,
+        0.60979258,  0.74600109,  0.77388618,  0.89944756,  0.77142856,
+        0.89671956,  0.81918791,  0.80765563,  0.69567459,  0.58640953,
+        0.6541731 ,  0.69023421,  0.79668891,  0.69946555,  0.73212267,
+        0.76856851,  0.61790708,  0.72114298,  0.41763005,  0.59978174,
+        0.71637282,  0.68509432,  0.70956325,  0.73721963,  0.7256835 ,
+        0.42328541,  0.33884866,  0.34559311,  0.27199248,  0.24700283,
+        0.28257763,  0.28013945,  0.25006797,  0.27465787,  0.29588299,
+        0.28416275,  0.26050405,  0.26598245,  0.28823167,  0.23100385,
+        0.30095773,  0.2472567 ,  0.24457911,  0.26485948,  0.2738037 ,
+        0.29089405,  0.30590328,  0.24507973,  0.25481224,  0.25897854,
+        0.29553868,  0.26609459,  0.21801347,  0.26198924,  0.34009895,
+        0.29123147,  0.28224899,  0.25885703,  0.25671708,  0.2588634 ])
+
+In [294]: yargmax
+Out[294]: 45
+
+In [295]: ryargmax
+Out[295]: 38
+
+In [296]: %run cal
+calplot_1739.py          calplot_1773.py
+calplot_1743.py          calplot_1773_combine.py
+calplot_1747.py          calplot_1789.py
+calplot_1771.py          calplot_1794.py
+
+In [296]: %run calplot_177
+calplot_1771.py          calplot_1773_combine.py
+calplot_1773.py          
+
+In [296]: %run calplot_1773
+calplot_1773.py          calplot_1773_combine.py
+
+In [296]: %run calplot_1773.py
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_1773.py in <module>()
+     75     yargmax = np.argmax(y)
+     76     ryargmax = np.argmax(ry)
+---> 77     yepeak[yargmax:yargmax+1] = 0.05
+     78     ryepeak[ryargmax:ryargmax+1] = 0.05
+     79 
+
+NameError: name 'yepeak' is not defined
+
+In [297]: %run calplot_1773.py
+h mean = 63.7181569494 +/- 4.57922171409
+theta mean = 55.6127662597 +/- 0.516043483063
+
+In [298]: %run calplot_1773.py
+h mean = 47.3195443144 +/- 22.5009294172
+theta mean = 55.1785403737 +/- 1.13702726392
+
+In [299]: %run calplot_1773.py
+h mean = 50.7305831336 +/- 17.8591882527
+theta mean = 54.0646060937 +/- 7.1855563153
+
+In [300]: %run calplot_1773.py
+h mean = 55.8650862013 +/- 4.63208217266
+theta mean = 55.3568878172 +/- 0.943365489357
+
+In [301]: %run vector_reconstruction_1760.py
+ERROR: File `'vector_reconstruction_1760.py'` not found.
+
+In [302]: cd ..
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta
+
+In [303]: %run vector_reconstruction_1760.py
+ERROR: File `'vector_reconstruction_1760.py'` not found.
+
+In [304]: cd 1760/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760
+
+In [305]: %run vector_reconstruction_1760.py
+
+In [306]: %run vector_reconstruction_1760.py
+
+In [307]: %run vector_reconstruction_1760.py
+
+In [308]: %run vector_reconstruction_1760.py
+
+In [309]: %run vector_reconstruction_1760.py
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760/vector_reconstruction_1760.py in <module>()
+     68 datas0 = np.add(datas,-np.cos(theta)*zfield)
+     69 datas0filter = signal.wiener(datas0, 3)
+---> 70 datas0filter = signal.medfilt(datas0, 2)
+     71 
+     72 wimdata = fi.window_image(datas0)
+
+//anaconda/lib/python3.5/site-packages/scipy/signal/signaltools.py in medfilt(volume, kernel_size)
+    560     for k in range(volume.ndim):
+    561         if (kernel_size[k] % 2) != 1:
+--> 562             raise ValueError("Each element of kernel_size should be odd.")
+    563 
+    564     domain = ones(kernel_size)
+
+ValueError: Each element of kernel_size should be odd.
+
+In [310]: %run vector_reconstruction_1760.py
+
+In [311]: %run analytic_m_1760.py
+calculating nr at lower height
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+calculating b at lower height
+calculating b at mean height
+calculating b at upper height
+
+In [312]: %run linecutplot_1760_arb.py
+
+In [313]: %run vector_reconstruction_1760.py
+
+In [314]: %run vector_reconstruction_1760.py
+
+In [315]: %run vector_reconstruction_1760.py
+
+In [316]: %run vector_reconstruction_1760.py
+
+In [317]: %run analytic_m_1760.py
+calculating nr at lower height
+^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+calculating b at lower height
+calculating b at mean height
+calculating b at upper height
+
+In [318]: 
+
+In [318]: %run linecutplot_1760_arb.py
+
+In [319]: cd ../calibration/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration
+
+In [320]: ls
+calplot_1739.py          calplot_1773_combine.py
+calplot_1743.py          calplot_1789.py
+calplot_1747.py          calplot_1794.py
+calplot_1771.py          nv_angle_cal.py
+calplot_1773.py
+
+In [321]: %run cal
+calplot_1739.py          calplot_1773.py
+calplot_1743.py          calplot_1773_combine.py
+calplot_1747.py          calplot_1789.py
+calplot_1771.py          calplot_1794.py
+
+In [321]: %run calplot_177
+calplot_1771.py          calplot_1773_combine.py
+calplot_1773.py          
+
+In [321]: %run calplot_1773
+calplot_1773.py          calplot_1773_combine.py
+
+In [321]: %run calplot_1773.py
+h mean = 55.8650862013 +/- 4.63208217266
+theta mean = 55.3568878172 +/- 0.943365489357
+
+In [322]: %run cal
+calplot_1739.py          calplot_1773.py
+calplot_1743.py          calplot_1773_combine.py
+calplot_1747.py          calplot_1789.py
+calplot_1771.py          calplot_1794.py
+
+In [322]: %run calplot_1773.py
+fit fail
+fit fail
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_1773.py:44: RuntimeWarning: invalid value encountered in true_divide
+  bx = (2e-3)*mstnm*(h/(h**2+(x-x0)**2))
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_1773.py:45: RuntimeWarning: invalid value encountered in true_divide
+  bz = -(2e-3)*mstnm*((x-x0)/(h**2+(x-x0)**2))
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+h mean = 0.0 +/- 0.0
+theta mean = 0.0 +/- 0.0
+
+In [323]: %run calplot_1773.py
+fit fail
+fit fail
+---------------------------------------------------------------------------
+AssertionError                            Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_1773.py in <module>()
+    113     csubplot = plt.subplot(gs[(j%5),int(np.floor(j/5)*2)])
+    114     plt.plot(xShort,cal_func(xShort,*guess),'g-')
+--> 115     plt.errorbar(xShort,yShort,yerr=yeShort,color='#000000',fmt='.')
+    116     plt.plot(xShort,cal_func(xShort,*popt),'r-')
+    117     csubplot = plt.subplot(gs[(j%5),int(np.floor(j/5)*2+1)])
+
+//anaconda/lib/python3.5/site-packages/matplotlib/pyplot.py in errorbar(x, y, yerr, xerr, fmt, ecolor, elinewidth, capsize, barsabove, lolims, uplims, xlolims, xuplims, errorevery, capthick, hold, data, **kwargs)
+   2828                           xlolims=xlolims, xuplims=xuplims,
+   2829                           errorevery=errorevery, capthick=capthick, data=data,
+-> 2830                           **kwargs)
+   2831     finally:
+   2832         ax.hold(washold)
+
+//anaconda/lib/python3.5/site-packages/matplotlib/__init__.py in inner(ax, *args, **kwargs)
+   1810                     warnings.warn(msg % (label_namer, func.__name__),
+   1811                                   RuntimeWarning, stacklevel=2)
+-> 1812             return func(ax, *args, **kwargs)
+   1813         pre_doc = inner.__doc__
+   1814         if pre_doc is None:
+
+//anaconda/lib/python3.5/site-packages/matplotlib/axes/_axes.py in errorbar(self, x, y, yerr, xerr, fmt, ecolor, elinewidth, capsize, barsabove, lolims, uplims, xlolims, xuplims, errorevery, capthick, **kwargs)
+   2974             noylims = ~(lolims | uplims)
+   2975             if noylims.any():
+-> 2976                 xo, _ = xywhere(x, lower, noylims & everymask)
+   2977                 lo, uo = xywhere(lower, upper, noylims & everymask)
+   2978                 barcols.append(self.vlines(xo, lo, uo, **lines_kw))
+
+//anaconda/lib/python3.5/site-packages/matplotlib/axes/_axes.py in xywhere(xs, ys, mask)
+   2859             ys are not arrays
+   2860             """
+-> 2861             assert len(xs) == len(ys)
+   2862             assert len(xs) == len(mask)
+   2863             xs = [thisx for thisx, b in zip(xs, mask) if b]
+
+AssertionError: 
+
+In [324]: len(xShort)
+Out[324]: 11
+
+In [325]: len(yShort)
+Out[325]: 10
+
+In [326]: len(yShort)
+Out[326]: 10
+
+In [327]: %run calplot_1773.py
+fit fail
+fit fail
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_1773.py:44: RuntimeWarning: invalid value encountered in true_divide
+  bx = (2e-3)*mstnm*(h/(h**2+(x-x0)**2))
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_1773.py:45: RuntimeWarning: invalid value encountered in true_divide
+  bz = -(2e-3)*mstnm*((x-x0)/(h**2+(x-x0)**2))
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+h mean = 0.0 +/- 0.0
+theta mean = 0.0 +/- 0.0
+
+In [328]: %run calplot_1773.py
+fit fail
+fit fail
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_1773.py in <module>()
+    113     plt.figure(1)
+    114     csubplot = plt.subplot(gs[(j%5),int(np.floor(j/5)*2)])
+--> 115     plt.plot(xShortFit,cal_func(xShort,*guess),'g-')
+    116     plt.errorbar(xShort,yShort,yerr=yeShort,color='#000000',fmt='.')
+    117     plt.plot(xShortFit,cal_func(xShort,*popt),'r-')
+
+//anaconda/lib/python3.5/site-packages/matplotlib/pyplot.py in plot(*args, **kwargs)
+   3152         ax.hold(hold)
+   3153     try:
+-> 3154         ret = ax.plot(*args, **kwargs)
+   3155     finally:
+   3156         ax.hold(washold)
+
+//anaconda/lib/python3.5/site-packages/matplotlib/__init__.py in inner(ax, *args, **kwargs)
+   1810                     warnings.warn(msg % (label_namer, func.__name__),
+   1811                                   RuntimeWarning, stacklevel=2)
+-> 1812             return func(ax, *args, **kwargs)
+   1813         pre_doc = inner.__doc__
+   1814         if pre_doc is None:
+
+//anaconda/lib/python3.5/site-packages/matplotlib/axes/_axes.py in plot(self, *args, **kwargs)
+   1422             kwargs['color'] = c
+   1423 
+-> 1424         for line in self._get_lines(*args, **kwargs):
+   1425             self.add_line(line)
+   1426             lines.append(line)
+
+//anaconda/lib/python3.5/site-packages/matplotlib/axes/_base.py in _grab_next_args(self, *args, **kwargs)
+    384                 return
+    385             if len(remaining) <= 3:
+--> 386                 for seg in self._plot_args(remaining, kwargs):
+    387                     yield seg
+    388                 return
+
+//anaconda/lib/python3.5/site-packages/matplotlib/axes/_base.py in _plot_args(self, tup, kwargs)
+    362             x, y = index_of(tup[-1])
+    363 
+--> 364         x, y = self._xy_from_xy(x, y)
+    365 
+    366         if self.command == 'plot':
+
+//anaconda/lib/python3.5/site-packages/matplotlib/axes/_base.py in _xy_from_xy(self, x, y)
+    221         y = _check_1d(y)
+    222         if x.shape[0] != y.shape[0]:
+--> 223             raise ValueError("x and y must have same first dimension")
+    224         if x.ndim > 2 or y.ndim > 2:
+    225             raise ValueError("x and y can be no greater than 2-D")
+
+ValueError: x and y must have same first dimension
+
+In [329]: %run calplot_1773.py
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+fit fail
+h mean = 0.0 +/- 0.0
+theta mean = 0.0 +/- 0.0
+
+In [330]: %run calplot_1773.py
+h mean = 69.627425179 +/- 4.02752436762
+theta mean = 42.3421214408 +/- 4.88269535379
+
+In [331]: %run calplot_1773.py
+h mean = 67.7234077533 +/- 4.4482706617
+theta mean = 48.746433855 +/- 1.75034826458
+
+In [332]: %run calplot_1773.py
+fit fail
+fit fail
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_1773.py in <module>()
+    114     plt.figure(1)
+    115     csubplot = plt.subplot(gs[(j%5),int(np.floor(j/5)*2)])
+--> 116     plt.plot(xFit,cal_func(xFit,*guess),'g-')
+    117     plt.errorbar(xShort,yShort,yerr=yeShort,color='#000000',fmt='.')
+    118     plt.plot(xFit,cal_func(xFit,*popt),'r-')
+
+NameError: name 'xFit' is not defined
+
+In [333]: %run calplot_1773.py
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_1773.py in <module>()
+    115     csubplot = plt.subplot(gs[(j%5),int(np.floor(j/5)*2)])
+    116     plt.plot(xFit,cal_func(xFit,*guess),'g-')
+--> 117     plt.errorbar(xShort,yShort,yerr=yeShort,color='#000000',fmt='.')
+    118     plt.plot(xFit,cal_func(xFit,*popt),'r-')
+    119     csubplot = plt.subplot(gs[(j%5),int(np.floor(j/5)*2+1)])
+
+NameError: name 'xShort' is not defined
+
+In [334]: %run calplot_1773.py
+h mean = 84.705888585 +/- 78.9492408143
+theta mean = 55.3975869831 +/- 0.871176071464
+
+In [335]: %run calplot_1773.py
+h mean = 63.7181622486 +/- 4.57914406008
+theta mean = 55.6127675171 +/- 0.516042358627
+
+In [336]: %run calplot_1773.py
+h mean = 495.116404632 +/- 439.761807851
+theta mean = 74.0486740874 +/- 19.4040739792
+
+In [337]: %run calplot_1773.py
+h mean = 66.9782622475 +/- 4.64140529585
+theta mean = 53.041594532 +/- 0.967837607675
+
+In [338]: %run calplot_1773.py
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_1773.py:89: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_1773.py:90: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  guess = [70, 0, 55]
+h mean = 67.6665876364 +/- 5.3219532787
+theta mean = 48.5720780305 +/- 6.07312374461
+
+In [339]: %run calplot_1773.py
+h mean = 67.666546623 +/- 5.3219850815
+theta mean = 48.5720809825 +/- 6.07311706645
+
+In [340]: yeShort
+Out[340]: 
+array([ 0.55215086,  0.6906012 ,  0.69474817,  0.55040218,  0.77822052,
+        0.73767128,  0.62729549,  0.74849248,  0.61584454,  0.1       ,
+        0.1       ,  0.1       ,  0.94570858,  0.72119815,  0.75251843,
+        0.71664253,  0.91025077,  0.85345305,  0.73122875,  0.68942179,
+        0.54637102,  0.31997031,  0.32978307,  0.30832446,  0.29612971,
+        0.25588291,  0.25098976,  0.2635545 ,  0.26896305,  0.33392853,
+        0.59785068,  0.28089719,  2.67561122,  1.78279939,  0.35959791,
+        0.2354073 ,  0.28674222,  0.28047165,  0.25510272,  0.30855986,
+        0.24677705])
+
+In [341]: yeShort
+Out[341]: 
+array([ 0.55215086,  0.6906012 ,  0.69474817,  0.55040218,  0.77822052,
+        0.73767128,  0.62729549,  0.74849248,  0.61584454,  0.1       ,
+        0.1       ,  0.1       ,  0.94570858,  0.72119815,  0.75251843,
+        0.71664253,  0.91025077,  0.85345305,  0.73122875,  0.68942179,
+        0.54637102,  0.31997031,  0.32978307,  0.30832446,  0.29612971,
+        0.25588291,  0.25098976,  0.2635545 ,  0.26896305,  0.33392853,
+        0.59785068,  0.28089719,  2.67561122,  1.78279939,  0.35959791,
+        0.2354073 ,  0.28674222,  0.28047165,  0.25510272,  0.30855986,
+        0.24677705])
+
+In [342]: %run calplot_1773.py
+h mean = 54.3457124675 +/- 6.8120926228
+theta mean = 47.584579886 +/- 3.97266757835
+
+In [343]: %run calplot_1773.py
+h mean = 57.1635276631 +/- 6.03543094903
+theta mean = 51.1428007652 +/- 1.51976196937
+
+In [344]: %run calplot_1773.py
+h mean = 66.9782308932 +/- 4.64139257346
+theta mean = 53.0415982451 +/- 0.96783594524
+
+In [345]: %run calplot_1773.py
+h mean = 66.7871637965 +/- 4.59962127395
+theta mean = 54.869396223 +/- 0.593900892582
+
+In [346]: %run calplot_1773.py
+h mean = 66.9782308932 +/- 4.64139257346
+theta mean = 53.0415982451 +/- 0.96783594524
+
+In [347]: np.phi(55)*12
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-347-471b2ede0024> in <module>()
+----> 1 np.phi(55)*12
+
+AttributeError: module 'numpy' has no attribute 'phi'
+
+In [348]: np.cos(55)*12
+Out[348]: 0.26552107514346879
+
+In [349]: np.cos(55*pi/180)*12
+Out[349]: 6.8829172362125544
+
+In [350]: %run calplot_1773.py
+h mean = 66.9782308932 +/- 4.64139257346
+theta mean = 53.0415982451 +/- 0.96783594524
+
+In [351]: %run calplot_1773.py
+h mean = 66.9782308932 +/- 4.64139257346
+theta mean = 53.0415982451 +/- 0.96783594524
+
+In [352]: np.cos(np.mean(thetalist))
+Out[352]: -0.93395343801698627
+
+In [353]: np.cos(np.mean(thetalist))
+Out[353]: -0.93395343801698627
+
+In [354]: np.cos(np.mean(thetalist))
+Out[354]: -0.93395343801698627
+
+In [355]: %run calplot_1773.py
+h mean = 66.9782308932 +/- 4.64139257346
+theta mean = 53.0415982451 +/- 0.96783594524
+
+In [356]: %run calplot_1773.py
+53.7825293752
+51.3492613401
+53.9965283934
+52.9989173517
+54.8722745905
+52.6942495194
+52.5535550612
+52.1085188059
+52.6598734669
+52.9958577918
+h mean = 66.9782308932 +/- 4.64139257346
+theta mean = 53.0415982451 +/- 0.96783594524
+
+In [357]: %run calplot_1773.py
+h mean = 66.9782308932 +/- 4.64139257346
+theta mean = 53.0415982451 +/- 0.96783594524
+
+In [358]: y[-4:-1]
+Out[358]: array([  7.08541113,  13.99993842,   7.11155461])
+
+In [359]: y[-6:-1]
+Out[359]: array([  6.29053058,   5.82655431,   7.08541113,  13.99993842,   7.11155461])
+
+In [360]: y[-6:]
+Out[360]: 
+array([  6.29053058,   5.82655431,   7.08541113,  13.99993842,
+         7.11155461,   6.19811921])
+
+In [361]: y[-5:]
+Out[361]: array([  5.82655431,   7.08541113,  13.99993842,   7.11155461,   6.19811921])
+
+In [362]: %run calplot_1773.py
+  File "/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_1773.py", line 76
+    if (j != 1 and j != 2)
+                          ^
+SyntaxError: invalid syntax
+
+
+In [363]: %run calplot_1773.py
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_1773.py in <module>()
+     75 
+     76     if (j != 1 and j != 2):
+---> 77         thetaMean += np.mean(y[-6:])
+     78     thetaMean = thetaMean/8
+     79 
+
+NameError: name 'thetaMean' is not defined
+
+In [364]: %run calplot_1773.py
+h mean = 84.7173435455 +/- 78.9979118433
+theta mean = 55.3976028468 +/- 0.871149372535
+
+In [365]: thetaMeanEnd
+Out[365]: 1.0768152321586182
+
+In [366]: %run calplot_1773.py
+h mean = 84.7173435455 +/- 78.9979118433
+theta mean = 55.3976028468 +/- 0.871149372535
+
+In [367]: BzMeanEnd
+Out[367]: 1.0768152321586182
+
+In [368]: %run calplot_1773.py
+6.17058458452
+6.12981949504
+6.91414581277
+7.10878895695
+6.87814068599
+6.9867638414
+6.90003052482
+8.61452185727
+h mean = 63.7182389292 +/- 4.57911377276
+theta mean = 55.6127656523 +/- 0.516044689329
+
+In [369]: %run calplot_1773.py
+6.17058458452
+12.2883521565
+18.4362705324
+24.6807912628
+30.6703333292
+36.7973295848
+42.8240146295
+50.5760326711
+h mean = 64.2719372946 +/- 1.23407909259
+theta mean = 54.7030599749 +/- 0.228729912057
+
+In [370]: BzMeanEnd
+Out[370]: 6.3220040838913585
+
+In [371]: %run calplot_1773.py
+6.17058458452
+12.2883521565
+18.4362705324
+24.6807912628
+30.6703333292
+36.7973295848
+42.8240146295
+50.5760326711
+h mean = 64.2719372946 +/- 1.23407909259
+theta mean = 54.7030599749 +/- 0.228729912057
+
+In [372]: %run calplot_1773.py
+6.32200408389
+h mean = 63.7182389292 +/- 4.57911377276
+theta mean = 55.6127656523 +/- 0.516044689329
+
+In [373]: %run calplot_1773.py
+13.1451212154
+h mean = 63.7182389292 +/- 4.57911377276
+theta mean = 55.6127656523 +/- 0.516044689329
+
+In [374]: %run calplot_1773.py
+6.57256060768
+h mean = 63.7182389292 +/- 4.57911377276
+theta mean = 55.6127656523 +/- 0.516044689329
+
+In [375]: BzTails
+Out[375]: [0, 3, 4, 6, 7]
+
+In [376]: BzTails
+Out[376]: [0, 3, 4, 6, 7]
+
+In [377]: %run calplot_1773.py
+6.17058458452
+6.11776757202
+6.14791837589
+5.98954206637
+6.12699625565
+6.57256060768
+h mean = 63.7182389292 +/- 4.57911377276
+theta mean = 55.6127656523 +/- 0.516044689329
+
+In [378]: %run calplot_1773.py
+6.17058458452
+8.19036872887
+6.11776757202
+5.74433537887
+6.14791837589
+5.4312218869
+5.98954206637
+6.99763288631
+6.12699625565
+8.80923834137
+6.57256060768
+h mean = 63.7182389292 +/- 4.57911377276
+theta mean = 55.6127656523 +/- 0.516044689329
+
+In [379]: fi
+Out[379]: <module 'fourier_image' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/fourier_image.py'>
+
+In [380]: fig1, ax1 = plt.subplots()
+
+In [381]: plt.plot(ffdata[2][0,-6:])
+Out[381]: [<matplotlib.lines.Line2D at 0x125c150b8>]
+
+In [382]: plt.plot(np.flipud(ffdata[2][0,-6:]))
+Out[382]: [<matplotlib.lines.Line2D at 0x11b742198>]
+
+In [383]: fig1, ax1 = plt.subplots()
+
+In [384]: plt.plot(np.flipud(ffdata[2][0,-6:]))
+Out[384]: [<matplotlib.lines.Line2D at 0x1211f4c88>]
+
+In [385]: fig1, ax1 = plt.subplots()
+
+In [386]: plt.plot(np.flipud(ffdata[2][0,-6:]))
+Out[386]: [<matplotlib.lines.Line2D at 0x1291af160>]
+
+In [387]: plt.plot(np.flipud(ffdata[2][0,:]))
+Out[387]: [<matplotlib.lines.Line2D at 0x11b51ef98>]
+
+In [388]: plt.plot(ffdata[2][0,:])
+Out[388]: [<matplotlib.lines.Line2D at 0x11c8b0be0>]
+
+In [389]: fig1, ax1 = plt.subplots()
+
+In [390]: plt.plot(ffdata[2][0,:])
+Out[390]: [<matplotlib.lines.Line2D at 0x122a50860>]
+
+In [391]: plt.plot(np.flipud(ffdata[2][0,:]))
+Out[391]: [<matplotlib.lines.Line2D at 0x1291a35f8>]
+
+In [392]: plt.plot(np.flipud(ffdata[2][0,-6:]))
+Out[392]: [<matplotlib.lines.Line2D at 0x1239d42b0>]
+
+In [393]: plt.plot(np.flipud(ffdata[2][0,:6]))
+Out[393]: [<matplotlib.lines.Line2D at 0x1239d4ba8>]
+
+In [394]: fig1, ax1 = plt.subplots()
+
+In [395]: plt.plot(np.flipud(ffdata[2][0,:6]))
+Out[395]: [<matplotlib.lines.Line2D at 0x1281a50b8>]
+
+In [396]: %run calplot_1773.py
+  File "/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_1773.py", line 74
+    BzMeanEnd += np.mean(ffdata[0][i,-6:])
+            ^
+SyntaxError: invalid syntax
+
+
+In [397]: %run calplot_1773.py
+6.17058458452
+6.20196901518
+6.17713182292
+6.19437370804
+6.19658020744
+6.14782723988
+6.11776757202
+6.0879617628
+6.14791837589
+6.18027329375
+5.98954206637
+6.01007733571
+6.12699625565
+6.23266516667
+6.14154774335
+h mean = 63.7182389292 +/- 4.57911377276
+theta mean = 55.6127656523 +/- 0.516044689329
+
+In [398]: BzMeanEnd
+Out[398]: 6.1415477433460861
+
+In [399]: np.arccos[6.14154774/12]
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-399-2cfcdb155564> in <module>()
+----> 1 np.arccos[6.14154774/12]
+
+TypeError: 'numpy.ufunc' object is not subscriptable
+
+In [400]: np.arccos(6.14154774/12)
+Out[400]: 1.0335227055519312
+
+In [401]: %run calplot_1773.py
+6.17058458452
+6.20196901518
+6.17713182292
+6.19437370804
+6.19658020744
+6.14782723988
+6.11776757202
+6.0879617628
+6.14791837589
+6.18027329375
+5.98954206637
+6.01007733571
+6.12699625565
+6.23266516667
+6.14154774335
+---------------------------------------------------------------------------
+IndexError                                Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_1773.py in <module>()
+    121     hlist[2*j] = popt[0]
+    122     hlist[2*j+1] = rpopt[0]
+--> 123     thetalist[2*j] = popt[2]
+    124     thetalist[2*j+1] = rpopt[2]
+    125 #    bz0list[2*j] = popt[4]
+
+IndexError: index 2 is out of bounds for axis 0 with size 2
+
+In [402]: %run calplot_1773.py
+6.17058458452
+6.20196901518
+6.17713182292
+6.19437370804
+6.19658020744
+6.14782723988
+6.11776757202
+6.0879617628
+6.14791837589
+6.18027329375
+5.98954206637
+6.01007733571
+6.12699625565
+6.23266516667
+6.14154774335
+h mean = 63.8056698361 +/- 4.66602569376
+theta mean = 0.0 +/- 0.0
+
+In [403]: %run calplot_1773.py
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_1773.py in <module>()
+    119     hlist[2*j] = popt[0]
+    120     hlist[2*j+1] = rpopt[0]
+--> 121     philist[2*j] = popt[2]
+    122     philist[2*j+1] = rpopt[2]
+    123     # thetalist[2*j] = popt[2]
+
+NameError: name 'philist' is not defined
+
+In [404]: %run calplot_1773.py
+h mean = 57.299964244 +/- 18.2691737771
+phi mean = -9406848.09665 +/- 8640129.11812
+
+In [405]: %run calplot_1773.py
+h mean = 60.7146210459 +/- 12.5489191867
+phi mean = -6521527.91295 +/- 12232636.6539
+
+In [406]: 6521527.91%(2*pi)
+Out[406]: 2.5345631706724774
+
+In [407]: 6521527.91%(2*pi)-2*pi
+Out[407]: -3.748622136507109
+
+In [408]: 6521527.91%(2*pi)-pi
+Out[408]: -0.6070294829173157
+
+In [409]: %run calplot_1773.py
+//anaconda/lib/python3.5/site-packages/scipy/optimize/minpack.py:715: OptimizeWarning: Covariance of the parameters could not be estimated
+  category=OptimizeWarning)
+h mean = 63.8056698361 +/- 4.66602569376
+
+In [410]: %run calplot_1773.py
+h mean = 63.8056698361 +/- 4.66602569376
+
+In [411]: %run calplot_short_1773.py
+h mean = 65.5636641729 +/- 4.49362088576
+
+In [412]: %run calplot_short_1773.py
+h mean = 65.5636641729 +/- 4.49362088576
+
+In [413]: %run calplot_short_1773.py
+h mean = 65.5637078385 +/- 4.49370444089
+
+In [414]: %run calplot_short_1773.py
+h mean = 63.5224815306 +/- 4.48051118908
+
+In [415]: %run calplot_short_1773.py
+fit fail
+fit fail
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_short_1773.py in <module>()
+    129     plt.figure(1)
+    130     csubplot = plt.subplot(gs[(j%5),int(np.floor(j/5)*2)])
+--> 131     plt.plot(xShortFit,cal_func(xShortFit,*guess),'g-')
+    132     plt.errorbar(xShort,yShort,yerr=yeShort,color='#000000',fmt='.')
+    133     plt.plot(xShortFit,cal_func(xShortFit,*popt),'r-')
+
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_short_1773.py in cal_func(x, *args)
+     41     h = args[0]
+     42     x0 = args[1]
+---> 43     mstnm
+     44     theta = 1.0335227055519
+     45     # theta = args[2] * pi / 180
+
+NameError: name 'mstnm' is not defined
+
+In [416]: %run calplot_short_1773.py
+h mean = 88.9865159128 +/- 5.53554910807
+
+In [417]: %run calplot_short_1773.py
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_short_1773.py in <module>()
+    120     hlist[2*j] = popt[0]
+    121     hlist[2*j+1] = rpopt[0]
+--> 122     mstlist[2*j] = popt[2]
+    123     mstlist[2*j+1] = rpopt[2]
+    124     # philist[2*j] = popt[2]
+
+NameError: name 'mstlist' is not defined
+
+In [418]: %run calplot_short_1773.py
+h mean = 88.9865159128 +/- 5.53554910807
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_short_1773.py in <module>()
+    144 
+    145 print('h mean = '+str(np.mean(hlist))+' +/- '+str(np.std(hlist)))
+--> 146 print('Mst mean = '+str(np.mean(mstnm))+' +/- '+str(np.std(hlist)))
+    147 # print('theta mean = '+str(np.mean(thetalist))+' +/- '+str(np.std(thetalist)))
+    148 # print('phi mean = '+str(np.mean(philist))+' +/- '+str(np.std(philist)))
+
+NameError: name 'mstnm' is not defined
+
+In [419]: %run calplot_short_1773.py
+h mean = 88.9865159128 +/- 5.53554910807
+Mst mean = 1016960.93928 +/- 127842.772098
+
+In [420]: %run calplot_short_1773.py
+h mean = 65.5637078385 +/- 4.49370444089
+
+In [421]: %run calplot_short_1773.py
+h mean = 65.3567246748 +/- 4.47638980774
+
+In [422]: %run calplot_short_1773.py
+h mean = 69.1055764101 +/- 4.72135873702
+
+In [423]: %run calplot_short_1773.py
+h mean = 69.1055764101 +/- 4.72135873702
+
+In [424]: 400/25.4
+Out[424]: 15.748031496062993
+
+In [425]: 400/25
+Out[425]: 16.0
+
+In [426]: %run cal
+calplot_1739.py            calplot_1773_combine.py
+calplot_1743.py            calplot_1789.py
+calplot_1747.py            calplot_1794.py
+calplot_1771.py            calplot_edgewidth_1773.py
+calplot_1773.py            calplot_short_1773.py
+
+In [426]: %run calplot_edgewidth_1773.py
+fit fail
+fit fail
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_edgewidth_1773.py in <module>()
+    133     plt.figure(1)
+    134     csubplot = plt.subplot(gs[(j%5),int(np.floor(j/5)*2)])
+--> 135     plt.plot(x,cal_func(x,*guess),'g-')
+    136     plt.errorbar(x,y,yerr=ye,color='#000000',fmt='.')
+    137     plt.plot(x,cal_func(x,*popt),'r-')
+
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_edgewidth_1773.py in cal_func(x, *args)
+     47     N = 10
+     48     jlist = np.arange(N)
+---> 49     bdenomlist = (1/(h**2+(x+dwWidth*np.arctanh(jlist/N)-x0)**2))
+     50     bx = (2e-3)*mstnm*h*bxlist
+     51     bz = -(2e-3)*mstnm*(x-x0)*bdenomlist
+
+ValueError: operands could not be broadcast together with shapes (100,) (10,) 
+
+In [427]: %run calplot_edgewidth_1773.py
+//anaconda/lib/python3.5/site-packages/scipy/optimize/minpack.py:715: OptimizeWarning: Covariance of the parameters could not be estimated
+  category=OptimizeWarning)
+h mean = 3485.10686035 +/- 450.915780956
+
+In [428]: %run calplot_edgewidth_1773.py
+h mean = 63.8056700919 +/- 4.66602574989
+
+In [429]: cal_params[8]
+Out[429]: 3.6990999999999999e-06
+
+In [430]: %run calplot_edgewidth_1773.py
+h mean = 66.1684351458 +/- 5.8151816023
+
+In [431]: %run calplot_edgewidth_1773.py
+h mean = 66.1684351458 +/- 5.8151816023
+
+In [432]: %run calplot_edgewidth_1773.py
+h mean = 80.5163705149 +/- 8.87399330479
+
+In [433]: %run calplot_edgewidth_1773.py
+h mean = 68.4138574261 +/- 7.2949650289
+
+In [434]: %run calplot_edgewidth_1773.py
+fit fail
+---------------------------------------------------------------------------
+IndexError                                Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_edgewidth_1773.py in <module>()
+    135     plt.figure(1)
+    136     csubplot = plt.subplot(gs[(j%5),int(np.floor(j/5)*2)])
+--> 137     plt.plot(x,cal_func(x,*guess),'g-')
+    138     plt.errorbar(x,y,yerr=ye,color='#000000',fmt='.')
+    139     plt.plot(x,cal_func(x,*popt),'r-')
+
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/calibration/calplot_edgewidth_1773.py in cal_func(x, *args)
+     42     h = args[0]
+     43     x0 = args[1]
+---> 44     dwWidthFit = args[2]
+     45     theta = 1.0335227055519
+     46     # theta = args[2] * pi / 180
+
+IndexError: tuple index out of range
+
+In [435]: %run calplot_edgewidth_1773.py
+h mean = 65.9636863428 +/- 5.12361689758
+
+In [436]: print(domains)
+[[   0.    0.    0. ...,  255.    0.    0.]
+ [   0.    0.    0. ...,    0.    0.    0.]
+ [   0.    0.    0. ...,    0.    0.    0.]
+ ..., 
+ [ 255.    0.    0. ...,    0.    0.    0.]
+ [   0.    0.    0. ...,    0.    0.    0.]
+ [   0.    0.    0. ...,    0.    0.    0.]]
+
+In [437]: %run calplot_edgewidth_1773.py
+h mean = 65.9636863428 +/- 5.12361689758
+edge width mean = 45.1837603187 +/- 15.1992147136
+
+In [438]: %run calplot_edgewidth_short_1773.py
+h mean = 63.7572222641 +/- 5.44752869101
+edge width mean = 77.3162122929 +/- 19.4174540366
+
+In [439]: %run calplot_edgewidth_short_1773.py
+h mean = 65.2945316262 +/- 11.4323915669
+edge width mean = 146.485859346 +/- 290.51420054
+
+In [440]: %run calplot_edgewidth_short_1773.py
+h mean = 31.1276383756 +/- 46.6429015615
+edge width mean = 487.629597154 +/- 513.481645293
+
+In [441]: %run calplot_edgewidth_short_1773.py
+h mean = 59.5654405874 +/- 20.0178989322
+edge width mean = 136.21924161 +/- 256.073310136
+
+In [442]: %run calplot_edgewidth_short_1773.py
+h mean = 63.8044800025 +/- 5.44827207223
+edge width mean = 78.2952973677 +/- 18.6592870443
+
+In [443]: %run calplot_edgewidth_short_1773.py
+h mean = 67.5575442317 +/- 6.61126903292
+edge width mean = 78.7687226788 +/- 19.7788124441
+
+In [444]: %run calplot_edgewidth_short_1773.py
+h mean = 63.8597524664 +/- 5.35320619904
+edge width mean = 73.924093665 +/- 16.9593342871
+
+In [445]: %run calplot_edgewidth_short_1773.py
+h mean = 63.768052946 +/- 5.41458580711
+edge width mean = 76.0472410363 +/- 19.085721135
+
+In [446]: %run calplot_edgewidth_short_1773.py
+h mean = 63.9493461553 +/- 4.97381185174
+edge width mean = 65.4997193551 +/- 19.8853014301
+
+In [447]: %run calplot_edgewidth_short_1773.py
+h mean = 67.5453563487 +/- 6.64070454505
+edge width mean = 79.9386007774 +/- 20.2266907593
+
+In [448]: %run calplot_edgewidth_short_1773.py
+h mean = 67.5101864372 +/- 6.62439839356
+edge width mean = 77.1549144698 +/- 20.0233512556
+
+In [449]: %run calplot_edgewidth_short_1773.py
+h mean = 63.4248235459 +/- 4.86103867955
+edge width mean = 61.7216544028 +/- 20.0913334856
+
+In [450]: BzMeanEnd
+Out[450]: 6.1415477433460861
+
+In [451]: np.arccos(BzMeanEnd/12)
+Out[451]: 1.033522705227361
+
+In [452]: ls
+calplot_1739.py                  calplot_1789.py
+calplot_1743.py                  calplot_1794.py
+calplot_1747.py                  calplot_edgewidth_1773.py
+calplot_1771.py                  calplot_edgewidth_short_1773.py
+calplot_1773.py                  calplot_short_1773.py
+calplot_1773_combine.py          nv_angle_cal.py
+
+In [453]: cd ..
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta
+
+In [454]: ls
+1760/                          get_ovf_magn809.py
+calc_demag_energy_oommf.py     reconstruction/
+calibration/                   squid/
+contour_selection/             stray_calc_compare
+contourplots/                  stray_calc_compare.py
+esrsweep.py                    stray_calc_compare_dipole.py
+esrsweepex.py                  stray_calc_compare_edge.py
+fullfield_plots/               vector_reconstruction_1739.py
+get_ovf_magn1836.py            vector_reconstruction_1781.py
+
+In [455]: %run set_cal_params.py
+ERROR: File `'set_cal_params.py'` not found.
+
+In [456]: cd 1760/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/ta/1760
+
+In [457]: %run set_cal_params.py
+
+In [458]: %run vector_reconstruction_1760.py
+
+In [459]: %run analytic_m_1760.py
+calculating nr at lower height
+calculating nr at mean height
+calculating nr at upper height
+calculating nl at lower height
+calculating nl at mean height
+calculating nl at upper height
+calculating b at lower height
+calculating b at mean height
+calculating b at upper height
+
+In [460]: %run linecutplot_1760_arb.py
+
+In [461]: %run linecutplot_1760_arb.py
+
+In [462]: exit
+ajenkins:squid alec$ 
+ajenkins:squid alec$ 
+ajenkins:squid alec$ ipython --pylab qt
+Python 3.5.2 |Anaconda 2.5.0 (x86_64)| (default, Jul  2 2016, 17:52:12) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 4.0.3 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+In [1]: 
+KeyboardInterrupt
+
+In [1]: exit
+ajenkins:squid alec$ jupyter notebook
+[I 09:09:07.511 NotebookApp] Writing notebook server cookie secret to /Users/alec/Library/Jupyter/runtime/notebook_cookie_secret
+[I 09:09:09.124 NotebookApp] Serving notebooks from local directory: /Users/alec/UCSB/LTSPM/cofeb_analysis/ta/squid
+[I 09:09:09.124 NotebookApp] 0 active kernels 
+[I 09:09:09.124 NotebookApp] The Jupyter Notebook is running at: http://localhost:8888/
+[I 09:09:09.125 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[I 09:14:14.665 NotebookApp] Creating new file in 
+[W 09:15:19.211 NotebookApp] delete /untitled
+^C[I 09:18:41.060 NotebookApp] interrupted
+Serving notebooks from local directory: /Users/alec/UCSB/LTSPM/cofeb_analysis/ta/squid
+0 active kernels 
+The Jupyter Notebook is running at: http://localhost:8888/
+Shutdown this notebook server (y/[n])? y
+[C 09:18:43.610 NotebookApp] Shutdown confirmed
+[I 09:18:43.613 NotebookApp] Shutting down kernels
+ajenkins:squid alec$ cd ../../
+ajenkins:cofeb_analysis alec$ cd ..
+ajenkins:LTSPM alec$ jupyter notebook
+[I 09:19:03.624 NotebookApp] Serving notebooks from local directory: /Users/alec/UCSB/LTSPM
+[I 09:19:03.624 NotebookApp] 0 active kernels 
+[I 09:19:03.624 NotebookApp] The Jupyter Notebook is running at: http://localhost:8888/
+[I 09:19:03.625 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[I 09:21:30.218 NotebookApp] Creating new notebook in /cofeb_analysis/ta/1760
+[I 09:21:30.285 NotebookApp] Writing notebook-signing key to /Users/alec/Library/Jupyter/notebook_secret
+[I 09:21:31.888 NotebookApp] Kernel started: 6998d029-e322-4373-b0af-b0e593a23947
+[I 09:23:32.973 NotebookApp] Saving file at /cofeb_analysis/ta/1760/Untitled.ipynb
+^C[I 09:25:01.858 NotebookApp] interrupted
+Serving notebooks from local directory: /Users/alec/UCSB/LTSPM
+1 active kernels 
+The Jupyter Notebook is running at: http://localhost:8888/
+Shutdown this notebook server (y/[n])? y
+[C 09:25:03.381 NotebookApp] Shutdown confirmed
+[I 09:25:03.382 NotebookApp] Shutting down kernels
+[I 09:25:04.005 NotebookApp] Kernel shutdown: 6998d029-e322-4373-b0af-b0e593a23947
+ajenkins:LTSPM alec$ ls
+LTSPM_analysis __pycache__    cofeb_analysis
+ajenkins:LTSPM alec$ ipython --pylab qt
+Python 3.5.2 |Anaconda 2.5.0 (x86_64)| (default, Jul  2 2016, 17:52:12) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 4.0.3 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+In [1]: %run linecutplot_1760_arb.py
+ERROR: File `'linecutplot_1760_arb.py'` not found.
+
+In [2]: exit
+ajenkins:LTSPM alec$ cd cofeb_analysis/ta/1760/
+ajenkins:1760 alec$ ipython --pylab qt
+Python 3.5.2 |Anaconda 2.5.0 (x86_64)| (default, Jul  2 2016, 17:52:12) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 4.0.3 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+In [1]: %run lin
+linecutplot_1760.py      linecutplot_1760_arb.py
+
+In [1]: %run linecutplot_1760_arb.py
+
+In [2]: %run linecutplot_1760_arb.py
+
+In [3]: cd ../../irmn/calibration/
+/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn/calibration
+
+In [4]: %run cal
+calplot_1885.py  calplot_1914.py  
+
+In [4]: %run calplot_1885.py
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/Users/alec/UCSB/LTSPM/cofeb_analysis/irmn/calibration/calplot_1885.py in <module>()
+     59 #bz0list = np.zeros(2*yres)
+     60 
+---> 61 ffdata = ls.load_ff('/Users/alec/UCSB/scan_data/'+str(filenum)+'-esrdata/fitdata.txt',xres,yres,maxfgrad=30)
+     62 x = np.arange(0,dres*xres,dres)
+     63 
+
+NameError: name 'ls' is not defined
+
+In [5]: %run calplot_1885.py
+Ms*t mean = 1190963.77897 +/- 117699.491047
+h mean = 83.6414228578 +/- 7.36688227926
+theta mean = 53.7693895707 +/- 0.0973263553444
+
+In [6]: exit
+ajenkins:1760 alec$ ipython --pylab qt
+Python 3.5.2 |Anaconda 2.5.0 (x86_64)| (default, Jul  2 2016, 17:52:12) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 4.0.3 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+In [1]: import plotcontour as pc
+
+In [2]: pc.plotcontour(826,save=True,filetype='pdf')
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-2-928a05d4bdc5> in <module>()
+----> 1 pc.plotcontour(826,save=True,filetype='pdf')
+
+TypeError: plotcontour() missing 1 required positional argument: 'size'
+
+In [3]: pc.plotcontour(826, 500, save=True,filetype='pdf')
+
+In [4]: pc.plotcontour(826, 4, save=True,filetype='pdf')
+
+In [5]: pc.plotcontour(826, 6, save=True,filetype='pdf')
+
+In [6]: pc.plotcontour(810, 6, save=True,filetype='pdf')
+
+In [7]: pc.plotcontour(810, 6, crop=[0.25,0.25,0.75,0.75] save=True,filetype='pdf')
+  File "<ipython-input-7-f7ab1cea7305>", line 1
+    pc.plotcontour(810, 6, crop=[0.25,0.25,0.75,0.75] save=True,filetype='pdf')
+                                                         ^
+SyntaxError: invalid syntax
+
+
+In [8]: pc.plotcontour(810, 6, crop=[0.25,0.25,0.75,0.75], save=True,filetype='pdf')
+/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py:30: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  scandata = scandata[lsd*crop[0]:lsd*crop[1],lsd*crop[2]:lsd*crop[3]]
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+<ipython-input-8-0c581fbc0ed5> in <module>()
+----> 1 pc.plotcontour(810, 6, crop=[0.25,0.25,0.75,0.75], save=True,filetype='pdf')
+
+/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py in plotcontour(scan_num, size, save, savefolder, crop, cb, filetype)
+     31     scan_size = scan_size*(crop[1]-crop[0])
+     32 
+---> 33     mn = np.min(scandata)
+     34     mx = np.max(scandata)
+     35     scandata = (scandata-mn)/(mx-mn)
+
+//anaconda/lib/python3.5/site-packages/numpy/core/fromnumeric.py in amin(a, axis, out, keepdims)
+   2395     else:
+   2396         return _methods._amin(a, axis=axis,
+-> 2397                             out=out, **kwargs)
+   2398 
+   2399 
+
+//anaconda/lib/python3.5/site-packages/numpy/core/_methods.py in _amin(a, axis, out, keepdims)
+     27 
+     28 def _amin(a, axis=None, out=None, keepdims=False):
+---> 29     return umr_minimum(a, axis, None, out, keepdims)
+     30 
+     31 def _sum(a, axis=None, dtype=None, out=None, keepdims=False):
+
+ValueError: zero-size array to reduction operation minimum which has no identity
+
+In [9]: pc.plotcontour(810, 6, crop=[0.25,0.75,0.25,0.75], save=True,filetype='pdf')
+/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py:30: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  scandata = scandata[lsd*crop[0]:lsd*crop[1],lsd*crop[2]:lsd*crop[3]]
+
+In [10]: pc.plotcontour(810, 6, crop=[0.25,0.75,0.25,0.75], save=True,filetype='pdf')
+/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py:30: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  scandata = scandata[lsd*crop[0]:lsd*crop[1],lsd*crop[2]:lsd*crop[3]]
+
+In [11]: importlib.reload(pc)
+Out[11]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [12]: pc.plotcontour(810, 6, crop=[0.25,0.75,0.25,0.75], save=True,filetype='pdf')
+
+In [13]: pc.plotcontour(810, 6, crop=[0.25,0.75,0,0.5], save=True,filetype='pdf')
+
+In [14]: pc.plotcontour(809, 6, crop=[0.25,0.75,0,0.5], save=True,filetype='pdf')
+
+In [15]: pc.plotcontour(809, 6, crop=[0.0,0.5,0.25,0.75], save=True,filetype='pdf')
+
+In [16]: pc.plotcontour(810, 6, crop=[0.0,0.5,0.25,0.75], save=True,filetype='pdf')
+
+In [17]: pc.plotcontour(809, 6, crop=[0.0,0.5,0.25,0.75], save=True,filetype='pdf')
+
+In [18]: pc.plotcontour(811, 6, crop=[0.0,0.5,0.25,0.75], save=True,filetype='pdf')
+
+In [19]: pc.plotcontour(811, 5, crop=[0.0,0.5,0.25,0.75], save=True,filetype='pdf')
+
+In [20]: pc.plotcontour(813, 6, crop=[0.0,0.5,0.25,0.75], save=True,filetype='pdf')
+
+In [21]: pc.plotcontour(823, 6, crop=[0.0,0.5,0.25,0.75], save=True,filetype='pdf')
+
+In [22]: pc.plotcontour(823, 6, save=True,filetype='pdf')
+
+In [23]: pc.plotcontour(825, 6, save=True,filetype='pdf')
+
+In [24]: pc.plotcontour(826, 6, save=True,filetype='pdf')
+
+In [25]: pc.plotcontour(811, 6, crop=[0.0,0.5,0.25,0.75], save=True,filetype='pdf')
+
+In [26]: print(plt.style.available)
+['seaborn-pastel', 'fivethirtyeight', 'classic', 'seaborn-paper', 'seaborn-dark', 'dark_background', 'ggplot', 'seaborn-dark-palette', 'seaborn-ticks', 'seaborn-poster', 'seaborn-notebook', 'grayscale', 'seaborn-muted', 'seaborn-colorblind', 'seaborn-bright', 'seaborn-darkgrid', 'seaborn-white', 'seaborn-talk', 'bmh', 'seaborn-whitegrid', 'seaborn-deep']
+
+In [27]: pc.plotcontour(811, 6, crop=[0.0,0.5,0.25,0.75], save=True,filetype='pdf')
+
+In [28]: mpl.get_configdir()
+Out[28]: '/Users/alec/.matplotlib'
+
+In [29]: import matplotlib as mpl
+
+In [30]: mpl.get_configdir()
+Out[30]: '/Users/alec/.matplotlib'
+
+In [31]: plt.gcf().canvas.get_supported_filetypes()
+Out[31]: 
+{'eps': 'Encapsulated Postscript',
+ 'jpeg': 'Joint Photographic Experts Group',
+ 'jpg': 'Joint Photographic Experts Group',
+ 'pdf': 'Portable Document Format',
+ 'pgf': 'PGF code for LaTeX',
+ 'png': 'Portable Network Graphics',
+ 'ps': 'Postscript',
+ 'raw': 'Raw RGBA bitmap',
+ 'rgba': 'Raw RGBA bitmap',
+ 'svg': 'Scalable Vector Graphics',
+ 'svgz': 'Scalable Vector Graphics',
+ 'tif': 'Tagged Image File Format',
+ 'tiff': 'Tagged Image File Format'}
+
+In [32]: pc.plotcontour(825, 6, save=True,filetype='svg')
+
+In [33]: pc.plotcontour(826, 6, save=True,filetype='svg')
+
+In [34]: importlib.reload(pc)
+  File "/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py", line 51
+    if (!showaxes):
+        ^
+SyntaxError: invalid syntax
+
+
+In [35]: importlib.reload(pc)
+  File "/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py", line 51
+    if !(showaxes):
+       ^
+SyntaxError: invalid syntax
+
+
+In [36]: importlib.reload(pc)
+Out[36]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [37]: pc.plotcontour(825, 6, save=True,filetype='svg')
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [38]: pc.plotcontour(825, 6, save=True,filetype='svg')
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [39]: importlib.reload(pc)
+  File "/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py", line 54
+    fp.format_plot(plt, size, size, 0, 50)
+     ^
+IndentationError: expected an indented block
+
+
+In [40]: importlib.reload(pc)
+Out[40]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [41]: pc.plotcontour(825, 6, save=True,filetype='svg')
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [42]: importlib.reload(pc)
+Out[42]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [43]: pc.plotcontour(825, 6, save=True, filetype='svg', )
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [44]: pc.plotcontour(825, 6, save=True, filetype='svg', )
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [45]: pc.plotcontour(825, 6, save=True, filetype='svg', )
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [46]: importlib.reload(pc)
+Out[46]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [47]: pc.plotcontour(825, 6, save=True, filetype='svg', )
+
+In [48]: importlib.reload(pc)
+Out[48]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [49]: pc.plotcontour(825, 6, save=True, filetype='svg', )
+
+In [50]: pc.plotcontour(825, 6, save=True, filetype='svg', cb=False)
+
+In [51]: pc.plotcontour(825, 6, save=True, filetype='svg', cb=False)
+
+In [52]: importlib.reload(pc)
+Out[52]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [53]: pc.plotcontour(825, 6, save=True, filetype='svg', cb=False)
+
+In [54]: pc.plotcontour(825, 6, save=True, filetype='svg')
+
+In [55]: importlib.reload(pc)
+Out[55]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [56]: pc.plotcontour(825, 6, save=True, filetype='svg')
+
+In [57]: pc.plotcontour(825, 6, save=True, filetype='svg')
+
+In [58]: importlib.reload(pc)
+Out[58]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [59]: pc.plotcontour(825, 6, save=True, filetype='svg')
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [60]: importlib.reload(pc)
+Out[60]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [61]: pc.plotcontour(825, 6, save=True, filetype='svg')
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [62]: importlib.reload(pc)
+Out[62]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [63]: pc.plotcontour(825, 6, save=True, filetype='svg')
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [64]: exit
+ajenkins:1760 alec$ ipython --pylab qt
+Python 3.5.2 |Anaconda 2.5.0 (x86_64)| (default, Jul  2 2016, 17:52:12) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 4.0.3 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+In [1]: import plotcontour as pc
+
+In [2]: pc.plotcontour(825, 6, save=True, filetype='svg')
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-2-add0e6b4ec81> in <module>()
+----> 1 pc.plotcontour(825, 6, save=True, filetype='svg')
+
+/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py in plotcontour(scan_num, size, save, savefolder, crop, cb, hideaxes, filetype)
+     27     infopath = scanfolder+scan_num+'/'+scan_num.zfill(6)+'.info'
+     28     savepath = savefolder+scan_num+'.'+filetype
+---> 29     scandata = ls.load_contour(datapath)
+     30     scan_size = ls.get_scan_size(infopath)
+     31     lsd = len(scandata[0])
+
+NameError: name 'ls' is not defined
+
+In [3]: importlib.reload(pc)
+Out[3]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [4]: pc.plotcontour(825, 6, save=True, filetype='svg')
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [5]: importlib.reload(pc)
+Out[5]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [6]: pc.plotcontour(825, 6, save=True, filetype='svg')
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [7]: pc.plotcontour(825, 6, save=True, filetype='svg')
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [8]: pc.plotcontour(825, 6, save=True, filetype='pdf')
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [9]: importlib.reload(pc)
+Out[9]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [10]: pc.plotcontour(825, 6, save=True, filetype='pdf')
+//anaconda/lib/python3.5/site-packages/matplotlib/colorbar.py:410: UserWarning: set_ticks() must have been called.
+  warnings.warn("set_ticks() must have been called.")
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [11]: importlib.reload(pc)
+Out[11]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [12]: pc.plotcontour(825, 6, save=True, filetype='pdf')
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [13]: importlib.reload(pc)
+Out[13]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [14]: pc.plotcontour(825, 6, save=True, filetype='pdf')
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [15]: importlib.reload(pc)
+Out[15]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [16]: pc.plotcontour(825, 6, save=True, filetype='pdf')
+
+In [17]: importlib.reload(pc)
+Out[17]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [18]: pc.plotcontour(825, 6, save=True, filetype='pdf')
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [19]: importlib.reload(pc)
+Out[19]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [20]: pc.plotcontour(825, 6, save=True, filetype='pdf')
+//anaconda/lib/python3.5/site-packages/matplotlib/figure.py:1744: UserWarning: This figure includes Axes that are not compatible with tight_layout, so its results might be incorrect.
+  warnings.warn("This figure includes Axes that are not "
+
+In [21]: exit
+ajenkins:1760 alec$ ipython --pylab qt
+Python 3.5.2 |Anaconda 2.5.0 (x86_64)| (default, Jul  2 2016, 17:52:12) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 4.0.3 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+In [1]: import plot
+plotcontour    plotfullfield  
+
+In [1]: import plotcontour as pc
+
+In [2]: pc.plotcontour(825, 6, save=False, filetype='pdf')
+
+In [3]: pc.plotcontour(825, 500, save=False, filetype='pdf')
+
+In [4]: import plotcontour as pc
+
+In [5]: pc.plotcontour(825, 500, save=False, filetype='pdf',)
+
+In [6]: import plotcontour as pc
+
+In [7]: pc.plotcontour(825, 500, save=False, filetype='pdf', noaxes_c=True)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-7-d4193b403351> in <module>()
+----> 1 pc.plotcontour(825, 500, save=False, filetype='pdf', noaxes_c=True)
+
+TypeError: plotcontour() got an unexpected keyword argument 'noaxes_c'
+
+In [8]: importlib.reload(pc)
+Out[8]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [9]: pc.plotcontour(825, 500, save=False, filetype='pdf', noaxes_c=True)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-9-d4193b403351> in <module>()
+----> 1 pc.plotcontour(825, 500, save=False, filetype='pdf', noaxes_c=True)
+
+TypeError: plotcontour() got an unexpected keyword argument 'noaxes_c'
+
+In [10]: importlib.reload(pc)
+Out[10]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [11]: pc.plotcontour(825, 500, save=False, filetype='pdf', noaxes_c=True)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-11-d4193b403351> in <module>()
+----> 1 pc.plotcontour(825, 500, save=False, filetype='pdf', noaxes_c=True)
+
+/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py in plotcontour(scan_num, size, save, savefolder, crop, cb, noaxes_c, filetype)
+     48     # if (hideaxes):
+     49         # ax1.axis('off')
+---> 50     fp.format_plot(plt, size, size, 0, 50, noaxes=noaxes_c)
+     51 
+     52     if save:
+
+TypeError: format_plot() got an unexpected keyword argument 'noaxes'
+
+In [12]: importlib.reload(pc)
+Out[12]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [13]: pc.plotcontour(825, 500, save=False, filetype='pdf', noaxes_c=True)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-13-d4193b403351> in <module>()
+----> 1 pc.plotcontour(825, 500, save=False, filetype='pdf', noaxes_c=True)
+
+TypeError: plotcontour() got an unexpected keyword argument 'noaxes_c'
+
+In [14]: pc.plotcontour(825, 500, save=False, filetype='pdf', noaxes=True)
+
+In [15]: importlib.reload(pc)
+Out[15]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [16]: pc.plotcontour(825, 500, save=False, filetype='pdf', noaxes_c=True)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-16-d4193b403351> in <module>()
+----> 1 pc.plotcontour(825, 500, save=False, filetype='pdf', noaxes_c=True)
+
+TypeError: plotcontour() got an unexpected keyword argument 'noaxes_c'
+
+In [17]: pc.plotcontour(825, 500, save=False, filetype='pdf', noaxes=True)
+
+In [18]: importlib.reload(pc)
+Out[18]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [19]: pc.plotcontour(825, 500, save=False, noaxes=True)
+
+In [20]: pc.plotcontour(825, 500, save=True, noaxes=True)
+
+In [21]: importlib.reload(pc)
+Out[21]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [22]: pc.plotcontour(825, 500, save=False, filetype='eps', noaxes=True)
+
+In [23]: importlib.reload(pc)
+Out[23]: <module 'plotcontour' from '/Users/alec/UCSB/LTSPM/LTSPM_analysis/plotcontour.py'>
+
+In [24]: pc.plotcontour(825, 500, save=True, filetype='eps', noaxes=True)

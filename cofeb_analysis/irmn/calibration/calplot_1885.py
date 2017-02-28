@@ -58,7 +58,7 @@ thetalist = np.zeros(2*yres)
 mstlist = np.zeros(2*yres)
 #bz0list = np.zeros(2*yres)
 
-ffdata = ls.load_ff('/Users/alec/UCSB/scan_data/'+str(filenum)+'-esrdata/fitdata.txt',xres,yres,maxfgrad=30)
+ffdata = lscan.load_ff('/Users/alec/UCSB/scan_data/'+str(filenum)+'-esrdata/fitdata.txt',xres,yres,maxfgrad=30)
 x = np.arange(0,dres*xres,dres)
 
 plt.close('all')

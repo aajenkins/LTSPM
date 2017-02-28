@@ -2,7 +2,7 @@
 # @Date:   2017-01-23T16:23:24-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-02-19T21:43:56-08:00
+# @Last modified time: 2017-02-28T10:56:29-08:00
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -66,9 +66,13 @@ asym_norm = np.mean(sq_data_base_norm[1,length_norm-baselen_norm:length_norm])
 asym_ll = np.mean(sq_data_base_ll[1,length_ll-baselen_ll:length_ll])
 ms_avg = (asym_norm + asym_ll)/2
 
+# mst std
+asym_norm_lowH_std = np.std(sq_data_base_norm_lowH[1,length_norm_lowH-baselen_norm_lowH:length_norm_lowH])
+
 Mst_avg = ms_avg/sampleAreaCM
 Mst_normal = asym_norm/sampleAreaCM
 Mst_normal_lowH = asym_norm_lowH/sampleAreaCM
+Mst_normal_lowH_std = asym_norm_lowH_std/sampleAreaCM
 
 sq_data_base_norm[1] = sq_data_base_norm[1] * asym_norm_lowH/asym_norm
 sq_data_base_ll[1] = sq_data_base_ll[1] * asym_norm_lowH/asym_ll
@@ -80,6 +84,7 @@ print('avg. ms = '+str(ms_avg))
 print('Mst_avg = '+str(Mst_avg))
 print('Mst_normal = '+str(Mst_normal))
 print('Mst_normal_lowH = '+str(Mst_normal_lowH))
+print('Mst_normal_lowH_std = '+str(Mst_normal_lowH_std))
 
 
 area_ll = np.trapz(sq_data_base_ll[1], sq_data_base_ll[0])

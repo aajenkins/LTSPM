@@ -10,8 +10,12 @@ import matplotlib.pyplot as plt
 import matplotlib.pylab as pylab
 from scipy import ndimage
 import numpy as np
+import json
 import glob
+
 import load_scan as lscan
+import calc_NV_field as cNV
+import get_bnv_theta_error as gbnve
 import format_plot as fp
 
 font = {'family' : 'Arial',
@@ -26,10 +30,15 @@ scannum = 1760
 
 path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
 filespec = 'Msfixed'
-cal_params = np.loadtxt(path+'cal_parameters_'+filespec+'.txt', delimiter=',')
+cal_params_path = path+'cal_parameters_'+filespec+'.json'
+with open(cal_params_path, 'r') as fread:
+    cal_params = json.load(fread)
 
-theta = cal_params[2]
-phi = cal_params[3]
+phi = cal_params['phi']
+theta = cal_params['theta']
+thetaError = cal_params['thetaError']
+
+thetas = [theta-thetaError,theta,theta+thetaError]
 
 zfields = 9.5
 
@@ -78,24 +87,32 @@ blochnv = np.zeros((3,slen,slen))
 nleftnv = np.zeros((3,slen,slen))
 nrightnv = np.zeros((3,slen,slen))
 
-for k in range(0,3):
-    for j in range(0, slen):
-        for i in range(0, slen):
-            blochnv[k][j,i] = np.abs(
-              (bloch[k][0][j,i]*np.sin(theta)*np.cos(phi))+
-              (bloch[k][1][j,i]*np.sin(theta)*np.sin(phi))+
-              (bloch[k][2][j,i]*np.cos(theta))
-              )
-            nleftnv[k][j,i] = np.abs(
-              (nleft[k][0][j,i]*np.sin(theta)*np.cos(phi))+
-              (nleft[k][1][j,i]*np.sin(theta)*np.sin(phi))+
-              (nleft[k][2][j,i]*np.cos(theta))
-              )
-            nrightnv[k][j,i] = np.abs(
-              (nright[k][0][j,i]*np.sin(theta)*np.cos(phi))+
-              (nright[k][1][j,i]*np.sin(theta)*np.sin(phi))+
-              (nright[k][2][j,i]*np.cos(theta))
-              )
+
+for j in range(0, slen):
+    for i in range(0, slen):
+        blochnv[1][j,i] = cNV.calc_NV_field(bloch[1][0][j,i], bloch[1][1][j,i], bloch[1][2][j,i], thetas[1], phi)
+        nleftnv[1][j,i] = cNV.calc_NV_field(nleft[1][0][j,i], nleft[1][1][j,i], nleft[1][2][j,i], thetas[1], phi)
+        nrightnv[1][j,i] = cNV.calc_NV_field(nright[1][0][j,i], nright[1][1][j,i], nright[1][2][j,i], thetas[1], phi)
+
+        blochnv[0][j,i] = max(cNV.calc_NV_field(bloch[0][0][j,i], bloch[0][1][j,i], bloch[0][2][j,i], thetas[0], phi),
+                                     cNV.calc_NV_field(bloch[0][0][j,i], bloch[0][1][j,i], bloch[0][2][j,i], thetas[1], phi),
+                                     cNV.calc_NV_field(bloch[0][0][j,i], bloch[0][1][j,i], bloch[0][2][j,i], thetas[2], phi))
+        nleftnv[0][j,i] = max(cNV.calc_NV_field(nleft[0][0][j,i], nleft[0][1][j,i], nleft[0][2][j,i], thetas[0], phi),
+                                     cNV.calc_NV_field(nleft[0][0][j,i], nleft[0][1][j,i], nleft[0][2][j,i], thetas[1], phi),
+                                     cNV.calc_NV_field(nleft[0][0][j,i], nleft[0][1][j,i], nleft[0][2][j,i], thetas[2], phi))
+        nrightnv[0][j,i] = max(cNV.calc_NV_field(nright[0][0][j,i], nright[0][1][j,i], nright[0][2][j,i], thetas[0], phi),
+                                      cNV.calc_NV_field(nright[0][0][j,i], nright[0][1][j,i], nright[0][2][j,i], thetas[1], phi),
+                                      cNV.calc_NV_field(nright[0][0][j,i], nright[0][1][j,i], nright[0][2][j,i], thetas[2], phi))
+
+        blochnv[2][j,i] = min(cNV.calc_NV_field(bloch[2][0][j,i], bloch[2][1][j,i], bloch[2][2][j,i], thetas[0], phi),
+                                     cNV.calc_NV_field(bloch[2][0][j,i], bloch[2][1][j,i], bloch[2][2][j,i], thetas[1], phi),
+                                     cNV.calc_NV_field(bloch[2][0][j,i], bloch[2][1][j,i], bloch[2][2][j,i], thetas[2], phi))
+        nleftnv[2][j,i] = min(cNV.calc_NV_field(nleft[2][0][j,i], nleft[2][1][j,i], nleft[2][2][j,i], thetas[0], phi),
+                                     cNV.calc_NV_field(nleft[2][0][j,i], nleft[2][1][j,i], nleft[2][2][j,i], thetas[1], phi),
+                                     cNV.calc_NV_field(nleft[2][0][j,i], nleft[2][1][j,i], nleft[2][2][j,i], thetas[2], phi))
+        nrightnv[2][j,i] = min(cNV.calc_NV_field(nright[2][0][j,i], nright[2][1][j,i], nright[2][2][j,i], thetas[0], phi),
+                                      cNV.calc_NV_field(nright[2][0][j,i], nright[2][1][j,i], nright[2][2][j,i], thetas[1], phi),
+                                      cNV.calc_NV_field(nright[2][0][j,i], nright[2][1][j,i], nright[2][2][j,i], thetas[2], phi))
 
 ffdata = lscan.load_ff('/Users/alec/UCSB/scan_data/'+str(filenum)+'-esrdata/fitdata.txt',dres,dres,maxfgrad=20)
 # misc.imsave('/Users/alec/UCSB/scan_images/full-field/ff'+str(filenum)+'.png', ffdata[0])
@@ -178,81 +195,136 @@ for i in range(0,phinum):
 
 plt.close('all')
 
-fig1, ax1 = plt.subplots()
-im1 = plt.imshow(blochnv[1], cmap='bone')
-fig1.colorbar(im1, ax=ax1, fraction=0.046, pad=0.04)
-plt.plot([sx0, sx1], [sy0, sy1], 'r-')
+# display plots
+# fig1, ax1 = plt.subplots()
+# im1 = plt.imshow(blochnv[1], cmap='bone')
+# fig1.colorbar(im1, ax=ax1, fraction=0.046, pad=0.04)
+# plt.plot([sx0, sx1], [sy0, sy1], 'r-')
+# plt.axis('image')
+# ax1.set_axis_off()
+# fp.format_plot(plt, 450, 450, 0, 50)
+#
+# fig1, ax1 = plt.subplots()
+# im1 = plt.imshow(ffdata[0], cmap='bone', interpolation='nearest')
+# fig1.colorbar(im1, ax=ax1, fraction=0.046, pad=0.04)
+# plt.plot([x0, x1], [y0, y1], 'r-')
+# plt.axis('image')
+# ax1.set_axis_off()
+# fp.format_plot(plt, 450, 450, 450, 50)
+#
+# fig1, ax1 = plt.subplots()
+# im1 = plt.imshow(bzdata, cmap='bone', interpolation='nearest')
+# fig1.colorbar(im1, ax=ax1, fraction=0.046, pad=0.04)
+# plt.axis('image')
+# fp.format_plot(plt, 450, 450, 850, 50)
+# for i in range(0,phinum):
+#    phic = i*2*pi/phinum
+#    bx1, by1 = bx0-bzlclen*np.cos(phic), by0-bzlclen*np.sin(phic)
+#    bx2, by2 = bx0+bzlclen*np.cos(phic), by0+bzlclen*np.sin(phic)
+#    plt.plot([bx1, bx2], [by1, by2], 'r-')
+# plt.axis('image')
+# fig, axes = plt.subplots(ncols=2, nrows=int(phinum/2), sharex=True, sharey=True)
+# for j in range(0,2):
+#     for i in range(0,int(phinum/2)):
+#         axes[i,j].plot(bzs, bzphi[int(i+(phinum/2)*j)],'r.')
+#         axes[i,j].plot(simbzs, simbzphi[0][int(i+(phinum/2)*j)], color='#97CC04', linewidth=2.0, label=u'right-handed Néel')
+#         axes[i,j].plot(simbzs, simbzphi[1][int(i+(phinum/2)*j)], color='#2D7DD2', linewidth=2.0, label="Bloch")
+#         axes[i,j].plot(simbzs, simbzphi[2][int(i+(phinum/2)*j)], color='#F97304', linewidth=2.0, label=u'left-handed Néel')
+#         axes[i,j].get_yaxis().set_visible(False)
+#         axes[i,j].text(0.05,.5,u'ϕ = '+'{:2.1f}'.format((i+(phinum/2)*j)/phinum)+' π',
+#             horizontalalignment='left', verticalalignment='center',
+#             transform=axes[i,j].transAxes, fontsize=12)
+# pylab.ylim([-35,20])
+# plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0., prop={'size':12})
+# plt.setp([a.get_xticklabels() for a in fig.axes[:]], visible=False)
+# fp.format_plot(plt, 900, 900, 450, 50, tight=False)
+# plt.subplots_adjust(left=0.05, bottom=0.05, right=0.7, top=0.95, wspace=0, hspace=0)
+#
+# fig1, ax1 = plt.subplots()
+# plt.fill_between(bcut[0][0], bcut[0][1], bcut[2][1],color='#2D7DD2',alpha=0.5,linewidth=1.0)
+# plt.fill_between(nlcut[0][0], nlcut[0][1], nlcut[2][1],color='#F97304',alpha=0.5,linewidth=1.0)
+# plt.fill_between(nrcut[0][0], nrcut[0][1], nrcut[2][1],color='#97CC04',alpha=0.5,linewidth=1.0)
+# plt.plot(bcut[1][0],bcut[1][1],color='#2D7DD2',linewidth=2.0,label="Bloch")
+# plt.plot(nlcut[1][0],nlcut[1][1],color='#F97304',linewidth=2.0, label=u'left-handed Néel')
+# plt.plot(nrcut[1][0],nrcut[1][1],color='#97CC04',linewidth=2.0, label=u'right-handed Néel')
+# plt.errorbar(ffcut[0],ffcut[1],yerr=ffcut[2],color='#ED1035',fmt='.',label="data")
+# # plt.plot(xd, np.abs(np.sin(-theta)*bxdata[ycenter, :]+np.cos(-theta)*np.add(bzdata[ycenter, :],9.5)))
+# plt.legend(loc=1,borderaxespad=1,prop={'size':10})
+# pylab.ylim([0,40])
+# pylab.xlim([-1.2,1.2])
+# fp.format_plot(plt, 600, 450, 0, 450)
+#
+# plt.show()
+
+# save figures
+my_dpi = 96
+size = 800
+size_inches = size/my_dpi
+fig = plt.figure(frameon=False)
+fig.set_size_inches(size_inches, size_inches)
+ax = plt.Axes(fig, [0., 0., 1., 1.])
+ax.set_axis_off()
+fig.add_axes(ax)
+plt.pcolormesh(blochnv[1], cmap='bone')
+plt.gca().invert_yaxis()
+# plt.plot([sx0, sx1], [sy0, sy1], 'r-')
 plt.axis('image')
-fp.format_plot(plt, 450, 450, 0, 50)
-pylab.savefig('/Users/alec/UCSB/scan_images/ff_sim_'+str(filenum)+filespec+'_bloch.png')
+pylab.savefig('/Users/alec/UCSB/scan_images/ff_sim_'+str(filenum)+filespec+'_bloch.tif', format='tif', dpi=my_dpi)
 
+fig = plt.figure(frameon=False)
+fig.set_size_inches(size_inches, size_inches)
+ax = plt.Axes(fig, [0., 0., 1., 1.])
+ax.set_axis_off()
+fig.add_axes(ax)
+plt.pcolormesh(ffdata[0], cmap='bone')
+plt.gca().invert_yaxis()
+# plt.plot([x0, x1], [y0, y1], 'r-')
+pylab.savefig('/Users/alec/UCSB/scan_images/ff_'+str(filenum)+filespec+'.tif', format='tif', dpi=my_dpi)
+
+fig = plt.figure(frameon=False)
+fig.set_size_inches(size_inches, size_inches)
+ax = plt.Axes(fig, [0., 0., 1., 1.])
+ax.set_axis_off()
+fig.add_axes(ax)
+plt.pcolormesh(bzdata, cmap='bone')
+plt.gca().invert_yaxis()
+# for i in range(0,phinum):
+#    phic = i*pi/phinum
+#    bx1, by1 = bx0-bzlclen*np.cos(phic), by0-bzlclen*np.sin(phic)
+#    bx2, by2 = bx0+bzlclen*np.cos(phic), by0+bzlclen*np.sin(phic)
+# plt.plot([bx1, bx2], [by1, by2], 'r-')
+pylab.savefig('/Users/alec/UCSB/scan_images/bzcut_diagram_'+str(filenum)+filespec+'.tif', format='tif', dpi=my_dpi)
+
+# fig, axes = plt.subplots(ncols=2, nrows=int(phinum/2), sharex=True, sharey=True)
+# for j in range(0,2):
+#     for i in range(0,int(phinum/2)):
+#         axes[i,j].plot(bzs, bzphi[int(i+(phinum/2)*j)],'r.')
+#         axes[i,j].plot(simbzs, simbzphi[0][int(i+(phinum/2)*j)], color='#97CC04', linewidth=2.0, label=u'right-handed Néel')
+#         axes[i,j].plot(simbzs, simbzphi[1][int(i+(phinum/2)*j)], color='#2D7DD2', linewidth=2.0, label="Bloch")
+#         axes[i,j].plot(simbzs, simbzphi[2][int(i+(phinum/2)*j)], color='#F97304', linewidth=2.0, label=u'left-handed Néel')
+#         axes[i,j].get_yaxis().set_visible(False)
+#         axes[i,j].text(0.05,.5,u'ϕ = '+'{:2.1f}'.format((i+(phinum/2)*j)/phinum)+' π',
+#             horizontalalignment='left', verticalalignment='center',
+#             transform=axes[i,j].transAxes, fontsize=12)
+# pylab.ylim([-35,20])
+# plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0., prop={'size':12})
+# plt.setp([a.get_xticklabels() for a in fig.axes[:]], visible=False)
+# plt.subplots_adjust(left=0.05, bottom=0.05, right=0.7, top=0.95, wspace=0, hspace=0)
+# pylab.savefig('/Users/alec/UCSB/scan_images/bzcuts_'+str(filenum)+filespec+'.pdf', format='pdf')
+#
+#
 fig1, ax1 = plt.subplots()
-im1 = plt.imshow(ffdata[0], cmap='bone', interpolation='nearest')
-fig1.colorbar(im1, ax=ax1, fraction=0.046, pad=0.04)
-plt.plot([x0, x1], [y0, y1], 'r-')
-plt.axis('image')
-fp.format_plot(plt, 450, 450, 450, 50)
-pylab.savefig('/Users/alec/UCSB/scan_images/ff_'+str(filenum)+filespec+'.png')
-
-fig1, ax1 = plt.subplots()
-im1 = plt.imshow(bzdata, cmap='bone', interpolation='nearest')
-fig1.colorbar(im1, ax=ax1, fraction=0.046, pad=0.04)
-plt.axis('image')
-fp.format_plot(plt, 450, 450, 850, 50)
-for i in range(0,phinum):
-   phic = i*2*pi/phinum
-   bx1, by1 = bx0-bzlclen*np.cos(phic), by0-bzlclen*np.sin(phic)
-   bx2, by2 = bx0+bzlclen*np.cos(phic), by0+bzlclen*np.sin(phic)
-   plt.plot([bx1, bx2], [by1, by2], 'r-')
-plt.axis('image')
-pylab.savefig('/Users/alec/UCSB/scan_images/bzcut_diagram_'+str(filenum)+filespec+'.png')
-
-fig, axes = plt.subplots(ncols=2, nrows=int(phinum/2), sharex=True, sharey=True)
-for j in range(0,2):
-    for i in range(0,int(phinum/2)):
-        axes[i,j].plot(bzs, bzphi[int(i+(phinum/2)*j)],'r.')
-        axes[i,j].plot(simbzs, simbzphi[0][int(i+(phinum/2)*j)], color='#97CC04', linewidth=2.0, label=u'right-handed Néel')
-        axes[i,j].plot(simbzs, simbzphi[1][int(i+(phinum/2)*j)], color='#2D7DD2', linewidth=2.0, label="Bloch")
-        axes[i,j].plot(simbzs, simbzphi[2][int(i+(phinum/2)*j)], color='#F97304', linewidth=2.0, label=u'left-handed Néel')
-        axes[i,j].get_yaxis().set_visible(False)
-        axes[i,j].text(0.05,.5,u'ϕ = '+'{:2.1f}'.format((i+(phinum/2)*j)/phinum)+' π',
-            horizontalalignment='left', verticalalignment='center',
-            transform=axes[i,j].transAxes, fontsize=12)
-pylab.ylim([-35,20])
-plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0., prop={'size':12})
-plt.setp([a.get_xticklabels() for a in fig.axes[:]], visible=False)
-fp.format_plot(plt, 900, 900, 450, 50, tight=False)
-plt.subplots_adjust(left=0.05, bottom=0.05, right=0.7, top=0.95, wspace=0, hspace=0)
-pylab.savefig('/Users/alec/UCSB/scan_images/bzcuts_'+str(filenum)+filespec+'.png')
-
-
-fig1, ax1 = plt.subplots()
-plt.fill_between(bcut[0][0], bcut[0][1], bcut[2][1],color='#2D7DD2',alpha=0.5,linewidth=1.0)
-plt.fill_between(nlcut[0][0], nlcut[0][1], nlcut[2][1],color='#F97304',alpha=0.5,linewidth=1.0)
-plt.fill_between(nrcut[0][0], nrcut[0][1], nrcut[2][1],color='#97CC04',alpha=0.5,linewidth=1.0)
+plt.fill_between(bcut[0][0], bcut[0][1], bcut[2][1],color='#96bee8',linewidth=1.0)
+plt.fill_between(nlcut[0][0], nlcut[0][1], nlcut[2][1],color='#fcb981',linewidth=1.0)
+plt.fill_between(nrcut[0][0], nrcut[0][1], nrcut[2][1],color='#cbe581',linewidth=1.0)
 plt.plot(bcut[1][0],bcut[1][1],color='#2D7DD2',linewidth=2.0,label="Bloch")
 plt.plot(nlcut[1][0],nlcut[1][1],color='#F97304',linewidth=2.0, label=u'left-handed Néel')
 plt.plot(nrcut[1][0],nrcut[1][1],color='#97CC04',linewidth=2.0, label=u'right-handed Néel')
-plt.errorbar(ffcut[0],ffcut[1],yerr=ffcut[2],color='#ED1035',fmt='.',label="data")
-# plt.plot(xd, np.abs(np.sin(-theta)*bxdata[ycenter, :]+np.cos(-theta)*np.add(bzdata[ycenter, :],9.5)))
+plt.errorbar(ffcut[0],ffcut[1],yerr=ffcut[2],color='#ED1035',fmt='.',label="NV ESR data")
 plt.legend(loc=1,borderaxespad=1,prop={'size':10})
 pylab.ylim([0,40])
 pylab.xlim([-1.2,1.2])
 fp.format_plot(plt, 600, 450, 0, 450)
-pylab.savefig('/Users/alec/UCSB/scan_images/linecut_'+str(filenum)+filespec+'.png')
-
-# fig1, ax1 = plt.subplots()
-# plt.plot(xs, bloch[1][0][sycenter, :])
-# plt.plot(xs, bloch[1][2][sycenter, :])
-# plt.plot(xs, nright[1][0][sycenter, :])
-# plt.plot(xs, nright[1][2][sycenter, :])
-# plt.plot(xd, bxdata[ycenter, :])
-# plt.plot(xd, bzdata[ycenter, :])
-# fp.format_plot(plt, 600, 450, 0, 50)
-
-# fig1, ax1 = plt.subplots()
-# plt.plot(ffcut[0],ffcut[1])
-# plt.plot(xd, np.abs(np.sin(-theta)*bxdata[ycenter, :]+np.cos(-theta)*np.add(bzdata[ycenter, :],9.5)))
-# fp.format_plot(plt, 600, 450, 650, 50)
+pylab.savefig('/Users/alec/UCSB/scan_images/linecut_'+str(filenum)+filespec+'.pdf', format='pdf')
 
 plt.show()
