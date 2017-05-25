@@ -2,7 +2,7 @@
 # @Date:   2017-01-18T11:41:16-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-04-10T10:29:21-07:00
+# @Last modified time: 2017-03-13T17:15:03-05:00
 
 
 
@@ -29,16 +29,14 @@ MstError = cal_params['MstError']
 phi = cal_params['phi']
 height = cal_params['height']
 heightError = cal_params['heightError']
-scanSize = cal_params['scanSize']
 
-simSize = scanSize
 
 heights = [height - heightError, height, height + heightError]
 Msts = [Ms*t - MstError, Ms*t, Ms*t + MstError]
 
 savepath = '/Users/alec/UCSB/cofeb_analysis_data/ta/stray_field_sim/'
 
-dwtypes = ["nr", "nl", "b", "h"]
+dwtypes = ["h"]
 errnames = ["lower", "mean", "upper"]
 filespec = "Msfixed"
 
@@ -52,11 +50,11 @@ for j in range(0,len(dwtypes)):
     for i in range(0,len(errnames)):
         print('calculating '+dwtypes[j]+' at '+errnames[i]+' height')
 
-        scd, vcd, meff, hk, h = sfc.stray_field_calc(m[0],m[1],m[2],Msts[i],simSize,heights[i])
+        scd, vcd, meff, hk, h = sfc.stray_field_calc(m[0],m[1],m[2],Msts[i],2.5e-4,heights[i])
 
-        # np.savetxt(savepath+dwtypes[j]+'_x_'+errnames[i]+'_'+str(scannum)+filespec+'.txt', h[0], delimiter=',')
-        # np.savetxt(savepath+dwtypes[j]+'_y_'+errnames[i]+'_'+str(scannum)+filespec+'.txt', h[1], delimiter=',')
-        # np.savetxt(savepath+dwtypes[j]+'_z_'+errnames[i]+'_'+str(scannum)+filespec+'.txt', h[2], delimiter=',')
+        np.savetxt(savepath+dwtypes[j]+'_x_'+errnames[i]+'_'+str(scannum)+filespec+'.txt', h[0], delimiter=',')
+        np.savetxt(savepath+dwtypes[j]+'_y_'+errnames[i]+'_'+str(scannum)+filespec+'.txt', h[1], delimiter=',')
+        np.savetxt(savepath+dwtypes[j]+'_z_'+errnames[i]+'_'+str(scannum)+filespec+'.txt', h[2], delimiter=',')
 
         slen = len(h[0])
         hlowres = [[], [], []]

@@ -65,13 +65,6 @@ thetalist = np.zeros(2*yres)
 ffdata = lscan.load_ff('/Users/alec/UCSB/scan_data/1773-esrdata/fitdata.txt',xres,yres,15)
 x = np.arange(0,dres*xres,dres)
 
-plt.close('all')
-
-ploth = 1
-plt.figure(1,[17,10])
-gs = gridspec.GridSpec(5, 4)
-gs.update(left=0.05, right=0.97, top=0.97, bottom=0.05, wspace=0.25, hspace=0.25)
-
 BzMeanEnd = 0
 BzStdEnd = 0
 BzTails = [0,1,2,3,4,6,7]
@@ -90,6 +83,13 @@ print(np.sqrt((1/(bz0**2 - BzMeanEnd**2))))
 print(np.sqrt(( (BzMeanEnd**2) / ((bz0**2)*(bz0**2 - BzMeanEnd**2)) )))
 print(thetaMean)
 print(thetaError)
+
+plt.close('all')
+
+ploth = 1
+plt.figure(1,[17,10])
+gs = gridspec.GridSpec(5, 4)
+gs.update(left=0.05, right=0.97, top=0.97, bottom=0.05, wspace=0.25, hspace=0.25)
 
 for j in range(0,10):
     y = ffdata[0][j,:]

@@ -2,22 +2,28 @@
 # @Date:   2017-02-03T18:34:58-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-02-17T15:58:45-08:00
+# @Last modified time: 2017-04-07T10:51:20-07:00
 
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.ndimage import imread
+import json
 
 impath = '/Users/alec/UCSB/scan_images/irmn/domains1836.png'
 domains = imread(impath, flatten=True)
 
-scanvsize = 2
-scansize = (5e-6)*scanvsize
+path = '/Users/alec/UCSB/cofeb_analysis_data/irmn/'
+filespec = 'Msfixed'
+cal_params_path = path+'cal_parameters_'+filespec+'.json'
+with open(cal_params_path, 'r') as fread:
+    cal_params = json.load(fread)
+
+scansize = 2*(5e-6)
 slen = len(domains)
 res = scansize/slen
 res_difference = 2e-9
-thickness = 0.911e-9
-Ms = 1.178e6
+thickness = cal_params['t']
+Ms = cal_params['Ms']
 
 domains = np.add(np.multiply(2/255,domains),-1)
 

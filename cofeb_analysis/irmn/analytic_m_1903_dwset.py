@@ -2,7 +2,7 @@
 # @Date:   2017-01-19T12:39:38-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-03-23T11:01:06-07:00
+# @Last modified time: 2017-03-21T11:13:02-07:00
 
 
 
@@ -32,23 +32,24 @@ scanSize = cal_params['scanSize']
 
 heights = [height - heightError, height, height + heightError]
 
-basepath = "/Users/alec/UCSB/cofeb_analysis_data/irmn/stray_field_sim/"
-savepath = "/Users/alec/UCSB/cofeb_analysis_data/irmn/stray_field_sim/"
+basepath = "/Users/alec/UCSB/cofeb_analysis_data/irmn/stray_field_sim/dw_set/"
+savepath = "/Users/alec/UCSB/cofeb_analysis_data/irmn/stray_field_sim/dw_set/"
 
-dwtypes = ["nr", "nl", "b"]
-# dwtypes = ["nr"]
+dwtypes = ["nl"]
+dw0s = np.arange(60,80,20)
 errnames = ["lower", "mean", "upper"]
 
-for j in range(0,len(dwtypes)):
-    filenames = ["m"+dwtypes[j]+"x","m"+dwtypes[j]+"y","m"+dwtypes[j]+"z"]
+for j in range(0,len(dw0s)):
+    filenames = ["mnlx","mnly","mnlz"]
     numfiles = len(filenames)
     m = []
     for i in range(0,numfiles):
-        m.append(np.loadtxt(basepath+filenames[i]+"_"+filespec+".dat"))
+        m.append(np.loadtxt(basepath+filenames[i]+"_"+filespec+"_"+str(dw0s[j])+".dat"))
 
     for i in range(0,len(errnames)):
-        print('calculating '+dwtypes[j]+' '+filespec+' at '+errnames[i]
+        print('calculating dw width: '+str(dw0s[j])+' at '+errnames[i]
               +' height')
+
         scd, vcd, meff, hk, h = sfc.stray_field_calc(m[0], m[1], m[2],
                                                      Ms*t, scanSize, heights[i])
 
@@ -59,11 +60,11 @@ for j in range(0,len(dwtypes)):
         slen = len(h[0])
         hlowres = [[], [], []]
         for k in range(0,numfiles):
-            hlowres[k] = h[k][0:slen:5, 0:slen:5]
+            hlowres[k] = h[k][0:slen:2, 0:slen:2]
 
-        np.savetxt(savepath+dwtypes[j]+'_x_'+errnames[i]+'_lowres_'
-                   +str(scannum)+filespec+'.txt', hlowres[0], delimiter=',')
-        np.savetxt(savepath+dwtypes[j]+'_y_'+errnames[i]+'_lowres_'
-                   +str(scannum)+filespec+'.txt', hlowres[1], delimiter=',')
-        np.savetxt(savepath+dwtypes[j]+'_z_'+errnames[i]+'_lowres_'
-                   +str(scannum)+filespec+'.txt', hlowres[2], delimiter=',')
+        np.savetxt(savepath+'nl_x_'+errnames[i]+'_lowres_'
+                   +str(scannum)+'_'+str(dw0s[j])+'.txt', hlowres[0], delimiter=',')
+        np.savetxt(savepath+'nl_y_'+errnames[i]+'_lowres_'
+                   +str(scannum)+'_'+str(dw0s[j])+'.txt', hlowres[1], delimiter=',')
+        np.savetxt(savepath+'nl_z_'+errnames[i]+'_lowres_'
+                   +str(scannum)+'_'+str(dw0s[j])+'.txt', hlowres[2], delimiter=',')

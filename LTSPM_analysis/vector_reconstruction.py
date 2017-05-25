@@ -14,7 +14,7 @@ import scipy.fftpack as fft
 #---------------- RECONSTRUCTION ---------------------------------
 #-----------------------------------------------------------------
 
-def vector_reconstruction(data, theta, phi, height, scansize, kcutoff=1):
+def vector_reconstruction(data, dataError, theta, thetaError, phi, height, scansize, kcutoff=1):
 	pi = np.pi
 	fdata = fft.fft2(data)
 	fdata = fft.fftshift(fdata)
@@ -51,7 +51,16 @@ def vector_reconstruction(data, theta, phi, height, scansize, kcutoff=1):
 	bzdata = np.real(fft.ifft2(fft.ifftshift(hzf)))
 	bxdata = np.real(fft.ifft2(fft.ifftshift(hxf)))
 	bydata = np.real(fft.ifft2(fft.ifftshift(hyf)))
+
+	bzdataError = np.zeros_like(bzdata)
+	for j in range(0,dlen):
+		for i in range(0,dlen):
+			bzthetaError = ( (np.sin(theta)/(np.cos(theta)**2)*(data[j,i] - bxdata[j,i]*np.sin(theta)*np.cos(phi) - bydata[j,i]*np.sin(theta)*np.sin(phi)))
+							+ (1/np.cos(theta))*(-bxdata[j,i]*np.cos(theta)*np.cos(phi) - bydata[j,i]*np.cos(theta)*np.sin(phi)) )*thetaError
+			bzbnvError = np.cos(theta)*dataError[j,i]
+			bzdataError[j,i] = np.sqrt((bzthetaError)**2 + (bzbnvError)**2)
+
 	meffdata = np.real(fft.ifft2(fft.ifftshift(meffk)))
 	Vdata = np.real(fft.ifft2(fft.ifftshift(Vk)))
 
-	return bxdata, bydata, bzdata, meffdata, Vdata
+	return bxdata, bydata, bzdata, meffdata, Vdata, bzdataError, meffk

@@ -2,7 +2,7 @@
 # @Date:   2017-02-17T14:20:47-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-02-17T16:26:22-08:00
+# @Last modified time: 2017-04-07T10:59:24-07:00
 
 
 
@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 from scipy.ndimage import imread
 from scipy import interpolate
 from skimage import measure
+import json
 
 import format_plot as fp
 
@@ -48,22 +49,22 @@ impath = '/Users/alec/UCSB/scan_images/irmn/domains'+str(scannum)+'.png'
 domains = imread(impath, flatten=True)
 domains = np.add(np.multiply(2/255,domains),-1)
 
-dataPath = '/Users/alec/UCSB/cofeb_analysis_data/irmn/'
+path = '/Users/alec/UCSB/cofeb_analysis_data/irmn/'
 filespec = 'Msfixed'
-cal_params = np.loadtxt(dataPath+'cal_parameters_'+filespec+'.txt', delimiter=',')
+cal_params_path = path+'cal_parameters_'+filespec+'.json'
+with open(cal_params_path, 'r') as fread:
+    cal_params = json.load(fread)
 
-Ms = cal_params[0]
-thickness = cal_params[1]
-Keff = cal_params[6]
-
-MsSI = Ms*(1.0e3)
-thicknessSI = thickness*(1.0e-2)
-KeffSI = Keff*(1.0e-1)
+scansize = 2*(5e-6)
+slen = len(domains)
+res = scansize/slen
+res_difference = 2e-9
+thickness = cal_params['t']
+Ms = cal_params['Ms']
+Keff = cal_params['Keff']
 
 dlen = len(domains)
-res = 66.66e-9
 dres = 2.0e-9
-thicknessSI = 0.911e-9
 
 contours = measure.find_contours(domains, 0.0)
 num_contours = len(contours)
@@ -96,8 +97,8 @@ for j in range(dlen):
         demagHDres[j][i] = ohfDemagHDres[i+dlen*j][2]
 
 
-demag_energy0 = get_demag_energy(domains, demagH, MsSI, thicknessSI, res)
-demag_energy1 = get_demag_energy(domains, demagHDres, MsSI, thicknessSI, res+dres)
+demag_energy0 = get_demag_energy(domains, demagH, Ms, thickness, res)
+demag_energy1 = get_demag_energy(domains, demagHDres, Ms, thickness, res+dres)
 
 demag_energy0_norm = demag_energy0/((res*dlen)**2)
 demag_energy1_norm = demag_energy1/(((res+dres)*dlen)**2)
@@ -105,12 +106,12 @@ delta_demag_energy_norm = (demag_energy1_norm - demag_energy0_norm)/dres
 delta_total_wall_length_norm = -total_wall_length_norm/res
 
 domain_wall_energy_density = -( delta_demag_energy_norm /
-                               (delta_total_wall_length_norm * thicknessSI) )
+                               (delta_total_wall_length_norm * thickness) )
 
 print('domain_wall_energy_density = ' + str(domain_wall_energy_density))
 
-As = (domain_wall_energy_density**2)/(16*KeffSI)
-DW_width = domain_wall_energy_density/(4*KeffSI)
+As = (domain_wall_energy_density**2)/(16*Keff)
+DW_width = domain_wall_energy_density/(4*Keff)
 
 print('DW_width (no pi) = ' + str(DW_width))
 print('As = ' + str(As))

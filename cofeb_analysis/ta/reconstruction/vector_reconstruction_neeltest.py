@@ -29,7 +29,7 @@ scannum = 1760
 xres = 50
 yres = 50
 zfield = 9.5
-scanL = 0.6*(5e-6)
+scanL = 0.6*(5e-4)
 
 
 path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
@@ -76,7 +76,7 @@ datas0filter = signal.medfilt(datas0filter, 5)
 wimdata = fi.window_image(datas0)
 wimdatafilter = fi.window_image(datas0filter, power=1/2)
 
-recon_data = vr.vector_reconstruction(wimdata, data[1], theta, thetaError, phi, height, scanL, kcutoff=1)
+recon_data = vr.vector_reconstruction(wimdatafilter, data[1], theta, thetaError, phi, height, scanL, kcutoff=1)
 
 bxdata = recon_data[0]
 bydata = recon_data[1]

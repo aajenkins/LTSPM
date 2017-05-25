@@ -34,7 +34,7 @@ def cwesr_fit_array(scannum, name, filestart, fileend, num_avg, default1=2860, d
         cwresult = cwesr.cwesr_fit(x,y,filenum=j, default1=2860, default2=2880)
         popt = cwresult[0]
         pcov = cwresult[1]
-        perr = np.sqrt(np.diag(pcov))
+        perr = np.sqrt(np.abs(np.diag(pcov)))
         fitdata.append([popt, perr])
 
     len_data = len(fitdata)

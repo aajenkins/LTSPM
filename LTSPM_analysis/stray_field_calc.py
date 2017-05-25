@@ -2,7 +2,7 @@
 # @Date:   2017-01-18T09:54:01-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-02-20T11:54:07-08:00
+# @Last modified time: 2017-03-26T18:35:32-07:00
 
 
 
@@ -14,7 +14,7 @@ def stray_field_calc(mx,my,mz,Mst,sim_size,z,windowData=False):
     mlen = len(mx)
     hlen = mlen/2
     res = sim_size/mlen
-    fieldPrefactor = Mst
+    fieldPrefactor = (4*pi*1.0e-7)*Mst/2
 
     # Mx = np.multiply(mx, 1/(res**2))
     if windowData:
@@ -54,7 +54,7 @@ def stray_field_calc(mx,my,mz,Mst,sim_size,z,windowData=False):
                 Hxk[j][i] = 0
                 Hyk[j][i] = 0
             else:
-                Hzk[j][i] = 2*pi*np.exp(-k*z)*k*(surface_cdk[j,i]+(volume_cdk[j][i])/k)
+                Hzk[j][i] = np.exp(-k*z)*k*(surface_cdk[j,i]+(volume_cdk[j][i])/k)
                 Hxk[j][i] = -1j * (kx / k) * Hzk[j, i]
                 Hyk[j][i] = -1j * (ky / k) * Hzk[j, i]
                 meffk[j][i] = surface_cdk[j,i]+(volume_cdk[j][i])/k

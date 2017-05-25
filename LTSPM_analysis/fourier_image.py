@@ -24,7 +24,7 @@ def window_image (imdata, power=(1/2)):
     dlen = len(imdata)
     for j in range(0,dlen):
         for i in range(0,dlen):
-            wimdata[i][j] = imdata[i][j]*((1/4)*((1-np.cos(2*np.pi*(i/dlen))))*((1-np.cos(2*np.pi*(j/dlen)))))**power
+            wimdata[i][j] = imdata[i][j]*((1/2)*((1-np.cos(2*np.pi*(i/(dlen-1)))))*((1-np.cos(2*np.pi*(j/(dlen-1))))))**power
     return wimdata
 
 def move_quad(data):
