@@ -32,7 +32,7 @@ zfield = 9.5
 scanL = 0.6*(5e-6)
 
 
-path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
+path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'+str(scannum)+'/'
 filespec = 'Msfixed'
 cal_params_path = path+'cal_parameters_'+filespec+'.json'
 with open(cal_params_path, 'r') as fread:
@@ -127,6 +127,9 @@ for i in range (0,phinum):
     r0s[i] = popt[2]*scanL/xres
 
 r0s = np.append(r0s,r0s[0])
+phis = np.linspace(0, 2*np.pi, phinum+1)
+xy0s = (r0s*np.cos(phis), r0s*np.sin(phis))
+
 
 np.savetxt(path+'stray_field_sim/'+'radiusphi_'+filespec+'.txt', (angles, r0s), delimiter = ',')
 
@@ -150,15 +153,15 @@ ax2.set_axis_off()
 #     plt.plot([x0, x1], [y0, y1], 'k-')
 # plt.axis('image')
 fp.format_plot(plt, 350, 350, 450, 50)
-pylab.savefig('/Users/alec/UCSB/scan_images/mdata_'+str(scannum)+filespec+'.png', format='png')
+# pylab.savefig('/Users/alec/UCSB/scan_images/mdata_'+str(scannum)+filespec+'.png', format='png')
 
-mdataflat = np.array([])
-for i in range(0,len(mdata)):
-    mdataflat = np.append(mdataflat, mdata[i])
-
-fig, ax = plt.subplots()
-plt.hist(mdataflat, bins=60)
-fp.format_plot(plt, 500, 500, 450, 250)
+# mdataflat = np.array([])
+# for i in range(0,len(mdata)):
+#     mdataflat = np.append(mdataflat, mdata[i])
+#
+# fig, ax = plt.subplots()
+# plt.hist(mdataflat, bins=60)
+# fp.format_plot(plt, 500, 500, 450, 250)
 
 
 # fig3, ax3 = plt.subplots(nrows=phinum, sharex=True, sharey=True)

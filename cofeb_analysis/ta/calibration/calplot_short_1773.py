@@ -11,6 +11,7 @@ import matplotlib.pylab as pylab
 import matplotlib.gridspec as gridspec
 from scipy.optimize import curve_fit
 import numpy as np
+import json
 import load_scan as lscan
 import format_plot as fp
 
@@ -25,13 +26,16 @@ bz0 = 12
 
 path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
 filespec = 'Msfixed'
-cal_params = np.loadtxt(path+'cal_parameters_'+filespec+'.txt', delimiter=',')
+cal_params_path = path+'cal_parameters_'+filespec+'.json'
+with open(cal_params_path, 'r') as fread:
+    cal_params = json.load(fread)
 
-Ms = cal_params[0]
-t = cal_params[1]
-phi = cal_params[3]
+Ms = cal_params['Ms']
+t = cal_params['t']
+Msterror = cal_params['MstError']
+phi = cal_params['phi']
 
-mstnm = Ms*t*(1e10)
+mstnm = Ms*t*(1e9)
 
 matplotlib.rc('font', **font)
 
@@ -40,8 +44,8 @@ def cal_func(x, *args):
 
     h = args[0]
     x0 = args[1]
-    theta = 45*pi/180#1.0335227055519
-    # theta = args[2] * pi / 180
+    theta = 1.0335227055519
+    #theta = args[2] * pi / 180
     bx = (2e-3)*mstnm*(h/(h**2+(x-x0)**2))
     bz = -(2e-3)*mstnm*((x-x0)/(h**2+(x-x0)**2))
     bnv = np.abs(bx*np.sin(theta)*np.cos(phi)+(bz+bz0)*np.cos(theta))
@@ -89,7 +93,7 @@ for j in range(0,10):
     yepeak[yargmax-1:yargmax+1] = 0.1
     ryepeak[ryargmax-1:ryargmax+1] = 0.1
 
-    fitLength = 4
+    fitLength = 10
     offset = 1
     xShort = np.linspace(-(fitLength-offset)*xres/2, (fitLength+offset)*xres/2, 2*fitLength+1)
     xShortFit = np.linspace(-(fitLength-offset)*xres/2, (fitLength+offset)*xres/2, 10*fitLength+1)
@@ -97,11 +101,11 @@ for j in range(0,10):
     yeShort = ye[yargmax-(fitLength-offset):yargmax+(fitLength+offset)+1]
     ryShort = ry[ryargmax-(fitLength-offset):ryargmax+(fitLength+offset)+1]
     ryeShort = rye[ryargmax-(fitLength-offset):ryargmax+(fitLength+offset)+1]
-    # yeShort[fitLength-1:fitLength+2] = 0.2
-    # ryeShort[fitLength-1:fitLength+2] = 0.2
+    #yeShort[fitLength-1:fitLength+2] = 0.2
+    #ryeShort[fitLength-1:fitLength+2] = 0.2
 
-    guess = [50, 0]
-    rguess = [50, 0]
+    guess = [60, yargmax*dres]
+    rguess = [60, yargmax*dres]
     try:
         popt, pcov = curve_fit(cal_func, xShort, yShort, sigma=yeShort, p0=guess)
 #        popt, pcov = curve_fit(cal_func, x, y, p0=guess, sigma=yms)

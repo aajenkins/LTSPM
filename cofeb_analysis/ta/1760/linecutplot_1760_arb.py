@@ -30,7 +30,7 @@ matplotlib.rcParams['mathtext.default'] = 'regular'
 pi = np.pi
 scannum = 1760
 
-path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
+path = '/Users/alec/UCSB/cofeb_analysis_data/ta/1760/'
 filespec = 'Msfixed'
 cal_params_path = path+'cal_parameters_'+filespec+'.json'
 with open(cal_params_path, 'r') as fread:
@@ -49,7 +49,7 @@ dres = 50
 dsize = 0.6*5
 filenum = 1760
 
-datapath = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
+datapath = '/Users/alec/UCSB/cofeb_analysis_data/ta/1760/'
 simpath = datapath+'stray_field_sim/'
 errnames = ["lower", "mean", "upper"]
 

@@ -33,10 +33,10 @@ with open(cal_params_path, 'r') as fread:
 
 Ms = cal_params['Ms']
 t = cal_params['t']
-Msterror = cal_params['Msterror']
+Msterror = cal_params['MstError']
 phi = cal_params['phi']
 
-mstnm = Ms*t*(1e10)
+mstnm = Ms*t*(1e9)
 
 matplotlib.rc('font', **font)
 
@@ -146,7 +146,7 @@ for j in range(0,10):
     plt.plot(x,cal_func(x,*guess),'g-')
     plt.errorbar(x,y,yerr=ye,color='#000000',fmt='.')
     plt.plot(x,cal_func(x,*popt),'r-')
-    plt.plot([x[0],x[-1]],[np.cos(thetalist[2*j]* pi / 180)*bz0, np.cos(thetalist[2*j]* pi / 180)*bz0],'b')
+    #plt.plot([x[0],x[-1]],[np.cos(thetalist[2*j]* pi / 180)*bz0, np.cos(thetalist[2*j]* pi / 180)*bz0],'b')
     csubplot = plt.subplot(gs[(j%5),int(np.floor(j/5)*2+1)])
     plt.plot(x,cal_func(x,*rguess),'g-')
     plt.errorbar(x,ry,yerr=rye,color='#000000',fmt='.')
