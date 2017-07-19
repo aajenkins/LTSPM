@@ -2,7 +2,7 @@
 # @Date:   2017-01-18T11:41:16-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-03-13T17:15:03-05:00
+# @Last modified time: 2017-07-07T19:20:55-07:00
 
 
 
@@ -34,7 +34,7 @@ heightError = cal_params['heightError']
 heights = [height - heightError, height, height + heightError]
 Msts = [Ms*t - MstError, Ms*t, Ms*t + MstError]
 
-savepath = '/Users/alec/UCSB/cofeb_analysis_data/ta/stray_field_sim/'
+savepath = '/Users/alec/UCSB/cofeb_analysis_data/ta/1760/stray_field_sim/'
 
 dwtypes = ["h"]
 errnames = ["lower", "mean", "upper"]

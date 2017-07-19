@@ -12,27 +12,33 @@ import matplotlib.gridspec as gridspec
 import cwesr_fit_single as cwesr
 #import matplotlib.gridspec as gridspec
 
-filename = 'ff4'
-scannum = 1903
+filename = 'ff1'
+scannum = 1760
 path = '/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/'+filename
+filenum_path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'+str(scannum)+'/fail_index.txt'
 #savepath = '/Users/alec/UCSB/scan_data/830-esrdata/fitdata.txt'
 fitdata = []
 #back = np.loadtxt('/Users/alec/UCSB/python_analysis/copt/fullfield_images/back.txt')
 
-num_avg = 2
-filestart = 2800
+num_avg = 4
 xaxis_scale = 1e-3
 yaxis_scale = 1e-3
 
+filearray = np.loadtxt(filenum_path)
+
+filelen = len(filearray)
+filelist = np.zeros(filelen, dtype=int)
+for i in range(filelen):
+    filelist[i] = int(filearray[i][0]*50*2+(filearray[i][1]+1))
 
 plt.close('all')
 plt.figure(1,[17,10])
-gs = gridspec.GridSpec(5, 6)
+gs = gridspec.GridSpec(6, 6)
 gs.update(left=0.05, right=0.97, top=0.97, bottom=0.05, wspace=0.25, hspace=0.25)
 
-for j in range (0,30):
+for j in range(np.min([filelen,36])):
 
-    filenum=j+filestart
+    filenum=filelist[j]
     filepath = path+str(filenum).zfill(6)
     data = np.loadtxt(filepath+'_'+str(num_avg)+'.txt', skiprows=1)[:,0:3:2]
 
@@ -50,7 +56,7 @@ for j in range (0,30):
     fitg = cwresult[3]
     dips = cwresult[4]
 
-    csubplot = plt.subplot(gs[(j%5),math.floor(j/5)])
+    csubplot = plt.subplot(gs[(j%6),math.floor(j/6)])
 
 #    if len(sm) >= 3:
 #        fcs = popt[[1,4,7]]

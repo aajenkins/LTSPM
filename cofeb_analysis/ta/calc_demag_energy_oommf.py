@@ -2,7 +2,7 @@
 # @Date:   2017-02-17T14:20:47-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-04-10T11:14:30-07:00
+# @Last modified time: 2017-07-10T20:56:33-07:00
 
 
 
@@ -50,15 +50,16 @@ domains = imread(impath, flatten=True)
 domains = np.add(np.multiply(2/255,domains),-1)
 
 path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
-filespec = 'Msfixed'
-cal_params_path = path+'cal_parameters_'+filespec+'.json'
-with open(cal_params_path, 'r') as fread:
-    cal_params = json.load(fread)
+material_params_path = path+'material_parameters.json'
+with open(material_params_path, 'r') as fread:
+    material_params = json.load(fread)
 
-Ms = cal_params['Ms']
-thickness = cal_params['t']
-Keff = cal_params['Keff']
+Ms = material_params['Ms']
+thickness = material_params['t']
+Keff = material_params['Keff']
 
+# Ms=Ms/0.7
+# thickness=thickness*0.7
 
 dlen = len(domains)
 res = 100.0e-9
@@ -81,9 +82,9 @@ print('total_wall_length = ' + str(total_wall_length))
 total_wall_length_norm = total_wall_length/( (res*(dlen-2))**2 )
 
 ohfPath = '/Users/alec/UCSB/oommf/data_and_runs/ta/'
-filename = 'ta_magn2-hdemag.ohf'
+filename = 'ta_magn1-hdemag.ohf'
 ohfDemagH = np.genfromtxt(ohfPath+filename)
-filenameDres = 'ta_magn_dres2-hdemag.ohf'
+filenameDres = 'ta_magn_dres1-hdemag.ohf'
 ohfDemagHDres = np.genfromtxt(ohfPath+filenameDres)
 
 demagH = np.zeros((dlen,dlen))
