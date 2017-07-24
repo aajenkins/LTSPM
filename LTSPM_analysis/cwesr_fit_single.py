@@ -33,16 +33,19 @@ def fit_gaussian(x, *params):
 def fit_lorentzian(x, *params):
 	y = np.zeros_like(x)
 	c = params[0]
-	for i in range(1, len(params), 3):
-		ctr = params[i]
-		amp = params[i+1]
-		wid = params[i+2]
-		#y = y + (amp * (np.exp( -((x - ctr-2.3)/wid)**2)+np.exp( -((x - ctr)/wid)**2)+np.exp( -((x - ctr+2.3)/wid)**2)) + c
-		y = y + (-abs(amp * (wid/2)**2)/((x-ctr)**2+(wid/2)**2))
+	freq_ctr = params[1]
+	freq_split = params[2]
+	amp1 = params[3]
+	width1 = params[4]
+	amp2 = params[5]
+	width2 = params[6]
+	y = -abs( (amp1 * (width1/2)**2)/((x-(freq_ctr + freq_split/2))**2+(width1/2)**2) +
+			(amp2 * (width2/2)**2)/((x-(freq_ctr - freq_split/2))**2+(width2/2)**2) )
 	y=y+c
 	return y
 
-def cwesr_fit(x, y, filenum=0, gauss=True, gamp=dgamp, gwidth=dgwidth, gctr=2870, d_gsplit=20):
+def cwesr_fit(x, y, filenum=0, gauss=True, gamp=dgamp, gwidth=dgwidth, gctr=2870, d_gsplit=20,
+				min_width=4, max_width=15, max_counts=3e5, max_ctr=2875, max_splitting=200):
 
 	dlen = len(y)
 	b, a = signal.butter(1, 0.5, btype='lowpass')
@@ -79,8 +82,8 @@ def cwesr_fit(x, y, filenum=0, gauss=True, gamp=dgamp, gwidth=dgwidth, gctr=2870
 		gsplit = d_gsplit
 		gamp = y[0]-dmin
 
-	lbounds2 = [0,gctr,0,amp/3,4,amp/3,4]
-	ubounds2 = [3e5,2875,200,2*amp,15,2*amp,15]
+	lbounds2 = [0,gctr,0,amp/3,min_width,amp/3,min_width]
+	ubounds2 = [max_counts,max_ctr,max_splitting,2*amp,max_width,2*amp,max_width]
 	guess = [y[0], gctr, gsplit, gamp, gwidth, gamp, gwidth]
 
 	try:

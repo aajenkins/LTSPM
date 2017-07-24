@@ -10,22 +10,25 @@ import scipy.signal as signal
 import matplotlib.pyplot as plt
 import cwesr_fit_single as cwesr
 import format_plot as fp
+import calc_NV_field as cNV
 
 #import math as math
 #import matplotlib.gridspec as gridspec
 #import matplotlib.gridspec as gridspec
 
 scannum = 1760
-filename = 'ff1'
-num_avg = 4
-path = '/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/'+filename
+filename = 'anglecal000002'
+num_avg = 9
+# path = '/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/'+filename
 
 fitdata = []
 
-filenum = 33#0*50*2+(0+1)
+filenum = 9#33*50*2+(20+1)
 
-filepath = path+str(filenum).zfill(6)
-plotdata = np.loadtxt(filepath+'_'+str(num_avg)+'.txt', skiprows=1)[:,0:3:2]
+# filepath = path+str(filenum).zfill(6)
+filepath = '/Users/alec/UCSB/esrdata/angle_calibration_tacofeb/anglecal000002_9.txt'
+
+plotdata = np.loadtxt(filepath, skiprows=1)[:,0:3:2]
 
 eplotdata = np.transpose(plotdata)
 x, y = eplotdata
@@ -37,12 +40,21 @@ dlen = len(y)
 b, a = signal.butter(1, 0.5, btype='lowpass')
 yfilt = signal.filtfilt(b, a, y)
 
-cwresult = cwesr.cwesr_fit(x,y,filenum=filenum,d_gsplit=20)
+cwresult = cwesr.cwesr_fit(x,y,filenum=filenum,d_gsplit=20,gauss=True,min_width=1)
 popt = cwresult[0]
 perr = np.diag(cwresult[1])
 fit = cwresult[2]
 fitg = cwresult[3]
 indexes = cwresult[4]
+
+f1=popt[1]+(popt[2]/2)
+f2=popt[1]-(popt[2]/2)
+
+b = cNV.calc_NV_field_angle(f1,f2)
+
+ss_res = np.sum((y - fit) ** 2)
+ss_tot = np.sum((y - np.mean(y)) ** 2)
+r2 = 1 - (ss_res / ss_tot)
 
 print(popt)
 

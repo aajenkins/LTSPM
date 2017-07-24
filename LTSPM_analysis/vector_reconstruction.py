@@ -40,8 +40,8 @@ def vector_reconstruction(data, dataError, theta, thetaError, phi, height, scans
 				meffk[j,i] = 0
 				Vk[j,i] = 0
 			else:
-				hzf[j,i] = fdata[j,i]/(np.cos(theta)*(1-
-				(1j/k)*np.tan(theta)*(kx*np.cos(phi) + ky*np.sin(phi))))
+				hzf[j,i] = fdata[j,i]/( np.cos(theta) * (1-
+					(1j/k)*np.tan(theta)*(kx*np.cos(phi) + ky*np.sin(phi))) )
 				hxf[j, i] = -1j*(kx/k)*hzf[j,i]
 				hyf[j, i] = -1j*(ky/k)*hzf[j,i]
 				Vk[j, i] = -hzf[j,i]/(k**2)

@@ -2,7 +2,7 @@
 # @Date:   2017-02-28T14:33:58-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-07-19T09:27:57-07:00
+# @Last modified time: 2017-07-19T20:13:57-07:00
 
 import numpy as np
 
@@ -14,33 +14,26 @@ def calc_NV_field(bx, by, bz, theta, phi):
     return bnv
 
 def calc_NV_field_angle(f1, f2, Dgs=2870):
-    if ((f1+f2)/2 < Dgs-(1e-10)):
-        B0 = 1000
-        Bnv = B0
-        theta = 0
-        print('Bnv< fail',f1,f2)
+
+    if (-(Dgs+f1+f2)*(Dgs+f1-2*f2)*(Dgs-2*f1+f2) < 0):
+        Bnv = np.abs(f2-f1)/(2*2.8)
+        Bp = 0
+        print('Bnv imaginary',f1,f2)
     # elif (Dgs-1 < (f1+f2)/2 < Dgs):
     #     Bnv = np.abs(f1-f2)/(2*2.8)
     #     B0 = Bnv
     #     theta = 0
     else:
-        P = f1**2 + f2**2 - f1*f2
-        Q = (f1+f2)*(2*(f1**2) + 2*(f2**2) - 5*f1*f2)
-        if ((P - (Dgs**2)) < 0):
-            B0 = 1000
-            Bnv = B0
-            theta = 0
-            print('P< fail',f1,f2)
-        else:
-            B0 = np.sqrt((P - (Dgs**2))/3)
-            cos_sq = (Q + 9*Dgs*(B0**2) + 2*(Dgs**3)) / (27*Dgs*(B0**2))
-            if (cos_sq > 1):
-                print('cos fail', cos_sq)
-                cos_sq=1
-            if (cos_sq < 0):
-                print('cos fail', cos_sq)
-                cos_sq=0
-            theta = np.arccos(np.sqrt( cos_sq ))
-            Bnv = B0*np.cos(theta)
+        Bnv = (1/(3*np.sqrt(3*Dgs))) * np.sqrt( -(Dgs+f1+f2)*(Dgs+f1-2*f2)*(Dgs-2*f1+f2) )
 
-    return Bnv, B0, theta
+        if (-(2*Dgs-f1-f2)*(2*Dgs-f1+2*f2)*(2*Dgs+2*f1-f2) < 0):
+            Bnv = np.abs(f2-f1)/(2*2.8)
+            Bp = 0
+            print('Bp imaginary',f1,f2)
+        else:
+            Bp = (1/(3*np.sqrt(3*Dgs))) * np.sqrt( -(2*Dgs-f1-f2)*(2*Dgs-f1+2*f2)*(2*Dgs+2*f1-f2) )
+
+    tantheta = Bp/Bnv
+    theta = np.arctan(tantheta)
+
+    return Bnv, Bp, theta

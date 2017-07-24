@@ -2,7 +2,7 @@
 # @Date:   2017-02-17T14:20:47-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-04-07T10:59:24-07:00
+# @Last modified time: 2017-07-21T15:32:31-07:00
 
 
 
@@ -17,6 +17,7 @@ import format_plot as fp
 
 pi = np.pi
 mu0 = 4*pi*(1e-7)
+deadlayer = False
 
 def get_interpolated_contour(contour):
     slen = len(contour[:, 1])
@@ -45,23 +46,31 @@ def get_demag_energy(magn, h, Ms, t, res):
 
 
 scannum = 1836
-impath = '/Users/alec/UCSB/scan_images/irmn/domains'+str(scannum)+'.png'
+impath = '/Users/alec/UCSB/scan_images/irmn_contour_selection/domains'+str(scannum)+'.png'
 domains = imread(impath, flatten=True)
 domains = np.add(np.multiply(2/255,domains),-1)
 
 path = '/Users/alec/UCSB/cofeb_analysis_data/irmn/'
-filespec = 'Msfixed'
-cal_params_path = path+'cal_parameters_'+filespec+'.json'
-with open(cal_params_path, 'r') as fread:
-    cal_params = json.load(fread)
+material_params_path = path+'material_parameters.json'
+scan_params_path = path+'scan_parameters.json'
+with open(material_params_path, 'r') as fread:
+    material_params = json.load(fread)
+with open(scan_params_path, 'r') as fread:
+    scan_params = json.load(fread)
 
-scansize = 2*(5e-6)
+scansize = 1.0e-5
 slen = len(domains)
 res = scansize/slen
 res_difference = 2e-9
-thickness = cal_params['t']
-Ms = cal_params['Ms']
-Keff = cal_params['Keff']
+
+if (deadlayer):
+    Ms = material_params['Ms2']
+    thickness = material_params['t2']
+else:
+    Ms = material_params['Ms']
+    thickness = material_params['t']
+
+Keff = material_params['Keff']
 
 dlen = len(domains)
 dres = 2.0e-9
@@ -83,9 +92,9 @@ print('total_wall_length = ' + str(total_wall_length))
 total_wall_length_norm = total_wall_length/( (res*(dlen-2))**2 )
 
 ohfPath = '/Users/alec/UCSB/oommf/data_and_runs/irmn/'
-filename = 'irmn_magn-hdemag.ohf'
+filename = 'irmn_magn'+str(1+deadlayer)+'-hdemag.ohf'
 ohfDemagH = np.genfromtxt(ohfPath+filename)
-filenameDres = 'irmn_magn_dres-hdemag.ohf'
+filenameDres = 'irmn_magn_dres'+str(1+deadlayer)+'-hdemag.ohf'
 ohfDemagHDres = np.genfromtxt(ohfPath+filenameDres)
 
 demagH = np.zeros((dlen,dlen))

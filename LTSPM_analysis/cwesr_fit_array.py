@@ -35,14 +35,15 @@ def cwesr_fit_array(scannum, name, filestart, fileend, num_avg, d_gsplit=20):
         popt = cwresult[0]
         pcov = cwresult[1]
         perr = np.sqrt(np.abs(np.diag(pcov)))
-        fitdata.append([popt, perr])
+        poptwrite = np.append(np.append(popt[0],[popt[1]+popt[2]/2, popt[1]-popt[2]/2]), popt[3:])
+        fitdata.append([poptwrite, perr])
 
     len_data = len(fitdata)
     print(len_data)
     f = open(savepath, 'w')
     for i in range (0, len_data):
     #    len_params = len(fitdata[i])
-        for k in range (0,6):
+        for k in range(6):
             f.write(str(fitdata[i][0][k])+',')
             f.write(str(fitdata[i][1][k])+',')
         f.write(str(fitdata[i][0][6])+','+str(fitdata[i][1][6])+'\n')

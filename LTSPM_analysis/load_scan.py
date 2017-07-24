@@ -9,17 +9,17 @@ import re
 import calc_NV_field as cNV
 
 
-def load_ff (path, xres, yres, Dgs=2870, maxfgrad=25, maxfield=150, neighbors=4):
+def load_ff (path, xres, yres, Dgs=2870, maxfgrad=25, maxfield=150, neighbors=4, fieldangle=True):
 
     scanlist = np.loadtxt(path, delimiter=',')[:,[2,4]]
     scanlisterr = np.loadtxt(path, delimiter=',')[:,[3,5]]
 
     Bnv = np.zeros((yres, xres))
-    B0 = np.zeros((yres, xres))
+    Bp = np.zeros((yres, xres))
     theta = np.zeros((yres, xres))
     BnvErr = np.zeros((yres, xres))
     rBnv = np.zeros((yres, xres))
-    rB0 = np.zeros((yres, xres))
+    rBp = np.zeros((yres, xres))
     rtheta = np.zeros((yres, xres))
     rBnvErr = np.zeros((yres, xres))
 
@@ -28,36 +28,46 @@ def load_ff (path, xres, yres, Dgs=2870, maxfgrad=25, maxfield=150, neighbors=4)
 
     for j in range(0,yres):
         for i in range(0,xres):
-            # Bnv[j,i] = np.abs(scanlist[i+(2*j*xres),1]-scanlist[i+(2*j*xres),0])/(2*2.8)
-            f_ctr = scanlist[i+(2*j*xres),0]
-            f_split = scanlist[i+(2*j*xres),1]
-            f_splitErr = scanlisterr[i+(2*j*xres),1]
-            B_list = cNV.calc_NV_field_angle(f_ctr-(f_split/2), f_ctr+(f_split/2), Dgs)
-            Bnv[j,i] = B_list[0]/2.8
-            B0[j,i] = B_list[1]/2.8
-            theta[j,i] = B_list[2]
-            BnvErr[j,i] = f_split/2.8
+            f1 = scanlist[i+(2*j*xres),0]
+            f2 = scanlist[i+(2*j*xres),1]
+            f1Err = scanlisterr[i+(2*j*xres),0]
+            f2Err = scanlisterr[i+(2*j*xres),1]
+            if (fieldangle):
+                B_list = cNV.calc_NV_field_angle(f1, f2, Dgs)
+                Bnv[j,i] = B_list[0]/2.8
+                Bp[j,i] = B_list[1]/2.8
+                theta[j,i] = B_list[2]
+                BnvErr[j,i] = np.sqrt(f1Err**2 + f2Err**2)/2.8
+            else:
+                Bnv[j,i] = np.abs(f2-f1)/(2*2.8)
+                Bp[j,i] = Bnv[j,i]
+                theta[j,i] = 0
+                BnvErr[j,i] = np.sqrt(f1Err**2 + f2Err**2)/2.8
 
-            # rBnv[j,i] = np.abs(scanlist[i+((2*j+1)*xres),1]-scanlist[i+((2*j+1)*xres),0])/(2*2.8)
-            rf_ctr = scanlist[i+((2*j+1)*xres),0]
-            rf_split = scanlist[i+((2*j+1)*xres),1]
-            rf_splitErr = scanlisterr[i+((2*j+1)*xres),1]
-            rB_list = cNV.calc_NV_field_angle(rf_ctr-(rf_split/2), rf_ctr+(rf_split/2), Dgs)
-            rBnv[j,i] = rB_list[0]/2.8
-            rB0[j,i] = rB_list[1]/2.8
-            rtheta[j,i] = rB_list[2]
-            rBnvErr[j,i] = rf_split/2.8
+            rf1 = scanlist[i+((2*j+1)*xres),0]
+            rf2 = scanlist[i+((2*j+1)*xres),1]
+            rf1Err = scanlisterr[i+(2*j*xres),0]
+            rf2Err = scanlisterr[i+(2*j*xres),0]
+            if (fieldangle):
+                rB_list = cNV.calc_NV_field_angle(rf1, rf2, Dgs)
+                rBnv[j,i] = rB_list[0]/2.8
+                rBp[j,i] = rB_list[1]/2.8
+                rtheta[j,i] = rB_list[2]
+                rBnvErr[j,i] = np.sqrt(rf1Err**2 + rf2Err**2)/2.8
+            else:
+                rBnv[j,i] = np.abs(rf2-rf1)/(2*2.8)
+                rBp[j,i] = rBnv[j,i]
+                rtheta[j,i] = 0
+                rBnvErr[j,i] = np.sqrt(rf1Err**2 + rf2Err**2)/2.8
 
-            # if(np.abs(2870-(scanlist[i+(2*j*xres),1]+scanlist[i+(2*j*xres),0])/2) > 2.5):
             if(Bnv[j,i]>500/2.8):
                 Bnv[j,i] = 1000
                 num_fail = num_fail+1
                 fail_indices.append([j,i])
-                # print(i,j,scanlist[i+(2*j*xres),1],scanlist[i+(2*j*xres),0])
 
     Bnv, BnvErr, rBnv, rBnvErr = interpolate_fit_fails(Bnv, BnvErr, rBnv, rBnvErr, xres, yres, maxfield, maxfgrad)
 
-    return Bnv, BnvErr, rBnv, rBnvErr, B0, theta, num_fail, fail_indices
+    return Bnv, BnvErr, rBnv, rBnvErr, Bp, theta, num_fail, fail_indices
 
 
 def load_rf_track (path, xres, yres):

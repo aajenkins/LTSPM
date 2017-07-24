@@ -2,20 +2,19 @@
 # @Date:   2017-01-18T09:54:01-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-02-18T20:09:07-08:00
+# @Last modified time: 2017-07-23T19:25:17-07:00
 
 
 
 import numpy as np
 import fourier_image as fi
-# from scipy import fftpack
 
-def stray_field_calc_thick(mx,my,mz,Mst,sim_size,z,windowData=False,windowPower=1/2):
+def stray_field_calc_thick(mx,my,mz,Ms,t,sim_size,z,windowData=False, windowPower=1/2):
     pi = np.pi
     mlen = len(mx)
     hlen = mlen/2
     res = sim_size/mlen
-    fieldPrefactor = Mst
+    fieldPrefactor = (4*pi*1.0e-7)*Ms/2
 
     # Mx = np.multiply(mx, 1/(res**2))
     if windowData:
@@ -30,42 +29,30 @@ def stray_field_calc_thick(mx,my,mz,Mst,sim_size,z,windowData=False,windowPower=
     fmy = np.fft.fftshift(fmys)
     fmz = np.fft.fftshift(fmzs)
 
+    kxv = np.arange(-pi*mlen/sim_size, pi*mlen/sim_size, 2*pi/sim_size)
+    kyv = np.arange(-pi*mlen/sim_size, pi*mlen/sim_size, 2*pi/sim_size)
+    kx, ky = np.meshgrid(kxv, kyv)
+
+    k = np.sqrt(kx**2 + ky**2)
+
+    # alphazk = np.divide(np.exp(-(z+t)*k) * (np.exp(t*k)-1), k**2)
+    # alphaxyk = np.divide(np.exp(-(z+t)*k) * (np.exp(t*k)-1), k)
+    alphazk = np.divide(t*np.exp(-z*k), k)
+    alphaxyk = t*np.exp(-z*k)
+
+    Hzk = alphazk*(k**2)*fmz - 1j*alphaxyk*(kx*fmx + ky*fmy)
+
     surface_cdk = fmz
+    volume_cdk = -1j*(kx*fmx + ky*fmy)
 
-    volume_cdk = np.zeros_like(fmx)
-    meffk = np.zeros_like(fmx)
+    Hxk = -1j * np.divide(kx, k) * Hzk
+    Hyk = -1j * np.divide(ky, k) * Hzk
 
-    for j in range(0,mlen):
-        ky = 2*pi*(j-hlen)/sim_size
-        for i in range(0, mlen):
-            kx = 2*pi*(i-hlen)/sim_size
-            volume_cdk[j][i] = -1j*(kx*fmx[j,i] + ky*fmy[j,i])
-
-    Hxk = np.zeros_like(fmx)
-    Hyk = np.zeros_like(fmx)
-    Hzk = np.zeros_like(fmx)
-
-    for j in range(0, mlen):
-        ky = 2 * pi * (j-hlen) / sim_size
-        for i in range(0, mlen):
-            kx = 2 * pi * (i-hlen) / sim_size
-            k = np.sqrt(kx**2 + ky**2)
-            if (k==0):
-                Hzk[j,i] = 0
-                Hxk[j][i] = 0
-                Hyk[j][i] = 0
-            else:
-                Hzk[j][i] = 2*pi*np.exp(-k*z)*(surface_cdk[j,i]+(volume_cdk[j][i])/k)
-                Hxk[j][i] = -1j * (kx / k) * Hzk[j, i]
-                Hyk[j][i] = -1j * (ky / k) * Hzk[j, i]
-                meffk[j][i] = surface_cdk[j,i]+(volume_cdk[j][i])/k
-
-    surface_cd = np.real(np.fft.ifft2(np.fft.ifftshift(surface_cdk), norm="ortho"))
     volume_cd = np.real(np.fft.ifft2(np.fft.ifftshift(volume_cdk), norm="ortho"))
-    meff = np.real(np.fft.ifft2(np.fft.ifftshift(meffk), norm="ortho"))
+    surface_cd = np.real(np.fft.ifft2(np.fft.ifftshift(surface_cdk), norm="ortho"))
 
     Hx = fieldPrefactor*np.real(np.fft.ifft2(np.fft.ifftshift(Hxk), norm="ortho"))
     Hy = fieldPrefactor*np.real(np.fft.ifft2(np.fft.ifftshift(Hyk), norm="ortho"))
     Hz = fieldPrefactor*np.real(np.fft.ifft2(np.fft.ifftshift(Hzk), norm="ortho"))
 
-    return surface_cd, volume_cd, meff, [Hxk, Hyk, Hzk], [Hx, Hy, Hz]
+    return [Hx, Hy, Hz], volume_cd, surface_cd

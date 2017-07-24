@@ -2,14 +2,14 @@
 # @Date:   2017-01-18T09:54:01-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-07-10T13:53:32-07:00
+# @Last modified time: 2017-07-22T12:21:30-07:00
 
 
 
 import numpy as np
 import fourier_image as fi
 
-def stray_field_calc_fast(mx,my,mz,Mst,sim_size,z,windowData=False):
+def stray_field_calc_fast(mx,my,mz,Mst,sim_size,z,windowData=False, windowPower=1/2):
     pi = np.pi
     mlen = len(mx)
     hlen = mlen/2

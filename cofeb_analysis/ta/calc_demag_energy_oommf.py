@@ -2,7 +2,7 @@
 # @Date:   2017-02-17T14:20:47-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-07-10T20:56:33-07:00
+# @Last modified time: 2017-07-21T16:13:27-07:00
 
 
 
@@ -17,6 +17,7 @@ import format_plot as fp
 
 pi = np.pi
 mu0 = 4*pi*(1e-7)
+deadlayer = True
 
 def get_interpolated_contour(contour):
     slen = len(contour[:, 1])
@@ -54,12 +55,15 @@ material_params_path = path+'material_parameters.json'
 with open(material_params_path, 'r') as fread:
     material_params = json.load(fread)
 
-Ms = material_params['Ms']
-thickness = material_params['t']
+if (deadlayer):
+    Ms = material_params['Ms2']
+    thickness = material_params['t2']
+else:
+    Ms = material_params['Ms']
+    thickness = material_params['t']
+
 Keff = material_params['Keff']
 
-# Ms=Ms/0.7
-# thickness=thickness*0.7
 
 dlen = len(domains)
 res = 100.0e-9
@@ -82,9 +86,9 @@ print('total_wall_length = ' + str(total_wall_length))
 total_wall_length_norm = total_wall_length/( (res*(dlen-2))**2 )
 
 ohfPath = '/Users/alec/UCSB/oommf/data_and_runs/ta/'
-filename = 'ta_magn1-hdemag.ohf'
+filename = 'ta_magn'+str(1+deadlayer)+'-hdemag.ohf'
 ohfDemagH = np.genfromtxt(ohfPath+filename)
-filenameDres = 'ta_magn_dres1-hdemag.ohf'
+filenameDres = 'ta_magn_dres'+str(1+deadlayer)+'-hdemag.ohf'
 ohfDemagHDres = np.genfromtxt(ohfPath+filenameDres)
 
 demagH = np.zeros((dlen,dlen))

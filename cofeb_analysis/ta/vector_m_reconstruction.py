@@ -14,6 +14,7 @@ from scipy import misc
 from scipy import signal
 from scipy import interpolate
 from scipy.optimize import curve_fit
+import matplotlib.pyplot as plt
 import json
 import ctypes
 import time
@@ -54,9 +55,9 @@ xcenter = scan_params['xcenter']
 ycenter = scan_params['ycenter']
 zfield = scan_params['zfield']*(1e4) # convert to G
 
-data = lscan.load_ff('/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/fitdata.txt',xres,yres,Dgs=2870,maxfgrad=20)
+data = lscan.load_ff('/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/fitdata.txt',xres,yres,Dgs=2870,maxfgrad=20,fieldangle=True)
 misc.imsave('/Users/alec/UCSB/scan_images/full-field/ff'+str(scannum)+'.png', data[0])
-ffmask = ndimage.imread('/Users/alec/UCSB/scan_images/full-field/ff'+str(scannum)+'mask2.png',flatten = True)
+ffmask = ndimage.imread('/Users/alec/UCSB/scan_images/full-field/ff'+str(scannum)+'mask.png',flatten = True)
 ffmask = np.multiply(np.add(np.multiply(ffmask,1/255),-0.5),-2)
 
 np.savetxt(path+str(scannum)+'/fail_index.txt', data[7])
@@ -185,12 +186,58 @@ myLNeel = np.sqrt(1-mz**2)*np.sin(theta_grad_grid)
 mxRNeel = -np.sqrt(1-mz**2)*np.cos(theta_grad_grid)
 myRNeel = -np.sqrt(1-mz**2)*np.sin(theta_grad_grid)
 
+savepath = path+str(scannum)+'/stray_field_sim/'
+np.savetxt(savepath+'mz.txt', mz, delimiter=',')
+np.savetxt(savepath+'theta_grad_grid.txt', theta_grad_grid, delimiter=',')
+np.savetxt(savepath+'mxBloch.txt', mxBloch, delimiter=',')
+np.savetxt(savepath+'myBloch.txt', myBloch, delimiter=',')
+np.savetxt(savepath+'mxLNeel.txt', mxLNeel, delimiter=',')
+np.savetxt(savepath+'myLNeel.txt', myLNeel, delimiter=',')
+np.savetxt(savepath+'mxRNeel.txt', mxRNeel, delimiter=',')
+np.savetxt(savepath+'myRNeel.txt', myRNeel, delimiter=',')
 
-np.savetxt(path+'mz.txt', mz, delimiter=',')
-np.savetxt(path+'theta_grad_grid.txt', theta_grad_grid, delimiter=',')
-np.savetxt(path+'mxBloch.txt', mxBloch, delimiter=',')
-np.savetxt(path+'myBloch.txt', myBloch, delimiter=',')
-np.savetxt(path+'mxLNeel.txt', mxLNeel, delimiter=',')
-np.savetxt(path+'myLNeel.txt', myLNeel, delimiter=',')
-np.savetxt(path+'mxRNeel.txt', mxRNeel, delimiter=',')
-np.savetxt(path+'myRNeel.txt', myRNeel, delimiter=',')
+# plt.close('all')
+#
+# savepath = path+str(scannum)+'/'
+#
+# fig, ax = plt.subplots()
+# plt.imshow(bxdata, interpolation="Nearest")
+# plt.colorbar()
+# plt.xticks([])
+# plt.yticks([])
+# plt.savefig(savepath+'Bx_recon.pdf',  bbox_inches='tight')
+#
+# fig, ax = plt.subplots()
+# plt.imshow(bydata, interpolation="Nearest")
+# plt.colorbar()
+# plt.xticks([])
+# plt.yticks([])
+# plt.savefig(savepath+'By_recon.pdf',  bbox_inches='tight')
+#
+# fig, ax = plt.subplots()
+# plt.imshow(bzdata, interpolation="Nearest")
+# plt.colorbar()
+# plt.xticks([])
+# plt.yticks([])
+# plt.savefig(savepath+'Bz_recon.pdf',  bbox_inches='tight')
+#
+#
+# bpdata = np.sqrt(bxdata**2 + bydata**2)
+#
+# fig, ax = plt.subplots()
+# plt.imshow(bpdata, interpolation="Nearest")
+# plt.colorbar()
+# plt.xticks([])
+# plt.yticks([])
+# plt.savefig(savepath+'Bp_recon.pdf',  bbox_inches='tight')
+#
+#
+# fig, ax = plt.subplots()
+# plt.imshow(data[4], interpolation="Nearest")
+# plt.colorbar()
+# plt.xticks([])
+# plt.yticks([])
+# plt.savefig(savepath+'Bp_fit.pdf',  bbox_inches='tight')
+#
+#
+# plt.show()
