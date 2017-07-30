@@ -41,7 +41,7 @@ thetaError = scan_params['thetaError']
 xcenter = scan_params['xcenter']
 ycenter = scan_params['ycenter']
 dres = scan_params['xres']
-zfield = "zfield": 9.5e-4
+zfield = ["zfield"]
 
 #file constants
 hnum = 1
@@ -146,9 +146,6 @@ ffycut = [np.arange((cutcrop[0]-ycenter)*dsize/dres, (cutcrop[1]-ycenter)*dsize/
 ffcut = ffxcut
 x0, x1, y0, y1 = cutcrop[0], cutcrop[1], ycenter, ycenter
 
-# ffcut = ffycut
-# x0, x1, y0, y1 = xcenter, xcenter, 1, dres-1
-
 sycenter = int(slen/2)
 sxcenter = int(slen/2)
 
@@ -158,7 +155,6 @@ sycutcrop = [sycenter-int(np.ceil(scutnum/2)), sycenter+int(np.floor(scutnum/2))
 bcut = [[],[],[]]
 nrcut = [[],[],[]]
 nlcut = [[],[],[]]
-# bnrcut = [[],[],[]]
 
 xs = np.add(np.multiply(np.arange(-ssize/2,ssize/2,sres),1),0)
 
@@ -166,11 +162,6 @@ for k in range(0,3):
     bcut[k] = [xs,blochnv[k][sycenter, :]]
     nrcut[k] = [xs,nrightnv[k][sycenter, :]]
     nlcut[k] = [xs,nleftnv[k][sycenter, :]]
-    # bnrcut[k] = [xs,bnrnv[k][sycenter, :]]
-
-    # bcut[k] = [xs,blochnv[k][:, sxcenter]]
-    # nrcut[k] = [xs,nrightnv[k][:, sxcenter]]
-    # nlcut[k] = [xs,nleftnv[k][:, sxcenter]]
 
 sx0, sx1, sy0, sy1 = sxcutcrop[0], sxcutcrop[1], sycenter, sycenter
 # sx0, sx1, sy0, sy1 = sxcenter, sxcenter, sycutcrop[0], sycutcrop[1]

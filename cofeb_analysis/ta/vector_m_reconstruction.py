@@ -17,22 +17,27 @@ from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
 import json
 import ctypes
+from numpy.ctypeslib import ndpointer
 import time
 from PIL import Image
 
 import load_scan as lscan
 import vector_reconstruction as vr
 import fourier_image as fi
+import format_plots_tkagg as fp
 
 pi = np.pi
 
 
-# def vector_m_reconstruction(scannum):
-
+# def vector_m_reconstruction(scannum, simGridSize = 200, dwIntSize = 400, printError = False):
 scannum = 1760
+simGridSize = 400
+dwIntSize = 200
+printError = False
 
 path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
-scan_params_path = path+str(scannum)+'/'+'scan_parameters.json'
+scan_path = path+str(scannum)+'/'
+scan_params_path = scan_path+'scan_parameters.json'
 material_params_path = path+'material_parameters.json'
 with open(scan_params_path, 'r') as fread:
     scan_params = json.load(fread)
@@ -55,14 +60,12 @@ xcenter = scan_params['xcenter']
 ycenter = scan_params['ycenter']
 zfield = scan_params['zfield']*(1e4) # convert to G
 
-data = lscan.load_ff('/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/fitdata.txt',xres,yres,Dgs=2870,maxfgrad=20,fieldangle=True)
+data = lscan.load_ff('/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/fitdata.txt',xres,yres,Dgs=2870,maxfgrad=20,fieldangle=True,printNVCalcError=printError)
 misc.imsave('/Users/alec/UCSB/scan_images/full-field/ff'+str(scannum)+'.png', data[0])
 ffmask = ndimage.imread('/Users/alec/UCSB/scan_images/full-field/ff'+str(scannum)+'mask.png',flatten = True)
 ffmask = np.multiply(np.add(np.multiply(ffmask,1/255),-0.5),-2)
 
-np.savetxt(path+str(scannum)+'/fail_index.txt', data[7])
-
-print(data[6])
+np.savetxt(scan_path+'/fail_index.txt', data[7])
 
 #---------------- FIT FUNCTIONS ----------------------------------
 #-----------------------------------------------------------------
@@ -100,19 +103,19 @@ bzdataError = recon_data[5]
 
 mdataint = ndimage.interpolation.zoom(mdata, 2, order=1)
 
-np.savetxt(path+'bNV.txt', data[0], delimiter=',')
-np.savetxt(path+'bNVError.txt', data[1], delimiter=',')
-np.savetxt(path+'bz.txt', bzdata, delimiter=',')
-np.savetxt(path+'bzError.txt', bzdataError, delimiter=',')
-np.savetxt(path+'bx.txt', bxdata, delimiter=',')
-np.savetxt(path+'by.txt', bydata, delimiter=',')
-np.savetxt(path+'mdata.txt', mdata, delimiter=',')
-np.savetxt(path+'V.txt', Vdata, delimiter=',')
+np.savetxt(scan_path+'bNV.txt', data[0], delimiter=',')
+np.savetxt(scan_path+'bNVError.txt', data[1], delimiter=',')
+np.savetxt(scan_path+'bz.txt', bzdata, delimiter=',')
+np.savetxt(scan_path+'bzError.txt', bzdataError, delimiter=',')
+np.savetxt(scan_path+'bx.txt', bxdata, delimiter=',')
+np.savetxt(scan_path+'by.txt', bydata, delimiter=',')
+np.savetxt(scan_path+'mdata.txt', mdata, delimiter=',')
+np.savetxt(scan_path+'V.txt', Vdata, delimiter=',')
 
 #---------------- LINECUTS ---------------------------------------
 #-----------------------------------------------------------------
 
-phinum = 30
+phinum = 15
 lcnum = 15
 lclen = 15
 mphi = np.zeros((phinum,lcnum))
@@ -140,86 +143,120 @@ for i in range (0,phinum):
     widths[i] = np.abs(popt[3])
     r0s[i] = popt[2]*scanSize/xres
 
-r0s = np.append(r0s,r0s[0])
-phis = np.linspace(0, 2*np.pi, phinum+1)
+phis = np.linspace(0, 2*np.pi, phinum, endpoint=False)
 
-r0s_int = interpolate.CubicSpline(phis, r0s, bc_type='periodic')
+r0s = np.append(r0s[-4:],np.append(r0s,r0s[:4]))
+phis = np.append(phis[-4:]-2*pi,np.append(phis,phis[:4]+2*pi))
 
-phi_int_num = 200
-phis_int_list = np.linspace(min(phis), max(phis), phi_int_num)
+r0s_int = interpolate.UnivariateSpline(phis, r0s, s=0, k=4)
+dr0s_int = r0s_int.derivative()
+
+phis_int_list = np.linspace(0, 2*pi, dwIntSize, endpoint=False)
 x0_int, y0_int = (r0s_int(phis_int_list)*np.cos(phis_int_list), r0s_int(phis_int_list)*np.sin(phis_int_list))
-x0_int_ex = np.append(x0_int, x0_int[0])
-y0_int_ex = np.append(y0_int, y0_int[0])
-dw_grad = -(y0_int_ex[1:]-y0_int_ex[0:-1]), (x0_int_ex[1:]-x0_int_ex[0:-1])
-theta_grad = np.arctan2(dw_grad[1], dw_grad[0])
+s0_int = np.sqrt((x0_int[1:]-x0_int[:-1])**2 + (y0_int[1:]-y0_int[:-1])**2)
+s0_int = np.append(s0_int, np.sqrt((x0_int[0]-x0_int[-1])**2 + (y0_int[0]-y0_int[-1])**2) )
 
-gridnum = 200
-xm = np.linspace(-scanSize/2, scanSize/2, gridnum, endpoint=False)
-ym = np.linspace(-scanSize/2, scanSize/2, gridnum, endpoint=False)
+xm = np.linspace(-scanSize/2, scanSize/2, simGridSize, endpoint=False)
+ym = np.linspace(-scanSize/2, scanSize/2, simGridSize, endpoint=False)
 xm_grid, ym_grid = np.meshgrid(xm, ym)
-mindist = np.zeros((gridnum, gridnum), dtype=np.double)
-theta_grad_grid = np.zeros((gridnum, gridnum), dtype=np.double)
+phi_grid = np.mod(np.arctan2(ym_grid, xm_grid),2*pi)
+phi_perp = phi_grid - r0s_int(phi_grid)
+
+mindist = np.zeros((simGridSize, simGridSize), dtype=np.double)
 
 dw_dist_lib = ctypes.cdll.LoadLibrary('./dw_dist.so')
 get_dw_dist = dw_dist_lib.dw_dist
+get_dw_dist.argtypes = [ndpointer(ctypes.c_double), ndpointer(ctypes.c_double), ndpointer(ctypes.c_double),
+                        ndpointer(ctypes.c_double), ndpointer(ctypes.c_double), ctypes.c_int, ctypes.c_int,
+                        ndpointer(ctypes.c_double)]
+
 
 t1 = time.time()
-get_dw_dist(ctypes.c_void_p(xm_grid.ctypes.data), ctypes.c_void_p(ym_grid.ctypes.data),
-            ctypes.c_void_p(x0_int.ctypes.data), ctypes.c_void_p(y0_int.ctypes.data),
-            ctypes.c_void_p(theta_grad.ctypes.data), ctypes.c_int(gridnum), ctypes.c_int(phi_int_num),
-            ctypes.c_void_p(mindist.ctypes.data), ctypes.c_void_p(theta_grad_grid.ctypes.data))
+get_dw_dist(np.ascontiguousarray(xm_grid, np.double), np.ascontiguousarray(ym_grid, np.double),
+            np.ascontiguousarray(x0_int, np.double), np.ascontiguousarray(y0_int, np.double),
+            np.ascontiguousarray(s0_int, np.double), simGridSize, dwIntSize,
+            np.ascontiguousarray(mindist, np.double))
+
 t2 = time.time()
 
 print(t2-t1)
 
-mz = np.tanh(mindist/DWWidth)
+msign = np.round( (np.sqrt(xm_grid**2 + ym_grid**2) - (r0s_int(phi_grid)))
+                 / np.abs(np.sqrt(xm_grid**2 + ym_grid**2) - r0s_int(phi_grid)) )
+mz = np.tanh(msign*mindist/DWWidth)
+mzgrad = np.gradient(mz)
+
+# kxv = np.linspace(-pi*simGridSize/(2*scanSize), pi*simGridSize/(2*scanSize), simGridSize, endpoint=False)
+# kyv = np.linspace(-pi*simGridSize/(2*scanSize), pi*simGridSize/(2*scanSize), simGridSize, endpoint=False)
+# kx, ky = np.meshgrid(kxv, kyv)
+# 
+# k = np.sqrt(kx**2 + ky**2)
+#
+# fmz = np.fft.fftshift(np.fft.fft2(mz, norm="ortho"))
+# mzgradx = np.real(np.fft.ifft2(np.fft.ifftshift(-1j*kx*fmz), norm="ortho"))
+# mzgrady = np.real(np.fft.ifft2(np.fft.ifftshift(-1j*ky*fmz), norm="ortho"))
+
+phi_perp = pi + np.arctan2(mzgrad[0], mzgrad[1])
+# phi_perp = pi + np.arctan2(mzgrady, mzgradx)
 
 # Bloch
-mxBloch = np.sqrt(1-mz**2)*np.sin(theta_grad_grid)
-myBloch = np.sqrt(1-mz**2)*np.cos(theta_grad_grid)
+mxBloch = -np.sqrt(1-mz**2)*np.sin(phi_perp)
+myBloch = np.sqrt(1-mz**2)*np.cos(phi_perp)
 
 # left-handed Neel
-mxLNeel = np.sqrt(1-mz**2)*np.cos(theta_grad_grid)
-myLNeel = np.sqrt(1-mz**2)*np.sin(theta_grad_grid)
+mxLNeel = np.sqrt(1-mz**2)*np.cos(phi_perp)
+myLNeel = np.sqrt(1-mz**2)*np.sin(phi_perp)
 
 # right-handed Neel
-mxRNeel = -np.sqrt(1-mz**2)*np.cos(theta_grad_grid)
-myRNeel = -np.sqrt(1-mz**2)*np.sin(theta_grad_grid)
+mxRNeel = -np.sqrt(1-mz**2)*np.cos(phi_perp)
+myRNeel = -np.sqrt(1-mz**2)*np.sin(phi_perp)
 
-savepath = path+str(scannum)+'/stray_field_sim/'
-np.savetxt(savepath+'mz.txt', mz, delimiter=',')
-np.savetxt(savepath+'theta_grad_grid.txt', theta_grad_grid, delimiter=',')
-np.savetxt(savepath+'mxBloch.txt', mxBloch, delimiter=',')
-np.savetxt(savepath+'myBloch.txt', myBloch, delimiter=',')
-np.savetxt(savepath+'mxLNeel.txt', mxLNeel, delimiter=',')
-np.savetxt(savepath+'myLNeel.txt', myLNeel, delimiter=',')
-np.savetxt(savepath+'mxRNeel.txt', mxRNeel, delimiter=',')
-np.savetxt(savepath+'myRNeel.txt', myRNeel, delimiter=',')
+vcdBloch = -(np.gradient(mxBloch)[1]+np.gradient(myBloch)[0])
+vcdLNeel = -(np.gradient(mxLNeel)[1]+np.gradient(myLNeel)[0])
 
-# plt.close('all')
-#
-# savepath = path+str(scannum)+'/'
-#
+np.savetxt(scan_path+'mz.txt', mz, delimiter=',')
+np.savetxt(scan_path+'phi_perp.txt', phi_perp, delimiter=',')
+np.savetxt(scan_path+'mxBloch.txt', mxBloch, delimiter=',')
+np.savetxt(scan_path+'myBloch.txt', myBloch, delimiter=',')
+np.savetxt(scan_path+'mxLNeel.txt', mxLNeel, delimiter=',')
+np.savetxt(scan_path+'myLNeel.txt', myLNeel, delimiter=',')
+np.savetxt(scan_path+'mxRNeel.txt', mxRNeel, delimiter=',')
+np.savetxt(scan_path+'myRNeel.txt', myRNeel, delimiter=',')
+
+plt.close('all')
+
+fig, ax = plt.subplots()
+plt.imshow(mz, interpolation="Nearest")
+plt.colorbar()
+plt.xticks([])
+plt.yticks([])
+
+fig, ax = plt.subplots()
+plt.imshow(vcdBloch, interpolation="Nearest")
+plt.colorbar()
+plt.xticks([])
+plt.yticks([])
+
 # fig, ax = plt.subplots()
 # plt.imshow(bxdata, interpolation="Nearest")
 # plt.colorbar()
 # plt.xticks([])
 # plt.yticks([])
-# plt.savefig(savepath+'Bx_recon.pdf',  bbox_inches='tight')
+# # plt.savefig(scan_path+'Bx_recon.pdf',  bbox_inches='tight')
 #
 # fig, ax = plt.subplots()
 # plt.imshow(bydata, interpolation="Nearest")
 # plt.colorbar()
 # plt.xticks([])
 # plt.yticks([])
-# plt.savefig(savepath+'By_recon.pdf',  bbox_inches='tight')
+# # plt.savefig(scan_path+'By_recon.pdf',  bbox_inches='tight')
 #
 # fig, ax = plt.subplots()
 # plt.imshow(bzdata, interpolation="Nearest")
 # plt.colorbar()
 # plt.xticks([])
 # plt.yticks([])
-# plt.savefig(savepath+'Bz_recon.pdf',  bbox_inches='tight')
+# # plt.savefig(scan_path+'Bz_recon.pdf',  bbox_inches='tight')
 #
 #
 # bpdata = np.sqrt(bxdata**2 + bydata**2)
@@ -229,7 +266,7 @@ np.savetxt(savepath+'myRNeel.txt', myRNeel, delimiter=',')
 # plt.colorbar()
 # plt.xticks([])
 # plt.yticks([])
-# plt.savefig(savepath+'Bp_recon.pdf',  bbox_inches='tight')
+# # plt.savefig(scan_path+'Bp_recon.pdf',  bbox_inches='tight')
 #
 #
 # fig, ax = plt.subplots()
@@ -237,7 +274,17 @@ np.savetxt(savepath+'myRNeel.txt', myRNeel, delimiter=',')
 # plt.colorbar()
 # plt.xticks([])
 # plt.yticks([])
-# plt.savefig(savepath+'Bp_fit.pdf',  bbox_inches='tight')
-#
-#
-# plt.show()
+# plt.savefig(scan_path+'Bp_fit.pdf',  bbox_inches='tight')
+fp.format_plots(plt, small=False)
+plt.show()
+
+# if __name__ == "__main__":
+#     import sys
+#     if (len(sys.argv) == 2):
+#         vector_m_reconstruction(int(sys.argv[1]))
+#     elif (len(sys.argv) == 3):
+#         vector_m_reconstruction(int(sys.argv[1]),simGridSize=int(sys.argv[2]))
+#     elif (len(sys.argv) == 4):
+#         vector_m_reconstruction(int(sys.argv[1]),simGridSize=int(sys.argv[2]),dwIntSize=int(sys.argv[3]))
+#     else:
+#         print('enter scan number')

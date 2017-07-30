@@ -2,7 +2,7 @@
 # @Date:   2017-01-18T09:54:01-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-07-22T12:21:30-07:00
+# @Last modified time: 2017-07-29T22:53:17-07:00
 
 
 
@@ -34,8 +34,10 @@ def stray_field_calc_fast(mx,my,mz,Mst,sim_size,z,windowData=False, windowPower=
     volume_cdk = np.zeros_like(fmx)
     meffk = np.zeros_like(fmx)
 
-    kxv = np.arange(-pi*mlen/sim_size, pi*mlen/sim_size, 2*pi/sim_size)
-    kyv = np.arange(-pi*mlen/sim_size, pi*mlen/sim_size, 2*pi/sim_size)
+    # kxv = np.arange(-pi*mlen/sim_size, pi*mlen/sim_size, 2*pi/sim_size)
+    # kyv = np.arange(-pi*mlen/sim_size, pi*mlen/sim_size, 2*pi/sim_size)
+    kxv = 2*pi*np.linspace(-mlen/(2*sim_size), mlen/(2*sim_size), mlen, endpoint=False)
+    kyv = 2*pi*np.linspace(-mlen/(2*sim_size), mlen/(2*sim_size), mlen, endpoint=False)
     kx, ky = np.meshgrid(kxv, kyv)
 
     k = np.sqrt(kx**2 + ky**2)
@@ -46,17 +48,17 @@ def stray_field_calc_fast(mx,my,mz,Mst,sim_size,z,windowData=False, windowPower=
     Hyk = np.zeros_like(fmx)
     Hzk = np.zeros_like(fmx)
 
-    Hzk = np.exp(-k*z) * k * (surface_cdk + np.divide(volume_cdk, k))
-    Hxk = -1j * np.divide(kx, k) * Hzk
-    Hyk = -1j * np.divide(ky, k) * Hzk
-    meffk = surface_cdk+np.divide(volume_cdk, k)
+    Hzk = np.exp(-k*z) * k * (surface_cdk + np.divide(volume_cdk, k+(1e-10)))
+    Hxk = -1j * np.divide(kx, k+(1e-10)) * Hzk
+    Hyk = -1j * np.divide(ky, k+(1e-10)) * Hzk
+    meffk = surface_cdk+np.divide(volume_cdk, k+(1e-10))
 
-    surface_cd = np.real(np.fft.ifft2(np.fft.ifftshift(surface_cdk), norm="ortho"))
-    volume_cd = np.real(np.fft.ifft2(np.fft.ifftshift(volume_cdk), norm="ortho"))
+    surface_cd = Mst*np.real(np.fft.ifft2(np.fft.ifftshift(surface_cdk), norm="ortho"))
+    volume_cd = Mst*np.real(np.fft.ifft2(np.fft.ifftshift(np.divide(volume_cdk,k+(1e-10))), norm="ortho"))
     meff = np.real(np.fft.ifft2(np.fft.ifftshift(meffk), norm="ortho"))
 
     Hx = fieldPrefactor*np.real(np.fft.ifft2(np.fft.ifftshift(Hxk), norm="ortho"))
     Hy = fieldPrefactor*np.real(np.fft.ifft2(np.fft.ifftshift(Hyk), norm="ortho"))
     Hz = fieldPrefactor*np.real(np.fft.ifft2(np.fft.ifftshift(Hzk), norm="ortho"))
 
-    return surface_cd, volume_cd, meff, [Hxk, Hyk, Hzk], [Hx, Hy, Hz]
+    return [Hx, Hy, Hz], surface_cd, volume_cd, meff#, [Hxk, Hyk, Hzk]

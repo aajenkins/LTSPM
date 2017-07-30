@@ -2,29 +2,28 @@
 * @Author: Jenkins Alec <alec>
 * @Date:   2017-07-09T09:46:14-07:00
 * @Project: LTSPM analysis
-* @Last modified by:   alec
-* @Last modified time: 2017-07-10T13:07:53-07:00
+ * @Last modified by:   alec
+ * @Last modified time: 2017-07-29T19:00:13-07:00
 */
 
 #include <stdio.h>
 #include <math.h>
 
-void dw_dist(const void * xgridv, const void * ygridv, const void * xdwv, const void * ydwv,
-  const void * theta_gradv, int gridsize, int dwsize, void * mindistv, void * theta_gridv) {
+const double pi = 3.14159265358979323846;
 
-    const double * xgrid = (double *) xgridv;
-    const double * ygrid = (double *) ygridv;
-    const double * xdw = (double *) xdwv;
-    const double * ydw = (double *) ydwv;
-    const double * theta_grad = (double *) theta_gradv;
+int mod(int a, int b);
 
-    double * mindists = (double *) mindistv;
-    double * theta_grid = (double *) theta_gridv;
+void dw_dist(const double * xgrid, const double * ygrid, const double * xdw, const double * ydw,
+   const double * sdw, int gridsize, int dwsize, double * mindists) {
 
+    double r;
+    double r1;
+    double r2b;
+    double r2;
     double mindist;
     double tempdist;
     int minarg;
-    double theta = 0;
+    int r1arg;
 
     for (int i = 0; i < gridsize*gridsize; ++i) {
       mindist = sqrt( pow(xgrid[i]-xdw[0],2) + pow(ygrid[i]-ydw[0],2) );
@@ -36,11 +35,32 @@ void dw_dist(const void * xgridv, const void * ygridv, const void * xdwv, const 
           minarg = m;
         }
       }
-      if (sqrt(pow(xgrid[i],2) + pow(ygrid[i],2)) < sqrt(pow(xdw[minarg],2) + pow(ydw[minarg],2))) {
-        mindist = -mindist;
+      r1 = mindist;
+      r1arg = minarg;
+      r2 = sqrt( pow(xgrid[i]-xdw[mod(minarg+1, dwsize)],2) + pow(ygrid[i]-ydw[mod(minarg+1, dwsize)],2) );
+
+      r2b = sqrt( pow(xgrid[i]-xdw[mod(minarg-1, dwsize)],2) + pow(ygrid[i]-ydw[mod(minarg-1, dwsize)],2) );
+      if (r2b <= r2) {
+        r2 = mindist;
+        r1 = r2b;
+        r1arg = mod(minarg-1, dwsize);
+        // printf("%d\n", minarg);
       }
-      mindists[i] = mindist;
-      theta_grid[i] = theta_grad[minarg];
+
+      r = r2 * sqrt( 1 - pow( (pow(sdw[r1arg],2) + pow(r2,2) - pow(r1,2)) / (2*sdw[r1arg]*r2) ,2) );
+
+      // if (sqrt(pow(xgrid[i],2) + pow(ygrid[i],2)) < sqrt(pow(xdw[minarg],2) + pow(ydw[minarg],2))) {
+      //   r = -r;
+      //   //mindist = -mindist;
+      // }
+      mindists[i] = r;
     }
 
+
+}
+
+int mod(int a, int b)
+{
+    int r = a % b;
+    return r < 0 ? r + b : r;
 }

@@ -36,7 +36,7 @@ def vector_reconstruction(data, dataError, theta, thetaError, phi, height, scans
 			kx = 2*pi*(i-hlen)/scansize
 			k = np.sqrt(kx**2 + ky**2)
 			if (i==hlen and j==hlen):
-				hzf[j,i] = fdata[j,i]/np.sin(theta)
+				hzf[j,i] = 0#fdata[j,i]/np.sin(theta)
 				meffk[j,i] = 0
 				Vk[j,i] = 0
 			else:

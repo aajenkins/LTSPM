@@ -26,8 +26,8 @@ def format_plots(plt, square=False, padding=0, small=True):
 			# print(fwidth, fheight, x, y)
 
 	else:
-		fheight = 520
-		fwidth = 650
+		fheight = 650
+		fwidth = 900
 		for i in range(flen):
 			plt.figure(figNums[i])
 			fwin = plt.get_current_fig_manager().window
