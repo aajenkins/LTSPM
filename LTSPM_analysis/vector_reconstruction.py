@@ -9,15 +9,14 @@ Created on Wed Nov 23 21:56:50 2016
 #-----------------------------------------------------------------
 
 import numpy as np
-import scipy.fftpack as fft
 
 #---------------- RECONSTRUCTION ---------------------------------
 #-----------------------------------------------------------------
 
-def vector_reconstruction(data, dataError, theta, thetaError, phi, height, scansize, kcutoff=1):
+def vector_reconstruction(data, dataError, theta, thetaError, phi, height, scansize, t, kcutoff=1):
 	pi = np.pi
-	fdata = fft.fft2(data)
-	fdata = fft.fftshift(fdata)
+	fdata = np.fft.fft2(data)
+	fdata = np.fft.fftshift(fdata)
 
 	dlen = len(fdata)
 	hlen = int(np.floor(dlen/2))
@@ -25,7 +24,7 @@ def vector_reconstruction(data, dataError, theta, thetaError, phi, height, scans
 	hxf = np.zeros_like(fdata)
 	hyf = np.zeros_like(fdata)
 	hzf = np.zeros_like(fdata)
-	meffk = np.zeros_like(fdata)
+	mzBlochk = np.zeros_like(fdata)
 	Vk = np.zeros_like(fdata)
 	k = 0
 	kmax = 2*pi*dlen/scansize
@@ -37,20 +36,20 @@ def vector_reconstruction(data, dataError, theta, thetaError, phi, height, scans
 			k = np.sqrt(kx**2 + ky**2)
 			if (i==hlen and j==hlen):
 				hzf[j,i] = 0#fdata[j,i]/np.sin(theta)
-				meffk[j,i] = 0
+				mzBlochk[j,i] = 0
 				Vk[j,i] = 0
 			else:
-				hzf[j,i] = fdata[j,i]/( np.cos(theta) * (1-
-					(1j/k)*np.tan(theta)*(kx*np.cos(phi) + ky*np.sin(phi))) )
-				hxf[j, i] = -1j*(kx/k)*hzf[j,i]
-				hyf[j, i] = -1j*(ky/k)*hzf[j,i]
-				Vk[j, i] = -hzf[j,i]/(k**2)
 				if (k<kmax*kcutoff):
-					meffk[j,i] = (1/(k))*np.exp(height*k)*hzf[j,i]
+					hzf[j,i] = fdata[j,i]/( np.cos(theta) * (1-
+						(1j/k)*np.tan(theta)*(kx*np.cos(phi) + ky*np.sin(phi))) )
+					hxf[j, i] = -1j*(kx/k)*hzf[j,i]
+					hyf[j, i] = -1j*(ky/k)*hzf[j,i]
+					Vk[j, i] = -hzf[j,i]/(k**2)
+					mzBlochk[j,i] = 2*np.exp(height*k)*hzf[j,i]/(1-np.exp(-k*t))
 
-	bzdata = np.real(fft.ifft2(fft.ifftshift(hzf)))
-	bxdata = np.real(fft.ifft2(fft.ifftshift(hxf)))
-	bydata = np.real(fft.ifft2(fft.ifftshift(hyf)))
+	bzdata = np.real(np.fft.ifft2(np.fft.ifftshift(hzf)))
+	bxdata = np.real(np.fft.ifft2(np.fft.ifftshift(hxf)))
+	bydata = np.real(np.fft.ifft2(np.fft.ifftshift(hyf)))
 
 	bzdataError = np.zeros_like(bzdata)
 	for j in range(0,dlen):
@@ -60,7 +59,7 @@ def vector_reconstruction(data, dataError, theta, thetaError, phi, height, scans
 			bzbnvError = np.cos(theta)*dataError[j,i]
 			bzdataError[j,i] = np.sqrt((bzthetaError)**2 + (bzbnvError)**2)
 
-	meffdata = np.real(fft.ifft2(fft.ifftshift(meffk)))
-	Vdata = np.real(fft.ifft2(fft.ifftshift(Vk)))
+	mzBlochdata = np.real(np.fft.ifft2(np.fft.ifftshift(mzBlochk)))
+	Vdata = np.real(np.fft.ifft2(np.fft.ifftshift(Vk)))
 
-	return bxdata, bydata, bzdata, meffdata, Vdata, bzdataError, meffk
+	return bxdata, bydata, bzdata, mzBlochdata, Vdata, bzdataError, mzBlochk

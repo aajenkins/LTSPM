@@ -12,14 +12,9 @@ from matplotlib.ticker import MaxNLocator
 from matplotlib.ticker import FormatStrFormatter
 import numpy as np
 
-import format_plot as fp
+import plotting.format_plots_tkagg as fp
 
-font = {'family' : 'Arial',
-        'weight' : 'normal',
-        'size'   : 15}
-matplotlib.rc('font', **font)
-
-savefolder = '/Users/alec/UCSB/presentations/MM_2017/'
+savefolder = '/Users/alec/UCSB/papers/tacofeb/figures/'
 
 esrnum = str(24)
 
@@ -33,21 +28,22 @@ esrdata[1] = esrdata[1]/maxfl
 
 plt.close('all')
 
-plt.figure(1,[4.0,3.5])
-ax1 = plt.axes()
+fig, ax = plt.subplots(figsize=[3.1,2.2])
 
-plt.plot(esrdata[0],esrdata[1],linewidth=2.0,color='#2D7DD2')
-ax1.set_xticks(np.linspace(2.82,2.92,4))
-ax1.set_yticks(np.linspace(0.88,1.0,4))
+plt.plot(esrdata[0],esrdata[1],linewidth=2.0)
+ax.set_xticks(np.linspace(2.83,2.91,5))
+ax.set_yticks(np.linspace(0.88,1.0,4))
 plt.xlim([2.82,2.92])
-# ax1.locator_params(axis='y', nbins=5)
+ax.yaxis.tick_right()
+plt.xlabel(r'$2\gamma B_{NV}$')
 # fp.format_plot(plt, 400, 400, 0, 50, tight=False)
-ax1.xaxis.set_major_formatter(FormatStrFormatter('%.2f'))
-ax1.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
+ax.xaxis.set_major_formatter(FormatStrFormatter('%.2f'))
+ax.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
+plt.subplots_adjust(left=0.05, bottom=0.22, right=0.85, top=1.0)
 
 plt.show()
 
 #plt.figure(2,[6,6])
 #plt.hist(scandata.ravel(), bins=256, range=(0, 7e4), fc='k', ec='k')
 
-pylab.savefig(savepath,bbox_inches='tight')
+# pylab.savefig(savepath,bbox_inches='tight')

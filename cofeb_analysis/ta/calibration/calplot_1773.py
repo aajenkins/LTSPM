@@ -83,6 +83,7 @@ thetaError = np.sqrt((1/(bz0**2 - BzMeanEnd**2)) + ( (BzMeanEnd**2) / ((bz0**2)*
 
 print(np.sqrt((1/(bz0**2 - BzMeanEnd**2))))
 print(np.sqrt(( (BzMeanEnd**2) / ((bz0**2)*(bz0**2 - BzMeanEnd**2)) )))
+print("BzMeanEnd = "+str(BzMeanEnd))
 print("thetaMean = "+str(thetaMean))
 print("thetaError = "+str(thetaError))
 

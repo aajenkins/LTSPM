@@ -67,24 +67,26 @@ def cwesr_fit(x, y, filenum=0, gauss=True, gamp=dgamp, gwidth=dgwidth, gctr=2870
 	dmin = np.min(y)
 	amp = dmax-dmin
 
+	ystart = np.mean(np.append(y[0:3], y[-3:]))
+
 	if len(sm1s) >= 1 and len(sm2s) >= 1:
 		fc1 = sm1s[0][0]
 		fc2 = sm2s[0][0]
 		gsplit = np.abs(fc2-fc1)
-		gamp = y[0]-sm1s[0][1]
+		gamp = ystart-sm1s[0][1]
 	elif len(sm1s) == 0 and len(sm2s) >= 1:
 		gsplit=0
-		gamp = (y[0]-sm2s[0][1])/2
+		gamp = (ystart-sm2s[0][1])/2
 	elif len(sm1s) >= 1 and len(sm2s) == 0:
 		gsplit=0
-		gamp = (y[0]-sm1s[0][1])/2
+		gamp = (ystart-sm1s[0][1])/2
 	else:
 		gsplit = d_gsplit
-		gamp = y[0]-dmin
+		gamp = ystart-dmin
 
-	lbounds2 = [0,gctr,0,amp/3,min_width,amp/3,min_width]
-	ubounds2 = [max_counts,max_ctr,max_splitting,2*amp,max_width,2*amp,max_width]
-	guess = [y[0], gctr, gsplit, gamp, gwidth, gamp, gwidth]
+	lbounds2 = [0,gctr-5,0,amp/4,min_width,amp/4,min_width]
+	ubounds2 = [max_counts,max_ctr,max_splitting,4*amp,max_width,4*amp,max_width]
+	guess = [ystart, gctr, gsplit, gamp, gwidth, gamp, gwidth]
 
 	try:
 		if (gauss):

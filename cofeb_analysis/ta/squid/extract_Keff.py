@@ -2,7 +2,7 @@
 # @Date:   2017-01-23T16:23:24-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-03-13T16:38:20-05:00
+# @Last modified time: 2017-08-09T10:18:46-07:00
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,7 +10,7 @@ import matplotlib.pylab as pylab
 from scipy import stats
 from scipy import interpolate
 
-import format_plot as fp
+import plotting.format_plots_tkagg as fp
 
 #--------------- SAMPLE PARAMETERS ---------------------------------
 
@@ -98,30 +98,34 @@ print('area between norm and ll = '+str(area_diff))
 print('Keff = '+str(Keff))
 
 
+sq_Ms_ll_h = sq_data_base_ll[0]*(1e-1)
+sq_Ms_norm_h = sq_data_base_norm_extend[0]*(1e-1)
+sq_Ms_ll = sq_data_base_ll[1]/(sampleAreaCM*thicknessCM)
+sq_Ms_norm = sq_data_base_norm_extend[1]/(sampleAreaCM*thicknessCM)
+
 plt.close('all')
 
-fig1, ax1 = plt.subplots(figsize=(5,4.5))
-plt.plot(sq_data_base_norm_extend[0], sq_data_base_norm_extend[1]*(1e6), color="#F97304", label=r"H$_\perp$", linewidth=2.0)
-plt.plot(sq_data_base_ll[0], sq_data_base_ll[1]*(1e6), color="#2D7DD2", label="H$_{||}$", linewidth=2.0)
-plt.legend(bbox_to_anchor=(0.92, 0.3), loc=1, borderaxespad=0., prop={'size':15})
-# ax1.set_xlabel('H (Oe)')
-# ax1.set_ylabel('magnetic moment (emu x10^-6)')
-ax1.set_yticks(np.linspace(0.0,4.0,5))
-plt.axis([0,1000,0,4])
-fp.format_plot(plt, 500, 400, 0, 50)
+fig1, ax1 = plt.subplots(figsize=(5,3))
+plt.plot(sq_Ms_norm_h, sq_Ms_norm, label=r"H$_\perp$", linewidth=2.0)
+plt.plot(sq_Ms_ll_h, sq_Ms_ll, label="H$_{||}$", linewidth=2.0)
+plt.legend(bbox_to_anchor=(0.92, 0.3), loc=1, borderaxespad=0., prop={'size':12})
+ax1.set_xlabel('H (mT)')
+ax1.set_ylabel(r'magnetization (kA/m)')
+# ax1.set_yticks(np.linspace(0.0,4.0,5))
+plt.axis([0,90,0,750])
+plt.subplots_adjust(left=0.14, right=0.98, bottom=0.16, top=1.0)
 pylab.savefig('/Users/alec/UCSB/SQUID_data/ta-7/Keff_thinned.pdf')
 
-fig1, ax1 = plt.subplots()
-plt.plot(sq_data_base_norm[0], sq_data_base_norm[1])
-fp.format_plot(plt, 500, 400, 500, 50)
+# fig1, ax1 = plt.subplots()
+# plt.plot(sq_data_base_norm[0], sq_data_base_norm[1])
+#
+# fig1, ax1 = plt.subplots()
+# plt.plot(sq_data_base_norm_lowH[0,], sq_data_base_norm_lowH[1])
+#
+# fig1, ax1 = plt.subplots()
+# plt.plot(sq_data_ll[0], sq_data_ll[1])
+# plt.plot(sq_data_norm[0], sq_data_norm[1])
 
-fig1, ax1 = plt.subplots()
-plt.plot(sq_data_base_norm_lowH[0,], sq_data_base_norm_lowH[1])
-fp.format_plot(plt, 500, 400, 1000, 50)
-
-fig1, ax1 = plt.subplots()
-plt.plot(sq_data_ll[0], sq_data_ll[1])
-plt.plot(sq_data_norm[0], sq_data_norm[1])
-fp.format_plot(plt, 600, 400, 0, 450)
+# fp.format_plots(plt, small=False)
 
 plt.show()

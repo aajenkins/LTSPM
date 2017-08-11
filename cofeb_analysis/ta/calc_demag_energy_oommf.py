@@ -2,7 +2,7 @@
 # @Date:   2017-02-17T14:20:47-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-07-21T16:13:27-07:00
+# @Last modified time: 2017-08-09T10:34:04-07:00
 
 
 
@@ -13,7 +13,7 @@ from scipy import interpolate
 from skimage import measure
 import json
 
-import format_plot as fp
+import plotting.format_plots_tkagg as fp
 
 pi = np.pi
 mu0 = 4*pi*(1e-7)
@@ -63,6 +63,7 @@ else:
     thickness = material_params['t']
 
 Keff = material_params['Keff']
+DMI = material_params['DMI']
 
 
 dlen = len(domains)
@@ -113,7 +114,7 @@ domain_wall_energy_density = -( delta_demag_energy_norm /
 
 print('domain_wall_energy_density = ' + str(domain_wall_energy_density))
 
-As = (domain_wall_energy_density**2)/(16*Keff)
+As = ((domain_wall_energy_density-np.pi*DMI)**2)/(16*Keff)
 DW_width = domain_wall_energy_density/(4*Keff)
 
 print('DW_width (no pi) = ' + str(DW_width))
@@ -124,11 +125,11 @@ plt.close('all')
 fig, ax = plt.subplots()
 im = plt.imshow(demagH, cmap='jet', interpolation='nearest')
 plt.colorbar(im, fraction=0.046, pad=0.04)
-fp.format_plot(plt, 500, 500, 50, 50)
 
 fig, ax = plt.subplots()
 im = plt.imshow(domains, cmap='jet', interpolation='nearest')
 plt.colorbar(im, fraction=0.046, pad=0.04)
-fp.format_plot(plt, 500, 500, 550, 50)
+
+fp.format_plots(plt)
 
 plt.show()

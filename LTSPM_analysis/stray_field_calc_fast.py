@@ -2,21 +2,20 @@
 # @Date:   2017-01-18T09:54:01-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-07-29T22:53:17-07:00
+# @Last modified time: 2017-07-30T11:01:29-07:00
 
 
 
 import numpy as np
 import fourier_image as fi
 
-def stray_field_calc_fast(mx,my,mz,Mst,sim_size,z,windowData=False, windowPower=1/2):
+def stray_field_calc_fast(mx,my,mz,Mst,sim_size,z,windowData=False,windowPower=1/2):
     pi = np.pi
     mlen = len(mx)
     hlen = mlen/2
     res = sim_size/mlen
     fieldPrefactor = (4*pi*1.0e-7)*Mst/2
 
-    # Mx = np.multiply(mx, 1/(res**2))
     if windowData:
         mx = fi.window_image(mx,windowPower)
         my = fi.window_image(my,windowPower)
@@ -34,8 +33,6 @@ def stray_field_calc_fast(mx,my,mz,Mst,sim_size,z,windowData=False, windowPower=
     volume_cdk = np.zeros_like(fmx)
     meffk = np.zeros_like(fmx)
 
-    # kxv = np.arange(-pi*mlen/sim_size, pi*mlen/sim_size, 2*pi/sim_size)
-    # kyv = np.arange(-pi*mlen/sim_size, pi*mlen/sim_size, 2*pi/sim_size)
     kxv = 2*pi*np.linspace(-mlen/(2*sim_size), mlen/(2*sim_size), mlen, endpoint=False)
     kyv = 2*pi*np.linspace(-mlen/(2*sim_size), mlen/(2*sim_size), mlen, endpoint=False)
     kx, ky = np.meshgrid(kxv, kyv)

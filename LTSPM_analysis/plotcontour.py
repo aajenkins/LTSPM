@@ -10,7 +10,8 @@ import matplotlib.pyplot as plt
 import matplotlib.pylab as pylab
 import numpy as np
 import load_scan as lscan
-import format_plot as fp
+import plotting.format_plots_tkagg as fp
+from PIL import Image
 
 # font = {'family' : 'Arial',
 #         'weight' : 'normal',
@@ -44,9 +45,9 @@ def plotcontour(scan_num, size, save=False, savefolder='/Users/alec/UCSB/scan_im
         ax = plt.Axes(fig, [0., 0., 1., 1.])
         fig.add_axes(ax)
         im = plt.imshow(scandata, cmap='bone', interpolation="nearest")
-        cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
-        cbar.set_ticks([0,1])
-        cbar.set_ticklabels([0,1])
+        # cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
+        # cbar.set_ticks([0,1])
+        # cbar.set_ticklabels([0,1])
         # pcol.axes.set_xlim(0, len(scandata[0]))
         # pcol.axes.set_ylim(0, len(scandata))
         plt.gca().invert_yaxis()
@@ -58,4 +59,3 @@ def plotcontour(scan_num, size, save=False, savefolder='/Users/alec/UCSB/scan_im
         cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
         cbar.set_ticks([0,1])
         cbar.set_ticklabels([0,1])
-        fp.format_plot(plt, size, size, 0, 50)

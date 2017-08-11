@@ -21,7 +21,7 @@ def calc_NV_field_angle(f1, f2, Dgs=2870, printNVCalcError=False):
         if (printNVCalcError):
             print('Bnv imaginary',f1,f2)
     else:
-        Bnv = (1/(3*np.sqrt(3*Dgs))) * np.sqrt( -(Dgs+f1+f2)*(Dgs+f1-2*f2)*(Dgs-2*f1+f2) )
+        Bnv = (1/(3*np.sqrt(3*Dgs))) * np.sqrt( -(Dgs+f1+f2)*(Dgs+f1-2*f2)*(Dgs-2*f1+f2) )/2.8
 
         if (-(2*Dgs-f1-f2)*(2*Dgs-f1+2*f2)*(2*Dgs+2*f1-f2) < 0):
             Bnv = np.abs(f2-f1)/(2*2.8)
@@ -29,7 +29,7 @@ def calc_NV_field_angle(f1, f2, Dgs=2870, printNVCalcError=False):
             if (printNVCalcError):
                 print('Bp imaginary',f1,f2)
         else:
-            Bp = (1/(3*np.sqrt(3*Dgs))) * np.sqrt( -(2*Dgs-f1-f2)*(2*Dgs-f1+2*f2)*(2*Dgs+2*f1-f2) )
+            Bp = (1/(3*np.sqrt(3*Dgs))) * np.sqrt( -(2*Dgs-f1-f2)*(2*Dgs-f1+2*f2)*(2*Dgs+2*f1-f2) )/2.8
 
     theta = np.arctan2(Bp, Bnv)
 

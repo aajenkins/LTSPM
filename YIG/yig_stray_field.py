@@ -2,7 +2,7 @@
 # @Date:   2017-07-22T11:34:50-07:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-07-29T22:47:46-07:00
+# @Last modified time: 2017-08-03T12:44:09-07:00
 
 
 
@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import json
 
-import format_plots_tkagg as fp
+import plotting.format_plots_tkagg as fp
 import stray_field_calc_fast as sfcf
 import stray_field_calc_thick as sfct
 
@@ -24,11 +24,14 @@ with open(material_params_path, 'r') as fread:
 Ms = material_params['Ms']
 t = material_params['t']
 
-# heights = np.array([5,10])*(1e-9)
-heights = np.array([5,10,20,30,40,50])*(1e-9)
+heights = np.array([10])*(1e-9)
+# heights = np.array([5,10,20,30,40,50])*(1e-9)
 heightlen = len(heights)
 
-r0s = np.array([5,10])*(1e-9)
+FWHM = np.array([5,10,20])*(1e-9)
+r0s = 2*FWHM
+
+r0slen = len(r0s)
 
 dres = 1.0e-9
 simSize = 200e-9
@@ -41,18 +44,18 @@ xgrid, ygrid = np.meshgrid(x,y)
 
 r = np.sqrt(xgrid**2 + ygrid**2)
 
-bz_arrayB = np.zeros((2,heightlen,slen,slen))
-bz_arrayNL = np.zeros((2,heightlen,slen,slen))
-bz_arrayNR = np.zeros((2,heightlen,slen,slen))
+bz_arrayB = np.zeros((r0slen,heightlen,slen,slen))
+bz_arrayNL = np.zeros((r0slen,heightlen,slen,slen))
+bz_arrayNR = np.zeros((r0slen,heightlen,slen,slen))
 
-scd_arrayNR = np.zeros((2,heightlen,slen,slen))
-vcd_arrayNR = np.zeros((2,heightlen,slen,slen))
-scd_arrayB = np.zeros((2,heightlen,slen,slen))
-vcd_arrayB = np.zeros((2,heightlen,slen,slen))
-scd_arrayNL = np.zeros((2,heightlen,slen,slen))
-vcd_arrayNL = np.zeros((2,heightlen,slen,slen))
+scd_arrayNR = np.zeros((r0slen,heightlen,slen,slen))
+vcd_arrayNR = np.zeros((r0slen,heightlen,slen,slen))
+scd_arrayB = np.zeros((r0slen,heightlen,slen,slen))
+vcd_arrayB = np.zeros((r0slen,heightlen,slen,slen))
+scd_arrayNL = np.zeros((r0slen,heightlen,slen,slen))
+vcd_arrayNL = np.zeros((r0slen,heightlen,slen,slen))
 
-fbz_arrayB = np.zeros((2,heightlen,slen,slen), dtype=np.complex)
+fbz_arrayB = np.zeros((r0slen,heightlen,slen,slen), dtype=np.complex)
 
 for j in range(len(r0s)):
 
@@ -140,14 +143,25 @@ plt.close('all')
 # plt.title(r"$B_z$ linecuts, $r_0$ = 10 nm, NV height = 10 nm")
 # plt.savefig(savepath+'dw_comp_10nm_r010nm.pdf',  bbox_inches='tight')
 #
-# fig1, ax1 = plt.subplots()
-# plt.plot(xCrop, bzCropsB[0,1][:, int(cropNum/2)], label=r'$r_0$ = 5 nm')
-# plt.plot(xCrop, bzCropsB[1,1][:, int(cropNum/2)], label=r'$r_0$ = 10 nm')
-# plt.legend(loc=4,borderaxespad=1,prop={'size':10})
-# plt.xlabel("x (nm)")
-# plt.ylabel(r"$B_z$ (T)")
-# plt.title(r"$B_z$ linecuts, Bloch, NV height = 10nm")
-# plt.savefig(savepath+'bloch_r0comp_10nm.pdf',  bbox_inches='tight')
+fig1, ax1 = plt.subplots()
+plt.plot(xCrop, bzCropsNR[0,0][:, int(cropNum/2)], label=r'FWHM = 5 nm')
+plt.plot(xCrop, bzCropsNR[1,0][:, int(cropNum/2)], label=r'FWHM = 10 nm')
+plt.plot(xCrop, bzCropsNR[2,0][:, int(cropNum/2)], label=r'FWHM = 20 nm')
+plt.legend(loc=1,borderaxespad=1,prop={'size':12})
+plt.xlabel("x (nm)")
+plt.ylabel(r"$B_z$ (T)")
+plt.title(r"$B_z$ linecuts, right-handed Néel, 10nm NV height")
+plt.savefig(savepath+'rn_fwhm_10nm.pdf',  bbox_inches='tight')
+
+fig1, ax1 = plt.subplots()
+plt.plot(xCrop, bzCropsNL[0,0][:, int(cropNum/2)], label=r'FWHM = 5 nm')
+plt.plot(xCrop, bzCropsNL[1,0][:, int(cropNum/2)], label=r'FWHM = 10 nm')
+plt.plot(xCrop, bzCropsNL[2,0][:, int(cropNum/2)], label=r'FWHM = 20 nm')
+plt.legend(loc=4,borderaxespad=1,prop={'size':12})
+plt.xlabel("x (nm)")
+plt.ylabel(r"$B_z$ (T)")
+plt.title(r"$B_z$ linecuts, left-handed Néel, 10nm NV height")
+plt.savefig(savepath+'ln_fwhm_10nm.pdf',  bbox_inches='tight')
 #
 # fig1, ax1 = plt.subplots()
 # plt.plot(xCrop, scdCropsNR[1,1][:, int(cropNum/2)], label=r'$M_s \cdot \hat{z}$')
@@ -164,7 +178,7 @@ plt.close('all')
 # plt.legend(loc=4,borderaxespad=1,prop={'size':10})
 # plt.xlabel("x (nm)")
 # plt.ylabel("normalized effective surface charge density")
-# plt.title(r"$B_z$ linecuts, Bloch, $r_0$ = 10 nm, NV height = 10nm")
+# plt.title(r"$B_z$ linecuts, Bloch, FWHM = 10 nm, NV height = 10nm")
 # plt.savefig(savepath+'charge_density_B.pdf',  bbox_inches='tight')
 #
 # fig1, ax1 = plt.subplots()
@@ -183,22 +197,26 @@ plt.close('all')
 # plt.legend(loc=3,borderaxespad=1,prop={'size':10})
 # plt.title(u"Bz linecuts, left-handed Néel, 5 nm r0")
 
-fig1, ax1 = plt.subplots()
-plt.plot(xCrop, bzCropsNR[1,0][:, int(cropNum/2)], label='5 nm NV height')
-plt.plot(xCrop, bzCropsNR[1,1][:, int(cropNum/2)], label='10 nm NV height')
-plt.plot(xCrop, bzCropsNR[1,2][:, int(cropNum/2)], label='20 nm NV height')
-plt.plot(xCrop, bzCropsNR[1,3][:, int(cropNum/2)], label='30 nm NV height')
-plt.plot(xCrop, bzCropsNR[1,4][:, int(cropNum/2)], label='40 nm NV height')
-plt.plot(xCrop, bzCropsNR[1,5][:, int(cropNum/2)], label='50 nm NV height')
-plt.legend(loc=3,borderaxespad=1,prop={'size':10})
-plt.title(u"Bz linecuts, right-handed Néel, 10 nm r0")
-
 # fig1, ax1 = plt.subplots()
-# plt.plot(xCrop, bzCropsNR[0,0][:, int(cropNum/2)],  label=u'right-handed Néel')
-# plt.plot(xCrop, bzCropsB[0,1][:, int(cropNum/2)], label='Bloch')
-# plt.plot(xCrop, bzCropsNL[0,2][:, int(cropNum/2)], label=u'left-handed Néel')
+# plt.plot(xCrop, bzCropsNR[1,0][:, int(cropNum/2)], label='5 nm NV height')
+# plt.plot(xCrop, bzCropsNR[1,1][:, int(cropNum/2)], label='10 nm NV height')
+# plt.plot(xCrop, bzCropsNR[1,2][:, int(cropNum/2)], label='20 nm NV height')
+# plt.plot(xCrop, bzCropsNR[1,3][:, int(cropNum/2)], label='30 nm NV height')
+# plt.plot(xCrop, bzCropsNR[1,4][:, int(cropNum/2)], label='40 nm NV height')
+# plt.plot(xCrop, bzCropsNR[1,5][:, int(cropNum/2)], label='50 nm NV height')
 # plt.legend(loc=3,borderaxespad=1,prop={'size':10})
-# plt.title("Bz linecuts, 5 nm r0, 10 nm NV height")
+# plt.title(u"Bz linecuts, right-handed Néel, 10 nm r0")
+
+fig1, ax1 = plt.subplots()
+plt.plot(xCrop, bzCropsNR[1,0][:, int(cropNum/2)],  label=u'right-handed Néel')
+plt.plot(xCrop, bzCropsB[1,0][:, int(cropNum/2)], label='Bloch')
+plt.plot(xCrop, bzCropsNL[1,0][:, int(cropNum/2)], label=u'left-handed Néel')
+plt.legend(loc=4,borderaxespad=1,prop={'size':12})
+plt.title("Bz linecuts, 10 nm FWHM, 10 nm NV height")
+plt.ylabel(r"$B_z$ (T)")
+plt.xlabel("x (nm)")
+plt.savefig(savepath+'dwtype_fhwm_10nm.pdf',  bbox_inches='tight')
+
 #
 # fig1, ax1 = plt.subplots()
 # plt.plot(xCrop, bzCropsB[0,3][:, int(cropNum/2)], label='NV height = 30nm')

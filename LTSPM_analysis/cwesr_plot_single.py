@@ -16,17 +16,18 @@ import calc_NV_field as cNV
 #import matplotlib.gridspec as gridspec
 #import matplotlib.gridspec as gridspec
 
-scannum = 1760
-filename = 'anglecal000002'
-num_avg = 9
-# path = '/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/'+filename
+scannum = 1752
+filename = 'esr'
+num_avg = 2
+startfile = 2004
+path = '/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/'+filename
 
 fitdata = []
 
-filenum = 9#33*50*2+(20+1)
+filenum = 9*50*2+(14) + startfile
 
-# filepath = path+str(filenum).zfill(6)
-filepath = '/Users/alec/UCSB/esrdata/angle_calibration_tacofeb/anglecal000002_9.txt'
+filepath = path+str(filenum).zfill(6)+'_'+str(num_avg)+'.txt'
+# filepath = '/Users/alec/UCSB/scan_data/1747-esrdata/linecutcal1000001_3.txt'
 
 plotdata = np.loadtxt(filepath, skiprows=1)[:,0:3:2]
 
@@ -57,6 +58,8 @@ ss_tot = np.sum((y - np.mean(y)) ** 2)
 r2 = 1 - (ss_res / ss_tot)
 
 print(popt)
+
+plt.close('all')
 
 fig1, ax1 = plt.subplots()
 plt.plot(indexes[0], indexes[1],'r.')

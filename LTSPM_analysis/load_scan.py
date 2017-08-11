@@ -9,7 +9,7 @@ import re
 import calc_NV_field as cNV
 
 
-def load_ff (path, xres, yres, Dgs=2870, maxfgrad=25, maxfield=150, neighbors=4, fieldangle=True, printNVCalcError=False):
+def load_ff (path, xres, yres, Dgs=2870, maxfgrad=20, maxfield=100, neighbors=4, fieldangle=True, printNVCalcError=False):
 
     scanlist = np.loadtxt(path, delimiter=',')[:,[2,4]]
     scanlisterr = np.loadtxt(path, delimiter=',')[:,[3,5]]
@@ -34,15 +34,15 @@ def load_ff (path, xres, yres, Dgs=2870, maxfgrad=25, maxfield=150, neighbors=4,
             f2Err = scanlisterr[i+(2*j*xres),1]
             if (fieldangle):
                 B_list = cNV.calc_NV_field_angle(f1, f2, Dgs, printNVCalcError)
-                Bnv[j,i] = B_list[0]/2.8
-                Bp[j,i] = B_list[1]/2.8
+                Bnv[j,i] = B_list[0]
+                Bp[j,i] = B_list[1]
                 theta[j,i] = B_list[2]
-                BnvErr[j,i] = np.sqrt(f1Err**2 + f2Err**2)/2.8
+                BnvErr[j,i] = f2Err/2.8
             else:
                 Bnv[j,i] = np.abs(f2-f1)/(2*2.8)
                 Bp[j,i] = Bnv[j,i]
                 theta[j,i] = 0
-                BnvErr[j,i] = np.sqrt(f1Err**2 + f2Err**2)/2.8
+                BnvErr[j,i] = f2Err/2.8
 
             rf1 = scanlist[i+((2*j+1)*xres),0]
             rf2 = scanlist[i+((2*j+1)*xres),1]
@@ -50,20 +50,23 @@ def load_ff (path, xres, yres, Dgs=2870, maxfgrad=25, maxfield=150, neighbors=4,
             rf2Err = scanlisterr[i+(2*j*xres),0]
             if (fieldangle):
                 rB_list = cNV.calc_NV_field_angle(rf1, rf2, Dgs, printNVCalcError)
-                rBnv[j,i] = rB_list[0]/2.8
-                rBp[j,i] = rB_list[1]/2.8
+                rBnv[j,i] = rB_list[0]
+                rBp[j,i] = rB_list[1]
                 rtheta[j,i] = rB_list[2]
-                rBnvErr[j,i] = np.sqrt(rf1Err**2 + rf2Err**2)/2.8
+                rBnvErr[j,i] = rf2Err/2.8
             else:
                 rBnv[j,i] = np.abs(rf2-rf1)/(2*2.8)
                 rBp[j,i] = rBnv[j,i]
                 rtheta[j,i] = 0
-                rBnvErr[j,i] = np.sqrt(rf1Err**2 + rf2Err**2)/2.8
+                rBnvErr[j,i] = rf2Err/2.8
 
             if(Bnv[j,i]>500/2.8):
                 Bnv[j,i] = 1000
                 num_fail = num_fail+1
                 fail_indices.append([j,i])
+
+    if(printNVCalcError):
+        print("number of fit fails = "+str(len(fail_indices)))
 
     Bnv, BnvErr, rBnv, rBnvErr = interpolate_fit_fails(Bnv, BnvErr, rBnv, rBnvErr, xres, yres, maxfield, maxfgrad)
 
