@@ -13,6 +13,7 @@ def load_ff (path, xres, yres, Dgs=2870, maxfgrad=20, maxfield=100, neighbors=4,
 
     scanlist = np.loadtxt(path, delimiter=',')[:,[2,4]]
     scanlisterr = np.loadtxt(path, delimiter=',')[:,[3,5]]
+    scanlistWidth = np.loadtxt(path, delimiter=',')[:,[8,12]]
 
     Bnv = np.zeros((yres, xres))
     Bp = np.zeros((yres, xres))
@@ -22,6 +23,8 @@ def load_ff (path, xres, yres, Dgs=2870, maxfgrad=20, maxfield=100, neighbors=4,
     rBp = np.zeros((yres, xres))
     rtheta = np.zeros((yres, xres))
     rBnvErr = np.zeros((yres, xres))
+    esrWidth = np.zeros((yres, xres))
+    resrWidth = np.zeros((yres, xres))
 
     num_fail = 0
     fail_indices = []
@@ -32,6 +35,7 @@ def load_ff (path, xres, yres, Dgs=2870, maxfgrad=20, maxfield=100, neighbors=4,
             f2 = scanlist[i+(2*j*xres),1]
             f1Err = scanlisterr[i+(2*j*xres),0]
             f2Err = scanlisterr[i+(2*j*xres),1]
+            esrWidth[j,i] = (scanlistWidth[i+(2*j*xres),0]+scanlistWidth[i+(2*j*xres),0])/2
             if (fieldangle):
                 B_list = cNV.calc_NV_field_angle(f1, f2, Dgs, printNVCalcError)
                 Bnv[j,i] = B_list[0]
@@ -40,7 +44,7 @@ def load_ff (path, xres, yres, Dgs=2870, maxfgrad=20, maxfield=100, neighbors=4,
                 BnvErr[j,i] = f2Err/2.8
             else:
                 Bnv[j,i] = np.abs(f2-f1)/(2*2.8)
-                Bp[j,i] = Bnv[j,i]
+                Bp[j,i] = 0
                 theta[j,i] = 0
                 BnvErr[j,i] = f2Err/2.8
 
@@ -48,6 +52,7 @@ def load_ff (path, xres, yres, Dgs=2870, maxfgrad=20, maxfield=100, neighbors=4,
             rf2 = scanlist[i+((2*j+1)*xres),1]
             rf1Err = scanlisterr[i+(2*j*xres),0]
             rf2Err = scanlisterr[i+(2*j*xres),0]
+            resrWidth[j,i] = (scanlistWidth[i+((2*j+1)*xres),0]+scanlistWidth[i+((2*j+1)*xres),0])/2
             if (fieldangle):
                 rB_list = cNV.calc_NV_field_angle(rf1, rf2, Dgs, printNVCalcError)
                 rBnv[j,i] = rB_list[0]
@@ -56,21 +61,21 @@ def load_ff (path, xres, yres, Dgs=2870, maxfgrad=20, maxfield=100, neighbors=4,
                 rBnvErr[j,i] = rf2Err/2.8
             else:
                 rBnv[j,i] = np.abs(rf2-rf1)/(2*2.8)
-                rBp[j,i] = rBnv[j,i]
+                rBp[j,i] = 0
                 rtheta[j,i] = 0
                 rBnvErr[j,i] = rf2Err/2.8
 
-            if(Bnv[j,i]>500/2.8):
-                Bnv[j,i] = 1000
+            if(Bnv[j,i]>400/2.8):
+                Bnv[j,i] = 0
                 num_fail = num_fail+1
                 fail_indices.append([j,i])
 
     if(printNVCalcError):
         print("number of fit fails = "+str(len(fail_indices)))
 
-    Bnv, BnvErr, rBnv, rBnvErr = interpolate_fit_fails(Bnv, BnvErr, rBnv, rBnvErr, xres, yres, maxfield, maxfgrad)
+    # Bnv, BnvErr, rBnv, rBnvErr = interpolate_fit_fails(Bnv, BnvErr, rBnv, rBnvErr, xres, yres, maxfield, maxfgrad)
 
-    return Bnv, BnvErr, rBnv, rBnvErr, Bp, theta, num_fail, fail_indices
+    return Bnv, BnvErr, rBnv, rBnvErr, Bp, theta, num_fail, fail_indices, esrWidth, resrWidth
 
 
 def load_rf_track (path, xres, yres):
@@ -84,13 +89,15 @@ def load_rf_track (path, xres, yres):
     return scan2d
 
 def load_contour (path):
-    scanlist = np.loadtxt(path, delimiter='\t')[:,6]
+    scanlist = np.loadtxt(path, delimiter='\t')[:,[2,6]]
     res = int(np.sqrt(len(scanlist)))
     scan2d = np.zeros((res, res))
+    afm2d = np.zeros((res, res))
     for j in range(0,res):
         for i in range(0,res):
-            scan2d[i,j] = scanlist[i+(j*res)]
-    return scan2d
+            afm2d[i,j] = scanlist[i+(j*res),0]
+            scan2d[i,j] = scanlist[i+(j*res),1]
+    return afm2d, scan2d
 
 def get_scan_size (path):
     info = open(path,'r')
@@ -142,11 +149,11 @@ def interpolate_fit_fails(Bnv, BnvErr, rBnv, rBnvErr, xres, yres, maxfield, maxf
                     rmean = mean+(rBnv[j+nj[k],i+ni[l]]/nlen)
                     rmeanerr = mean+(rBnvErr[j+nj[k],i+ni[l]]/nlen)
 
-            if abs(Bnv[j,i]-mean) > maxfgrad:
-                Bnv[j,i]=mean
-                BnvErr[j,i]=meanerr
-            if abs(rBnv[j,i]-rmean) > maxfgrad:
-                rBnv[j,i]=rmean
-                rBnvErr[j,i]=rmeanerr
+            # if abs(Bnv[j,i]-mean) > maxfgrad:
+            #     Bnv[j,i]=mean
+            #     BnvErr[j,i]=meanerr
+            # if abs(rBnv[j,i]-rmean) > maxfgrad:
+            #     rBnv[j,i]=rmean
+            #     rBnvErr[j,i]=rmeanerr
 
     return Bnv, BnvErr, rBnv, rBnvErr

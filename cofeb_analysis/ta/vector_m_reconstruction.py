@@ -33,9 +33,9 @@ import plotting.format_plots_tkagg as fp
 pi = np.pi
 
 
-def vector_m_reconstruction(scannum, kcutoff=1, mask = True, printError = False):
+def vector_m_reconstruction(scannum, kcutoff=1, mask = True, printError = False, material = 'ta'):
 
-    path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
+    path = '/Users/alec/UCSB/cofeb_analysis_data/'+material+'/'
     scan_path = path+str(scannum)+'/'
     scan_params_path = scan_path+'scan_parameters.json'
     material_params_path = path+'material_parameters.json'

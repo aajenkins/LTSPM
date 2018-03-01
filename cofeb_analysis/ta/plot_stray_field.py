@@ -2,7 +2,7 @@
 # @Date:   2017-07-09T16:46:45-07:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-08-10T16:11:25-07:00
+# @Last modified time: 2017-08-30T12:52:28-07:00
 
 
 import numpy as np
@@ -21,8 +21,8 @@ def plot_stray_field(scannum, helicities = [0, 90, 180]):
 
     path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'
     scan_params_path = path+str(scannum)+'/'+'scan_parameters.json'
-    field_path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'+str(scannum)+'/stray_field_sim/'
-    datapath = '/Users/alec/UCSB/cofeb_analysis_data/ta/1760/'
+    field_path = path+str(scannum)+'/stray_field_sim/'
+    datapath = path+'1760/'
 
     with open(scan_params_path, 'r') as fread:
         scan_params = json.load(fread)
@@ -82,13 +82,14 @@ def plot_stray_field(scannum, helicities = [0, 90, 180]):
 
     plt.close('all')
 
-    fig, ax = plt.subplots(figsize=(4,4))
-    im = plt.imshow(bNV[3,1], interpolation='nearest', cmap='bone')
-    ax.get_yaxis().set_visible(False)
-    ax.get_xaxis().set_visible(False)
-    cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
-    plt.subplots_adjust(left=0.0, bottom=0.0, right=0.9, top=1.0, wspace=0, hspace=0)
-    plt.savefig(savepath+'BNV_bestFitHelicity_'+str(scannum)+'.pdf', format='pdf')
+    if(len(helicities)==4):
+        fig, ax = plt.subplots(figsize=(4,4))
+        im = plt.imshow(bNV[3,1], interpolation='nearest', cmap='bone')
+        ax.get_yaxis().set_visible(False)
+        ax.get_xaxis().set_visible(False)
+        cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
+        plt.subplots_adjust(left=0.0, bottom=0.0, right=0.9, top=1.0, wspace=0, hspace=0)
+        plt.savefig(savepath+'BNV_bestFitHelicity_'+str(scannum)+'.pdf', format='pdf')
 
     fig, ax = plt.subplots(figsize=(4,4))
     im = plt.imshow(ffdata[0], interpolation='nearest', cmap='bone')

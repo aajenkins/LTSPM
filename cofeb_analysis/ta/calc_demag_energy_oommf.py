@@ -2,7 +2,7 @@
 # @Date:   2017-02-17T14:20:47-08:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-08-09T10:34:04-07:00
+# @Last modified time: 2017-08-11T16:27:02-07:00
 
 
 
@@ -17,7 +17,7 @@ import plotting.format_plots_tkagg as fp
 
 pi = np.pi
 mu0 = 4*pi*(1e-7)
-deadlayer = True
+deadlayer = False
 
 def get_interpolated_contour(contour):
     slen = len(contour[:, 1])
@@ -115,7 +115,8 @@ domain_wall_energy_density = -( delta_demag_energy_norm /
 print('domain_wall_energy_density = ' + str(domain_wall_energy_density))
 
 As = ((domain_wall_energy_density-np.pi*DMI)**2)/(16*Keff)
-DW_width = domain_wall_energy_density/(4*Keff)
+# DW_width = domain_wall_energy_density/(4*Keff)
+DW_width = np.sqrt(As/Keff)
 
 print('DW_width (no pi) = ' + str(DW_width))
 print('As = ' + str(As))

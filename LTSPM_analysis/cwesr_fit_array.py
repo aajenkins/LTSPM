@@ -10,7 +10,8 @@ import cwesr_fit_single as cwesr
 #import matplotlib.gridspec as gridspec
 
 
-def cwesr_fit_array(scannum, name, filestart, fileend, num_avg, d_gsplit=20):
+def cwesr_fit_array(scannum, name, filestart, fileend, num_avg, d_gsplit=20, maxCtr=2875,
+                    maxWidth=15, maxSplitting=200, gaussFit=False):
     base = '/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/'
     basepath = base+name
     savepath = base+'fitdata.txt'
@@ -31,7 +32,8 @@ def cwesr_fit_array(scannum, name, filestart, fileend, num_avg, d_gsplit=20):
         #print(edata)
         x, y = edata
 
-        cwresult = cwesr.cwesr_fit(x, y, d_gsplit=d_gsplit, filenum=j)
+        cwresult = cwesr.cwesr_fit(x, y, d_gsplit=d_gsplit, filenum=j, max_width=maxWidth,
+                                   max_splitting=maxSplitting, max_ctr=maxCtr, gauss=gaussFit)
         popt = cwresult[0]
         pcov = cwresult[1]
         perr = np.sqrt(np.abs(np.diag(pcov)))

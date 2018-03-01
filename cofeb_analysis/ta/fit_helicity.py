@@ -2,7 +2,7 @@
 # @Date:   2017-07-10T17:48:10-07:00
 # @Project: LTSPM analysis
 # @Last modified by:   alec
-# @Last modified time: 2017-08-10T10:51:21-07:00
+# @Last modified time: 2017-08-11T16:33:33-07:00
 
 
 
@@ -40,7 +40,7 @@ xscenter = int(xres/2)
 bNV = np.loadtxt(scan_path+'bNV.txt', delimiter=',')
 bNVcrop = bNV[ycenter-cropsize:ycenter+cropsize+1, xcenter-cropsize:xcenter+cropsize+1]
 
-helicity_list = np.arange(71,78,1)
+helicity_list = np.arange(60,70,1)
 # helicity_list = [70*np.pi/180]
 
 hnum = len(helicity_list)

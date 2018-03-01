@@ -34,21 +34,21 @@ def fit_lorentzian(x, *params):
 	y = np.zeros_like(x)
 	c = params[0]
 	freq_ctr = params[1]
-	freq_split = params[2]
+	freq_split = np.abs(params[2])
 	amp1 = params[3]
 	width1 = params[4]
 	amp2 = params[5]
 	width2 = params[6]
-	y = -abs( (amp1 * (width1/2)**2)/((x-(freq_ctr + freq_split/2))**2+(width1/2)**2) +
-			(amp2 * (width2/2)**2)/((x-(freq_ctr - freq_split/2))**2+(width2/2)**2) )
+	y = -abs( (amp1 * (width1)**2)/((x-(freq_ctr + freq_split/2))**2+(width1)**2) +
+			(amp2 * (width2)**2)/((x-(freq_ctr - freq_split/2))**2+(width2)**2) )
 	y=y+c
 	return y
 
-def cwesr_fit(x, y, filenum=0, gauss=True, gamp=dgamp, gwidth=dgwidth, gctr=2870, d_gsplit=20,
+def cwesr_fit(x, y, filenum=0, gauss=False, gamp=dgamp, gwidth=dgwidth, gctr=2870, d_gsplit=20,
 				min_width=4, max_width=15, max_counts=3e5, max_ctr=2875, max_splitting=200):
 
 	dlen = len(y)
-	b, a = signal.butter(1, 0.5, btype='lowpass')
+	b, a = signal.butter(1, 0.4, btype='lowpass')
 	yfilt = signal.filtfilt(b, a, y)
 	indexes = peakutils.indexes(np.max(yfilt)-yfilt, thres=0.45, min_dist=2)
 	sm1=[]
@@ -56,7 +56,7 @@ def cwesr_fit(x, y, filenum=0, gauss=True, gamp=dgamp, gwidth=dgwidth, gctr=2870
 	mintab = np.transpose([x[indexes], y[indexes]])
 
 	for i in range(0,len(mintab)):
-		if mintab[i][0] < 2872:
+		if mintab[i][0] < 2873:
 			sm1.append(mintab[i])
 		else:
 			sm2.append(mintab[i])
@@ -73,18 +73,33 @@ def cwesr_fit(x, y, filenum=0, gauss=True, gamp=dgamp, gwidth=dgwidth, gctr=2870
 		fc1 = sm1s[0][0]
 		fc2 = sm2s[0][0]
 		gsplit = np.abs(fc2-fc1)
+		# gctr = (fc2+fc1)/2
 		gamp = ystart-sm1s[0][1]
-	elif len(sm1s) == 0 and len(sm2s) >= 1:
+	elif len(sm1s) == 0 and len(sm2s) == 1:
 		gsplit=0
 		gamp = (ystart-sm2s[0][1])/2
-	elif len(sm1s) >= 1 and len(sm2s) == 0:
+		gctr = sm2s[0][0]
+	# elif len(sm1s) == 0 and len(sm2s) >= 2:
+	# 	fc1 = sm2s[0][0]
+	# 	fc2 = sm2s[1][0]
+	# 	gsplit = np.abs(fc2-fc1)
+	# 	gamp = (ystart-sm2s[0][1])
+	# 	gctr = (fc2+fc1)/2
+	elif len(sm1s) == 1 and len(sm2s) == 0:
 		gsplit=0
 		gamp = (ystart-sm1s[0][1])/2
+		gctr = sm1s[0][0]
+	# elif len(sm1s) >= 2 and len(sm2s) == 0:
+	# 	fc1 = sm1s[0][0]
+	# 	fc2 = sm1s[1][0]
+	# 	gsplit = np.abs(fc2-fc1)
+	# 	gamp = (ystart-sm1s[0][1])
+	# 	gctr = (fc2+fc1)/2
 	else:
 		gsplit = d_gsplit
 		gamp = ystart-dmin
 
-	lbounds2 = [0,gctr-5,0,amp/4,min_width,amp/4,min_width]
+	lbounds2 = [0,2865,-max_splitting,amp/8,min_width,amp/8,min_width]
 	ubounds2 = [max_counts,max_ctr,max_splitting,4*amp,max_width,4*amp,max_width]
 	guess = [ystart, gctr, gsplit, gamp, gwidth, gamp, gwidth]
 
