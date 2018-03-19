@@ -11,10 +11,8 @@ import numpy as np
 #import peakdet
 import peakutils
 
-dgamp = 1.5e4
+dgamp = 1.4e4
 dgwidth = 4
-pdheight = 1500
-maxcenshift = 20
 
 def fit_gaussian(x, *params):
 	y = np.zeros_like(x)
@@ -39,20 +37,6 @@ def fit_lorentzian(x, *params):
 	width1 = params[4]
 	amp2 = params[5]
 	width2 = params[6]
-	y = -abs( (amp1 * (width1)**2)/((x-(freq_ctr + freq_split/2))**2+(width1)**2) +
-			(amp2 * (width2)**2)/((x-(freq_ctr - freq_split/2))**2+(width2)**2) )
-	y=y+c
-	return y
-
-def fit_lorentzian_N15(x, *params):
-	freq_split = 3.1
-	y = np.zeros_like(x)
-	c = params[0]
-	freq_ctr = params[1]
-	amp1 = params[2]
-	width1 = params[3]
-	amp2 = params[4]
-	width2 = params[3]
 	y = -abs( (amp1 * (width1)**2)/((x-(freq_ctr + freq_split/2))**2+(width1)**2) +
 			(amp2 * (width2)**2)/((x-(freq_ctr - freq_split/2))**2+(width2)**2) )
 	y=y+c
@@ -133,30 +117,5 @@ def cwesr_fit(x, y, filenum=0, gauss=False, gamp=dgamp, gwidth=dgwidth, gctr=287
 	else:
 		fit = fit_lorentzian(x, *popt)
 		fitg = fit_lorentzian(x, *guess)
-
-	return popt, pcov, fit, fitg, np.transpose(mintab)
-
-def cwesr_fit_N15(x, y, gamp=dgamp, gwidth=dgwidth, gctr=2870, yErr=None, absSigma=False):
-
-	dlen = len(y)
-
-	dmax = np.max(y)
-	dmin = np.min(y)
-	gamp = dmax-dmin
-
-	ystart = np.mean(np.append(y[0:3], y[-3:]))
-
-	guess = [ystart, gctr, gamp, gwidth, gamp]
-
-	try:
-		popt, pcov = curve_fit(fit_lorentzian_N15, x, y, p0=guess, sigma=yErr,
-		absolute_sigma=absSigma)
-	except:
-		popt = [0, 0, 1e3, 1, 1, 1]
-		pcov = np.zeros((6,6))
-		print('fit fail on file '+str(filenum))
-
-	fit = fit_lorentzian_N15(x, *popt)
-	fitg = fit_lorentzian_N15(x, *guess)
 
 	return popt, pcov, fit, fitg

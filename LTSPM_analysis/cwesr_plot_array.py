@@ -10,26 +10,35 @@ import matplotlib.pyplot as plt
 import math as math
 import matplotlib.gridspec as gridspec
 import cwesr_fit_single as cwesr
+import plotting.format_plots_tkagg as fp
 #import matplotlib.gridspec as gridspec
 
-filename = 'ff1'
-scannum = 1760
+filename = 'linecut-middle-20uA-0222000'
+scannum = 2028
 path = '/Users/alec/UCSB/scan_data/'+str(scannum)+'-esrdata/'+filename
 filenum_path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'+str(scannum)+'/fail_index.txt'
 #savepath = '/Users/alec/UCSB/scan_data/830-esrdata/fitdata.txt'
 fitdata = []
 #back = np.loadtxt('/Users/alec/UCSB/python_analysis/copt/fullfield_images/back.txt')
 
-num_avg = 4
+num_avg = 50
 xaxis_scale = 1e-3
 yaxis_scale = 1e-3
 
 filearray = np.loadtxt(filenum_path)
 
-filelen = len(filearray)
-filelist = np.zeros(filelen, dtype=int)
-for i in range(filelen):
-    filelist[i] = int(filearray[i][0]*50*2+(filearray[i][1]+1))
+filearrayX, filearrayY = np.mgrid[28:33, 26:30]
+
+print(filearrayX)
+print(filearrayY)
+
+filelist = np.array([], dtype=int)
+for i in range(len(filearrayX[0,:])):
+    for j in range(len(filearrayX[:,0])):
+        filelist = np.append(filelist, int(filearrayY[j][i]*50*2+(filearrayX[j][i]+1)))
+
+filelen = len(filelist)
+print(filelist)
 
 plt.close('all')
 plt.figure(1,[17,10])
@@ -85,7 +94,7 @@ for j in range(np.min([filelen,36])):
 #plt.tight_layout()
 plt.show()
 fig = plt.gcf()
-fig.canvas.manager.window.raise_()
+#fig.canvas.manager.window.raise_()
 #fig=plt.gcf()
 #fig.canvas.manager.window.activateWindow()
 #fig.canvas.manager.window.raise_()

@@ -8,6 +8,7 @@ Created on Mon Mar 14 23:26:44 2016
 import numpy as np
 import scipy.signal as signal
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 import json
 
 import cwesr_fit_single as cwesr
@@ -19,7 +20,7 @@ import calc_NV_field as cNV
 #import matplotlib.gridspec as gridspec
 
 scannum = 1760
-filenum = 3426
+filenum = 2609
 
 scan_params_path = '/Users/alec/UCSB/cofeb_analysis_data/ta/'+str(scannum)+'/scan_parameters.json'
 with open(scan_params_path, 'r') as fread:
@@ -70,12 +71,15 @@ print(popt)
 
 # plt.close('all')
 
-fig1, ax1 = plt.subplots()
-plt.plot(indexes[0], indexes[1],'r.')
-plt.plot(x, y)
-plt.plot(x, yfilt)
-plt.plot(x, fitg, '-k')
-plt.plot(x, fit, '-r')
+fig, ax = plt.subplots(figsize=(3,2))
+#plt.plot(indexes[0], indexes[1],'r.')
+plt.plot(x*(1e-3), y/np.max(y))
+ax.yaxis.set_major_formatter(ticker.FormatStrFormatter('%.2f'))
+ax.xaxis.set_major_locator(ticker.MultipleLocator(0.05))
+plt.subplots_adjust(left=0.17, bottom=0.15, right=0.98, top=1.0, wspace=0, hspace=0)
+#plt.plot(x, yfilt)
+#plt.plot(x, fitg, '-k')
+#plt.plot(x, fit, '-r')
 plt.show()
 
 #print(cwresult[0][4]-cwresult[0][1])

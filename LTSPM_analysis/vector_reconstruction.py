@@ -63,3 +63,30 @@ def vector_reconstruction(data, dataError, theta, thetaError, phi, height, scans
 	Vdata = np.real(np.fft.ifft2(np.fft.ifftshift(Vk)))
 
 	return bxdata, bydata, bzdata, mzBlochdata, Vdata, bzdataError, mzBlochk
+
+def vector_reconstruction_1D(data, theta, phi):
+	# reconstruct two field components for field uniform along one xaxis_scale
+
+	pi = np.pi
+	bnvf = np.fft.fft(data)
+	bnvf = np.fft.fftshift(bnvf)
+
+	dlen = len(bnvf)
+	hlen = int(np.floor(dlen/2))
+
+	bxf = np.zeros_like(bnvf)
+	bzf = np.zeros_like(bnvf)
+
+	for i in range(0,dlen):
+		kx = 2*pi*(i-hlen)/dlen
+		if (i==hlen):
+			bxf[i] = 0
+			bzf[i] = 0
+		else:
+			bxf[i] = bnvf[i]/( np.sin(theta) * np.cos(phi) - 1j * np.sign(kx) * np.cos(theta) )
+			bzf[i] = -1j * np.sign(kx) * bxf[i]
+
+	bxdata = np.real(np.fft.ifft(np.fft.ifftshift(bxf)))
+	bzdata = np.real(np.fft.ifft(np.fft.ifftshift(bzf)))
+
+	return bxdata, bzdata

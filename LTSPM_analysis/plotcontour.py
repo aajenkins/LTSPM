@@ -13,8 +13,8 @@ import load_scan as lscan
 import plotting.format_plots_tkagg as fp
 from PIL import Image
 
-scan_num = 824
-size = 10e-6
+scan_num = 1836
+size = 10e-5
 save=False
 savefolder='/Users/alec/UCSB/scan_images/contours/'
 filetype='png'

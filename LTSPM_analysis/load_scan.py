@@ -7,7 +7,8 @@ Created on Fri Nov 18 11:57:37 2016
 import numpy as np
 import re
 import calc_NV_field as cNV
-
+import glob
+import scipy.io as spio
 
 def load_ff (path, xres, yres, Dgs=2870, maxfgrad=20, maxfield=100, neighbors=4, fieldangle=True, printNVCalcError=False):
 
@@ -157,3 +158,79 @@ def interpolate_fit_fails(Bnv, BnvErr, rBnv, rBnvErr, xres, yres, maxfield, maxf
             #     rBnvErr[j,i]=rmeanerr
 
     return Bnv, BnvErr, rBnv, rBnvErr
+
+def load_scan_cwesr_mat(path, fileStart, fileEnd):
+
+    matlabFileArray = []
+
+    for i in range(fileStart, fileEnd+1):
+        matlabFileArray.append(path+str(i)+'.mat')
+
+    scanData = []
+
+    for matlabFile in matlabFileArray:
+        matlabFile = spio.loadmat(matlabFile, squeeze_me=True, struct_as_record=False)
+        sweeps = matlabFile['CW'].data.individualSweeps * (1e3)
+        sweepMean = np.mean(sweeps, axis = 0)
+        sweepErr = np.std(sweeps, axis = 0)/np.sqrt(len(sweeps))
+        scanData.append([sweepMean, sweepErr])
+
+    freq = matlabFile['CW'].data.freqValues
+
+    return freq, scanData
+
+def load_afm(scan_num, xlen, ylen, scanSize = 1.0):
+    scanfolder = '/Users/alec/UCSB/scan_data/'
+    scan_num = str(scan_num)
+    datapath = scanfolder+scan_num+'/'+scan_num.zfill(6)+'.scan'
+    afmdata = np.loadtxt(datapath, delimiter='\t')[:,2]
+    slen = len(afmdata)
+    ylen = int(slen/(xlen))
+    afmdataForward = []
+
+    for i in range(ylen):
+        afmdataForward.append([np.linspace(0,scanSize,xlen), afmdata[i:slen:ylen]])
+
+    return afmdataForward
+
+def load_freq_track_mat(scan_num, xlen, scanSize = 1.0):
+    scanfolder = '/Users/alec/UCSB/scan_data/'
+    scan_num = str(scan_num)
+    datapath = scanfolder+scan_num+'/scanData'
+    slen = len(scanlist)
+    ylen = int(slen/(xlen))
+    freqData = []
+    afmDataMean = []
+    afmDataStd = []
+
+    for i in range(fileStart, fileEnd+1):
+        matlabFileArray.append(path+str(i)+'.mat')
+
+    for matlabFile in matlabFileArray:
+        matlabFile = spio.loadmat(matlabFile, squeeze_me=True, struct_as_record=False)
+        sweeps = matlabFile['CW'].data.individualSweeps * (1e3)
+        sweepMean = np.mean(sweeps, axis = 0)
+        sweepErr = np.std(sweeps, axis = 0)/np.sqrt(len(sweeps))
+        scanData.append([sweepMean, sweepErr])
+
+    freq = matlabFile['CW'].data.freqValues
+
+    return freq, scanData
+
+def load_freq_track_old(scan_num, xlen, scanSize = 1.0):
+    scanfolder = '/Users/alec/UCSB/scan_data/'
+    scan_num = str(scan_num)
+    datapath = scanfolder+scan_num+'/'+scan_num.zfill(6)+'.scan'
+    scanlist = np.loadtxt(datapath, delimiter='\t')[:,[2,4,6,7]]
+    slen = len(scanlist)
+    ylen = int(slen/(xlen))
+    scanFor = []
+    scanRev = []
+    afmFor = []
+    afmRev = []
+    for i in range(0,ylen):
+        afmFor.append(scanlist[i:slen:ylen,0])
+        afmRev.append(scanlist[i:slen:ylen,1])
+        scanFor.append(scanlist[i:slen:ylen,2])
+        scanRev.append(scanlist[i:slen:ylen,3])
+    return afmFor, afmRev, scanFor, scanRev
